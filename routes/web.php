@@ -11,22 +11,22 @@
 |
 */
 
-Route::get('/home', function () {
-    return view('welcome');
-});
 
-Route::group(['middleware' => 'language', 'prefix' => '{locale}/'], function () {
+Route::group(['middleware' => 'language'], function () {
 
     Route::get('/', function () {
         return view('welcome');
     });
 
+    Route::get('/home/{locale}', function () {
+        return view('welcome');
+    });
 
     Auth::routes();
 
     Route::get('home', 'HomeController@index')->name('home');
 
-    Route::get('/test', function () {
+    Route::get('/{locale}/test', function () {
         return view('welcome');
     });
 });

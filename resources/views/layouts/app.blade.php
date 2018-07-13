@@ -42,9 +42,33 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li class="dropdown">
+
+                            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {!! language()->flag(app()->getLocale()) !!}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" role="menu">
+
+                                @foreach (language()->allowed() as $code => $name)
+                                    @if(app()->getLocale() !== $code)
+
+                                        <li class="{{ config('language.flags.li_class') }}">
+                                            <a href="{{ language()->back($code) }}">
+                                                <img src="{{ asset('img/flags/'.($code == 'en' ? 'gb' : $code).'.png') }}"
+                                                     alt="{{ $name }}"
+                                                     width="{{ config('language.flags.width') }}" />
+                                                {{ $name }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                            </ul>
+                        </li>
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login', app()->getLocale()) }}">Login</a></li>
+                            <li><a href="{{ route('register', app()->getLocale()) }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
