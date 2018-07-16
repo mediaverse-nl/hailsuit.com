@@ -29,4 +29,9 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('/{locale}/test', function () {
         return view('welcome');
     });
+
+    Route::get('product', 'ProductController@index')->name('product.index');
+    Route::get('product/{id}', 'ProductController@show')->name('product.show');
+
+
 });
