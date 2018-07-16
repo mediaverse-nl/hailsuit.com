@@ -93,6 +93,8 @@
                                 </ul>
                             </li>
                         @endif
+                        <li><a href="{{ route('cart.index')}}">Shopping Cart</a></li>
+
                     </ul>
                 </div>
             </div>
