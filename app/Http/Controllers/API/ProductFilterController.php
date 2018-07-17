@@ -41,7 +41,7 @@ class ProductFilterController extends Controller
 
                 $years = $this->types
                     ->where('brand_id', '=', $brand_id)
-                    ->where('value', '=', $type)
+                    ->where('value', 'like', "%".$type.'%')
                     ->groupBy('model_year')
                     ->get();
 
@@ -51,11 +51,11 @@ class ProductFilterController extends Controller
 
                     $selectedType = $this->types
                         ->where('brand_id', '=', $brand_id)
-                        ->where('value', '=', $type)
                         ->where('model_year', '=', $year)
+                        ->where('value', 'like', "%".$type.'%')
                         ->first();
 
-                    if ($selectedType->product()->exists()){
+                    if ($selectedType != null){
                         return response()->json([
                             'url' => route('product.show', $selectedType->product()->first()->id),
                             'status' => true

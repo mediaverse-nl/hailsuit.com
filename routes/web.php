@@ -38,13 +38,13 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('contact', 'ContactController@index')->name('contact.index');
     Route::post('contact', 'ContactController@store')->name('contact.store');
 
-    Route::get('algemene-voorwaarden', 'PageController@tems')->name('page.terms');
+    Route::get('algemene-voorwaarden', 'PageController@terms')->name('page.terms');
     Route::get('privacy-policy', 'PageController@privacy')->name('page.privacy');
     Route::get('cookies', 'PageController@cookie')->name('page.cookie');
     Route::get('warranty', 'PageController@warranty')->name('page.warranty');
     Route::get('returns', 'PageController@returns')->name('page.returns');
     Route::get('delivery', 'PageController@delivery')->name('page.delivery');
-
-
+    Route::get('app', 'PageController@delivery')->name('page.app');
+    Route::get('app/download', 'PageController@delivery')->name('page.app');
 
 });

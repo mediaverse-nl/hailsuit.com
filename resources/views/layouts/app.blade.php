@@ -13,8 +13,23 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
     @stack('css')
 
+    <style>
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
+        }
+
+    </style>
 </head>
 <body>
     <div id="app">
@@ -103,8 +118,58 @@
         @yield('content')
     </div>
 
+    <footer style="background: #363636; height: 450px;">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h1>
+                        Algemeen
+                    </h1>
+                    <ul>
+                        <li><a href="{{route('page.terms')}}">page.terms</a></li>
+                        <li><a href="{{route('page.privacy')}}">page.privacy</a></li>
+                        <li><a href="{{route('page.cookie')}}">page.cookie</a></li>
+                        <li><a href="{{route('page.warranty')}}">page.warranty</a></li>
+                        <li><a href="{{route('page.returns')}}">page.returns</a></li>
+                        <li><a href="{{route('page.delivery')}}">page.delivery</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h1>
+                        social media
+                    </h1>
+                </div>
+                <div class="col-md-3">
+                    <h1>
+                        social media
+                    </h1>
+                    <ul>
+                        <li>
+                            <a href="#" class="btn btn-default btn-lg btn-circle">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-default btn-lg btn-circle">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="btn btn-default btn-lg btn-circle">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="btn btn-default btn-lg btn-circle">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+
 
     @stack('js')
 
