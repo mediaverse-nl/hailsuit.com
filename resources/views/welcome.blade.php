@@ -52,6 +52,9 @@
 
     <div class="col-md-12" style=" overflow: hidden !important;">
         <div class="row">
+            <div class="col-md-6" style="padding: 0px; height: 100% !important;">
+                <img src="/img/img-2.jpeg" class="img-responsive" style="">
+            </div>
             <div class="col-md-6 text-center" style="padding: 0px 50px;">
                 <h2 class="text-center">Does your lorem ipsum text long for something a little meatier?</h2>
                 <p class="text-center">
@@ -59,10 +62,8 @@
                 </p>
                 <br>
                 <a class="btn btn-lg btn-primary btn-rounded ">Lees meer</a>
-            </div>
-
-            <div class="col-md-6" style="padding: 0px; height: 100% !important;">
-                <img src="/img/img-2.jpeg" class="img-responsive" style="">
+                <br>
+                <br>
             </div>
         </div>
     </div>
@@ -70,15 +71,15 @@
 
     <div class="col-md-12 row-eq-height" style="margin-bottom: 80px; overflow: hidden !important;">
         <div class="row">
-            <div class="col-md-8 " style="padding: 0px;">
+            <div class="col-md-8 row-eq-height" style="padding: 0px; height: 100% !important;">
                 <img src="/img/auto-dark.jpg" class="img-responsive" style="">
             </div>
-            <div class="col-md-4" style="padding: 0px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding: 0px;">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" style="padding: 0px; height: 50%;">
                         <img src="/img/img-1.jpeg" class="img-responsive">
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" style="padding: 0px; height: 50%;">
                         <img src="/img/img-3.jpeg" class="img-responsive">
                     </div>
                 </div>

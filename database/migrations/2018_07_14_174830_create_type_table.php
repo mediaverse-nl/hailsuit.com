@@ -22,7 +22,7 @@ class CreateTypeTable extends Migration
             $table->string('model_year');
             $table->string('value');
             $table->timestamps();
-            $table->unique(['brand_id', 'model_year', 'value']);
+//            $table->unique(['brand_id', 'model_year', 'value']); TODO werkt niet
         });
     }
 
