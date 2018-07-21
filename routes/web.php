@@ -44,7 +44,6 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('warranty', 'PageController@warranty')->name('page.warranty');
     Route::get('returns', 'PageController@returns')->name('page.returns');
     Route::get('delivery', 'PageController@delivery')->name('page.delivery');
-    Route::get('app', 'PageController@delivery')->name('page.app');
-    Route::get('app/download', 'PageController@delivery')->name('page.app');
+    Route::get('app/download', 'PageController@app')->name('page.app');
 
 });

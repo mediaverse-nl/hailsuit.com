@@ -2,60 +2,59 @@
 
 @section('content')
 
-    <div class="col-md-12" style="
-         background-image: url('/img/car-climb-clouds.jpg');
-         background-color: lightblue;
-         background-size: cover;
-         margin-top: -25px !important;
-        height: 500px;
-        padding: 0px;
-        ">
+    <section class="hero-area bg-1 text-center overly">
+        <!-- Container Start -->
         <div class="overlay">
-            <div class="container">
-                <div class="col-md-12">
-                    <h1>Check hier welke suit geschikt is voor uw auto!</h1>
-                    <div class="row ">
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-12">
+                        <!-- Header Contetnt -->
+                        <div class="content-block">
+                            <h1>Buy &amp; Sell Near You </h1>
+                            <p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
+                        </div>
+                        <!-- Advance Search -->
+                        <div class="advance-search">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <b>Merk</b>
+                                    <select class="form-control filter" id="brands">
+                                        <option>Please Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <b>Type</b>
+                                    <select class="form-control filter" id="types">
+                                        <option>Please Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <b>Jaar</b>
+                                    <select class="form-control filter" id="years">
+                                        <option>Please Select</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <b>Merk</b>
-                                <select class="form-control filter" id="brands">
-                                    <option>Please Select</option>
-                                </select>
-                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <b>Type</b>
-                                <select class="form-control filter" id="types">
-                                    <option>Please Select</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <b>Jaar</b>
-                                <select class="form-control filter" id="years">
-                                    <option>Please Select</option>
-                                </select>
-                            </div>
-                        </div>
+
                     </div>
-                </div>
-                <div class="col-md-6">
-                {{--<img src="\img\lamborghini_PNG10681.png" class="banner-img center-block img-responsive">--}}
                 </div>
             </div>
         </div>
-    </div>
-
+        <!-- Container End -->
+    </section>
 
     <div class="col-md-12" style=" overflow: hidden !important;">
         <div class="row">
             <div class="col-md-6" style="padding: 0px; height: 100% !important;">
                 <img src="/img/img-2.jpeg" class="img-responsive" style="">
             </div>
-            <div class="col-md-6 text-center" style="padding: 0px 50px;">
+            <div class="col-md-6 text-center vcenter" style="padding: 30px 50px; height: 100% !important;">
                 <h2 class="text-center">Does your lorem ipsum text long for something a little meatier?</h2>
                 <p class="text-center">
                     Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
@@ -68,25 +67,21 @@
         </div>
     </div>
 
-
     <div class="col-md-12 row-eq-height" style="margin-bottom: 80px; overflow: hidden !important;">
         <div class="row">
-            <div class="col-md-8 row-eq-height" style="padding: 0px; height: 100% !important;">
-                <img src="/img/auto-dark.jpg" class="img-responsive" style="">
+            <div class="col-md-8" style="padding: 0px;">
+                <img src="/img/auto-dark.jpg" class="img-responsive">
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding: 0px;">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" style="padding: 0px; height: 50%;">
-                        <img src="/img/img-1.jpeg" class="img-responsive">
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" style="padding: 0px; height: 50%;">
-                        <img src="/img/img-3.jpeg" class="img-responsive">
-                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" style="padding-left: 0px; padding-right: 0px; overflow: hidden:">
+                    <img src="/img/img-1.jpeg" class="img-responsive">
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" style="padding-left: 0px; padding-right: 0px; overflow: hidden:">
+                    <img src="/img/img-3.jpeg" class="img-responsive">
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="container">
         <div class="item  col-xs-4 col-lg-4">
@@ -131,12 +126,39 @@
                 </div>
             </div>
         </div>
+
+    </div>
+
+    <div class="col-md-12 row-eq-height" style="margin-bottom: 80px; overflow: hidden !important; background: #ffffff;">
+        <div class="container" style="padding: 30px 0px;">
+            <div class="row">
+                <div class="col-md-6" style="height: 320px;">
+                    <iframe src="http://www.youtube.com/embed/ELbwD21-r3k"
+                            width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6" style="">
+                    <h2 class="text-center">Does your lorem ipsum text long for something a little meatier?</h2>
+                    <p class="text-center">
+                        Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 @endsection
 
 @push('css')
     <style>
+        .hero-area{
+            background-image: url('/img/car-climb-clouds.jpg');
+            background-color: lightblue;
+            background-size: cover;
+            margin-top: -25px !important;
+            height: 500px;
+            padding: 0px;
+        }
         @media only screen and (max-width : 767px) {
             .box {
                 height: auto !important;
@@ -150,8 +172,8 @@
             vertical-align: middle;
             float: none;
         }
-        .overlay h1, .overlay p, .overlay b{
-            color: #FFFFFF;
+        .overlay h1, .overlay p, .overlay b .overlay h2{
+            color: #FFFFFF !important;
         }
         .overlay {
             background-color: rgba(0, 0, 0, 0.7);
@@ -268,13 +290,11 @@
                         });
 
                         initSelectOption($year, $years, $SelectedYears);
-
-                        if(json.url){
-                            console.log(json.url);
-    //                        window.location.replace(json.url);
-                        }
                     }
 
+                    if(json.url){
+                        window.location.replace(json.url);
+                    }
                 }
             });
         }
