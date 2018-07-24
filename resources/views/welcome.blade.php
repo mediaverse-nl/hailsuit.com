@@ -5,8 +5,8 @@
     <section class="hero-area bg-1 text-center overly">
         <!-- Container Start -->
         <div class="overlay">
-        <div class="container">
-            <div class="row">
+            <div class="container">
+                <div class="row">
                     <div class="col-md-12">
                         <!-- Header Contetnt -->
                         <div class="content-block">
@@ -163,9 +163,6 @@
             .box {
                 height: auto !important;
             }
-        }
-        .btn-rounded{
-            border-radius: 25px;
         }
         .vcenter {
             display: inline-block;
