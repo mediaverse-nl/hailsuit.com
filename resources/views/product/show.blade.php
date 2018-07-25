@@ -50,7 +50,7 @@
                             <span class="price-badge">€400</span>
                             <hr>
                             <p>Maecenas luctus ligula vitae ipsum rhoncus semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci enim, vulputate eu ultrices non, feugiat a ante. Maecenas luctus ligula vitae ipsum rhoncus semper. Vestibulum eleifend tempus ligula. Sed imperdiet, tortor non accumsan fermentum, ex nibh lacinia mi, nec suscipit tortor ante sed quam. Vestibulum hendrerit quis mauris vel fringilla.</p>
-                            <hr>
+                            <br>
 
                             <div class="row">
                                 <div class="col-md-6 cart-amount">
@@ -65,10 +65,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="" class="btn btn-lg btn-primary btn-rounded pull-right">Order Now</a>
+                                    <a href="" class="btn btn-lg btn-primary btn-rounded pull-right" style="background: #FE6F41; border: none;">
+                                        <i class="fas fa-cart-plus"></i>
+                                        Add to Cart
+                                    </a>
                                 </div>
                             </div>
-                            <hr>
+                            {{--<hr>--}}
+                            <br>
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab" aria-expanded="true">Description</a></li>

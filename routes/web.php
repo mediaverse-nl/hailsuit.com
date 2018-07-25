@@ -33,7 +33,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('product', 'ProductController@index')->name('product.index');
     Route::get('product/{id}', 'ProductController@show')->name('product.show');
 
-    Route::get('shopping-cart', 'ContactController@index')->name('cart.index');
+    Route::get('shopping-cart', 'CartController@index')->name('cart.index');
 
     Route::get('contact', 'ContactController@index')->name('contact.index');
     Route::post('contact', 'ContactController@store')->name('contact.store');

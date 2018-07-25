@@ -82,10 +82,13 @@
 
         #lblCartCount {
             font-size: 12px;
-            background: #ff0000;
+            background: #FE6F41;
             color: #fff;
-            padding: 2px 5px;
+            height: 20px;
+            width: 20px;
+            padding: 4px 5px;
             vertical-align: center;
+            margin: -35px 0px 0px -10px;
         }
 
         .main-menu a, .main-menu span{
@@ -118,7 +121,30 @@
         .btn-rounded{
             border-radius: 25px;
         }
+
+        .back-to-top i{
+            margin-top: -10px !important;
+            /*vertical-align: center !important;*/
+        }
+        #back-to-top {
+            text-align: center;
+            margin: 20px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            z-index: 100;
+            display: none;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #FE6F41;
+            font-size: 35px !important;
+            box-shadow: 0px 7px 25px 1px rgba(0,0,0,0.08);
+        }
+
     </style>
+
 
     @stack('css')
 
@@ -132,6 +158,10 @@
 
     @include('components.footer')
 
+    {{--<a href="#" class="back-to-top" style="display: inline;">--}}
+        {{--<i class="fas fa-angle-up"></i>--}}
+    {{--</a>--}}
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
 
@@ -143,7 +173,27 @@
         $(window).load(function() {
             $(".loader").fadeOut("slow");
         });
+
+        $(document).ready(function(){
+            $('body').append('<div id="back-to-top" style="display:none"><i class="fas fa-angle-up"></i></div>');
+            if ($(this).scrollTop() != 0) {
+                $('#back-to-top').fadeIn();
+            }
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+            });
+            $('#back-to-top').click(function(){
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                return false;
+            });
+        });
     </script>
+
+
 
     @stack('js')
 
