@@ -53,23 +53,25 @@
                             <br>
 
                             <div class="row">
-                                <div class="col-md-6 cart-amount">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-default">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-default disabled">12</button>
-                                        <button type="button" class="btn btn-default">
-                                            <i class="fas fa-plus"></i>
+                                {{Form::open(['route' => ['cart.store', $product->id]])}}
+                                    <div class="col-md-6 cart-amount">
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <button type="button" class="btn btn-default">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-default disabled">12</button>
+                                            <button type="button" class="btn btn-default">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" title="Click Here" class="btn btn-lg btn-primary btn-rounded pull-right" style="background: #FE6F41; border: none;">
+                                            <i class="fas fa-cart-plus"></i>
+                                            Add to Cart
                                         </button>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="" class="btn btn-lg btn-primary btn-rounded pull-right" style="background: #FE6F41; border: none;">
-                                        <i class="fas fa-cart-plus"></i>
-                                        Add to Cart
-                                    </a>
-                                </div>
+                                {{Form::close()}}
                             </div>
                             {{--<hr>--}}
                             <br>

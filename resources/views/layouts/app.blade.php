@@ -102,12 +102,12 @@
             width: 100%;
             /* Set the fixed height of the footer here */
             height: auto;
-            background-color: #3E4551;
+            background-color: #232323;
         }
         footer hr{ border: 1px solid #383E49;}
 
         .footer-copyright{
-            background: #323741;
+            background: #121212;
             padding: 20px 0px 0px 0px;
             line-height: 40px;
         }

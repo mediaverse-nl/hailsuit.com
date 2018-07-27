@@ -49,7 +49,7 @@
                 <li>
                     <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
                         <i class="fa fa-shopping-cart"></i>
-                        <Label id="lblCartCount" class="badge badge-warning" >3</Label>
+                        <Label id="lblCartCount" class="badge badge-warning" >{!! Cart::count() !!}</Label>
                     </a>
                 </li>
             </ul>

@@ -23,4 +23,19 @@ class Product extends Model
     {
         return $this->hasMany('App\Type');
     }
+
+    public function price()
+    {
+
+    }
+
+    public function titleTranslated()
+    {
+
+    }
+
+    public function descriptionTranslated()
+    {
+
+    }
 }
