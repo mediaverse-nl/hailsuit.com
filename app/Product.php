@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $table = 'product';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = ['price', 'discount', 'stock', 'created_at', 'updated_at'];
 
@@ -22,6 +22,26 @@ class Product extends Model
     public function types()
     {
         return $this->hasMany('App\Type');
+    }
+
+    public function productTranslation()
+    {
+        return $this->hasMany('App\ProductTranslation', 'product_id', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image', 'product_id', 'id');
+    }
+
+    public function barcodes()
+    {
+        return $this->hasMany('App\Barcode', 'product_id', 'id');
+    }
+
+    public function productProperties()
+    {
+        return $this->hasMany('App\ProductProperty', 'product_id', 'id');
     }
 
     public function price()

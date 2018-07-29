@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslationTable extends Migration
+class CreatePropertyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('translation', function (Blueprint $table) {
+        Schema::create('property', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('language_id')->unsigned();
-            $table->foreign('language_id')->references('id')->on('app_language');
-            $table->string('key_name');
-            $table->string('text');
+            $table->unsignedInteger('detail_id')->unsigned();
+            $table->foreign('detail_id')->references('id')->on('detail');
+            $table->string('value');
             $table->timestamps();
-            $table->unique(['key_name', 'language_id']);
         });
     }
 
@@ -31,6 +29,6 @@ class CreateTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translation');
+        Schema::dropIfExists('property');
     }
 }

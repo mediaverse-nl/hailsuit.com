@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
 
     <a class="navbar-brand mr-1" href="{{route('admin.dashboard')}}">Start Bootstrap</a>
 

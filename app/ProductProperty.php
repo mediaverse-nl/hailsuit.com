@@ -4,23 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class ProductProperty extends Model
 {
     protected $primaryKey = 'id';
 
-    protected $table = 'type';
+    protected $table = 'property';
 
     public $timestamps = false;
 
-    protected $fillable = ['product_id', 'brand_id', 'model_year', 'value'];
+    protected $fillable = ['detail_id', 'value'];
 
     public function product()
     {
         return $this->belongsTo('App\Product', 'product_id', 'id');
     }
 
-    public function brand()
+    public function property()
     {
-        return $this->belongsTo('App\Brand');
+        return $this->belongsTo('App\Property', 'property_id', 'id');
     }
 }

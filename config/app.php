@@ -172,8 +172,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
-
 
         /*
          * Application Service Providers...
@@ -242,7 +240,6 @@ return [
 
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
-        'Tracker' => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
 
     ],
 

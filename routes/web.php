@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::get('/', 'DashboardController');
         Route::get('dashboard', 'DashboardController')->name('dashboard');
 
+        Route::resource('detail', 'PropertyController');
         Route::resource('product', 'ProductController');
         Route::resource('orders', 'OrderController');
 

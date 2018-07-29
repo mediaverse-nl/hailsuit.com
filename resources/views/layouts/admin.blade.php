@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Blank Page</title>
+    <title>Admin panel</title>
 
     <!-- Bootstrap core CSS-->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,11 +21,26 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin.css" rel="stylesheet">
 
+    <style>
+        /*.navbar-default{*/
+            /*position: fixed;*/
+            /*width: 100%;*/
+            /*margin: 0 0 405px 0;*/
+        /*}*/
+        /*@media(min-width:768px) {*/
+            /*#page-wrapper {*/
+                /*position: inherit;*/
+                /*margin: 0 0 0 250px;*/
+                /*padding: 52px 0 0 30px;!* for fixed menu*! !*padding: 0 30px;*!*/
+                /*border-left: 1px solid #e7e7e7;*/
+            /*}*/
+        /*}*/
+    </style>
     <!-- Styles -->
     @stack('css')
 
 </head>
-<body class="{{Auth()->check() ? '' : 'bg-dark'}}">
+<body class="{{Auth()->check() ? '' : 'bg-dark'}}" style="margin-top: 56px;">
 
     {{--{{Auth()->login()}}--}}
     @if(Auth()->check())
@@ -37,8 +52,18 @@
             @include('components.admin-menu-left')
 
             <div id="content-wrapper">
+                <div class="container-fluid">
 
-                @yield('content')
+                    <!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active">Tables</li>
+                    </ol>
+
+                    @yield('content')
+                </div>
 
                 <!-- Sticky Footer -->
                 <footer class="sticky-footer">
@@ -94,8 +119,13 @@
     <!-- Core plugin JavaScript-->
     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Page level plugin JavaScript-->
+    <script src="/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin.min.js"></script>
+    <script src="/js/datatables-plugin.js"></script>
 
     @stack('js')
 
