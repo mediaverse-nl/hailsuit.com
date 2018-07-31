@@ -47,6 +47,7 @@ class AppLanguageTableSeeder extends Seeder
         DB::table('app_language')->insert([
             'id' => 5,
             'country' => 'English (GB)',
+            'country_code_short' => 'en',
             'country_code_large' => 'en_GB',
             'country_code_flag' => 'gb',
             'currency' => '£',

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AppLanguage;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-//    protected $
+    protected $language;
     protected $product;
 
-    public function __construct(Product $product)
+    public function __construct(Product $product, AppLanguage $language)
     {
+        $this->language = $language;
         $this->product = $product;
     }
 
@@ -69,7 +71,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->product->findOrFail($id);
+
+        $languages = $this->language->get();
+
+        return view('admin.product.edit')
+            ->with('product', $product)
+            ->with('languages', $languages);
     }
 
     /**
