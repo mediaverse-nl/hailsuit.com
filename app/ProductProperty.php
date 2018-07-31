@@ -8,11 +8,11 @@ class ProductProperty extends Model
 {
     protected $primaryKey = 'id';
 
-    protected $table = 'property';
+    protected $table = 'product_property';
 
     public $timestamps = false;
 
-    protected $fillable = ['detail_id', 'value'];
+    protected $fillable = ['product_id', 'property_id'];
 
     public function product()
     {

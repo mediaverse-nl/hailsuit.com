@@ -16,7 +16,9 @@ class CreateAppLanguageTable extends Migration
         Schema::create('app_language', function (Blueprint $table) {
             $table->increments('id');
             $table->string('country');
-            $table->string('country_code');
+            $table->string('country_code_short');
+            $table->string('country_code_large');
+            $table->string('country_code_flag');
             $table->string('currency');
             $table->timestamps();
         });
