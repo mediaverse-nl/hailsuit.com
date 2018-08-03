@@ -17,6 +17,7 @@ class CreateDetailTable extends Migration
             $table->increments('id');
             $table->string('value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

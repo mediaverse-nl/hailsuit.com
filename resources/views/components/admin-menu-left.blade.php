@@ -6,26 +6,38 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.detail.index')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Details</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.brand.index')}}">
+            <i class="fas fa-fw fa-car"></i>
+            <span>Brands</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{route('admin.product.index')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-archive"></i>
             <span>Products</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.dashboard')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-inbox"></i>
             <span>Orders</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.dashboard')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-font"></i>
             <span>Texts</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.dashboard')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-search"></i>
             <span>SEO</span>
         </a>
     </li>

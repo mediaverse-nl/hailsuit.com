@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AppLanguage;
+use App\Brand;
+use App\Detail;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +13,15 @@ class ProductController extends Controller
 {
     protected $language;
     protected $product;
+    protected $detail;
+    protected $brand;
 
-    public function __construct(Product $product, AppLanguage $language)
+    public function __construct(Product $product, Detail $detail, Brand $brand, AppLanguage $language)
     {
         $this->language = $language;
         $this->product = $product;
+        $this->detail = $detail;
+        $this->brand = $brand;
     }
 
     /**
@@ -74,9 +80,13 @@ class ProductController extends Controller
         $product = $this->product->findOrFail($id);
 
         $languages = $this->language->get();
+        $details = $this->detail->get();
+        $brands = $this->brand->get();
 
         return view('admin.product.edit')
             ->with('product', $product)
+            ->with('details', $details)
+            ->with('brands', $brands)
             ->with('languages', $languages);
     }
 

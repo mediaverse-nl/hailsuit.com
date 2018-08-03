@@ -15,7 +15,9 @@ class Detail extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['value'];
+    protected $fillable = ['value', 'deleted_at'];
+
+    protected $dates = ['updated_at'];
 
     public function properties()
     {

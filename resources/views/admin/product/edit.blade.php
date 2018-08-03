@@ -19,8 +19,18 @@
     </div>
 
     <hr>
+    <h5 for="exampleFormControlInput1">Images</h5>
 
-    <label for="exampleFormControlInput1">Translations</label>
+    <img src="..." alt="..." class="img-thumbnail">
+
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile" multiple>
+        <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
+
+    <hr>
+
+    <h5 for="exampleFormControlInput1">Translations</h5>
 
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
         @foreach($languages as $language)
@@ -46,25 +56,39 @@
 
     <hr>
 
-    <label for="exampleFormControlInput1">Details</label>
-    <br>
 
-    <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" value="">Option 1
-        </label>
+    <h5 for="exampleFormControlInput1">Details</h5>
+    <div class="row">
+        @foreach($details as $detail)
+            <div class="col-sm">
+                <label class="font-weight-bold">{{$detail->value}}</label>
+                @foreach($detail->properties->sortBy('value') as $property)
+                    <div class="form-check">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="{{$detail->value.$property->id}}" name="property[{{$detail->id}}]" class="custom-control-input">
+                            <label class="custom-control-label" for="{{$detail->value.$property->id}}">{{$property->value}}</label>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
     </div>
 
-    <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" value="">Option 1
-        </label>
-    </div>
+    <hr>
 
-    <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" value="">Option 1
-        </label>
+    <h5 for="exampleFormControlInput1">Brands</h5>
+    <div class="row">
+        @foreach($brands as $brand)
+            <div class="col-sm">
+                <label class="font-weight-bold">{{$brand->name}}</label>
+                @foreach($brand->types->sortBy('value') as $type)
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="property[]" value="{{$type->id}}" id="{{$type->value.$type->id}}">
+                        <label class="custom-control-label" for="{{$type->value.$type->id}}">{{$type->value}} - {{$type->model_year}}</label>
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
     </div>
 
     <hr>
@@ -72,7 +96,6 @@
     <label for="exampleFormControlInput1">Barcodes</label>
 
     <div class="form-group cloned-row">
-        <label for="exampleFormControlInput1">barcode</label>
         <input type="email" class="form-control" id="exampleFormControlInput1" name="barcodes[]" placeholder="EAN">
     </div>
 
