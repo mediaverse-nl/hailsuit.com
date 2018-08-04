@@ -15,7 +15,7 @@ class CreateTypeTable extends Migration
     {
         Schema::create('type', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_id')->unsigned();
+            $table->unsignedInteger('product_id')->unsigned()->nullable();
             $table->foreign('product_id')->references('id')->on('product');
             $table->unsignedInteger('brand_id')->unsigned();
             $table->foreign('brand_id')->references('id')->on('brand');

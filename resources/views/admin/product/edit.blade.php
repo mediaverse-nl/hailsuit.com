@@ -56,18 +56,19 @@
 
     <hr>
 
-
     <h5 for="exampleFormControlInput1">Details</h5>
     <div class="row">
         @foreach($details as $detail)
-            <div class="col-sm">
+            <div class="col-3">
                 <label class="font-weight-bold">{{$detail->value}}</label>
                 @foreach($detail->properties->sortBy('value') as $property)
-                    <div class="form-check">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="{{$detail->value.$property->id}}" name="property[{{$detail->id}}]" class="custom-control-input">
-                            <label class="custom-control-label" for="{{$detail->value.$property->id}}">{{$property->value}}</label>
-                        </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio"
+                           id="{{$detail->value.$property->id}}"
+                           name="property[{{$detail->id}}]"
+                           class="custom-control-input radio-btn"
+                           {{in_array($property->id, $product->productProperties->pluck('property_id')->toArray()) ? 'checked':''}}>
+                        <label class="custom-control-label" for="{{$detail->value.$property->id}}">{{$property->value}}</label>
                     </div>
                 @endforeach
             </div>
@@ -79,11 +80,16 @@
     <h5 for="exampleFormControlInput1">Brands</h5>
     <div class="row">
         @foreach($brands as $brand)
-            <div class="col-sm">
+            <div class="col-3">
                 <label class="font-weight-bold">{{$brand->name}}</label>
                 @foreach($brand->types->sortBy('value') as $type)
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" name="property[]" value="{{$type->id}}" id="{{$type->value.$type->id}}">
+                        <input type="checkbox"
+                               class="custom-control-input"
+                               name="property[]"
+                               value="{{$type->id}}"
+                               id="{{$type->value.$type->id}}"
+                               {{in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':''}}>
                         <label class="custom-control-label" for="{{$type->value.$type->id}}">{{$type->value}} - {{$type->model_year}}</label>
                     </div>
                 @endforeach
@@ -95,7 +101,7 @@
 
     <label for="exampleFormControlInput1">Barcodes</label>
 
-    <div class="form-group cloned-row">
+    <div class="form-group barcodes">
         <input type="email" class="form-control" id="exampleFormControlInput1" name="barcodes[]" placeholder="EAN">
     </div>
 
@@ -126,23 +132,28 @@
 @push('js')
     <script>
         $("#clone").click(function() {
-            $(".cloned-row:first").clone().insertAfter(".cloned-row:last");
-
-            if(!$(".cloned-row:first").hasClass("first-row")) {
-                $(".cloned-row:first").addClass('first-row');
-            }
-            $(".cloned-row:first").removeClass('cloned-row');
+            $(".barcodes:first").clone().insertAfter(".barcodes:last");
         });
 
         $("#remove").click(function() {
-            console.log('click');
-            $(".cloned-row:last").remove();
-
-            console.log($(".first-row:first").hasClass("first-row"));
-            if($(".first-row:last").hasClass("first-row")){
-                $(".first-row").addClass('cloned-row');
-                $(".first-row").removeClass('first-row');
+            var el = $( ".barcodes" ).length;
+            if(el !== 1){
+                $(".barcodes:last").remove();
             }
         });
+
+        var allRadios = document.getElementsByClassName('radio-btn');
+        var booRadio;
+        var x = 0;
+        for(x = 0; x < allRadios.length; x++){
+            allRadios[x].onclick = function() {
+                if(booRadio == this){
+                    this.checked = false;
+                    booRadio = null;
+                } else {
+                    booRadio = this;
+                }
+            };
+        }
     </script>
 @endpush

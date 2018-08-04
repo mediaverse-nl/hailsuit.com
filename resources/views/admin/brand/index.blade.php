@@ -2,12 +2,17 @@
 
 @section('content')
 
+    <!-- DataTables Example -->
+
     <div class="row">
         <div class="col-9">
             <div class="card">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
-                    Detail Table
+                    Brands Table
+                    {{--<a href="{{route('admin.brand.create')}}" class="float-right">--}}
+                    {{--<i class="fas fa-plus"></i>--}}
+                    {{--</a>--}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -27,15 +32,15 @@
                             </tr>
                             </tfoot>
                             <tbody>
-                            @foreach($details as $detail)
+                            @foreach($brands as $brand)
                                 <tr>
-                                    <td>{{$detail->id}}</td>
-                                    <td>{{$detail->value}}</td>
+                                    <td>{{$brand->id}}</td>
+                                    <td>{{$brand->name}}</td>
                                     <td>
-                                        <a href="{{route('admin.detail.edit', $detail->id)}}">
+                                        <a href="{{route('admin.brand.edit', $brand->id)}}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{route('admin.detail.edit', $detail->id)}}">
+                                        <a href="{{route('admin.brand.edit', $brand->id)}}">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
