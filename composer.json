@@ -13,8 +13,10 @@
         "gloudemans/shoppingcart": "^2.5",
         "kris/laravel-form-builder": "^1.15",
         "laravel/framework": "5.4.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.2.0",
+        "mollie/laravel-mollie": "~1.0",
         "orlandotm/payment-webfont": "*",
         "twbs/bootstrap": "^4.1"
     },

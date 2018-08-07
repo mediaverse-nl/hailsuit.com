@@ -36,7 +36,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.dashboard')}}">
+        <a class="nav-link" href="{{route('admin.seo-manager.index')}}">
             <i class="fas fa-fw fa-search"></i>
             <span>SEO</span>
         </a>

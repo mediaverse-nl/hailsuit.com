@@ -21,9 +21,20 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+                <li style="border-right: 1px solid #d8dce2;">
+                    <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
+                        {{--<i class="fa fa-shopping-cart"></i>--}}
+                        Hail Suit
+                    </a>
+                </li>
+                <li style="border-right: 1px solid #d8dce2;">
+                    <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
+                        {{--<i class="fa fa-shopping-cart"></i>--}}
+                        Contact
+                    </a>
+                </li>
                 <!-- Authentication Links -->
                 <li class="dropdown" style="border-right: 1px solid #d8dce2;">
-
                     <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         {!! language()->flag(app()->getLocale()) !!}
                         <span class="caret"></span>

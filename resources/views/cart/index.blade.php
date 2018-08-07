@@ -53,6 +53,7 @@
 
             </div>
             <div class="col-md-4">
+                <h1>Check out</h1>
 
             </div>
         </div>

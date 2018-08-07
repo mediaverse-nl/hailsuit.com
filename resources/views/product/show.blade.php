@@ -86,14 +86,25 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="1">1</div>
-                                <div role="tabpanel" class="tab-pane" id="2">2</div>
+                                <div role="tabpanel" class="tab-pane" id="2">
+                                    <table class="table">
+                                        <tbody>
+                                        @foreach($product->productProperties()->get() as $property)
+                                            <tr>
+                                                <td><b>{!! $property->property->detail->value !!}</b></td>
+                                                <td>{!! $property->property->value !!}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div role="tabpanel" class="tab-pane" id="3">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <td>Brand</td>
-                                                <td>type</td>
-                                                <td>year</td>
+                                                <td><b>Brand</b></td>
+                                                <td><b>type</b></td>
+                                                <td><b>year</b></td>
                                             </tr>
                                         </thead>
                                         <tbody>

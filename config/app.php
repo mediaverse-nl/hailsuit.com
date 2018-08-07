@@ -175,6 +175,8 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Mollie\Laravel\MollieServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -244,6 +246,10 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+
+        'Mollie' => Mollie\Laravel\Facades\Mollie::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 
