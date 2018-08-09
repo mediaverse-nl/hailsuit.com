@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li style="border-right: 1px solid #d8dce2;">
-                    <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
+                    <a href="{{ route('contact.index')}}" class="icon-shopping-cart" style="font-size: 25px">
                         {{--<i class="fa fa-shopping-cart"></i>--}}
                         Contact
                     </a>

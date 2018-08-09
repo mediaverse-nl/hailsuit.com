@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\ContactStoreForm;
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class ContactController extends Controller
 {
+    use FormBuilderTrait;
+
+    protected $formBuilder;
+
+    public function __construct(FormBuilder $formBuilder)
+    {
+        $this->formBuilder = $formBuilder;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,17 +25,12 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $form = $this->formBuilder->create(ContactStoreForm::class, [
+            'method' => 'POST',
+            'url' => route('contact.store')
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('contact.index')->with('form', $form);
     }
 
     /**
@@ -34,51 +41,9 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
