@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,7 +18,13 @@ class Product extends Model
 
     protected $fillable = ['price', 'discount', 'stock', 'created_at', 'updated_at'];
 
-    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    protected $dateFormat = 'Y-m-d H:i:s';
 
     public function types()
     {
@@ -49,13 +56,39 @@ class Product extends Model
 
     }
 
-    public function titleTranslated()
+    public function defaultTranslationLanguage($translation)
     {
-
+        return $translation->where('language_id', '=', 1);
     }
 
-    public function descriptionTranslated()
+    public function titleTranslated($id = null)
     {
+        $translation = $this->productTranslation();
+
+        if($id){
+            $translation = $translation->where('language_id', '=', $id);
+        }else{
+            $translation = $this->defaultTranslationLanguage($translation);
+        }
+
+        return $translation
+            ->first()
+            ->name;
+    }
+
+    public function descriptionTranslated($id = null)
+    {
+        $translation = $this->productTranslation();
+
+        if($id){
+            $translation = $translation->where('language_id', '=', $id);
+        }else{
+            $translation = $this->defaultTranslationLanguage($translation);
+        }
+
+        return $translation
+                ->first()
+                ->description;
 
     }
 }

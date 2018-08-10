@@ -2,6 +2,7 @@
 
 use App\AppLanguage;
 use App\Product;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,21 +19,27 @@ class ProductTableSeeder extends Seeder
             'id' => 1,
             'price' => number_format(random_int(1, 400), 2),
             'discount' => 0,
-            'stock' => random_int(1, 20)
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('product')->insert([
             'id' => 2,
             'price' => number_format(random_int(1, 400), 2),
             'discount' => 0,
-            'stock' => random_int(1, 20)
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('product')->insert([
             'id' => 3,
             'price' => number_format(random_int(1, 400), 2),
             'discount' => 0,
-            'stock' => random_int(1, 20)
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         $langs = new AppLanguage;

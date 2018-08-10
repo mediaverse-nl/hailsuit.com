@@ -17,31 +17,31 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Stock</th>
+                        <th>Updated</th>
                         <th>Opties</th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Stock</th>
+                        <th>Updated</th>
                         <th>Opties</th>
                     </tr>
                     </tfoot>
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
+                            <td>{{$product->titleTranslated()}}</td>
+                            <td>{{$product->price}}</td>
+                            <td>{{$product->discount}}</td>
+                            <td>{{$product->stock}}</td>
+                            <td>{{$product->updated_at->format('d-m-Y')}}</td>
                             <td>
                                 <a href="{{route('admin.product.edit', $product->id)}}">
                                     <i class="fas fa-edit"></i>

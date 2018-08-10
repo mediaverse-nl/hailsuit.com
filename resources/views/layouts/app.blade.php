@@ -37,7 +37,7 @@
 
         body{
             font-family: 'Karla', sans-serif;
-            margin-top: 80px;
+            margin-top: 100px;
             background: #F5F7F7 !important;
         }
 
@@ -144,7 +144,6 @@
         }
 
     </style>
-
 
     @stack('css')
 
