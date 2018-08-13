@@ -17,6 +17,12 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('/test-file', function () {
+        return view('vendor.laravel-filemanager.demo');
+    });
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 
     Route::get('/home/{locale}', function () {
         return view('welcome');
@@ -71,8 +77,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::resource('orders', 'OrderController');
         Route::resource('text-editor', 'TextController');
         Route::resource('seo-manager', 'SEOController');
+        Route::get('file-manager', 'FileManagerController@index')->name('file-manager.index');
 
-
+    });
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 });
 

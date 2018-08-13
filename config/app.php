@@ -177,6 +177,8 @@ return [
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Mollie\Laravel\MollieServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -250,6 +252,8 @@ return [
         'Mollie' => Mollie\Laravel\Facades\Mollie::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

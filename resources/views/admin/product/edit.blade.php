@@ -21,14 +21,23 @@
         </div>
 
         <hr>
-        <h5 for="exampleFormControlInput1">Images</h5>
-
-        <img src="..." alt="..." class="img-thumbnail">
-
-        <div class="custom-file">
-            <input type="files" class="custom-file-input" id="customFile" multiple>
-            <label class="custom-file-label" for="customFile">Choose file</label>
+        {{--images--}}
+        <h2 class="mt-4">Standalone File Button</h2>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
+              <i class="fa fa-picture-o"></i> Choose
+            </a>
+          </span>
+            <input id="thumbnail2" class="form-control" type="text" name="filepath"
+                   {{--value="http://localhost:8000/storage/files/4/F44A214F-657A-4E64-95B1-FC692D203D9A.jpeg,http://localhost:8000/storage/files/4/abstract_flow.png"--}}
+            >
         </div>
+        <div id="holder2" style="margin-top:15px;max-height:100px;">
+            <img src="http://localhost:8000/storage/files/4/thumbs/abstract_flow.png" style="height: 5rem;">
+
+        </div>
+        {{--end image--}}
 
         <hr>
 
@@ -82,9 +91,10 @@
         <h5 for="exampleFormControlInput1">Brands</h5>
         <div class="row">
             @foreach($brands as $brand)
+                @if($brand->types->count() > 0)
                 <div class="col-3">
                     <label class="font-weight-bold">{{$brand->name}}</label>
-                    @foreach($brand->types->sortBy('value') as $type)
+                    @foreach($brand->types->sortBy(['value']) as $type)
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"
                                    class="custom-control-input"
@@ -96,6 +106,7 @@
                         </div>
                     @endforeach
                 </div>
+                @endif
             @endforeach
         </div>
 
@@ -136,7 +147,18 @@
 @endpush
 
 @push('js')
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+
     <script>
+        var route_prefix = "{{ url(config('lfm.url_prefix')) }}";
+    </script>
+    <script>
+        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+    </script>
+    <script>
+
+        $('#lfm2').filemanager('file', {prefix: route_prefix});
+
         {{--Barcode buttons--}}
         $("#clone").click(function() {
             var el = $(".barcodes:last");
