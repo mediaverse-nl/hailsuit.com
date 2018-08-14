@@ -56,6 +56,25 @@ class Product extends Model
 
     }
 
+    public function getSelectedDetail($detail_id)
+    {
+//        $detail = $this->with('productProperties.property')
+//            ->whereHas('productProperties.property', function($q) use ($detail_id){
+//            $q->where('detail_id', '=', $detail_id);
+//        });
+        $detail = $this->productProperties()
+            ->whereHas('property', function($q) use ($detail_id){
+                $q->where('detail_id', '=', $detail_id);
+            }
+        );;
+
+//        dd($detail->productProperties->property);
+        if($detail->count() > 0){
+            return $detail->first()->id;
+        }
+
+    }
+
     public function defaultTranslationLanguage($translation)
     {
         return $translation->where('language_id', '=', 1);

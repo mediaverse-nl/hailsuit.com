@@ -179,6 +179,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -254,6 +255,9 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         'Image' => Intervention\Image\Facades\Image::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

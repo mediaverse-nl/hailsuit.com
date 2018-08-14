@@ -1,41 +1,38 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form method="post" action="{{route('admin.product.update', $product->id)}}" accept-charset="UTF-8">
-        <input name="_token" type="hidden" value="{!! csrf_token() !!}">
-        {!! method_field('patch') !!}
+    {!! Form::model($product, ['route' => ['admin.product.update', $product->id]]) !!}
 
         <div class="form-group">
-            <label for="exampleFormControlInput1">Price</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="price">
+            <label for="">Price</label>
+            <input type="number" class="form-control" name="price"  id="" placeholder="price">
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlInput1">Discount</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="discount">
+            <label for="">Discount</label>
+            <input type="number" class="form-control" name="discont" id="" placeholder="discount">
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlInput1">Stock</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="discount">
+            <label for="">Stock</label>
+            <input type="number" class="form-control" name="stock" id="" placeholder="discount">
         </div>
 
         <hr>
         {{--images--}}
-        <h2 class="mt-4">Standalone File Button</h2>
+        <h5>Product images</h5>
         <div class="input-group">
           <span class="input-group-btn">
             <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white">
               <i class="fa fa-picture-o"></i> Choose
             </a>
           </span>
-            <input id="thumbnail2" class="form-control" type="text" name="filepath"
+            <input id="thumbnail2" class="form-control" type="text" name="iamges"
                    {{--value="http://localhost:8000/storage/files/4/F44A214F-657A-4E64-95B1-FC692D203D9A.jpeg,http://localhost:8000/storage/files/4/abstract_flow.png"--}}
             >
         </div>
         <div id="holder2" style="margin-top:15px;max-height:100px;">
             <img src="http://localhost:8000/storage/files/4/thumbs/abstract_flow.png" style="height: 5rem;">
-
         </div>
         {{--end image--}}
 
@@ -71,17 +68,28 @@
         <div class="row">
             @foreach($details as $detail)
                 <div class="col-3">
-                    <label class="font-weight-bold">{{$detail->value}}</label>
-                    @foreach($detail->properties->sortBy('value') as $property)
-                        <div class="custom-control custom-radio">
-                            <input type="radio"
-                               id="{{$detail->value.$property->id}}"
-                               name="property[{{$detail->id}}]"
-                               class="custom-control-input radio-btn"
-                               {{in_array($property->id, $product->productProperties->pluck('property_id')->toArray()) ? 'checked':''}}>
-                            <label class="custom-control-label" for="{{$detail->value.$property->id}}">{{$property->value}}</label>
-                        </div>
-                    @endforeach
+                    <div class="form-group">
+                        <label class="font-weight-bold">{{$detail->value}}- {{$product->productProperties->where('detail_id', '=', $detail->id)->first()}}</label>
+
+                        {{--{{dd($product->getSelectedDetail($detail->id))}}--}}
+                        {!! Form::select('size',
+                            $detail->properties->sortBy('value')->pluck('value', 'id'),
+                            $product->getSelectedDetail($detail->id),
+                            ['class' => 'form-control', 'placeholder' => 'Pick a size...']) !!}
+                    </div>
+
+                    {{--<label class="font-weight-bold">{{$detail->value}}</label>--}}
+                    {{--@foreach($detail->properties->sortBy('value') as $property)--}}
+                        {{--<div class="custom-control custom-radio">--}}
+                            {{--<input type="select"--}}
+                               {{--id="{{$detail->value.$property->id}}"--}}
+                               {{--name="property[][{{$detail->id}}]"--}}
+                               {{--value="{{$property->id}}"--}}
+                               {{--class="custom-control-input radio-btn"--}}
+                               {{--{{in_array($property->id, $product->productProperties->pluck('property_id')->toArray()) ? 'checked':''}}>--}}
+                            {{--<label class="custom-control-label" for="{{$detail->value.$property->id}}">{{$property->value}}</label>--}}
+                        {{--</div>--}}
+                    {{--@endforeach--}}
                 </div>
             @endforeach
         </div>
@@ -98,7 +106,7 @@
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"
                                    class="custom-control-input"
-                                   name="property[]"
+                                   name="brands[]"
                                    value="{{$type->id}}"
                                    id="{{$type->value.$type->id}}"
                                    {{in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':''}}>
@@ -136,7 +144,7 @@
             <a href="" class="btn btn-default">Cancel</a>
         </div>
         <br>
-    </form>
+    {!! Form::close() !!}
 
 @endsection
 
@@ -150,7 +158,7 @@
     <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 
     <script>
-        var route_prefix = "{{ url(config('lfm.url_prefix')) }}";
+        var route_prefix = "{!! url(config('lfm.url_prefix')) !!}";
     </script>
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}

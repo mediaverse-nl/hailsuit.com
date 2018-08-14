@@ -99,9 +99,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        dd($request->request);
 
-        return;
+        $product = $this->product->findOrFail($id);
+
+        $product->save();
+
+        if(!empty($request->property)){
+//            dd('ok');
+            $product->productProperties()->where('product_id', $id)->delete();
+
+            foreach ($request->property as $property){
+                dd((int)$property, $request->property);
+                $product->productProperties()->insert([['product_id' => $id, 'property_id' => $property[1]]]);
+            }
+        }
+
+
+//        property
+//
+//        brands
+//
+//        barcodes
+//
+//        translation
+//
+//        iamges
+
+        return redirect()->back();
     }
 
     /**
