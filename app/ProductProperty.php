@@ -24,5 +24,4 @@ class ProductProperty extends Model
         return $this->belongsTo('App\Property', 'property_id', 'id');
     }
 
-
 }

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {!! Form::model($product, ['route' => ['admin.product.update', $product->id]]) !!}
+    {!! Form::model($product, ['route' => ['admin.product.update', $product->id], 'method' => 'PATCH']) !!}
 
         <div class="form-group">
             <label for="">Price</label>
@@ -27,12 +27,15 @@
               <i class="fa fa-picture-o"></i> Choose
             </a>
           </span>
-            <input id="thumbnail2" class="form-control" type="text" name="iamges"
+            <input id="thumbnail2" class="form-control" type="text" name="images"
+                    value="{!! implode(',',$product->images->pluck('path')->toArray()) !!}"
                    {{--value="http://localhost:8000/storage/files/4/F44A214F-657A-4E64-95B1-FC692D203D9A.jpeg,http://localhost:8000/storage/files/4/abstract_flow.png"--}}
             >
         </div>
         <div id="holder2" style="margin-top:15px;max-height:100px;">
-            <img src="http://localhost:8000/storage/files/4/thumbs/abstract_flow.png" style="height: 5rem;">
+            @foreach($product->images as $image)
+                <img src="{!! $image->path !!}" style="height: 5rem;">
+            @endforeach
         </div>
         {{--end image--}}
 
@@ -69,27 +72,12 @@
             @foreach($details as $detail)
                 <div class="col-3">
                     <div class="form-group">
-                        <label class="font-weight-bold">{{$detail->value}}- {{$product->productProperties->where('detail_id', '=', $detail->id)->first()}}</label>
-
-                        {{--{{dd($product->getSelectedDetail($detail->id))}}--}}
-                        {!! Form::select('size',
+                        <label class="font-weight-bold">{{$detail->value}}</label>
+                        {!! Form::select('property[]',
                             $detail->properties->sortBy('value')->pluck('value', 'id'),
                             $product->getSelectedDetail($detail->id),
-                            ['class' => 'form-control', 'placeholder' => 'Pick a size...']) !!}
+                            ['class' => 'form-control', 'placeholder' => 'Pick a '.$detail->value.'...']) !!}
                     </div>
-
-                    {{--<label class="font-weight-bold">{{$detail->value}}</label>--}}
-                    {{--@foreach($detail->properties->sortBy('value') as $property)--}}
-                        {{--<div class="custom-control custom-radio">--}}
-                            {{--<input type="select"--}}
-                               {{--id="{{$detail->value.$property->id}}"--}}
-                               {{--name="property[][{{$detail->id}}]"--}}
-                               {{--value="{{$property->id}}"--}}
-                               {{--class="custom-control-input radio-btn"--}}
-                               {{--{{in_array($property->id, $product->productProperties->pluck('property_id')->toArray()) ? 'checked':''}}>--}}
-                            {{--<label class="custom-control-label" for="{{$detail->value.$property->id}}">{{$property->value}}</label>--}}
-                        {{--</div>--}}
-                    {{--@endforeach--}}
                 </div>
             @endforeach
         </div>

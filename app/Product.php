@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Lang;
 
 class Product extends Model
 {
@@ -53,31 +54,34 @@ class Product extends Model
 
     public function price()
     {
+//        dd($this->discount);
+        return number_format($this->price - $this->discount, 2);
+    }
 
+    public function discount()
+    {
+        return number_format($this->discount, 2);
     }
 
     public function getSelectedDetail($detail_id)
     {
-//        $detail = $this->with('productProperties.property')
-//            ->whereHas('productProperties.property', function($q) use ($detail_id){
-//            $q->where('detail_id', '=', $detail_id);
-//        });
-        $detail = $this->productProperties()
-            ->whereHas('property', function($q) use ($detail_id){
-                $q->where('detail_id', '=', $detail_id);
+        $details = $this->productProperties()->get();
+
+        foreach ($details as $detail)
+        {
+            $property = $detail->property()->where('detail_id', '=', $detail_id);
+
+            if($property->count() > 0){
+                return $property->first()->id;
             }
-        );;
-
-//        dd($detail->productProperties->property);
-        if($detail->count() > 0){
-            return $detail->first()->id;
         }
-
     }
 
     public function defaultTranslationLanguage($translation)
     {
-        return $translation->where('language_id', '=', 1);
+        $locale = new AppLanguage();
+
+        return $translation->where('language_id', '=', $locale->getLangFromCode(Lang::locale())->id);
     }
 
     public function titleTranslated($id = null)

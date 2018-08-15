@@ -23,7 +23,7 @@ return [
     'url_prefix' => 'laravel-filemanager',
 
     // Use relative paths (without domain)
-    'relative_paths' => false,
+    'relative_paths' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ return [
 
     'allow_multi_user'   => true,
 
-    'allow_share_folder' => true,
+    'allow_share_folder' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return [
 
     'disk' => 'public',
 
-    'rename_file' => false,
+    'rename_file' => true,
 
     'alphanumeric_filename'  => false,
 

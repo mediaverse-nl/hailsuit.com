@@ -37,19 +37,27 @@
         <div class="container">
             <div class="row" style="padding: 80px 0px;">
                 <div class="col-md-7">
-                    <img src="/img/product/Car-1.png" alt="" class="img-responsive">
+                    @foreach($product->images as $image)
+                        <img src="{{$image->path}}" alt="" class="img-responsive">
+                    @endforeach
                 </div>
                 <div class="col-md-5">
 
                     <div class="panel panel-default product-panel">
                         <div class="panel-body">
 
-                            <h1>Product naam</h1>
+                            <h1>{!! $product->titleTranslated() !!}</h1>
 
                             <hr>
-                            <span class="price-badge">€400</span>
+{{--                            {!! dd($product->discount()) !!}--}}
+                            @if($product->discount() == 0.00)
+                                <span class="price-badge">{{$appLanguage->currency}} {!! $product->price() !!}</span>
+                            @else
+                                <del class="price-badge small">{{$appLanguage->currency}} {!! $product->price() !!}</del>
+                                <span class="price-badge">{{$appLanguage->currency}} {!! $product->price() !!}</span>
+                            @endif
                             <hr>
-                            <p>Maecenas luctus ligula vitae ipsum rhoncus semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci enim, vulputate eu ultrices non, feugiat a ante. Maecenas luctus ligula vitae ipsum rhoncus semper. Vestibulum eleifend tempus ligula. Sed imperdiet, tortor non accumsan fermentum, ex nibh lacinia mi, nec suscipit tortor ante sed quam. Vestibulum hendrerit quis mauris vel fringilla.</p>
+                            <p>{!! $product->descriptionTranslated() !!}</p>
                             <br>
 
                             <div class="row">

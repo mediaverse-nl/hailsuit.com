@@ -99,24 +99,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->request);
+//        dd($request->request);
 
         $product = $this->product->findOrFail($id);
 
         $product->save();
 
+        //property
         if(!empty($request->property)){
-//            dd('ok');
             $product->productProperties()->where('product_id', $id)->delete();
 
-            foreach ($request->property as $property){
-                dd((int)$property, $request->property);
-                $product->productProperties()->insert([['product_id' => $id, 'property_id' => $property[1]]]);
+            foreach (array_filter($request->property) as $property){
+                if($property !== null){
+                    $product->productProperties()->insert([['product_id' => $id, 'property_id' => $property]]);
+                }
             }
         }
 
 
-//        property
+
 //
 //        brands
 //
@@ -124,7 +125,15 @@ class ProductController extends Controller
 //
 //        translation
 //
-//        iamges
+        //iamges
+        if(!empty($request->images)){
+            $product->images()->where('product_id', $id)->delete();
+
+            foreach (explode(',', $request->images) as $image){
+                $product->images()->insert([['product_id' => $id, 'path' => $image]]);
+            }
+
+        }
 
         return redirect()->back();
     }

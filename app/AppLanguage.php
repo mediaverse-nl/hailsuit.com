@@ -25,4 +25,9 @@ class AppLanguage extends Model
     {
         return $this->belongsTo('App\Translation', 'language_id', 'id');
     }
+
+    public function getLangFromCode($lang_code)
+    {
+        return $this->where('country_code_short','=',$lang_code)->first();
+    }
 }
