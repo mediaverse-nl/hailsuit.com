@@ -5,17 +5,17 @@
 
         <div class="form-group">
             <label for="">Price</label>
-            <input type="number" class="form-control" name="price"  id="" placeholder="price">
+            <input type="number" class="form-control" name="price" value="{!! $product->price !!}" id="" placeholder="price">
         </div>
 
         <div class="form-group">
             <label for="">Discount</label>
-            <input type="number" class="form-control" name="discont" id="" placeholder="discount">
+            <input type="number" class="form-control" name="discont" value="{!! $product->discount !!}" id="" placeholder="discount">
         </div>
 
         <div class="form-group">
             <label for="">Stock</label>
-            <input type="number" class="form-control" name="stock" id="" placeholder="discount">
+            <input type="number" class="form-control" name="stock" value="{!! $product->stock !!}" id="" placeholder="discount">
         </div>
 
         <hr>
@@ -27,10 +27,10 @@
               <i class="fa fa-picture-o"></i> Choose
             </a>
           </span>
-            <input id="thumbnail2" class="form-control" type="text" name="images"
-                    value="{!! implode(',',$product->images->pluck('path')->toArray()) !!}"
-                   {{--value="http://localhost:8000/storage/files/4/F44A214F-657A-4E64-95B1-FC692D203D9A.jpeg,http://localhost:8000/storage/files/4/abstract_flow.png"--}}
-            >
+            <input id="thumbnail2" class="form-control" type="text" name="images" disabled
+                    value="{!! implode(',',$product->images->pluck('path')->toArray()) !!}">
+            <input type="hidden" id="thumbnail2" class="form-control" type="text" name="images"
+                    value="{!! implode(',',$product->images->pluck('path')->toArray()) !!}">
         </div>
         <div id="holder2" style="margin-top:15px;max-height:100px;">
             @foreach($product->images as $image)
@@ -54,12 +54,13 @@
             @foreach($languages as $language)
                 <div class="tab-pane fade {{$loop->first ? 'show active' : ''}}" id="nav-{{$language->country_code_large}}" role="tabpanel">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" name="translation[{{$language->id}}][]" value="{{$product->titleTranslated($language->id)}}" placeholder="name">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control" name="translation[{{$language->id}}][name]"
+                               value="{{$product->titleTranslated($language->id)}}" placeholder="name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" name="translation[{{$language->id}}][]" rows="3">{{$product->descriptionTranslated($language->id)}}</textarea>
+                        <label for="">Description</label>
+                        <textarea class="form-control" name="translation[{{$language->id}}][description]" rows="3">{{$product->descriptionTranslated($language->id)}}</textarea>
                     </div>
                 </div>
             @endforeach

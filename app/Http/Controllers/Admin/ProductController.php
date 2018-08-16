@@ -81,7 +81,10 @@ class ProductController extends Controller
 
         $languages = $this->language->get();
         $details = $this->detail->get();
-        $brands = $this->brand->get();
+        $brands = $this->brand->whereHas('types', function ($q) use ($id){
+            $q->where('product_id', '=', null);
+            $q->orWhere('product_id', '=', $id);
+        })->get();
 
         return view('admin.product.edit')
             ->with('product', $product)
@@ -99,8 +102,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->request);
-
         $product = $this->product->findOrFail($id);
 
         $product->save();
@@ -116,15 +117,44 @@ class ProductController extends Controller
             }
         }
 
+        //brands
+        if(!empty($request->brands)){
+            $product->brands()->where('product_id', $id)->delete();
 
+            foreach ($request->brands as $barcode){
+                $product->brands()->insert([[
+                    'product_id' => $id,
+                    'value' => $barcode
+                ]]);
+            }
+        }
 
-//
-//        brands
-//
-//        barcodes
-//
-//        translation
-//
+        //barcodes
+        if(!empty($request->barcodes)){
+            $product->barcodes()->where('product_id', $id)->delete();
+
+            foreach ($request->barcodes as $barcode){
+                $product->barcodes()->insert([[
+                    'product_id' => $id,
+                    'value' => $barcode
+                ]]);
+            }
+        }
+
+        //translation
+        if(!empty($request->translation)){
+            foreach ($request->translation as $translation => $value){
+                $product->productTranslation()
+                    ->where('language_id', '=', $translation)
+                    ->update([
+                        'product_id' => $id,
+                        'name' => $value['name'],
+                        'description' => $value['description'],
+                    ]
+                );
+            }
+        }
+
         //iamges
         if(!empty($request->images)){
             $product->images()->where('product_id', $id)->delete();
@@ -132,7 +162,6 @@ class ProductController extends Controller
             foreach (explode(',', $request->images) as $image){
                 $product->images()->insert([['product_id' => $id, 'path' => $image]]);
             }
-
         }
 
         return redirect()->back();
