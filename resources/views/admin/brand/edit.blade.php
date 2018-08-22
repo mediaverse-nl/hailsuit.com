@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    {!! Breadcrumbs::render('admin.brand.edit', $brand) !!}
+@endsection
+
 @section('content')
 
     <div class="row">
@@ -31,6 +35,7 @@
                 </div>
             </div>
             <hr>
+            <h5>brands</h5>
             <ul class="list-group list-group-flush">
                @foreach($brands as $b)
                     <li class="list-group-item {{$brand->id == $b->id ? 'active' : ''}}">
@@ -48,7 +53,7 @@
 
 @push('css')
     <style>
-        .list-group-item .active{
+        .list-group-item.active a{
             color: #ffffff !important;
         }
     </style>

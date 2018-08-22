@@ -52,9 +52,13 @@ class Product extends Model
         return $this->hasMany('App\ProductProperty', 'product_id', 'id');
     }
 
+    public function productOrders()
+    {
+        return $this->hasMany('App\ProductOrder', 'product_id', 'id');
+    }
+
     public function price()
     {
-//        dd($this->discount);
         return number_format($this->price - $this->discount, 2);
     }
 
@@ -114,4 +118,11 @@ class Product extends Model
                 ->description;
 
     }
+
+    public function addedStock($stock)
+    {
+        $this->update(['stock' => $stock]);
+    }
+
+
 }

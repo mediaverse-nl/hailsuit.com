@@ -1,51 +1,49 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    {!! Breadcrumbs::render('admin.detail.index') !!}
+@endsection
+
 @section('content')
 
     <div class="row">
         <div class="col-9">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Detail Table
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>detail</th>
-                                <th>Opties</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>id</th>
-                                <th>detail</th>
-                                <th>Opties</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            @foreach($details as $detail)
-                                <tr>
-                                    <td>{{$detail->id}}</td>
-                                    <td>{{$detail->value}}</td>
-                                    <td>
-                                        <a href="{{route('admin.detail.edit', $detail->id)}}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="{{route('admin.detail.edit', $detail->id)}}">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+
+            @component('components.datatable')
+                @slot('head')
+                    <th>id</th>
+                    <th>detail</th>
+                    <th class="no-sort"></th>
+                @endslot
+
+                @slot('table')
+                    @foreach($details as $detail)
+                        <tr>
+                            <td>{{$detail->id}}</td>
+                            <td>{{$detail->value}}</td>
+                            <td>
+                                @component('components.model', [
+                                    'id' => 'detailTableBtn'.$detail->id,
+                                    'title' => 'Delete',
+                                    'actionRoute' => route('admin.detail.edit', $detail->id),
+                                    'btnClass' => 'rounded-circle delete',
+                                    'btnIcon' => 'fa fa-trash'
+                                ])
+                                    @slot('description')
+                                        If u proceed u will delete all relations
+                                    @endslot
+                                @endcomponent
+                                <a href="{{route('admin.detail.edit', $detail->id)}}" class="rounded-circle edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endslot
+
+            @endcomponent
+
+
         </div>
         <div class="col-3">
             <div class="card">

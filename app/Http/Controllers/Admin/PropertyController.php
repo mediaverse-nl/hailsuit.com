@@ -46,6 +46,11 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property = $this->property->findOrFail($id);
+
+        $property->productProperty()->delete();
+        $property->delete();
+
+        return redirect()->back();
     }
 }

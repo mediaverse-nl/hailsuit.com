@@ -1,56 +1,49 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    {!! Breadcrumbs::render('admin.brand.index') !!}
+@endsection
+
 @section('content')
 
     <!-- DataTables Example -->
 
     <div class="row">
         <div class="col-9">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Brands Table
-                    {{--<a href="{{route('admin.brand.create')}}" class="float-right">--}}
-                    {{--<i class="fas fa-plus"></i>--}}
-                    {{--</a>--}}
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>detail</th>
-                                <th>Opties</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>id</th>
-                                <th>detail</th>
-                                <th>Opties</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            @foreach($brands as $brand)
-                                <tr>
-                                    <td>{{$brand->id}}</td>
-                                    <td>{{$brand->name}}</td>
-                                    <td>
-                                        <a href="{{route('admin.brand.edit', $brand->id)}}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="{{route('admin.brand.edit', $brand->id)}}">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            @component('components.datatable')
+                @slot('head')
+                    <th>id</th>
+                    <th>detail</th>
+                    <th class="no-sort"></th>
+                @endslot
+
+                @slot('table')
+                    @foreach($brands as $brand)
+                        <tr>
+                            <td>{{$brand->id}}</td>
+                            <td>{{$brand->name}}</td>
+                            <td>
+                                @component('components.model', [
+                                    'id' => 'brandTableBtn'.$brand->id,
+                                    'title' => 'Delete',
+                                    'actionRoute' => route('admin.brand.edit', $brand->id),
+                                    'btnClass' => 'rounded-circle delete',
+                                    'btnIcon' => 'fa fa-trash'
+                                ])
+                                    @slot('description')
+                                        If u proceed u will delete all relations
+                                    @endslot
+                                @endcomponent
+                                <a href="{{route('admin.brand.edit', $brand->id)}}" class="rounded-circle edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endslot
+
+            @endcomponent
+
         </div>
         <div class="col-3">
             <div class="card">

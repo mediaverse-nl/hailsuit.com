@@ -9,83 +9,91 @@
 
     <title>Admin panel</title>
 
-    <!-- Bootstrap core CSS-->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom fonts for this template-->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
     <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin.css" rel="stylesheet">
 
     <style>
-        /*.navbar-default{*/
-            /*position: fixed;*/
-            /*width: 100%;*/
-            /*margin: 0 0 405px 0;*/
-        /*}*/
-        /*@media(min-width:768px) {*/
-            /*#page-wrapper {*/
-                /*position: inherit;*/
-                /*margin: 0 0 0 250px;*/
-                /*padding: 52px 0 0 30px;!* for fixed menu*! !*padding: 0 30px;*!*/
-                /*border-left: 1px solid #e7e7e7;*/
-            /*}*/
-        /*}*/
+        .content-wrapper{
+            background: #F4F4F4 !important;
+        }
+        .card{
+            border-radius: 0px;
+            border: none;
+        }
+        ::-webkit-scrollbar {
+            background-color: #F5F5F5;
+            float: left;
+            height: 300px;
+            margin-bottom: 25px;
+            margin-left: 22px;
+            margin-top: 40px;
+            width: 5px;
+            overflow-y: scroll;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E9ECEF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #343A40;
+        }
+
     </style>
     <!-- Styles -->
     @stack('css')
 
 </head>
-<body class="{{Auth()->check() ? '' : 'bg-dark'}}" style="margin-top: 56px;">
+<body class="{{Auth()->check() ? '' : 'bg-dark'}} fixed-nav sticky-footer" id="page-top">
 
-    {{--{{Auth()->login()}}--}}
     @if(Auth()->check())
-        @include('components.admin-menu-top')
 
-        <div id="wrapper">
-
-            <!-- Sidebar -->
-            @include('components.admin-menu-left')
-
-            <div id="content-wrapper">
-                <div class="container-fluid">
-
-                    <!-- Breadcrumbs-->
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active">Tables</li>
-                    </ol>
-
-                    @yield('content')
-                </div>
-
-                <!-- Sticky Footer -->
-                <footer class="sticky-footer">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright © Your Website 2018</span>
-                        </div>
-                    </div>
-                </footer>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="">
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                @include('components.admin-menu-left')
+                @include('components.admin-menu-top')
             </div>
-            <!-- /.content-wrapper -->
+        </nav>
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                @yield('breadcrumb')
+                {{--<ol class="breadcrumb">--}}
+                    {{--<li class="breadcrumb-item">--}}
+                        {{--<a href="#">Dashboard</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="breadcrumb-item active">Tables</li>--}}
+                {{--</ol>--}}
+
+                @yield('content')
+            </div>
 
         </div>
-        <!-- /#wrapper -->
+        <!-- /.content-wrapper -->
     @else
         @yield('content')
     @endif
 
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Mediaverse.nl 2018</small>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+    <a class="scroll-to-top rounded" href="#page-top" style="display: inline;">
+        <i class="fa fa-angle-up"></i>
     </a>
 
     <!-- Logout Modal-->
@@ -120,6 +128,7 @@
     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Page level plugin JavaScript-->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
     <script src="/vendor/datatables/jquery.dataTables.js"></script>
     <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
 

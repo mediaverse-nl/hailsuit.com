@@ -100,6 +100,10 @@ class DetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $detail = $this->detail->findOrFail($id);
+
+        $detail->delete();
+
+        return redirect()->back();
     }
 }

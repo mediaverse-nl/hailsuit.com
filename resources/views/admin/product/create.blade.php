@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    {!! Breadcrumbs::render('admin.product.create') !!}
+@endsection
+
 @section('content')
 
     <div class="card">

@@ -74,7 +74,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::resource('detail', 'DetailController');
         Route::resource('brand', 'BrandController');
         Route::resource('product', 'ProductController');
-        Route::resource('orders', 'OrderController');
+        Route::post('product/add-stock', 'ProductController@addStock')->name('product.addStock');
+        Route::post('product/added-stock', 'ProductController@addedStock')->name('product.addedStock');
+        Route::resource('order', 'OrderController');
         Route::resource('text-editor', 'TextController');
         Route::resource('seo-manager', 'SEOController');
         Route::get('file-manager', 'FileManagerController@index')->name('file-manager.index');
@@ -83,5 +85,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
+
+
 });
 

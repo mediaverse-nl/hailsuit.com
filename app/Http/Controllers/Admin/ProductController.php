@@ -3,25 +3,38 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AppLanguage;
+use App\Barcode;
 use App\Brand;
 use App\Detail;
+use App\Forms\AddedStock;
+use App\Forms\AddedStockForm;
+use App\Forms\AddStockForm;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class ProductController extends Controller
 {
+    use FormBuilderTrait;
+
+    protected $formBuilder;
     protected $language;
     protected $product;
     protected $detail;
     protected $brand;
+    protected $barcode;
 
-    public function __construct(Product $product, Detail $detail, Brand $brand, AppLanguage $language)
+    public function __construct(Product $product, Detail $detail, Brand $brand, AppLanguage $language, Barcode $barcode, FormBuilder $formBuilder)
     {
         $this->language = $language;
         $this->product = $product;
         $this->detail = $detail;
         $this->brand = $brand;
+        $this->barcode = $barcode;
+        $this->formBuilder = $formBuilder;
+
     }
 
     /**
@@ -31,9 +44,20 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $addedStockForm = $this->formBuilder->create(AddedStockForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.product.addedStock')
+        ]);
+        $addStockForm = $this->formBuilder->create(AddStockForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.product.addStock')
+        ]);
+
         $products = $this->product->get();
 
         return view('admin.product.index')
+            ->with('addedStockForm', $addedStockForm)
+            ->with('addStockForm', $addStockForm)
             ->with('products', $products);
     }
 
@@ -118,16 +142,16 @@ class ProductController extends Controller
         }
 
         //brands
-        if(!empty($request->brands)){
-            $product->brands()->where('product_id', $id)->delete();
-
-            foreach ($request->brands as $barcode){
-                $product->brands()->insert([[
-                    'product_id' => $id,
-                    'value' => $barcode
-                ]]);
-            }
-        }
+//        if(!empty($request->brands)){
+//            $product->brands()->where('product_id', $id)->delete();
+//
+//            foreach ($request->brands as $barcode){
+//                $product->brands()->insert([[
+//                    'product_id' => $id,
+//                    'value' => $barcode
+//                ]]);
+//            }
+//        }
 
         //barcodes
         if(!empty($request->barcodes)){
@@ -176,5 +200,35 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addedStock(Request $request)
+    {
+        $code = $request->barcode;
+        $stock = $request->stock;
+
+        $product = $this->barcode->where('value', '=', $code)->first()->product;
+
+        $product->addedStock($stock);
+
+        return redirect()->back();
+    }
+
+    public function addStock(Request $request)
+    {
+        $form = $this->form(AddStockForm::class);
+        $form->redirectIfNotValid();
+
+        $code = $form->getFieldValues()['barcode'];
+        $stock = $form->getFieldValues()['stock'];
+        $barcode = $this->barcode->where('value', '=', $code);
+
+        if($barcode->count() >= 1){
+            $product = $barcode->first()->product;
+
+            $product->addedStock($product->stock + $stock);
+        }
+
+        return redirect()->back();
     }
 }
