@@ -80,10 +80,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::resource('text-editor', 'TextController');
         Route::resource('seo-manager', 'SEOController');
         Route::get('file-manager', 'FileManagerController@index')->name('file-manager.index');
+        Route::get('pdf/streamInvoice', 'PDFController@streamInvoice')->name('pdf.streamInvoice');
+        Route::get('pdf/downloadInvoice', 'PDFController@downloadInvoice')->name('pdf.downloadInvoice');
 
     });
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
+
+
+    Route::get('/pdf', function () {
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
     });
 
 

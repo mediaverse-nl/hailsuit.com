@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-9">
+        <div class="col-6">
 
             @component('components.datatable')
                 @slot('head')
@@ -15,6 +15,7 @@
                     <th>products</th>
                     <th>total_paid</th>
                     <th>country</th>
+                    <th>status</th>
                     <th class="no-sort"></th>
                 @endslot
 
@@ -25,7 +26,7 @@
                             <td>{{$order->productOrders()->sum('amount')}}</td>
                             <td>{{$order->total_paid}}</td>
                             <td>{{$order->country}}</td>
-                            {{--<td>{{$order}}</td>--}}
+                            <td>{{$order->status}}</td>
                             <td>
 
                                 {{--@component('components.model', [--}}
@@ -42,6 +43,15 @@
                                 <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
                                     <i class="fa fa-print"></i>
                                 </a>
+                                <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                                <a href="{{route('admin.order.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
+                                    <i class="fa fa-tag"></i>
+                                </a>
+                                <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
+                                    <i class="fa fa-at"></i>
+                                </a>
                                 <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
@@ -52,6 +62,9 @@
 
             @endcomponent
 
+        </div>
+        <div class="col-6">
+            <iframe src="{!! route('admin.pdf.streamInvoice') !!}" frameborder="0" style="width: 100%; height: 600px;"></iframe>
         </div>
 
     </div>

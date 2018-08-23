@@ -183,6 +183,7 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -265,6 +266,8 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
