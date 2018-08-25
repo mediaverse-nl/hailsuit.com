@@ -117,8 +117,28 @@
                                 @endif
                             @endforeach
                         </div>
+                    <div class="row">
 
-                        <hr>
+                        @foreach($brands as $brand)
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">{{$brand->name}}</label>
+                                    <select class="selectpicker form-control" multiple>
+
+                                        @foreach($brand->types->sortBy(['value']) as $type)
+                                            <option>{!! $type !!}</option>
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        @endforeach
+
+                    </div>
+
+                    <hr>
 
                         <label class="font-weight-bold">Barcodes</label>
 
@@ -171,13 +191,19 @@
 @endsection
 
 @push('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
     <style>
 
     </style>
 @endpush
 
 @push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
     <script>
+
+        $('.selectpicker').selectpicker();
 
         $('#thumbnail2').change(function() {
             $('#thumbnailCopy').val($(this).val());
