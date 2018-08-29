@@ -14,7 +14,7 @@ class TextController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.text.index');
     }
 
     /**
