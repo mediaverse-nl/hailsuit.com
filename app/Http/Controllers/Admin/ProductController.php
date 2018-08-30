@@ -101,6 +101,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+//        session()->put('info','This is for info.');
+
         $product = $this->product->findOrFail($id);
 
         $languages = $this->language->get();

@@ -97,26 +97,26 @@
                         <hr>
 
                         <h5 for="exampleFormControlInput1">Brands</h5>
-                        <div class="row">
-                            @foreach($brands as $brand)
-                                @if($brand->types->count() > 0)
-                                <div class="col-3">
-                                    <label class="font-weight-bold">{{$brand->name}}</label>
-                                    @foreach($brand->types->sortBy(['value']) as $type)
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox"
-                                                   class="custom-control-input"
-                                                   name="brands[]"
-                                                   value="{{$type->id}}"
-                                                   id="{{$type->value.$type->id}}"
-                                                   {{in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':''}}>
-                                            <label class="custom-control-label" for="{{$type->value.$type->id}}">{{$type->value}} - {{$type->model_year}}</label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                @endif
-                            @endforeach
-                        </div>
+                        {{--<div class="row">--}}
+                            {{--@foreach($brands as $brand)--}}
+                                {{--@if($brand->types->count() > 0)--}}
+                                {{--<div class="col-3">--}}
+                                    {{--<label class="font-weight-bold">{{$brand->name}}</label>--}}
+                                    {{--@foreach($brand->types->sortBy(['value']) as $type)--}}
+                                        {{--<div class="custom-control custom-checkbox">--}}
+                                            {{--<input type="checkbox"--}}
+                                                   {{--class="custom-control-input"--}}
+                                                   {{--name="brands[]"--}}
+                                                   {{--value="{{$type->id}}"--}}
+                                                   {{--id="{{$type->value.$type->id}}"--}}
+                                                   {{--{{in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':''}}>--}}
+                                            {{--<label class="custom-control-label" for="{{$type->value.$type->id}}">{{$type->value}} - {{$type->model_year}}</label>--}}
+                                        {{--</div>--}}
+                                    {{--@endforeach--}}
+                                {{--</div>--}}
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                        {{--</div>--}}
                     <div class="row">
 
                         @foreach($brands as $brand)
@@ -126,8 +126,9 @@
                                     <select class="selectpicker form-control" multiple>
 
                                         @foreach($brand->types->sortBy(['value']) as $type)
-                                            <option>{!! $type !!}</option>
+                                            <option>{!! $type->value !!} - {!! $type->model_year!!}</option>
                                         @endforeach
+{{--                                        {!! dd()!!}--}}
 
                                     </select>
 

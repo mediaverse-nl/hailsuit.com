@@ -49,6 +49,8 @@
 </head>
 <body class="{{Auth()->check() ? '' : 'bg-dark'}} fixed-nav sticky-footer" id="page-top">
 
+    @include('components.notification')
+
     @if(Auth()->check())
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="">
