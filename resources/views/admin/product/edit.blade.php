@@ -119,14 +119,20 @@
                         {{--</div>--}}
                     <div class="row">
 
+                        @foreach($product->types()->get() as $t)
+                            {!! $t->brand !!}
+                        @endforeach
+
+{{--                        {!!  !!}--}}
+                        test
                         @foreach($brands as $brand)
                             <div class="col-3">
                                 <div class="form-group">
                                     <label class="font-weight-bold">{{$brand->name}}</label>
                                     <select class="selectpicker form-control" multiple>
 
-                                        @foreach($brand->types->sortBy(['value']) as $type)
-                                            <option>{!! $type->value !!} - {!! $type->model_year!!}</option>
+                                    @foreach($brand->types()->currentTypes($product->id)->availableTypes()->get() as $type)
+                                            <option {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':'' !!}>{!! $type->value !!} - {!! $type->model_year!!}</option>
                                         @endforeach
 {{--                                        {!! dd()!!}--}}
 

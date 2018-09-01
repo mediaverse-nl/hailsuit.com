@@ -21,7 +21,7 @@
         "milon/barcode": "^5.3",
         "mollie/laravel-mollie": "~1.0",
         "orlandotm/payment-webfont": "*",
-        "spatie/laravel-analytics": "^3.6",
+        "spatie/laravel-analytics": "^1.4",
         "twbs/bootstrap": "^4.1",
         "unisharp/laravel-filemanager": "v2.0.0-alpha4"
     },

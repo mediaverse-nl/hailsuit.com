@@ -88,7 +88,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 
-
     Route::get('/pdf', function () {
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML('<h1>Test</h1>');

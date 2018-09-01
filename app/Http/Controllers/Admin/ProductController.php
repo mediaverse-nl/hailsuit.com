@@ -108,8 +108,8 @@ class ProductController extends Controller
         $languages = $this->language->get();
         $details = $this->detail->get();
         $brands = $this->brand->whereHas('types', function ($q) use ($id){
-            $q->where('product_id', '=', null);
-            $q->orWhere('product_id', '=', $id);
+            $q->where('product_id', '=', null)
+                ->orWhere('product_id', '=', $id);
         })->get();
 
         return view('admin.product.edit')

@@ -23,4 +23,14 @@ class Type extends Model
     {
         return $this->belongsTo('App\Brand');
     }
+
+    public function scopeCurrentTypes($query, $product_id)
+    {
+        return $query->where('product_id', '=', $product_id);
+    }
+
+    public function scopeAvailableTypes($query)
+    {
+        return $query->orWhere('product_id', '=', null);
+    }
 }
