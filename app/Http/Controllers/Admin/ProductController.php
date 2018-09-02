@@ -10,6 +10,7 @@ use App\Forms\AddedStock;
 use App\Forms\AddedStockForm;
 use App\Forms\AddStockForm;
 use App\Product;
+use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -25,12 +26,14 @@ class ProductController extends Controller
     protected $detail;
     protected $brand;
     protected $barcode;
+    protected $type;
 
-    public function __construct(Product $product, Detail $detail, Brand $brand, AppLanguage $language, Barcode $barcode, FormBuilder $formBuilder)
+    public function __construct(Product $product, Detail $detail, Type $type, Brand $brand, AppLanguage $language, Barcode $barcode, FormBuilder $formBuilder)
     {
         $this->language = $language;
         $this->product = $product;
         $this->detail = $detail;
+        $this->type = $type;
         $this->brand = $brand;
         $this->barcode = $barcode;
         $this->formBuilder = $formBuilder;
@@ -68,7 +71,16 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $languages = $this->language->get();
+        $details = $this->detail->get();
+        $brands = $this->brand->whereHas('types', function ($q){
+            $q->where('product_id', '=', null);
+        })->get();
+
+        return view('admin.product.create')
+            ->with('details', $details)
+            ->with('brands', $brands)
+            ->with('languages', $languages);
     }
 
     /**
@@ -101,8 +113,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-//        session()->put('info','This is for info.');
-
         $product = $this->product->findOrFail($id);
 
         $languages = $this->language->get();
@@ -130,6 +140,10 @@ class ProductController extends Controller
     {
         $product = $this->product->findOrFail($id);
 
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->stock = $request->stock;
+
         $product->save();
 
         //property
@@ -144,16 +158,15 @@ class ProductController extends Controller
         }
 
         //brands
-//        if(!empty($request->brands)){
-//            $product->brands()->where('product_id', $id)->delete();
-//
-//            foreach ($request->brands as $barcode){
-//                $product->brands()->insert([[
-//                    'product_id' => $id,
-//                    'value' => $barcode
-//                ]]);
-//            }
-//        }
+        if(!empty($request->brands)){
+            $this->type->where('product_id', '=', $id)->update(['product_id' => null]);
+
+            foreach ($request->brands as $brand){
+                $this->type->where('id', '=', $brand)->update([
+                    'product_id' => $id,
+                ]);
+            }
+        }
 
         //barcodes
         if(!empty($request->barcodes)){

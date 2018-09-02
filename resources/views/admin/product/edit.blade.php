@@ -16,12 +16,12 @@
 
                         <div class="form-group">
                             <label for="">Price</label>
-                            <input type="number" class="form-control" name="price" value="{!! $product->price !!}" id="" placeholder="price">
+                            <input type="number" class="form-control" step="any" name="price" value="{!! $product->price !!}" id="" placeholder="price">
                         </div>
 
                         <div class="form-group">
                             <label for="">Discount</label>
-                            <input type="number" class="form-control" name="discont" value="{!! $product->discount !!}" id="" placeholder="discount">
+                            <input type="number" class="form-control" step="any" name="discount" value="{!! $product->discount !!}" id="" placeholder="discount">
                         </div>
 
                         <div class="form-group">
@@ -119,25 +119,20 @@
                         {{--</div>--}}
                     <div class="row">
 
-                        @foreach($product->types()->get() as $t)
-                            {!! $t->brand !!}
-                        @endforeach
-
-{{--                        {!!  !!}--}}
-                        test
                         @foreach($brands as $brand)
                             <div class="col-3">
                                 <div class="form-group">
                                     <label class="font-weight-bold">{{$brand->name}}</label>
-                                    <select class="selectpicker form-control" multiple>
-
-                                    @foreach($brand->types()->currentTypes($product->id)->availableTypes()->get() as $type)
-                                            <option {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':'' !!}>{!! $type->value !!} - {!! $type->model_year!!}</option>
+                                    <select class="selectpicker form-control" multiple name="brands[]">
+                                        @foreach($brand->types()->currentTypes($product->id)->availableTypes()->get() as $type)
+                                            @if($type->brand_id == $brand->id)
+                                                <option value="{!! $type->id !!}"
+                                                        {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>
+                                                    {!! $type->value !!} - {!! $type->model_year!!}
+                                                </option>
+                                            @endif
                                         @endforeach
-{{--                                        {!! dd()!!}--}}
-
                                     </select>
-
                                 </div>
                             </div>
 
@@ -198,16 +193,14 @@
 @endsection
 
 @push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <style>
 
     </style>
 @endpush
 
 @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <script>
 
         $('.selectpicker').selectpicker();
