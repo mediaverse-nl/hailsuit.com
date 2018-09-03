@@ -124,7 +124,7 @@
                                 <div class="form-group">
                                     <label class="font-weight-bold">{{$brand->name}}</label>
                                     <select class="selectpicker form-control" multiple name="brands[]">
-                                        @foreach($brand->types()->currentTypes($product->id)->availableTypes()->get() as $type)
+                                        @foreach($brand->types()->currentTypes($product->id)->availableTypes(true)->get() as $type)
                                             @if($type->brand_id == $brand->id)
                                                 <option value="{!! $type->id !!}"
                                                         {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>

@@ -21,6 +21,7 @@ class CreateProductTranslationTable extends Migration
             $table->foreign('product_id')->references('id')->on('product');
             $table->string('name');
             $table->string('description');
+            $table->unique(['product_id', 'language_id']);
             $table->timestamps();
         });
     }

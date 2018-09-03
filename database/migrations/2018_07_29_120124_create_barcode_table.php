@@ -17,7 +17,7 @@ class CreateBarcodeTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('product');
-            $table->string('value');
+            $table->string('value')->unique();
             $table->timestamps();
         });
     }

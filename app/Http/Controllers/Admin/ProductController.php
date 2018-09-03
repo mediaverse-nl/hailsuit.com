@@ -91,7 +91,79 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = $this->product;
+
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->stock = $request->stock;
+
+        $product->save();
+
+        //property
+        if(!empty($request->property)){
+            foreach (array_filter($request->property) as $property){
+                if($property !== null){
+                    $product->productProperties()
+                        ->insert([['product_id' => $product->id, 'property_id' => $property]]);
+                }
+            }
+        }
+
+        //brands
+        if(!empty($request->brands)){
+            foreach ($request->brands as $brand){
+                $this->type->where('id', '=', $brand)->update([
+                    'product_id' => $product->id,
+                ]);
+            }
+        }
+
+        //barcodes
+        if(!empty($request->barcodes)){
+            foreach ($request->barcodes as $barcode){
+                if($barcode !== null){
+                    $product->barcodes()->insert([[
+                        'product_id' => $product->id,
+                        'value' => $barcode
+                    ]]);
+                }
+            }
+        }
+
+        //translation
+        foreach ($this->language->get() as $lang) {
+            $product->productTranslation()
+                ->insert([[
+                    'language_id' => $lang->id,
+                    'product_id' => $product->id,
+                    'name' => '',
+                    'description' => '',
+                ]]);
+        }
+
+        if(!empty($request->translation)){
+            foreach ($request->translation as $translation => $value){
+                $product->productTranslation()
+                    ->where('language_id', '=', $translation)
+                    ->update([
+                            'product_id' => $product->id,
+                            'name' => $value['name'] == '' ? 'not ok' : $value['name'],
+                            'description' => $value['description'] == '' ? 'not ok' : $value['description'] ,
+                        ]
+                    );
+            }
+        }
+
+        //iamges
+        if(!empty($request->images)){
+            foreach (explode(',', $request->images) as $image){
+                $product->images()->insert([
+                    ['product_id' => $product->id, 'path' => $image]
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.product.edit', $product->id);
     }
 
     /**

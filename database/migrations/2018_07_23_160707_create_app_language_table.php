@@ -21,6 +21,7 @@ class CreateAppLanguageTable extends Migration
             $table->string('country_code_flag');
             $table->string('currency');
             $table->timestamps();
+            $table->unique(['country']);
         });
     }
 

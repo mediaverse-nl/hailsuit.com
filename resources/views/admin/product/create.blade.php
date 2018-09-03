@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <label class="font-weight-bold">{{$brand->name}}</label>
                                     <select class="selectpicker form-control" multiple name="brands[]">
-                                        @foreach($brand->types()->availableTypes()->get() as $type)
+                                        @foreach($brand->types()->availableTypes(false)->get() as $type)
                                             @if($type->brand_id == $brand->id)
                                                 <option value="{!! $type->id !!}">
                                                     {!! $type->value !!} - {!! $type->model_year!!}
@@ -141,11 +141,11 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card">
-                <div class="card-header">
-                    product labels
-                </div>
-                <div class="card-body">
+            {{--<div class="card">--}}
+                {{--<div class="card-header">--}}
+                    {{--product labels--}}
+                {{--</div>--}}
+                {{--<div class="card-body">--}}
                     {{--@foreach($product->barcodes as $barcode)--}}
                         {{--@if(is_numeric($barcode->value))--}}
                             {{--<div id='{{$barcode->id}}DivToPrint'>--}}
@@ -156,8 +156,8 @@
                             {{--<hr>--}}
                         {{--@endif--}}
                     {{--@endforeach--}}
-                </div>
-            </div>
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
     </div>
 @endsection

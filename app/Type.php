@@ -29,8 +29,14 @@ class Type extends Model
         return $query->where('product_id', '=', $product_id);
     }
 
-    public function scopeAvailableTypes($query)
+    public function scopeAvailableTypes($query, $all = false)
     {
-        return $query->orWhere('product_id', '=', null);
+        if ($all){
+            $q = $query->orWhere('product_id', '=', null);
+        }else{
+            $q = $query->where('product_id', '=', null);
+        }
+
+        return $q;
     }
 }

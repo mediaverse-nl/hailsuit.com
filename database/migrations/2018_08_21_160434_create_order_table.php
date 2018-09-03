@@ -27,11 +27,11 @@ class CreateOrderTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('telephone');
-            $table->string('currency');
+            $table->string('currency')->nullabe();
             $table->decimal('total_paid', 10, 2);
             $table->decimal('shipping_cost', 10, 2);
             $table->string('payment_method');
-            $table->string('status');
+            $table->string('status')->default('paid');
             $table->timestamps();
         });
     }
