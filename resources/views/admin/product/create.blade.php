@@ -121,11 +121,13 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-2 ">
-                            <input type="button" class="form-control btn-info" value="add" id="clone">
-                        </div>
                         <div class="col-md-2">
-                            <input type="button" class="form-control btn-danger" value="remove" id="remove">
+                            <button class="rounded-circle btn-info" type="button" id="clone">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                            <button class="rounded-circle btn-danger" type="button" id="remove">
+                                <i class="fa fa-minus"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -165,7 +167,20 @@
 @push('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <style>
-
+   .rounded-circle {
+       margin-right: 5px;
+       display: inline-block;
+       height: 30px;
+       width: 30px;
+       border-radius: 50%;
+       text-align: center;
+       vertical-align: middle;
+       line-height: 30px;
+       border: none;
+   }
+    .edit {
+        background: var(--warning);
+    }
 </style>
 @endpush
 

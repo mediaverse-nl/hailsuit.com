@@ -245,10 +245,12 @@ class ProductController extends Controller
             $product->barcodes()->where('product_id', $id)->delete();
 
             foreach ($request->barcodes as $barcode){
-                $product->barcodes()->insert([[
-                    'product_id' => $id,
-                    'value' => $barcode
-                ]]);
+                if (!empty($barcode)){
+                    $product->barcodes()->insert([[
+                        'product_id' => $id,
+                        'value' => $barcode
+                    ]]);
+                }
             }
         }
 

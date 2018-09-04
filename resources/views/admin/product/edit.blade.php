@@ -144,18 +144,30 @@
 
                         <label class="font-weight-bold">Barcodes</label>
 
-                        @foreach($product->barcodes as $barcode)
+                        @if($product->barcodes()->exists())
+                            @foreach($product->barcodes as $barcode)
+                                <div class="form-group barcodes">
+                                    <input type="text" class="form-control" id="" name="barcodes[]" value="{{$barcode->value}}" placeholder="EAN">
+                                </div>
+                            @endforeach
+                        @else
                             <div class="form-group barcodes">
-                                <input type="text" class="form-control" id="" name="barcodes[]" value="{{$barcode->value}}" placeholder="EAN">
+                                <input type="text" class="form-control" id="" name="barcodes[]" value="" placeholder="EAN">
                             </div>
-                        @endforeach
+                        @endif
+
 
                         <div class="row">
-                            <div class="col-md-2 ">
-                                <input type="button" class="form-control btn-info" value="add" id="clone">
-                            </div>
                             <div class="col-md-2">
-                                <input type="button" class="form-control btn-danger" value="remove" id="remove">
+                                <button class="rounded-circle btn-info" type="button" id="clone">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <button class="rounded-circle btn-danger" type="button" id="remove">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+
+                                {{--<input type="button"  value="add" >--}}
+                                {{--<input type="button" class="rounded-circle " value="remove" id="remove" style="display: inline-block !important;">--}}
                             </div>
                         </div>
 
@@ -182,7 +194,9 @@
                                 {!! DNS1D::getBarcodeHTML($barcode->value, "EAN13") !!}
                                 {{$barcode->value}}
                             </div>
-                            <input type='button' id='btn' value='Print' onclick='printDiv({{$barcode->id}});'>
+                            <button type="submit" value='Print' onclick='printDiv({{$barcode->id}});' class="rounded-circle edit">
+                                <i class="fa fa-print"></i>
+                            </button>
                             <hr>
                         @endif
                     @endforeach
@@ -195,7 +209,20 @@
 @push('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <style>
-
+        .rounded-circle {
+            margin-right: 5px;
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 30px;
+            border: none;
+        }
+        .edit {
+            background: var(--warning);
+        }
     </style>
 @endpush
 
