@@ -40,7 +40,7 @@
                                         {{--If u proceed u will delete all relations--}}
                                     {{--@endslot--}}
                                 {{--@endcomponent--}}
-                                <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
+                                <a href="{{route('admin.pdf.downloadInvoice', $order->id)}}" class="rounded-circle " style="background: var(--success)">
                                     <i class="fa fa-print"></i>
                                 </a>
                                 <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
@@ -64,7 +64,7 @@
 
         </div>
         <div class="col-6">
-            <iframe src="{!! route('admin.pdf.streamInvoice') !!}" frameborder="0" style="width: 100%; height: 600px;"></iframe>
+            <iframe src="{!! route('admin.pdf.streamInvoice', 1) !!}" frameborder="0" style="width: 100%; height: 600px;"></iframe>
         </div>
 
     </div>

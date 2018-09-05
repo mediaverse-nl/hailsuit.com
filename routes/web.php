@@ -80,8 +80,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::resource('text-editor', 'TextController');
         Route::resource('seo-manager', 'SEOController');
         Route::get('file-manager', 'FileManagerController@index')->name('file-manager.index');
-        Route::get('pdf/streamInvoice', 'PDFController@streamInvoice')->name('pdf.streamInvoice');
-        Route::get('pdf/downloadInvoice', 'PDFController@downloadInvoice')->name('pdf.downloadInvoice');
+        Route::get('pdf/streamInvoice/{id}', 'PDFController@streamInvoice')->name('pdf.streamInvoice');
+        Route::get('pdf/downloadInvoice{id}', 'PDFController@downloadInvoice')->name('pdf.downloadInvoice');
 
     });
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

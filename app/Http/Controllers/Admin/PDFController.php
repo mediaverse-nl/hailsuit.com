@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Order;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,15 +10,19 @@ use App\Http\Controllers\Controller;
 class PDFController extends Controller
 {
     protected $pdf;
+    protected $order;
 
-    public function __construct(PDF $pdf)
+    public function __construct(PDF $pdf, Order $order)
     {
         $this->pdf = $pdf;
+        $this->order = $order;
     }
 
-    public function streamInvoice()
+    public function streamInvoice($id)
     {
-        $pdf = $this->pdf->loadView('pdf.invoice');
+        $order = $this->order->findOrFail($id);
+
+        $pdf = $this->pdf->loadView('pdf.invoice', ['order' => $order]);
 
         return $pdf->stream();
     }
