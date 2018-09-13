@@ -184,6 +184,8 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        browner12\helpers\HelperServiceProvider::class,
+
 
         /*
          * Application Service Providers...

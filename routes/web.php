@@ -32,7 +32,10 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('product/{id}', 'ProductController@show')->name('product.show');
 
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');
-    Route::post('product/{id}', 'CartController@store')->name('cart.store');
+    Route::get('shopping-cart/create', 'CartController@create')->name('cart.create');
+    Route::post('shopping-cart/{id}/{units?}', 'CartController@store')->name('cart.store');
+
+    Route::post('order', 'OrderController@store')->name('order.store');
 
     Route::get('contact', 'ContactController@index')->name('contact.index');
     Route::post('contact', 'ContactController@store')->name('contact.store');

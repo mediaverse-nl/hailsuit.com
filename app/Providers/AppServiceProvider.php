@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
+use Hashids\Hashids;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +35,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+//        $this->app->bind(Hashids::class, function () {
+//            return new Hashids(env('HASHIDS_SALT'), 10);
+//        });
+
+//        Route::bind('id', function ($id) {
+//            $hashids = new Hashids();
+//
+////            return 'test';
+//            return $hashids->decode(1);
+//        });
     }
 }

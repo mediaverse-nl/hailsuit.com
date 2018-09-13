@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\CartStoreForm;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class CartController extends Controller
 {
-    protected $product;
+    use FormBuilderTrait;
 
-    public function __construct(Product $product)
+    protected $product;
+    protected $formBuilder;
+
+
+    public function __construct(Product $product, FormBuilder $formBuilder)
     {
         $this->product = $product;
+        $this->formBuilder = $formBuilder;
     }
 
     /**
@@ -22,7 +30,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart.index');
+        return view('cart.index')
+            ->with('content', Cart::content());
     }
 
     /**
@@ -31,11 +40,11 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $id, $units = 1)
     {
         $product = $this->product->findOrFail($id);
 
-        Cart::add($product->id, 'Product 1', 1, 9.99);
+        Cart::add($product->id, $product->titleTranslated(), $units, $product->price(), []);
 
         return redirect()->back();
     }
@@ -46,20 +55,16 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function create()
     {
-        //
-    }
+        $form = $this->formBuilder->create(CartStoreForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.order.store')
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return view('cart.create')
+            ->with('content', Cart::content())
+            ->with('form', $form);
     }
 
     /**
@@ -71,7 +76,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -82,6 +87,8 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::destroy();
+
+        return redirect()->back();
     }
 }

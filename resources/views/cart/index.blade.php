@@ -18,8 +18,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 {{--// Add some items in your Controller.--}}
-                {{--{!! Cart::add('192ao12', 'Product 1', 1, 9.99) !!}--}}
+{{--                {!! Cart::add('192ao12', 'Product 1', 1, 9.99) !!}--}}
                 {{--{!! Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']) !!}--}}
+
+                {!! $content !!}
 
                 <table class="table shopping-cart">
                     <thead>
@@ -33,6 +35,8 @@
                     </tr>
                     </thead>
                     <tbody>
+
+
                     <tr class="cart-item">
                         <td class="image"><a href="#"><img src="images/product-small1.jpg" alt=""></a></td>
                         <td><a href="single-product.html">Women's Shirt</a></td>
@@ -41,14 +45,20 @@
                         <td>$59</td>
                         <td class="remove"><a href="#x" class="btn btn-danger-filled x-remove">×</a></td>
                     </tr>
-                    <tr class="cart-item">
-                        <td class="image"><a href="#"><img src="images/product-small2.jpg" alt=""></a></td>
-                        <td><a href="single-product.html">Women's Jeans</a></td>
-                        <td>$69</td>
-                        <td class="qty"><input type="number" step="1" min="0" name="cart" value="2" title="Qty" class="input-text qty text" size="4"></td>
-                        <td>$138</td>
-                        <td class="remove"><a href="#x" class="btn btn-danger-filled x-remove">×</a></td>
-                    </tr>
+
+
+                    @foreach($content as $item)
+                        <tr class="cart-item">
+                            <td class="image"><a href="#"><img src="images/product-small2.jpg" alt=""></a></td>
+                            <td><a href="single-product.html">Women's Jeans</a></td>
+                            <td>$69</td>
+                            <td class="qty"><input type="number" step="1" min="0" name="cart" value="2" title="Qty" class="input-text qty text" size="4"></td>
+                            <td>$138</td>
+                            <td class="remove"><a href="#x" class="btn btn-danger-filled x-remove">×</a></td>
+                        </tr>
+                    @endforeach
+
+
                     </tbody>
                 </table>
 
@@ -84,7 +94,7 @@
                         <a href="shop-right.html" class="btn btn-default-filled btn-rounded btn-success pull-right" style="margin-left: 10px;">
                             <i class="lnr lnr-cart"></i> <span>Continue Shopping</span>
                         </a>
-                        <a href="checkout.html" class="btn btn-primary-filled btn-rounded btn-primary pull-right">
+                        <a href="{!! route('cart.create') !!}" class="btn btn-primary-filled btn-rounded btn-primary pull-right">
                             <i class="lnr lnr-exit"></i> <span>Proceed to Checkout</span>
                         </a>
                     </div><!-- / cart-checkout -->

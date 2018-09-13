@@ -93,31 +93,31 @@
     </div>
     <!-- Footer Links -->
 
-    <hr>
+    {{--<hr>--}}
 
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center social-container-footer">
-        <li class="">
-            <a href="#" class="btn btn-default btn-lg btn-circle">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="btn btn-default btn-lg btn-circle">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="btn btn-default btn-lg btn-circle">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="btn btn-default btn-lg btn-circle">
-                <i class="fab fa-google-plus-g"></i>
-            </a>
-        </li>
-    </ul>
+    {{--<!-- Social buttons -->--}}
+    {{--<ul class="list-unstyled list-inline text-center social-container-footer">--}}
+        {{--<li class="">--}}
+            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
+                {{--<i class="fab fa-facebook-f"></i>--}}
+            {{--</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
+                {{--<i class="fab fa-linkedin-in"></i>--}}
+            {{--</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
+                {{--<i class="fab fa-twitter"></i>--}}
+            {{--</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
+                {{--<i class="fab fa-google-plus-g"></i>--}}
+            {{--</a>--}}
+        {{--</li>--}}
+    {{--</ul>--}}
     <!-- Social buttons -->
 
     <!-- Copyright -->

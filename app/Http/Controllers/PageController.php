@@ -14,27 +14,31 @@ class PageController extends Controller
     }
 
     public function terms(){
-
+        return view('default');
     }
 
     public function privacy(){
+        return view('default');
 
     }
 
     public function cookie(){
+        return view('default');
 
     }
 
     public function warranty(){
+        return view('default');
 
     }
 
     public function returns(){
+        return view('default');
 
     }
 
     public function delivery(){
-
+        return view('default');
     }
 
     public function app(){
