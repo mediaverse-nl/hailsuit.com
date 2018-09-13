@@ -8,6 +8,7 @@ class CartStoreForm extends Form
 {
     public function buildForm()
     {
+
         $this
             ->add('first_name', 'text', [
                 'rules' => 'required|min:1|unique:brand',
