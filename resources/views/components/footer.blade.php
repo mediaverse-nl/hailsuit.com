@@ -4,16 +4,16 @@
 <footer class="page-footer font-small stylish-color-dark pt-4">
 
     <!-- Footer Links -->
-    <div class="container text-center text-md-left">
+    <div class="container text-md-left">
 
         <!-- Grid row -->
         <div class="row">
 
             <!-- Grid column -->
-            <div class="col-md-4 mx-auto">
+            <div class="col-md-4 text-center mx-auto">
 
                 <!-- Content -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
+                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h4>
                 <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
                     adipisicing elit.</p>
 
@@ -24,7 +24,7 @@
             <div class="col-md-2 mx-auto">
 
                 <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h4>
 
                 <ul class="list-unstyled">
                     <li><a href="{{route('page.terms')}}">page.terms</a></li>
@@ -43,7 +43,7 @@
             <div class="col-md-2 mx-auto">
 
                 <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h4>
 
                 <ul class="list-unstyled">
                     <li>
@@ -64,28 +64,32 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
+            <div class="col-sm-6 col-md-4 widget">
+                <div class="widget-title">
+                    <h4>Get in Touch</h4>
+                </div>
+                <div class="contact-widget">
+                    <div class="info">
+                        <p><i class="lnr lnr-map-marker"></i><span>Miami, S Miami Ave, SW 20th.</span></p>
+                    </div>
+                    <div class="info">
+                        <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span>+0123 456 789</span></a>
+                    </div>
+                    <div class="info">
+                        <a href="mailto:hello@yoursite.com"><i class="lnr lnr-envelope"></i><span>office@yoursite.com</span></a>
+                    </div>
+                    <div class="info">
+                        <p class="social pull-left">
+                            <a class="no-margin" href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fas fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </p>
+                    </div>
+                </div><!-- / contact-widget -->
             </div>
-            <!-- Grid column -->
 
         </div>
         <!-- Grid row -->

@@ -192,8 +192,6 @@
         });
     </script>
 
-
-
     @stack('js')
 
 </body>
