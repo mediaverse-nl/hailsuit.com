@@ -34,6 +34,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');
     Route::get('shopping-cart/create', 'CartController@create')->name('cart.create');
     Route::post('shopping-cart/{id}/{units?}', 'CartController@store')->name('cart.store');
+    Route::delete('shopping-cart/{id?}', 'CartController@destroy')->name('cart.destroy');
 
     Route::post('order', 'OrderController@store')->name('order.store');
 

@@ -17,44 +17,39 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
-                {{--// Add some items in your Controller.--}}
-{{--                {!! Cart::add('192ao12', 'Product 1', 1, 9.99) !!}--}}
-                {{--{!! Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']) !!}--}}
-
-                {!! $content !!}
-
                 <table class="table shopping-cart">
                     <thead>
                     <tr>
-                        <th class="image">&nbsp;</th>
-                        <th>Product</th>
+                        <th>Product info</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
-                        <th>&nbsp;</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
 
-
-                    <tr class="cart-item">
-                        <td class="image"><a href="#"><img src="images/product-small1.jpg" alt=""></a></td>
-                        <td><a href="single-product.html">Women's Shirt</a></td>
-                        <td>$59</td>
-                        <td class="qty"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></td>
-                        <td>$59</td>
-                        <td class="remove"><a href="#x" class="btn btn-danger-filled x-remove">×</a></td>
-                    </tr>
-
-
                     @foreach($content as $item)
                         <tr class="cart-item">
-                            <td class="image"><a href="#"><img src="images/product-small2.jpg" alt=""></a></td>
-                            <td><a href="single-product.html">Women's Jeans</a></td>
-                            <td>$69</td>
-                            <td class="qty"><input type="number" step="1" min="0" name="cart" value="2" title="Qty" class="input-text qty text" size="4"></td>
-                            <td>$138</td>
-                            <td class="remove"><a href="#x" class="btn btn-danger-filled x-remove">×</a></td>
+                            <td class="image">
+                                <a href="{!! route('product.show', $item->id) !!}">
+                                    {!! $item->options !!}
+                                    <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5">
+                                    <span class="col-md-7">
+                                        {!! $item->name !!}
+                                    </span>
+                                </a>
+                            </td>
+                            <td>{!! $item->price !!}</td>
+                            <td class="qty">
+                                <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
+                            </td>
+                            <td>{!! $item->total !!}</td>
+                            <td class="remove">
+                                {!! Form::open(['method' => 'DELETE', 'route' => 'cart.destroy', 1]) !!}
+                                {!! Form::submit('×', ['class' => '']) !!}
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
                     @endforeach
 
@@ -84,9 +79,9 @@
 
                     <div class="col-sm-6 cart-total">
                         <h4>Cart Total</h4>
-                        <p>Subtotal: <span>$197</span></p>
+                        <p>Subtotal: <span>{!! Cart::subtotal() !!}</span></p>
                         <p>Shipping: <span>Free</span></p>
-                        <p>Total: <span>$197</span></p>
+                        <p>Total: <span>{!! Cart::total() !!}</span></p>
                     </div><!-- / cart-total -->
 
                     <div class="col-sm-6 cart-checkout">
@@ -113,8 +108,6 @@
         .shopping-cart{
 
         }
-
-
     </style>
 @endpush
 

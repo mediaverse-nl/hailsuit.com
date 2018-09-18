@@ -44,7 +44,16 @@ class CartController extends Controller
     {
         $product = $this->product->findOrFail($id);
 
-        Cart::add($product->id, $product->titleTranslated(), $units, $product->price(), []);
+        $cartArray = [];
+
+        if ($product->images()->count() > 0){
+            array_push($cartArray,
+                ['image' => $product->images()->first()]
+            );
+        }
+        array_keys($cartArray);
+
+        Cart::add($product->id, $product->titleTranslated(), $units, $product->price(), $cartArray);
 
         return redirect()->back();
     }
@@ -85,9 +94,13 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id = null)
     {
-        Cart::destroy();
+        if (!empty($id)){
+            Cart::remove($id);
+        }else{
+            Cart::destroy();
+        }
 
         return redirect()->back();
     }

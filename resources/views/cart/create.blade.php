@@ -20,19 +20,9 @@
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
-                                        <th>&nbsp;</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    <tr class="cart-item">
-                                        <td class="image"><a href="#"><img src="images/product-small1.jpg" alt=""></a></td>
-                                        <td><a href="single-product.html">Women's Shirt</a></td>
-                                        <td>$59</td>
-                                        <td class="qty">1</td>
-                                        <td>$59</td>
-                                    </tr>
-
 
                                     @foreach($content as $item)
                                         <tr class="cart-item">
@@ -75,15 +65,10 @@
             <div class="col-md-4">
                 <div class="panel">
                     <div class="panel-body">
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
-                        asdasd <br>
+
+                        {!! Cart::total() !!}
+                        {!! Cart::tax() !!}
+
                         asdasd <br>
                         asdasd <br>
                         <a href="shop-right.html" class="btn btn-default-filled btn-rounded btn-success pull-right" style="margin-left: 10px;">
