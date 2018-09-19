@@ -33,20 +33,22 @@
                         <tr class="cart-item">
                             <td class="image">
                                 <a href="{!! route('product.show', $item->id) !!}">
-                                    {!! $item->options !!}
-                                    <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5">
+                                    <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">
                                     <span class="col-md-7">
-                                        {!! $item->name !!}
+                                        <b>{!! $item->name !!}</b>
+                                        <br>
+                                        SKU: {!! $item->id !!}
                                     </span>
                                 </a>
                             </td>
+                            {{--<td>{!! dd($item) !!}</td>--}}
                             <td>{!! $item->price !!}</td>
                             <td class="qty">
                                 <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
                             </td>
                             <td>{!! $item->total !!}</td>
                             <td class="remove">
-                                {!! Form::open(['method' => 'DELETE', 'route' => 'cart.destroy', 1]) !!}
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy', $item->rowId]]) !!}
                                 {!! Form::submit('×', ['class' => '']) !!}
                                 {!! Form::close() !!}
                             </td>
@@ -69,7 +71,9 @@
                                 </button>
                             </span>
                         </div>
-                    </div><!-- / input-group -->
+                    </div>
+
+                    <!-- / input-group -->
                     <div class="update-cart col-sm-6">
                         <button class="btn btn-default-filled btn-rounded pull-right" type="button">
                             <i class="lnr lnr-sync"></i>
@@ -80,6 +84,7 @@
                     <div class="col-sm-6 cart-total">
                         <h4>Cart Total</h4>
                         <p>Subtotal: <span>{!! Cart::subtotal() !!}</span></p>
+                        <p>Tax: <span>{!! Cart::tax() !!}</span></p>
                         <p>Shipping: <span>Free</span></p>
                         <p>Total: <span>{!! Cart::total() !!}</span></p>
                     </div><!-- / cart-total -->

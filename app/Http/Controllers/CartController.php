@@ -47,11 +47,10 @@ class CartController extends Controller
         $cartArray = [];
 
         if ($product->images()->count() > 0){
-            array_push($cartArray,
-                ['image' => $product->images()->first()]
-            );
+            $cartArray = $cartArray + ['image' => $product->images()->first()];
+//            array_push($cartArray, $imageArray);
         }
-        array_keys($cartArray);
+//        array_keys($cartArray);
 
         Cart::add($product->id, $product->titleTranslated(), $units, $product->price(), $cartArray);
 
@@ -96,10 +95,10 @@ class CartController extends Controller
      */
     public function destroy($id = null)
     {
-        if (!empty($id)){
-            Cart::remove($id);
-        }else{
+        if ($id == null){
             Cart::destroy();
+        }else{
+            Cart::remove($id);
         }
 
         return redirect()->back();
