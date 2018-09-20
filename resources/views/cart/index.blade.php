@@ -19,13 +19,13 @@
 
                 <table class="table shopping-cart">
                     <thead>
-                    <tr>
-                        <th>Product info</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th>Product info</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -41,7 +41,6 @@
                                     </span>
                                 </a>
                             </td>
-                            {{--<td>{!! dd($item) !!}</td>--}}
                             <td>{!! $item->price !!}</td>
                             <td class="qty">
                                 <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">

@@ -48,6 +48,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('returns', 'PageController@returns')->name('page.returns');
     Route::get('delivery', 'PageController@delivery')->name('page.delivery');
     Route::get('app/download', 'PageController@app')->name('page.app');
+    Route::get('faq', 'PageController@faq')->name('page.faq');
 
 });
 

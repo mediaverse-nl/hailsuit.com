@@ -34,6 +34,7 @@
                     <li><a href="{{route('page.returns')}}">page.returns</a></li>
                     <li><a href="{{route('page.delivery')}}">page.delivery</a></li>
                     <li><a href="{{route('page.app')}}">page.app</a></li>
+                    <li><a href="{{route('page.faq')}}">page.faq</a></li>
                 </ul>
 
             </div>
