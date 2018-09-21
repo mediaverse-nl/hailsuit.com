@@ -19,6 +19,22 @@ Breadcrumbs::register('admin.detail.edit', function($breadcrumbs, $model) use ($
     $breadcrumbs->push($edit_name, route('admin.detail.edit', $model->id));
 });
 
+// Home > faq
+Breadcrumbs::register('admin.faq.index', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('FAQ', route('admin.faq.index'));
+});
+// Home > faq > edit
+Breadcrumbs::register('admin.faq.edit', function($breadcrumbs, $model) use ($edit_name) {
+    $breadcrumbs->parent('admin.faq.index');
+    $breadcrumbs->push($edit_name, route('admin.faq.edit', $model->id));
+});
+// Home > faq > create
+Breadcrumbs::register('admin.faq.create', function($breadcrumbs) use ($create_name) {
+    $breadcrumbs->parent('admin.faq.index');
+    $breadcrumbs->push($create_name, route('admin.faq.create'));
+});
+
 // Home > brand
 Breadcrumbs::register('admin.brand.index', function($breadcrumbs) {
     $breadcrumbs->parent('dashboard');

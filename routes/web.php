@@ -79,6 +79,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::resource('detail', 'DetailController');
         Route::resource('brand', 'BrandController');
         Route::resource('product', 'ProductController');
+        Route::resource('faq', 'FaqController');
         Route::post('product/add-stock', 'ProductController@addStock')->name('product.addStock');
         Route::post('product/added-stock', 'ProductController@addedStock')->name('product.addedStock');
         Route::resource('order', 'OrderController');

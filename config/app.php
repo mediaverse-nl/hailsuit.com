@@ -186,7 +186,6 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         browner12\helpers\HelperServiceProvider::class,
 
-
         /*
          * Application Service Providers...
          */

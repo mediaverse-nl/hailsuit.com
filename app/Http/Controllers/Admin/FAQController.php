@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\FAQ;
+use App\Forms\FaqStoreForm;
+use App\Forms\FaqUpdateForm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
+
 
 class FAQController extends Controller
 {
+    use FormBuilderTrait;
+
+    protected $formBuilder;
     protected $faq;
 
-    public function __construct()
+    public function __construct(FAQ $faq, FormBuilder $formBuilder)
     {
+        $this->formBuilder = $formBuilder;
         $this->faq = $faq;
     }
 
@@ -21,9 +31,10 @@ class FAQController extends Controller
      */
     public function index()
     {
+        $faqs = $this->faq->get();
 
-
-        return view('admin.faq.index');
+        return view('admin.faq.index')
+            ->with('faqs', $faqs);
     }
 
     /**
@@ -33,7 +44,14 @@ class FAQController extends Controller
      */
     public function create()
     {
-        //
+        $form = $this->formBuilder->create(FaqStoreForm::class, [
+            'method' => 'POST',
+            'url' => route('admin.faq.store'),
+        ]);
+
+        return view('admin.faq.create')
+            ->with('form', $form);
+
     }
 
     /**
@@ -44,18 +62,12 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $form = $this->form(FaqStoreForm::class);
+        $form->redirectIfNotValid();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $this->faq->create($form->getFieldValues());
+
+        return redirect()->back();
     }
 
     /**
@@ -66,7 +78,20 @@ class FAQController extends Controller
      */
     public function edit($id)
     {
-        //
+        $faq = $this->faq->findOrFail($id);
+
+        $form = $this->formBuilder->create(FaqUpdateForm::class, [
+                'method' => 'PATCH',
+                'url' => route('admin.faq.update', $faq->id),
+                'model' => $faq,
+            ], [
+                'faq_id' => $id
+            ]
+        );
+
+        return view('admin.faq.edit')
+            ->with('faq', $faq)
+            ->with('form', $form);
     }
 
     /**
@@ -78,7 +103,12 @@ class FAQController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form = $this->form(FaqUpdateForm::class);
+        $form->redirectIfNotValid();
+
+        $this->faq->update($form->getFieldValues());
+
+        return redirect()->back();
     }
 
     /**

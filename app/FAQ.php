@@ -12,8 +12,8 @@ class FAQ extends Model
 
     public $timestamps = true;
 
-    protected $fillable = [];
+    protected $fillable = ['title', 'description'];
 
-    protected $dates = ['updated_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
 }
