@@ -16,7 +16,7 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('home');
     Route::get('/test-file', function () {
         return view('vendor.laravel-filemanager.demo');
     });

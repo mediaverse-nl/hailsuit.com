@@ -66,8 +66,9 @@ class CartController extends Controller
     public function create()
     {
         $form = $this->formBuilder->create(CartStoreForm::class, [
+            'class' => 'form-horizontal',
             'method' => 'POST',
-            'url' => route('admin.order.store')
+            'url' => route('order.store')
         ]);
 
         return view('cart.create')

@@ -8,10 +8,22 @@ class CartStoreForm extends Form
 {
     public function buildForm()
     {
-
         $this
             ->add('first_name', 'text', [
-                'rules' => 'required|min:1|unique:brand',
+                'wrapper' => ['class' => 'form-group'],
+                'attr' => ['class' => 'col-md-8 form-control'],
+                'help_block' => [
+                    'text' => null,
+                    'tag' => 'p',
+                    'attr' => ['class' => 'help-block']
+                ],
+                'default_value' => null, // Fallback value if none provided by value property or model
+                'label' => $this->name,  // Field name used
+                'label_show' => true,
+                'label_attr' => ['class' => 'col-md-2 control-label', 'for' => $this->name],
+                'errors' => ['class' => 'text-danger'],
+                'rules' => [],           // Validation rules
+                'error_messages' => []   // Validation error messages
             ])
             ->add('last_name', 'text', [
                 'rules' => 'required|min:1|unique:brand',
@@ -54,24 +66,9 @@ class CartStoreForm extends Form
             ])
             ->add('payment_method', 'text', [
                 'rules' => 'required|min:1|unique:brand',
-            ]);
-//            ->add('submit', 'submit', ['label' => 'add', 'class' => 'card-link btn btn-sm btn-success']);
-//        $table->string('company_name')->nullabe();
-//        $table->string('company_vat')->nullabe();
-//        $table->string('company_coc')->nullabe();
-//        $table->string('country');
-//        $table->string('state');
-//        $table->string('city');
-//        $table->string('postal_code');
-//        $table->string('address');
-//        $table->string('address_number');
-//        $table->string('name');
-//        $table->string('email');
-//        $table->string('telephone');
-//        $table->string('currency')->nullabe();
-//        $table->decimal('total_paid', 10, 2);
-//        $table->decimal('shipping_cost', 10, 2);
-//        $table->string('payment_method');
-//        $table->string('status')->default('paid');
+            ])
+            ->add('submit', 'submit', ['label' => 'add', 'class' => 'card-link btn btn-sm btn-success']);
+
+
     }
 }
