@@ -44,7 +44,7 @@
 
     </style>
     <!-- Styles -->
-    @stack('css')
+    @stack("css")
 
 </head>
 <body class="{{Auth()->check() ? '' : 'bg-dark'}} fixed-nav sticky-footer" id="page-top">
@@ -68,12 +68,6 @@
             <div class="container-fluid">
                 <!-- Breadcrumbs-->
                 @yield('breadcrumb')
-                {{--<ol class="breadcrumb">--}}
-                    {{--<li class="breadcrumb-item">--}}
-                        {{--<a href="#">Dashboard</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="breadcrumb-item active">Tables</li>--}}
-                {{--</ol>--}}
 
                 @yield('content')
             </div>
@@ -123,22 +117,22 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    {{--<!-- Page level plugin JavaScript-->--}}
+    <!-- Page level plugin JavaScript-->
     <script src="/vendor/chart.js/Chart.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
-    {{--<script src="/vendor/datatables/dataTables.bootstrap4.js"></script>--}}
+    <script src="/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin.min.js"></script>
     <script src="/js/datatables-plugin.js"></script>
+    <script src="/js/sb-admin.min.js"></script>
 
-    @stack('js')
+    @stack("scripts")
 
 </body>
 </html>

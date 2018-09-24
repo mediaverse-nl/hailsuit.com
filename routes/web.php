@@ -37,6 +37,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::delete('shopping-cart/{id?}', 'CartController@destroy')->name('cart.destroy');
 
     Route::post('order', 'OrderController@store')->name('order.store');
+    Route::get('order/{id}', 'OrderController@show')->name('order.show');
 
     Route::get('contact', 'ContactController@index')->name('contact.index');
     Route::post('contact', 'ContactController@store')->name('contact.store');

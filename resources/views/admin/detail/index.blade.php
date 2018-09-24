@@ -56,14 +56,14 @@
 
 @endsection
 
-@push('css')
-    <style>
+@push('scripts')
+<script>
 
-    </style>
+</script>
 @endpush
 
-@push('js')
-    <script>
+@push('css')
+<style>
 
-    </script>
+</style>
 @endpush

@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 use Mollie\Laravel\Facades\Mollie;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $order;
+
+    public function __construct(Order $order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -35,20 +33,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $order = $this->order;
+        $order->total_paid = 10;
+        $order->payment_method = 'ideal';
+        $order->save();
+
         $payment = Mollie::api()->payments()->create([
-            'amount' => [
-               "value" => "10.00",
-        "currency" => "EUR"
-//                'value' => '10.00', // You must send the correct number of decimals, thus we enforce the use of strings
-            ],
+            "amount"      => 10.00,
             "description" => "My first API payment",
-            'webhookUrl'   => route('home'),
+            "redirectUrl" => route('order.show', $order->id),
         ]);
 
-        $payment = Mollie::api()->payments()->get($payment->id);
+//        $payment = Mollie::api()->payments()->get($payment->id);
 
-        // redirect customer to Mollie checkout page
-        return redirect($payment->getCheckoutUrl(), 303);
+
+
     }
 
     /**

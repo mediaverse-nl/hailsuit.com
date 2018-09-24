@@ -52,7 +52,7 @@
             <span class="nav-link-text">Texts</span>
         </a>
     </li>
-    <li class="nav-item" {{Request::is('admin/seo-manager*') ? 'active' : ''}}>
+    <li class="nav-item {{Request::is('admin/seo-manager*') ? 'active' : ''}}">
         <a class="nav-link" href="{{route('admin.seo-manager.index')}}">
             <i class="fa fa-fw fa-search"></i>
             <span class="nav-link-text">SEO</span>
@@ -66,7 +66,7 @@
     </li>
 
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Components">
-        <a class="nav-link nav-link-collapse {{Request::is('admin/faq*') ? '' : 'collapsed'}}" data-toggle="collapse" href="#faqComponents" data-parent="#exampleAccordion" aria-expanded="false">
+        <a class="nav-link  nav-link-collapse {{Request::is('admin/faq*') ? '' : 'collapsed'}}" data-toggle="collapse" href="#faqComponents" data-parent="#exampleAccordion" aria-expanded="false">
             <i class="fa fa-fw fa-question"></i>
             <span class="nav-link-text">FAQ</span>
         </a>
@@ -86,38 +86,6 @@
         </ul>
     </li>
 
-    {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Menu Levels">--}}
-        {{--<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion" aria-expanded="false">--}}
-            {{--<i class="fa fa-fw fa-sitemap"></i>--}}
-            {{--<span class="nav-link-text">Menu Levels</span>--}}
-        {{--</a>--}}
-        {{--<ul class="sidenav-second-level collapse" id="collapseMulti">--}}
-            {{--<li>--}}
-                {{--<a href="#">Second Level Item</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="#">Second Level Item</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="#">Second Level Item</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>--}}
-                {{--<ul class="sidenav-third-level collapse" id="collapseMulti2">--}}
-                    {{--<li>--}}
-                        {{--<a href="#">Third Level Item</a>--}}
-                    {{--</li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#">Third Level Item</a>--}}
-                    {{--</li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#">Third Level Item</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
-        {{--</ul>--}}
-    {{--</li>--}}
-
 </ul>
 
 <ul class="navbar-nav sidenav-toggler">
@@ -127,30 +95,3 @@
         </a>
     </li>
 </ul>
-
-
-{{--<ul class="sidebar navbar-nav">--}}
-    {{--<li class="nav-item">--}}
-        {{--<a class="nav-link" href="{{route('admin.dashboard')}}">--}}
-            {{--<i class="fas fa-fw fa-tachometer-alt"></i>--}}
-            {{--<span>Dashboard</span>--}}
-        {{--</a>--}}
-    {{--</li>--}}
-    {{----}}
-    {{--<li class="nav-item dropdown">--}}
-        {{--<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-            {{--<i class="fas fa-fw fa-folder"></i>--}}
-            {{--<span>Pages</span>--}}
-        {{--</a>--}}
-        {{--<div class="dropdown-menu" aria-labelledby="pagesDropdown">--}}
-            {{--<h6 class="dropdown-header">Login Screens:</h6>--}}
-            {{--<a class="dropdown-item" href="login.html">Login</a>--}}
-            {{--<a class="dropdown-item" href="register.html">Register</a>--}}
-            {{--<a class="dropdown-item" href="forgot-password.html">Forgot Password</a>--}}
-            {{--<div class="dropdown-divider"></div>--}}
-            {{--<h6 class="dropdown-header">Other Pages:</h6>--}}
-            {{--<a class="dropdown-item" href="404.html">404 Page</a>--}}
-            {{--<a class="dropdown-item active" href="blank.html">Blank Page</a>--}}
-        {{--</div>--}}
-    {{--</li>--}}
-{{--</ul>--}}
