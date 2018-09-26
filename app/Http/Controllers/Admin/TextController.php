@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Translation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TextController extends Controller
 {
+    protected $text;
+
+    public function __construct(Translation $translation)
+    {
+        $this->text = $translation;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,39 +22,10 @@ class TextController extends Controller
      */
     public function index()
     {
-        return view('admin.text.index');
-    }
+        $text = $this->text->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return view('admin.text.index')
+            ->with('text', $text);
     }
 
     /**
@@ -57,7 +36,10 @@ class TextController extends Controller
      */
     public function edit($id)
     {
-        //
+        $text = $this->text->findOrFail($id);
+
+        return view('admin.text.index')
+            ->with('text', $text);
     }
 
     /**
@@ -69,17 +51,6 @@ class TextController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return
     }
 }
