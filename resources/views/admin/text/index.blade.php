@@ -5,7 +5,7 @@
     @component('components.datatable')
         @slot('head')
             <th>id</th>
-            <th>detail</th>
+            <th>key</th>
             <th class="no-sort"></th>
         @endslot
 
@@ -18,7 +18,7 @@
                         @component('components.model', [
                             'id' => 'detailTableBtn'.$detail->id,
                             'title' => 'Delete',
-                            'actionRoute' => route('admin.detail.edit', $detail->id),
+                            'actionRoute' => route('admin.detail.destroy', $detail->id),
                             'btnClass' => 'rounded-circle delete',
                             'btnIcon' => 'fa fa-trash'
                         ])

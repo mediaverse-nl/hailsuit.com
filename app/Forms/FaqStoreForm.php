@@ -10,7 +10,7 @@ class FaqStoreForm extends Form
     {
         $this
             ->add('title', 'text', [
-                'rules' => 'required|min:5|unique:faq,title',
+                'rules' => 'required|min:5|unique:title',
             ])
             ->add('description', 'textarea', [
                 'rules' => 'required|min:5',

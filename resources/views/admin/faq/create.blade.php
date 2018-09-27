@@ -5,10 +5,13 @@
 @endsection
 
 @section('content')
-
-    <div class="card">
-        <div class="card-body">
-            {!! form($form) !!}
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body">
+                    {!! form($form) !!}
+                </div>
+            </div>
         </div>
     </div>
 
