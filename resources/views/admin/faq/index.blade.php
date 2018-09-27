@@ -25,7 +25,7 @@
                                 @component('components.model', [
                                     'id' => 'faqTableBtn'.$faq->id,
                                     'title' => 'Delete',
-                                    'actionRoute' => route('admin.faq.edit', $faq->id),
+                                    'actionRoute' => route('admin.faq.destroy', $faq->id),
                                     'btnClass' => 'rounded-circle delete',
                                     'btnIcon' => 'fa fa-trash'
                                 ])

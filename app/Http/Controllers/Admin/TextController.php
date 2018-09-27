@@ -25,7 +25,7 @@ class TextController extends Controller
         $text = $this->text->get();
 
         return view('admin.text.index')
-            ->with('text', $text);
+            ->with('texts', $text);
     }
 
     /**
@@ -51,6 +51,6 @@ class TextController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return
+//        return
     }
 }

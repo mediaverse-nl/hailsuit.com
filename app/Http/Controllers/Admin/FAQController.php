@@ -119,6 +119,10 @@ class FAQController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $faq = $this->faq->findOrFail($id);
+
+        $faq->delete();
+
+        return redirect()->back();
     }
 }

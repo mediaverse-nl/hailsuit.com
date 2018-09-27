@@ -21,7 +21,15 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 {{--<button type="button" class="btn btn-primary"></button>--}}
-                <a class="btn btn-primary" href="{{$actionRoute}}">Proceed</a>
+                @if($title == 'Delete')
+                    {!! Form::open(['url' => $actionRoute, 'method' => 'delete']) !!}
+                        {!! Form::submit('Proceed') !!}
+                    {!! Form::close() !!}
+
+                    <a class="btn btn-primary" href="{{$actionRoute}}">Proceed</a>
+                @else
+                    <a class="btn btn-primary" href="{{$actionRoute}}">Proceed</a>
+                @endif
             </div>
         </div>
     </div>
