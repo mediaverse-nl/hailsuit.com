@@ -4,16 +4,18 @@
 
     @component('components.datatable')
         @slot('head')
-            <th>id</th>
-            <th>key</th>
+            <th>key_name</th>
+            <th>language</th>
+            <th>text</th>
             <th class="no-sort"></th>
         @endslot
 
         @slot('table')
             @foreach($texts as $detail)
                 <tr>
-                    <td>{{$detail->id}}</td>
-                    <td>{{$detail->value}}</td>
+                    <td>{{$detail->language_id}}</td>
+                    <td>{{$detail->key}}</td>
+                    <td>{{$detail->text}}</td>
                     <td>
                         @component('components.model', [
                             'id' => 'detailTableBtn'.$detail->id,

@@ -10,8 +10,10 @@
                     <div class="col-md-12">
                         <!-- Header Contetnt -->
                         <div class="content-block">
-                            <h1>Buy &amp; Sell Near You </h1>
-                            <p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
+                            <h1>Buy &amp; Sell Near You {!! Translator('key_key') !!}</h1>
+                            <p>
+                                {!! Translator('key') !!}
+                                Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
                         </div>
                         <!-- Advance Search -->
                         <div class="advance-search">

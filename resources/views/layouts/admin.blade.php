@@ -21,6 +21,10 @@
         .content-wrapper{
             background: #F4F4F4 !important;
         }
+        .card-header{
+            background-color: #e9ecef;
+            border: none !important;
+        }
         .card{
             border-radius: 0px;
             border: none;

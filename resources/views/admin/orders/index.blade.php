@@ -16,7 +16,7 @@
                     <th>total_paid</th>
                     <th>country</th>
                     <th>status</th>
-                    <th class="no-sort"></th>
+                    <th class="no-sort" style="width: 250px !important;"></th>
                 @endslot
 
                 @slot('table')
