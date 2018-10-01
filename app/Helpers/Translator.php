@@ -14,9 +14,9 @@ if (!function_exists('Translator')) {
         $langs = new \App\AppLanguage();
         $translation = new \App\Translation();
 
-        $langs->getLangFromCode($lang);
+        $currentLang = $langs->getLangFromCode($lang);
 
-        foreach($langs->get() as $lg){
+        foreach($currentLang->get() as $lg){
             $trans = $translation
                 ->where('key_name',  '=', $key)
                 ->where('language_id', '=', $lg->id);
@@ -30,8 +30,8 @@ if (!function_exists('Translator')) {
             }
         }
 
-        $translation->where('', '', '')->where('', '', '')->first()->text;
-
-        return 'sadsadsad';
+        return $translation->where('language_id', '=', $currentLang->id)
+            ->where('key_name', '=', $key)
+            ->first()->text;
     }
 }

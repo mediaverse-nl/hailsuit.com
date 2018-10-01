@@ -11,16 +11,16 @@
         @endslot
 
         @slot('table')
-            @foreach($texts as $detail)
+            @foreach($texts as $text)
                 <tr>
-                    <td>{{$detail->language_id}}</td>
-                    <td>{{$detail->key}}</td>
-                    <td>{{$detail->text}}</td>
+                    <td>{{$text->key_name}}</td>
+                    <td>{{$text->appLanguage->country}}</td>
+                    <td>{{$text->text}}</td>
                     <td>
                         @component('components.model', [
-                            'id' => 'detailTableBtn'.$detail->id,
+                            'id' => 'detailTableBtn'.$text->id,
                             'title' => 'Delete',
-                            'actionRoute' => route('admin.detail.destroy', $detail->id),
+                            'actionRoute' => route('admin.detail.destroy', $text->id),
                             'btnClass' => 'rounded-circle delete',
                             'btnIcon' => 'fa fa-trash'
                         ])
@@ -28,7 +28,7 @@
                                 If u proceed u will delete all relations
                             @endslot
                         @endcomponent
-                        <a href="{{route('admin.detail.edit', $detail->id)}}" class="rounded-circle edit">
+                        <a href="{{route('admin.detail.edit', $text->id)}}" class="rounded-circle edit">
                             <i class="fa fa-edit"></i>
                         </a>
                     </td>

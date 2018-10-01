@@ -18,6 +18,6 @@ class Translation extends Model
 
     public function appLanguage()
     {
-        return $this->belongsTo('App\Language', 'language_id', 'id');
+        return $this->belongsTo('App\AppLanguage', 'language_id', 'id');
     }
 }
