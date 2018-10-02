@@ -17,6 +17,7 @@ class CreateNotificationTable extends Migration
             $table->increments('id');
 
             $table->timestamps();
+            $table->timestamps();
         });
     }
 
