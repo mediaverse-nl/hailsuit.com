@@ -9,10 +9,12 @@ use App\Detail;
 use App\Forms\AddedStock;
 use App\Forms\AddedStockForm;
 use App\Forms\AddStockForm;
+use App\Notifications\NotificationToDB;
 use App\Product;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Notifications\Notifiable;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
@@ -51,6 +53,7 @@ class ProductController extends Controller
             'method' => 'POST',
             'url' => route('admin.product.addedStock')
         ]);
+
         $addStockForm = $this->formBuilder->create(AddStockForm::class, [
             'method' => 'POST',
             'url' => route('admin.product.addStock')
@@ -210,6 +213,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->product->find($id)->notify(new NotificationToDB);
+
         $product = $this->product->findOrFail($id);
 
         $product->price = $request->price;

@@ -101,6 +101,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         return $pdf->stream();
     });
 
+    Route::get('/notify', function () {
+        $user = Auth::user();
+        $user->notify(new \App\Notifications\NotificationToDB());
+        return 'hallo';
+    });
+
 
 });
 

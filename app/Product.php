@@ -5,11 +5,13 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\RoutesNotifications;
 use Illuminate\Support\Facades\Lang;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,Notifiable;
 
     protected $primaryKey = 'id';
 
