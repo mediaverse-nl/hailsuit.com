@@ -102,8 +102,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
     });
 
     Route::get('/notify', function () {
-        $user = Auth::user();
-        $user->notify(new \App\Notifications\NotificationToDB());
+//        $user = Auth::user();
+//        $user->notify(new \App\Notifications\NotificationToDB());
+
+        \Illuminate\Support\Facades\Notification::send(Auth::user(), new \App\Notifications\NotificationToDB(''));
+
         return 'hallo';
     });
 
