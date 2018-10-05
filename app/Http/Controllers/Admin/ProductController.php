@@ -149,11 +149,10 @@ class ProductController extends Controller
                 $product->productTranslation()
                     ->where('language_id', '=', $translation)
                     ->update([
-                            'product_id' => $product->id,
-                            'name' => $value['name'] == '' ? 'not ok' : $value['name'],
-                            'description' => $value['description'] == '' ? 'not ok' : $value['description'] ,
-                        ]
-                    );
+                        'product_id' => $product->id,
+                        'name' => $value['name'] == '' ? '' : $value['name'],
+                        'description' => $value['description'] == '' ? '' : $value['description']
+                    ]);
             }
         }
 

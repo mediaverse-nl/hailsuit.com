@@ -12,9 +12,9 @@
             <div class="card text-white bg-warning o-hidden h-100">
                 <div class="card-body">
                     <div class="card-body-icon">
-                        <i class="fa fa-fw fa-list"></i>
+                        <i class="fa fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">11 New Tasks!</div>
+                    <div class="mr-5">11 New Orders!</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">View Details</span>
@@ -30,7 +30,7 @@
                     <div class="card-body-icon">
                         <i class="fa fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">11 New Tasks!</div>
+                    <div class="mr-5">11 products</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">View Details</span>
@@ -46,7 +46,7 @@
                     <div class="card-body-icon">
                         <i class="fa fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">11 New Tasks!</div>
+                    <div class="mr-5">11 !</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                     <span class="float-left">View Details</span>
@@ -60,7 +60,7 @@
             <div class="card text-white bg-warning o-hidden h-100">
                 <div class="card-body">
                     <div class="card-body-icon">
-                        <i class="fa fa-fw fa-list"></i>
+                        <i class="fa fa-fw fa-bell"></i>
                     </div>
                     <div class="mr-5">11 New Tasks!</div>
                 </div>

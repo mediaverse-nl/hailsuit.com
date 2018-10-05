@@ -63,17 +63,17 @@
                         </div>
                         <div class="tab-content" id="nav-tabContent">
                             @foreach($languages as $language)
-                                
+
                                 <div class="tab-pane fade {{$loop->first ? 'show active' : ''}}" id="nav-{{$language->country_code_large}}" role="tabpanel">
                                     <div class="form-group">
                                         <label for="">Name</label>
 
-                                        <input type="text" class="form-control" name="translation[{{$language->id}}][name]"
-                                               value="{{$product->titleTranslated($language->id)}}" placeholder="name">
+                                        {{--<input type="text" class="form-control" name="translation[{{$language->id}}][name]"--}}
+{{--                                               value="{{$product->titleTranslated($language->id)}}" placeholder="name">--}}
                                     </div>
                                     <div class="form-group">
                                         <label for="">Description</label>
-                                        {{--<textarea class="form-control" name="translation[{{$language->id}}][description]" rows="3">{{$product->descriptionTranslated($language->id)}}</textarea>--}}
+                                        <textarea class="form-control" name="translation[{{$language->id}}][description]" rows="3">{{$product->descriptionTranslated($language->id)}}</textarea>
                                     </div>
                                 </div>
                             @endforeach

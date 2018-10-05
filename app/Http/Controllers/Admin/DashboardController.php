@@ -4,19 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-//use Spatie\LaravelAnalytics\LaravelAnalytics;
-
-//use Spatie\Analytics\Analytics;
-//use Spatie\Analytics\Period;
 
 class DashboardController extends Controller
 {
-//    protected $analytics;
-//
-//    public function __construct(LaravelAnalytics $analytics)
-//    {
+
+    protected $order;
+    protected $product;
+
+    public function __construct()
+    {
 //        $this->analytics = $analytics;
-//    }
+
+
+    }
 
     public function __invoke()
     {
