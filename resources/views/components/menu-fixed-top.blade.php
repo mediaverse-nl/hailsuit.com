@@ -21,16 +21,21 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                <li style="border-right: 1px solid #d8dce2;">
-                    <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
+                {{--<li style="border-right: 1px solid #d8dce2;">--}}
+                    {{--<a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">--}}
                         {{--<i class="fa fa-shopping-cart"></i>--}}
-                        Hail Suit
+                        {{--Hail Suit--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                <li style="border-right: 1px solid #d8dce2; border-left: 1px solid #d8dce2;">
+                    <a href="{{ route('contact.index')}}" class="icon-shopping-cart" style="font-size: 25px">
+                        <i class="fa fa-phone" style="margin: 0px 5px;"></i>
                     </a>
                 </li>
                 <li style="border-right: 1px solid #d8dce2;">
-                    <a href="{{ route('contact.index')}}" class="icon-shopping-cart" style="font-size: 25px">
-                        {{--<i class="fa fa-shopping-cart"></i>--}}
-                        Contact
+                    <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
+                        <i class="fa fa-shopping-cart"></i>
+                        <Label id="lblCartCount" class="badge badge-warning" >{!! Cart::count() !!}</Label>
                     </a>
                 </li>
                 <!-- Authentication Links -->
@@ -57,12 +62,7 @@
 
                     </ul>
                 </li>
-                <li>
-                    <a href="{{ route('cart.index')}}" class="icon-shopping-cart" style="font-size: 25px">
-                        <i class="fa fa-shopping-cart"></i>
-                        <Label id="lblCartCount" class="badge badge-warning" >{!! Cart::count() !!}</Label>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>
