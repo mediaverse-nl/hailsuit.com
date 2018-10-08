@@ -80,13 +80,14 @@
                         <a href="mailto:hello@yoursite.com"><i class="lnr lnr-envelope"></i><span>office@yoursite.com</span></a>
                     </div>
                     <div class="info">
-                        <p class="social pull-left">
-                            <a class="no-margin" href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fas fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <p class="social pull-left footer-social-icons">
+                            <a class="no-margin" href="#"><i class="fab fa-facebook" style="color: #4064AC;"></i></a>
+                            <a href="#"><i class="fab fa-twitter" style="color: #1C9CEA;"></i></a>
+                            <a href="#"><i class="fab fa-instagram" style="color: #fff;"></i></a>
+                            <a href="#"><i class="fab fa-google-plus" style="color: #D74C34;"></i></a>
+                            <a href="#"><i class="fab fa-pinterest" style="color: #C51F26;"></i></a>
+                            <a href="#"><i class="fab fa-linkedin" style="color: #0270AD;"></i></a>
+                            <a href="#"><i class="fab fa-dribbble" style="color: #E34A85;"></i></a>
                         </p>
                     </div>
                 </div><!-- / contact-widget -->
@@ -97,33 +98,6 @@
 
     </div>
     <!-- Footer Links -->
-
-    {{--<hr>--}}
-
-    {{--<!-- Social buttons -->--}}
-    {{--<ul class="list-unstyled list-inline text-center social-container-footer">--}}
-        {{--<li class="">--}}
-            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
-                {{--<i class="fab fa-facebook-f"></i>--}}
-            {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
-                {{--<i class="fab fa-linkedin-in"></i>--}}
-            {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
-                {{--<i class="fab fa-twitter"></i>--}}
-            {{--</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-            {{--<a href="#" class="btn btn-default btn-lg btn-circle">--}}
-                {{--<i class="fab fa-google-plus-g"></i>--}}
-            {{--</a>--}}
-        {{--</li>--}}
-    {{--</ul>--}}
-    <!-- Social buttons -->
 
     <!-- Copyright -->
     <div class="footer-copyright py-3" >

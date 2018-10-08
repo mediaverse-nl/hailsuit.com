@@ -22,7 +22,7 @@
                     @foreach($products as $product)
                         <tr>
                             <td>
-                                {{--{{$product->titleTranslated()}}--}}
+                                {{$product->titleTranslated()}}
                                 <div class="d-none">
                                     @foreach($product->barcodes as $barcode)
                                         {{$barcode->value}}

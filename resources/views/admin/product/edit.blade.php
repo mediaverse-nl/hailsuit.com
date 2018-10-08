@@ -68,8 +68,8 @@
                                     <div class="form-group">
                                         <label for="">Name</label>
 
-                                        {{--<input type="text" class="form-control" name="translation[{{$language->id}}][name]"--}}
-{{--                                               value="{{$product->titleTranslated($language->id)}}" placeholder="name">--}}
+                                        <input type="text" class="form-control" name="translation[{{$language->id}}][name]"
+                                               value="{{$product->titleTranslated($language->id)}}" placeholder="name">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Description</label>

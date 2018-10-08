@@ -49,7 +49,7 @@
                             <h1>{!! $product->titleTranslated() !!}</h1>
 
                             <hr>
-{{--                            {!! dd($product->discount()) !!}--}}
+
                             @if($product->discount() == 0.00)
                                 <span class="price-badge">{{$appLanguage->currency}} {!! $product->price() !!}</span>
                             @else

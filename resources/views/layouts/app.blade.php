@@ -26,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-
     <style>
         .loader {
             position: fixed;
@@ -145,6 +144,10 @@
             background-color: #FE6F41;
             font-size: 35px !important;
             box-shadow: 0px 7px 25px 1px rgba(0,0,0,0.08);
+        }
+
+        .footer-social-icons{
+            font-size: 35px;
         }
 
     </style>

@@ -12,14 +12,16 @@
 */
 
 
-Route::group(['middleware' => 'language'], function () {
+Route::group(['middleware' => ['language', 'web']], function () {
 
     Route::get('/', function () {
         return view('welcome');
     })->name('home');
+
     Route::get('/test-file', function () {
         return view('vendor.laravel-filemanager.demo');
     });
+
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
@@ -34,6 +36,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');
     Route::get('shopping-cart/create', 'CartController@create')->name('cart.create');
     Route::post('shopping-cart/{id}/{units?}', 'CartController@store')->name('cart.store');
+    Route::patch('shopping-cart/update', 'CartController@update')->name('cart.update');
     Route::delete('shopping-cart/{id?}', 'CartController@destroy')->name('cart.destroy');
 
     Route::post('order', 'OrderController@store')->name('order.store');
