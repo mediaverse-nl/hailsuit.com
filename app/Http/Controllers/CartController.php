@@ -48,11 +48,9 @@ class CartController extends Controller
 
         if ($product->images()->count() > 0){
             $cartArray = $cartArray + ['image' => $product->images()->first()];
-//            array_push($cartArray, $imageArray);
         }
-//        array_keys($cartArray);
 
-        Cart::add($product->id, $product->titleTranslated(), $units, $product->price(), $cartArray);
+        Cart::add($product->id, $product->titleTranslated(), $units, $product->excludeTax(), $cartArray);
 
         return redirect()->back();
     }

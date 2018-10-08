@@ -64,6 +64,19 @@ class Product extends Model
         return number_format($this->price - $this->discount, 2);
     }
 
+    public function tax()
+    {
+        $taxrate = env('TAX', 21);
+
+//        dd('1' .$taxrate);
+        return number_format(($this->price / 121) * $taxrate, 2);
+    }
+
+    public function excludeTax()
+    {
+        return number_format($this->price - $this->tax(), 2);
+    }
+
     public function discount()
     {
         return number_format($this->discount, 2);

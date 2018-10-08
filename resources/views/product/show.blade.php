@@ -56,6 +56,9 @@
                                 <del class="price-badge small">{{$appLanguage->currency}} {!! $product->price() !!}</del>
                                 <span class="price-badge">{{$appLanguage->currency}} {!! $product->price() !!}</span>
                             @endif
+                            <br>
+                            <span class="text-muted">Inclusief tax: {{$appLanguage->currency}} {!! $product->tax() !!}</span>
+
                             <hr>
                             <p>{!! $product->descriptionTranslated() !!}</p>
                             <br>

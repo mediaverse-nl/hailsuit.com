@@ -212,7 +212,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->product->find($id)->notify(new NotificationToDB);
+//        $this->product->find($id)->notify(new NotificationToDB);
 
         $product = $this->product->findOrFail($id);
 
@@ -259,18 +259,18 @@ class ProductController extends Controller
         }
 
         //translation
-        if(!empty($request->translation)){
-            foreach ($request->translation as $translation => $value){
-                $product->productTranslation()
-                    ->where('language_id', '=', $translation)
-                    ->update([
-                        'product_id' => $id,
-                        'name' => $value['name'],
-                        'description' => $value['description'],
-                    ]
-                );
-            }
-        }
+//        if(!empty($request->translation)){
+//            foreach ($request->translation as $translation => $value){
+//                $product->productTranslation()
+//                    ->where('language_id', '=', $translation)
+//                    ->update([
+//                        'product_id' => $id,
+//                        'name' => $value['name'],
+//                        'description' => $value['description'],
+//                    ]
+//                );
+//            }
+//        }
 
         //iamges
         if(!empty($request->images)){

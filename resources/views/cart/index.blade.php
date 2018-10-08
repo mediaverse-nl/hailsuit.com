@@ -13,57 +13,103 @@
 
                     </div>
                     <div class="panel-body">
-                        <table class="table shopping-cart">
-                            <thead>
-                                <tr>
-                                    <th>Product info</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        @if(Cart::total() != 0)
+                            <table class="table shopping-cart">
+                                <thead>
+                                    <tr>
+                                        <th>Product info</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                            @foreach($content as $item)
-                                <tr class="cart-item">
-                                    <td class="image">
-                                        <a href="{!! route('product.show', $item->id) !!}">
-                                            <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">
-                                            <span class="col-md-7">
-                                        <b>{!! $item->name !!}</b>
-                                        <br>
-                                        SKU: {!! $item->id !!}
-                                    </span>
-                                        </a>
-                                    </td>
-                                    <td>{!! $item->price !!}</td>
-                                    <td class="qty">
-                                        <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
-                                    </td>
-                                    <td>{!! $item->total !!}</td>
-                                    <td class="remove">
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy', $item->rowId]]) !!}
-                                        {!! Form::submit('×', ['class' => '']) !!}
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach($content as $item)
+                                    <tr class="cart-item">
+                                        <td class="image">
+                                            <a href="{!! route('product.show', $item->id) !!}">
+                                                <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">
+                                                <span class="col-md-7">
+                                            <b>{!! $item->name !!}</b>
+                                            <br>
+                                            SKU: {!! $item->id !!}
+                                        </span>
+                                            </a>
+                                        </td>
+                                        <td>{!! number_format($item->price, 2) !!}</td>
+                                        <td class="qty">
+                                            <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
+                                        </td>
+                                        <td>{!! number_format($item->total, 2) !!}</td>
+                                        <td class="remove">
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy', $item->rowId]]) !!}
+                                                <button type="submit" class="" style="border-radius: 50%; height: 25px; width: 25px; border: none;">
+                                                    <i class="fa fa-times text-center" style="font-size: 15px; padding-top: 3px;"></i>
+                                                </button>
+                                            {!! Form::close() !!}
+                                        </td>
+                                    </tr>
+                                @endforeach
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        @else
+                            <p>Cart is empty</p>
+                            <br>
+                        @endIf
 
-                        {{--<div class="col-md-12">--}}
-                            <a href="" class="btn btn-danger">asasdasd</a>
-                            <a href="" class="btn btn-danger pull-right">clear cart</a>
-                            <a href="" class="btn btn-danger pull-right">update cart</a>
-                        {{--</div>--}}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="" class="btn btn-danger">continue shopping</a>
+
+                            </div>
+                            <div class="col-md-6">
+                                @if(Cart::total() != 0)
+                                    {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy']]) !!}
+                                    <button type="submit" class="btn btn-danger pull-right">
+                                        clear cart
+                                    </button>
+                                    {!! Form::close() !!}
+                                    <a href="" class="btn btn-danger pull-right">update cart</a>
+                                @else
+                                    <a href="" class="btn btn-danger pull-right" disabled="">clear cart</a>
+                                    <a href="" class="btn btn-danger pull-right" disabled="">update cart</a>
+                                @endIf
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                @if(Cart::total() != 0)
+                                    <a href="" class="btn btn-warning" style="width: 100%;">proceed to checkout</a>
+                                @else
+                                    <a href="" class="btn btn-warning" style="width: 100%;" disabled="">proceed to checkout</a>
+                                @endIf
+
+                                <br>
+                                <br>
+                                <p class="text-center"><b>Free Shipping</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h2 style="margin: 0px 0px 15px 0px;"><b>Total:</b> {!! Cart::total() !!}</h2>
+
+                                <p> <b>Subtotal:</b> {!! Cart::subtotal() !!}</p>
+
+                                <p> <b>Tax:</b> {!! Cart::tax() !!}</p>
+                            </div>
+                        </div>
 
 
                         <br>
+                        <br>
 
-                        <a href="" class="btn btn-warning">proceed to checkout</a>
+
+
 
                     </div>
 
@@ -118,7 +164,7 @@
                             </td>
                             <td>{!! $item->price !!}</td>
                             <td class="qty">
-                                <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
+                                <input type="number" step="1" min="0" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="1">
                             </td>
                             <td>{!! $item->total !!}</td>
                             <td class="remove">
@@ -184,6 +230,23 @@
 
 @push('css')
     <style>
+
+        input.qty{
+            border-radius: 10px;
+            border: 1px solid #dddddd !important;
+            outline: none;
+            width: 60px;
+            padding-left: 5px;
+            /*background: #DDDDDD;*/
+        }
+        .btn-warning{
+            background-color: #FE6F41;
+        }
+        .btn{
+            border-radius: 0px;
+            border: none !important;
+        }
+
         .shopping-cart th{
             color: #000000 !important;
         }
