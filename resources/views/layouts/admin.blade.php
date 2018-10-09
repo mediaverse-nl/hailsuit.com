@@ -31,6 +31,8 @@
         .card-header{
             background-color: #E3E4E4;
             border: none !important;
+            border-radius: 0px !important;
+            color: #6c757d;
         }
         .card{
             border-radius: 0px;

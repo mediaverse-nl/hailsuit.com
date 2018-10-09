@@ -8,9 +8,6 @@
     <div class="row">
         <div class="col-9">
             <div class="card">
-                {{--<div class="card-header">--}}
-                    {{--add to stock--}}
-                {{--</div>--}}
                 <div class="card-body">
                     {!! Form::model($product, ['route' => ['admin.product.update', $product->id], 'method' => 'PATCH']) !!}
 
@@ -81,7 +78,12 @@
 
                         <hr>
 
-                        <h5 for="exampleFormControlInput1">Details</h5>
+                        <h5 for="exampleFormControlInput1">
+                            Details
+                            <a class="pull-right btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Add new detail" href="{!! route('admin.detail.index') !!}">
+                                <i class="fa fa-plus" style="color: #fff;"></i>
+                            </a>
+                        </h5>
                         <div class="row">
                             @foreach($details as $detail)
                                 <div class="col-3">
@@ -98,51 +100,37 @@
 
                         <hr>
 
-                        <h5 for="exampleFormControlInput1">Brands</h5>
-                        {{--<div class="row">--}}
-                            {{--@foreach($brands as $brand)--}}
-                                {{--@if($brand->types->count() > 0)--}}
-                                {{--<div class="col-3">--}}
-                                    {{--<label class="font-weight-bold">{{$brand->name}}</label>--}}
-                                    {{--@foreach($brand->types->sortBy(['value']) as $type)--}}
-                                        {{--<div class="custom-control custom-checkbox">--}}
-                                            {{--<input type="checkbox"--}}
-                                                   {{--class="custom-control-input"--}}
-                                                   {{--name="brands[]"--}}
-                                                   {{--value="{{$type->id}}"--}}
-                                                   {{--id="{{$type->value.$type->id}}"--}}
-                                                   {{--{{in_array($type->id, $product->types->pluck('id')->toArray()) ? 'checked':''}}>--}}
-                                            {{--<label class="custom-control-label" for="{{$type->value.$type->id}}">{{$type->value}} - {{$type->model_year}}</label>--}}
-                                        {{--</div>--}}
-                                    {{--@endforeach--}}
-                                {{--</div>--}}
-                                {{--@endif--}}
-                            {{--@endforeach--}}
-                        {{--</div>--}}
-                    <div class="row">
+                        <h5 for="exampleFormControlInput1">
+                            Brands
+                            <a class="pull-right btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Add new brand" href="{!! route('admin.brand.index') !!}">
+                                <i class="fa fa-plus" style="color: #fff;"></i>
+                            </a>
+                        </h5>
 
-                        @foreach($brands as $brand)
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label class="font-weight-bold">{{$brand->name}}</label>
-                                    <select class="selectpicker form-control" multiple name="brands[]">
-                                        @foreach($brand->types()->currentTypes($product->id)->availableTypes(true)->get() as $type)
-                                            @if($type->brand_id == $brand->id)
-                                                <option value="{!! $type->id !!}"
-                                                        {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>
-                                                    {!! $type->value !!} - {!! $type->model_year!!}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                        <div class="row">
+
+                            @foreach($brands as $brand)
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">{{$brand->name}}</label>
+                                        <select class="selectpicker form-control" multiple name="brands[]">
+                                            @foreach($brand->types()->currentTypes($product->id)->availableTypes(true)->get() as $type)
+                                                @if($type->brand_id == $brand->id)
+                                                    <option value="{!! $type->id !!}"
+                                                            {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>
+                                                        {!! $type->value !!} - {!! $type->model_year!!}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                        @endforeach
+                            @endforeach
 
-                    </div>
+                        </div>
 
-                    <hr>
+                        <hr>
 
                         <label class="font-weight-bold">Barcodes</label>
 
@@ -158,18 +146,14 @@
                             </div>
                         @endif
 
-
                         <div class="row">
                             <div class="col-md-2">
-                                <button class="rounded-circle btn-info" type="button" id="clone">
+                                <button class="rounded-circle btn-primary" type="button" id="clone" data-toggle="tooltip" data-placement="top" title="Add new input">
                                     <i class="fa fa-plus"></i>
                                 </button>
-                                <button class="rounded-circle btn-danger" type="button" id="remove">
+                                <button class="rounded-circle btn-danger" type="button" id="remove" data-toggle="tooltip" data-placement="top" title="Remove empty input">
                                     <i class="fa fa-minus"></i>
                                 </button>
-
-                                {{--<input type="button"  value="add" >--}}
-                                {{--<input type="button" class="rounded-circle " value="remove" id="remove" style="display: inline-block !important;">--}}
                             </div>
                         </div>
 
@@ -197,7 +181,7 @@
                                 {{$barcode->value}}
                             </div>
                             <button type="submit" value='Print' onclick='printDiv({{$barcode->id}});' class="rounded-circle edit">
-                                <i class="fa fa-print"></i>
+                                <i class="fa fa-print" data-toggle="tooltip" data-placement="top" title="if u want te print this barcode u have to enable ( background graphics at printer settings in browser )"></i>
                             </button>
                             <hr>
                         @endif
@@ -225,10 +209,15 @@
         .edit {
             background: var(--warning);
         }
+        .btn.dropdown-toggle.btn-light,
+        .filter-option
+        {
+            border: 1px solid #ced4da !important;
+        }
     </style>
 @endpush
 
-@push('js')
+@push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <script>
 
