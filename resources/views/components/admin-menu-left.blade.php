@@ -52,12 +52,12 @@
             <span class="nav-link-text">Texts</span>
         </a>
     </li>
-    <li class="nav-item {{Request::is('admin/seo-manager*') ? 'active' : ''}}">
-        <a class="nav-link" href="{{route('admin.seo-manager.index')}}">
-            <i class="fa fa-fw fa-search"></i>
-            <span class="nav-link-text">SEO</span>
-        </a>
-    </li>
+    {{--<li class="nav-item {{Request::is('admin/seo-manager*') ? 'active' : ''}}" disabled>--}}
+        {{--<a class="nav-link" href="{{route('admin.seo-manager.index')}}">--}}
+            {{--<i class="fa fa-fw fa-search"></i>--}}
+            {{--<span class="nav-link-text">SEO</span>--}}
+        {{--</a>--}}
+    {{--</li>--}}
     <li class="nav-item {{Request::is('admin/file-manager*') ? 'active' : ''}}">
         <a class="nav-link" href="{{route('admin.file-manager.index')}}">
             <i class="fa fa-fw fa-image"></i>

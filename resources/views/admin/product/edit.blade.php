@@ -209,8 +209,10 @@
         .edit {
             background: var(--warning);
         }
-        .btn.dropdown-toggle.btn-light,
-        .filter-option
+        .dropdown-toggle.bs-placeholder {
+            color: black !important;
+        }
+        .btn.dropdown-toggle.btn-light
         {
             border: 1px solid #ced4da !important;
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AppLanguage;
 use App\Translation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,10 +10,12 @@ use App\Http\Controllers\Controller;
 class TextController extends Controller
 {
     protected $text;
+    protected $languages;
 
-    public function __construct(Translation $translation)
+    public function __construct(Translation $translation, AppLanguage $languages)
     {
         $this->text = $translation;
+        $this->languages = $languages;
     }
 
     /**
@@ -38,7 +41,10 @@ class TextController extends Controller
     {
         $text = $this->text->findOrFail($id);
 
-        return view('admin.text.index')
+        $languages = $this->languages->get();
+
+        return view('admin.text.edit')
+            ->with('languages', $languages)
             ->with('text', $text);
     }
 

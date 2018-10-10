@@ -30,8 +30,15 @@ class ProductController extends Controller
     protected $barcode;
     protected $type;
 
-    public function __construct(Product $product, Detail $detail, Type $type, Brand $brand, AppLanguage $language, Barcode $barcode, FormBuilder $formBuilder)
-    {
+    public function __construct(
+        Product $product,
+        Detail $detail,
+        Type $type,
+        Brand $brand,
+        AppLanguage $language,
+        Barcode $barcode,
+        FormBuilder $formBuilder
+    ){
         $this->language = $language;
         $this->product = $product;
         $this->detail = $detail;
@@ -39,7 +46,6 @@ class ProductController extends Controller
         $this->brand = $brand;
         $this->barcode = $barcode;
         $this->formBuilder = $formBuilder;
-
     }
 
     /**
@@ -258,19 +264,19 @@ class ProductController extends Controller
             }
         }
 
-        //translation
-//        if(!empty($request->translation)){
-//            foreach ($request->translation as $translation => $value){
-//                $product->productTranslation()
-//                    ->where('language_id', '=', $translation)
-//                    ->update([
-//                        'product_id' => $id,
-//                        'name' => $value['name'],
-//                        'description' => $value['description'],
-//                    ]
-//                );
-//            }
-//        }
+//        translation
+        if(!empty($request->translation)){
+            foreach ($request->translation as $translation => $value){
+                $product->productTranslation()
+                    ->where('language_id', '=', $translation)
+                    ->update([
+                        'product_id' => $id,
+                        'name' => $value['name'],
+                        'description' => $value['description'],
+                    ]
+                );
+            }
+        }
 
         //iamges
         if(!empty($request->images)){

@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('breadcrumb')
+    {!! Breadcrumbs::render('admin.text.index') !!}
+@endsection
+
 @section('content')
 
     @component('components.datatable')
@@ -28,7 +32,7 @@
                                 If u proceed u will delete all relations
                             @endslot
                         @endcomponent
-                        <a href="{{route('admin.detail.edit', $text->id)}}" class="rounded-circle edit">
+                        <a href="{{route('admin.text-editor.edit', $text->id)}}" class="rounded-circle edit">
                             <i class="fa fa-edit"></i>
                         </a>
                     </td>

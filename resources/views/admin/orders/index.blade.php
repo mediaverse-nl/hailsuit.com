@@ -28,7 +28,6 @@
                             <td>{{$order->country}}</td>
                             <td>{{$order->status}}</td>
                             <td>
-
                                 {{--@component('components.model', [--}}
                                     {{--'id' => 'orderTableBtn'.$order->id,--}}
                                     {{--'title' => 'Delete',--}}
