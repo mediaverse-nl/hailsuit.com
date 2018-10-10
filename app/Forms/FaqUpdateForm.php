@@ -15,6 +15,6 @@ class FaqUpdateForm extends Form
             ->add('description', 'textarea', [
                 'rules' => 'required|min:5',
             ])
-            ->add('submit', 'submit', ['label' => 'Submit', 'class' => 'card-link btn btn-sm btn-success']);
+            ->add('submit', 'submit', ['label' => 'update', 'attr' => ['class' => 'btn btn-sm btn-success']]);
     }
 }

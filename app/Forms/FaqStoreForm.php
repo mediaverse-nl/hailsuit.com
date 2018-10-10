@@ -15,6 +15,6 @@ class FaqStoreForm extends Form
             ->add('description', 'textarea', [
                 'rules' => 'required|min:5',
             ])
-            ->add('submit', 'submit', ['label' => 'add', 'class' => 'card-link btn btn-sm btn-success']);
+            ->add('submit', 'submit', ['label' => 'save', 'attr' => ['class' => 'btn btn-sm btn-success']]);
     }
 }

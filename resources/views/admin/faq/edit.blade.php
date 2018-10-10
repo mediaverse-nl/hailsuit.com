@@ -8,6 +8,9 @@
     <div class="row">
         <div class="col-9">
             <div class="card">
+                <div class="card-header">
+                    edit frequently asked questions (FAQ) item
+                </div>
                 <div class="card-body">
                     {!! form($form) !!}
                 </div>
