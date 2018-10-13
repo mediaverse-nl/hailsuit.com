@@ -84,6 +84,9 @@
                                 <i class="fa fa-plus" style="color: #fff;"></i>
                             </a>
                         </h5>
+                        @if($details->count() == 0)
+                            <p>no records found</p>
+                        @endIf
                         <div class="row">
                             @foreach($details as $detail)
                                 <div class="col-3">
@@ -107,6 +110,9 @@
                             </a>
                         </h5>
 
+                        @if($brands->count() == 0)
+                            <p>no records found</p>
+                        @endIf
                         <div class="row">
 
                             @foreach($brands as $brand)
@@ -132,7 +138,7 @@
 
                         <hr>
 
-                        <label class="font-weight-bold">Barcodes</label>
+                        <h5>Barcodes</h5>
 
                         @if($product->barcodes()->exists())
                             @foreach($product->barcodes as $barcode)

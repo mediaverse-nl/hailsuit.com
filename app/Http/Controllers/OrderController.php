@@ -35,22 +35,23 @@ class OrderController extends Controller
         $order = $this->order;
         $order->total_paid = 10;
         $order->payment_method = 'ideal';
+        $order->status = self::STATUS_PENDING;
+        $order->save();
+
+//        generate invoice number reuse it on order id
 
         $payment =  $this->mollie->payments()->create([
             "amount"      => $order->total_price,
-            "description" => "Order Nr. ". $request->order_id,
-            "redirectUrl" => route('order.show', $request->order_id),
+            "description" => "Order Nr. ". $order->id,
+            "redirectUrl" => route('order.show', $order->id),
             'metadata'    => [
-                'order_id' => $request->order_id,
+                'order_id' => $order->id,
             ],
             "method" => $order->payment_method,
             "issuer" => $order->payment_method == 'ideal' ? $request->issuer_id : '',
         ]);
 
-        $order->payment_id = $payment->id;
-        $order->status = self::STATUS_PENDING;
-
-        $order->save();
+        $order->update(['payment_id' => $payment->id]);
 
         Cart::destroy();
 

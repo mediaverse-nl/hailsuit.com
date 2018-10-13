@@ -13,12 +13,12 @@
 
                     <div class="form-group">
                         <label for="">Price</label>
-                        <input type="number" class="form-control" step="any" name="price" value="1.00" id="" placeholder="price">
+                        <input type="number" class="form-control" step="any" min="00.1" name="price" value="1.00" id="" placeholder="price">
                     </div>
 
                     <div class="form-group">
                         <label for="">Discount</label>
-                        <input type="number" class="form-control" step="any" name="discount" value="0.00" id="" placeholder="discount">
+                        <input type="number" class="form-control" step="any" min="00.0" name="discount" value="0.00" id="" placeholder="discount">
                     </div>
 
                     <div class="form-group">
@@ -77,6 +77,9 @@
                             <i class="fa fa-plus" style="color: #fff;"></i>
                         </a>
                     </h5>
+                    @if($details->count() == 0)
+                        <p>no records found</p>
+                    @endIf
                     <div class="row">
                         @foreach($details as $detail)
                             <div class="col-3">
@@ -100,6 +103,9 @@
                         </a>
                     </h5>
 
+                    @if($brands->count() == 0)
+                        <p>no records found</p>
+                    @endIf
                     <div class="row">
 
                         @foreach($brands as $brand)
