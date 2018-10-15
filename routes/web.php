@@ -54,6 +54,7 @@ Route::group(['middleware' => ['language', 'web']], function () {
     Route::get('app/download', 'PageController@app')->name('page.app');
     Route::get('faq', 'PageController@faq')->name('page.faq');
 
+    Route::post('mollie-webhook', 'WebhookController@mollie')->name('webhook.mollie');
 });
 
 // Authentication Routes...
@@ -103,7 +104,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();
-    });
+    })->name('pdf');
 
     Route::get('/notify', function () {
 //        $user = Auth::user();

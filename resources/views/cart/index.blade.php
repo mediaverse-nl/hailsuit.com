@@ -26,33 +26,33 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach($content as $item)
-                                    <tr class="cart-item">
-                                        <td class="image">
-                                            <a href="{!! route('product.show', $item->id) !!}">
-                                                <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">
-                                                <span class="col-md-7">
-                                            <b>{!! $item->name !!}</b>
-                                            <br>
-                                            SKU: {!! $item->id !!}
-                                        </span>
-                                            </a>
-                                        </td>
-                                        <td>{!! number_format($item->price, 2) !!}</td>
-                                        <td class="qty" id="qty">
-                                            <input type="hidden" value="{!! $item->rowId !!}" name="id">
-                                            <input type="number" step="1" min="1" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
-                                        </td>
-                                        <td>{!! number_format($item->total, 2) !!}</td>
-                                        <td class="remove">
-                                            {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy', $item->rowId]]) !!}
-                                                <button type="submit" class="" style="border-radius: 50%; height: 25px; width: 25px; border: none;">
-                                                    <i class="fa fa-times text-center" style="font-size: 15px; padding-top: 3px;"></i>
-                                                </button>
-                                            {!! Form::close() !!}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{--@foreach($content as $item)--}}
+                                    {{--<tr class="cart-item">--}}
+                                        {{--<td class="image">--}}
+                                            {{--<a href="{!! route('product.show', $item->id) !!}">--}}
+                                                {{--<img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">--}}
+                                                {{--<span class="col-md-7">--}}
+                                            {{--<b>{!! $item->name !!}</b>--}}
+                                            {{--<br>--}}
+                                            {{--SKU: {!! $item->id !!}--}}
+                                        {{--</span>--}}
+                                            {{--</a>--}}
+                                        {{--</td>--}}
+                                        {{--<td>{!! number_format($item->price, 2) !!}</td>--}}
+                                        {{--<td class="qty" id="qty">--}}
+                                            {{--<input type="hidden" value="{!! $item->rowId !!}" name="id">--}}
+                                            {{--<input type="number" step="1" min="1" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">--}}
+                                        {{--</td>--}}
+                                        {{--<td>{!! number_format($item->total, 2) !!}</td>--}}
+                                        {{--<td class="remove">--}}
+                                            {{--{!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy', $item->rowId]]) !!}--}}
+                                                {{--<button type="submit" class="" style="border-radius: 50%; height: 25px; width: 25px; border: none;">--}}
+                                                    {{--<i class="fa fa-times text-center" style="font-size: 15px; padding-top: 3px;"></i>--}}
+                                                {{--</button>--}}
+                                            {{--{!! Form::close() !!}--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                {{--@endforeach--}}
 
 
                                 </tbody>

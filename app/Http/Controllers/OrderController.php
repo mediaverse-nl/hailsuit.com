@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderConfirmation;
 use App\Order;
-use Gloudemans\Shoppingcart\Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Mollie\Laravel\Facades\Mollie;
@@ -33,35 +34,36 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = $this->order;
-        $order->total_paid = 10;
-        $order->payment_method = 'ideal';
+        $order->total_paid = Cart::total();
         $order->status = self::STATUS_PENDING;
+        $order->email = $request->email;
         $order->save();
 
-//        generate invoice number reuse it on order id
+        foreach (Cart::content() as $item){
+            $order->productOrders()->insert([
+                'order_id' => $order->id,
+                'product_id' => $item->id,
+                'price' => $item->price,
+                'amount' => $item->qty,
+            ]);
+        }
 
+//        dd($order->total_price);
         $payment =  $this->mollie->payments()->create([
-            "amount"      => $order->total_price,
+            "amount"      => number_format($order->total_paid,2),
             "description" => "Order Nr. ". $order->id,
             "redirectUrl" => route('order.show', $order->id),
             'metadata'    => [
                 'order_id' => $order->id,
             ],
-            "method" => $order->payment_method,
-            "issuer" => $order->payment_method == 'ideal' ? $request->issuer_id : '',
         ]);
 
         $order->update(['payment_id' => $payment->id]);
 
         Cart::destroy();
 
-        Mail::send('emails.bedankt', ['order' => $order], function($m) use ($order){
-            $m->to($order->email, $order->name)
-                ->replyTo('no-reply@hailsuit.com', 'No-Reply')
-                ->subject('Bedankt voor uw bestelling!');
-        });
-
-        return redirect($payment->getPaymentUrl());
+        // redirect customer to Mollie checkout page
+        return redirect($payment->getPaymentUrl(), 303);
     }
 
     /**
@@ -79,29 +81,30 @@ class OrderController extends Controller
         if ($payment->isPaid())
         {
             if ($order->status != 'paid'){
-                foreach($order->orderItems as $product){
-                    $new_stock = (int)$product->property->stock - $product->amount;
-                    $this->property->where('id', $product->property_id)
-                        ->update(['stock' => $new_stock]);
+                foreach($order->productOrders as $product){
+                    $product->product()->update([
+                        'stock' => ((int)$product->stock - $product->amount)
+                    ]);
                 }
+
+                Mail::to($order->email, $order->name)
+                    ->send(new OrderConfirmation($order));
             }
 
             $order->status = self::STATUS_COMPLETED;
 
-            Mail::send('emails.payment', ['payment' => $order], function($m) use ($order){
-                $m->to($order->email, $order->name)->subject('Betaalbevestiging!');
-            });
         }
         elseif (! $payment->isOpen())
         {
             $order->status = self::STATUS_CANCELLED;
         }
+        $order->payment_method = $payment->method;
 
         $order->save();
 
-//        return view('cart.order')->with('order', $order)->with('payment', $payment);
-
-        return $order;
+        return view('order.show')
+            ->with('order', $order)
+            ->with('payment', $payment);
     }
 
     /**

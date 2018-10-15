@@ -21,7 +21,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.2.0",
         "milon/barcode": "^5.3",
-        "mollie/laravel-mollie": "~1.0",
+        "mollie/laravel-mollie": "^1.5",
         "orlandotm/payment-webfont": "*",
         "spatie/laravel-analytics": "^1.4",
         "twbs/bootstrap": "^4.1",

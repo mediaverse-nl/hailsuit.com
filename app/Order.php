@@ -12,7 +12,7 @@ class Order extends Model
 
     public $timestamps = true;
 
-    protected $fillable = [];
+    protected $fillable = ['payment_id'];
 
     public function productOrders()
     {
