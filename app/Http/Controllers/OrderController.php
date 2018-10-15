@@ -6,7 +6,7 @@ use App\Mail\OrderConfirmation;
 use App\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use Mail;
 use Mollie\Laravel\Facades\Mollie;
 
 class OrderController extends Controller
@@ -48,7 +48,6 @@ class OrderController extends Controller
             ]);
         }
 
-//        dd($order->total_price);
         $payment =  $this->mollie->payments()->create([
             "amount"      => number_format($order->total_paid,2),
             "description" => "Order Nr. ". $order->id,
@@ -87,7 +86,7 @@ class OrderController extends Controller
                     ]);
                 }
 
-                Mail::to($order->email, $order->name)
+                Mail::to($order->email)
                     ->send(new OrderConfirmation($order));
             }
 

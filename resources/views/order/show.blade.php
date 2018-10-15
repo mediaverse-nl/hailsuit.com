@@ -4,7 +4,7 @@
 
     {!! $order !!}
     <br>
-    {!! dd($payment) !!}
+    {{--{!! $payment !!}--}}
 
 @endsection
 
