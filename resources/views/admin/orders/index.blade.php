@@ -42,16 +42,16 @@
                                 <a href="{{route('admin.pdf.downloadInvoice', $order->id)}}" class="rounded-circle " style="background: var(--success)">
                                     <i class="fa fa-print"></i>
                                 </a>
-                                <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
+                                <a href="{{route('admin.order.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
                                     <i class="fa fa-download"></i>
                                 </a>
                                 <a href="{{route('admin.order.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
                                     <i class="fa fa-tag"></i>
                                 </a>
-                                <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
+                                <a href="{{route('admin.order.edit', $order->id)}}" class="rounded-circle " style="background: var(--success)">
                                     <i class="fa fa-at"></i>
                                 </a>
-                                <a href="{{route('admin.detail.edit', $order->id)}}" class="rounded-circle edit">
+                                <a href="{{route('admin.order.edit', $order->id)}}" class="rounded-circle edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
                             </td>

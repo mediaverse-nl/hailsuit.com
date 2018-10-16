@@ -14,7 +14,7 @@ class OrderConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $order;
+    public $order;
 
     /**
      * Create a new message instance.
@@ -35,10 +35,10 @@ class OrderConfirmation extends Mailable
     {
         $pdf = PDF::loadView('pdf.invoice');
 
-        return $this->markdown('emails.order.confirmation');
-//            ->attachData($pdf->stream(),'name.pdf', [
-//                'mime' => 'application/pdf',
-//            ]
-//        );
+        return $this->markdown('emails.order.confirmation')
+            ->attachData($pdf->stream(),'name.pdf', [
+                'mime' => 'application/pdf',
+            ]
+        );
     }
 }

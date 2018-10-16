@@ -86,8 +86,7 @@ class OrderController extends Controller
                     ]);
                 }
 
-                Mail::to($order->email)
-                    ->send(new OrderConfirmation($order));
+                Mail::to($order->email)->send(new OrderConfirmation($order));
             }
 
             $order->status = self::STATUS_COMPLETED;
