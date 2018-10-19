@@ -45,8 +45,13 @@
             @endcomponent
 
         </div>
+
         <div class="col-3">
             <div class="card">
+                <div class="card-header">
+                    add new <b>brand</b>
+                </div>
+
                 <div class="card-body">
                     {!! form($form) !!}
                 </div>

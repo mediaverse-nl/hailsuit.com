@@ -47,6 +47,10 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $type = $this->type->findOrFail($id);
+
+        $type->delete();
+
+        return redirect()->back();
     }
 }

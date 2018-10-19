@@ -47,6 +47,9 @@
 
         <div class="col-3">
             <div class="card">
+                <div class="card-header">
+                    add new <b>detail</b>
+                </div>
                 <div class="card-body">
                     {!! form($form) !!}
                 </div>
