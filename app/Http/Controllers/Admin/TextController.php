@@ -25,7 +25,7 @@ class TextController extends Controller
      */
     public function index()
     {
-        $text = $this->text->get();
+        $text = $this->text->groupBy('key_name')->get();
 
         return view('admin.text.index')
             ->with('texts', $text);

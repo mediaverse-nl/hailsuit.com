@@ -185,6 +185,8 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         browner12\helpers\HelperServiceProvider::class,
+        Spatie\CookieConsent\CookieConsentServiceProvider::class,
+
 
         /*
          * Application Service Providers...
