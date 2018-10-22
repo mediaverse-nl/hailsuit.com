@@ -12,7 +12,7 @@
 */
 
 
-Route::group(['middleware' => ['language', 'web', 'cookie']], function () {
+Route::group(['middleware' => ['language', 'web']], function () {
 
     Route::get('/', function () {
         return view('welcome');

@@ -7,8 +7,11 @@
 @section('content')
 
     <div class="card">
+        <div class="card-header">
+            editing text <b>{!! $text->key_name !!}</b>
+        </div>
         <div class="card-body">
-            {{Form::open(['route' => ['admin.text-editor.update', $text->key_name]])}}
+            {{Form::open(['route' => ['admin.text-editor.update', $text->key_name], 'method' => 'PATCH'])}}
 
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     @foreach($languages as $language)
@@ -23,27 +26,19 @@
 
                 <div class="tab-content" id="nav-tabContent">
                     @foreach($languages as $language)
-
                         <div class="tab-pane fade {{$loop->first ? 'show active' : ''}}"
                              id="nav-{{$language->country_code_large}}"
                              role="tabpanel">
                             <div class="form-group">
-                                {!! $language !!}
                                 <br>
-                                <textarea class="summernote" name="translation[][description]">
-                                    {!! $text->text !!}
-                                </textarea>
-                                {!! Form::submit('Click Me!') !!}
-
+                                <textarea class="summernote" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                {!! Form::submit('Update', ['class' => 'btn btn-sm btn-success']) !!}
                             </div>
                         </div>
-
                     @endforeach
-
                 </div>
 
             {{ Form::close() }}
-
 
             <hr>
 
@@ -72,9 +67,9 @@
 
     <script>
         $('.summernote').summernote({
-            placeholder: 'Hello bootstrap 4',
+            placeholder: "Type anything here...",
             tabsize: 2,
-            height: 100
+            height: 350
         });
         $('.dropdown-toggle').dropdown()
 

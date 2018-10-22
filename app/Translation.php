@@ -20,4 +20,12 @@ class Translation extends Model
     {
         return $this->belongsTo('App\AppLanguage', 'language_id', 'id');
     }
+
+    public function keyNameHasLangs()
+    {
+        return $this->where('key_name',  '=', $this->key_name)
+            ->where('text',  '!=', '')
+            ->get()->pluck('appLanguage.country_code_short');
+    }
+
 }

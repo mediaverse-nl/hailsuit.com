@@ -40,12 +40,16 @@ class TextController extends Controller
     public function edit($id)
     {
         $text = $this->text->findOrFail($id);
+        $texts = $this->text
+            ->where('key_name', '=', $text->key_name)
+            ->get();
 
         $languages = $this->languages->get();
 
         return view('admin.text.edit')
             ->with('languages', $languages)
-            ->with('text', $text);
+            ->with('text', $text)
+            ->with('texts', $texts);
     }
 
     /**
@@ -57,6 +61,15 @@ class TextController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        return
+        foreach ($request->translation as $key => $value){
+            $translation = $this->text
+                ->where('key_name', '=', $id)
+                ->where('language_id', '=', $key)
+                ->firstOrFail();
+
+            $translation->update(['text' => $value]);
+        }
+
+        return redirect()->back();
     }
 }

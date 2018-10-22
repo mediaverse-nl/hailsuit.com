@@ -8,7 +8,7 @@ if (!function_exists('Translator')) {
      * @param
      * @return
      */
-    function Translator($key)
+    function Translator($key, $textEditor = false)
     {
         $lang = Lang::locale();
         $langs = new \App\AppLanguage();
@@ -30,8 +30,15 @@ if (!function_exists('Translator')) {
             }
         }
 
-        return $translation->where('language_id', '=', $currentLang->id)
+        $text = $translation->where('language_id', '=', $currentLang->id)
             ->where('key_name', '=', $key)
             ->first()->text;
+
+        if ($textEditor){
+            return view('components.text-editor')
+                ->with('text', $text);
+        }
+
+        return $text;
     }
 }
