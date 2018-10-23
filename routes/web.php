@@ -12,26 +12,16 @@
 */
 
 
-Route::group(['middleware' => ['language', 'web']], function () {
+Route::group(['middleware' => ['web', 'language']], function () {
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+    Route::get('/', 'HomeController')->name('home');
+    Route::get('/home', 'HomeController');
 
-    Route::get('/test-file', function () {
-        return view('vendor.laravel-filemanager.demo');
-    });
-
-    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 
-    Route::get('/home/{locale}', function () {
-        return view('welcome');
-    });
-
-    Route::get('product', 'ProductController@index')->name('product.index');
-    Route::get('product/{id}', 'ProductController@show')->name('product.show');
+    Route::get('product/{title}-{id}', 'ProductController@show')->name('product.show');
 
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');
     Route::get('shopping-cart/create', 'CartController@create')->name('cart.create');
@@ -51,8 +41,9 @@ Route::group(['middleware' => ['language', 'web']], function () {
     Route::get('warranty', 'PageController@warranty')->name('page.warranty');
     Route::get('returns', 'PageController@returns')->name('page.returns');
     Route::get('delivery', 'PageController@delivery')->name('page.delivery');
-    Route::get('app/download', 'PageController@app')->name('page.app');
     Route::get('faq', 'PageController@faq')->name('page.faq');
+
+    Route::get('app/download', 'PageController@app')->name('page.app');
 
     Route::post('mollie-webhook', 'WebhookController@mollie')->name('webhook.mollie');
 });
@@ -69,16 +60,13 @@ Route::post('password/reset', ['as' => '', 'uses' => 'Auth\ResetPasswordControll
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
 
 // Registration Routes...
-Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-Route::post('register', ['as' => '', 'uses' => 'Auth\RegisterController@register']);
+//Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+//Route::post('register', ['as' => '', 'uses' => 'Auth\RegisterController@register']);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
-
     Route::group(['middleware' => 'auth'], function () {
-
-        Route::get('/', 'DashboardController');
-        Route::get('dashboard', 'DashboardController')->name('dashboard');
-
+        Route::get('/', 'DashboardController')->name('dashboard');
+        Route::get('dashboard', 'DashboardController');
         Route::resource('property', 'PropertyController', ['only' => ['store', 'destroy']]);
         Route::resource('type', 'TypeController', ['only' => ['store', 'destroy']]);
         Route::resource('detail', 'DetailController');
@@ -93,28 +81,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::get('file-manager', 'FileManagerController@index')->name('file-manager.index');
         Route::get('pdf/streamInvoice/{id}', 'PDFController@streamInvoice')->name('pdf.streamInvoice');
         Route::get('pdf/downloadInvoice{id}', 'PDFController@downloadInvoice')->name('pdf.downloadInvoice');
-
-//        Route::get('notifications', '');
     });
-    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
-
-    Route::get('/pdf', function () {
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
-    })->name('pdf');
-
-    Route::get('/notify', function () {
-//        $user = Auth::user();
-//        $user->notify(new \App\Notifications\NotificationToDB());
-
-        \Illuminate\Support\Facades\Notification::send(Auth::user(), new \App\Notifications\NotificationToDB(''));
-
-        return 'hallo';
-    });
-
-
 });
 
