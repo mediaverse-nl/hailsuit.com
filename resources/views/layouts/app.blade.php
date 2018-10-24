@@ -163,8 +163,6 @@
 
     @include('components.footer')
 
-    @include('cookieConsent::index')
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
 
