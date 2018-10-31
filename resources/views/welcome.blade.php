@@ -31,7 +31,7 @@
     </div>
 
     <div class="container" style="margin-bottom: 80px;">
-        <div class="row">
+        <div style="padding: 0px 40px;">
             <div class="col-md-12">
                 <p class="lead text-uppercase text-center" style="background: #555; color: white; width: 100%; margin: 80px 0px;">Design</p>
             </div>
