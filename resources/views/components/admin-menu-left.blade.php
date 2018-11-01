@@ -1,6 +1,6 @@
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
-    <li class="nav-item {{Request::is('admin/dashboard') ? 'active' : ''}}">
+    <li class="nav-item {{Request::is('admin') ? 'active' : ''}}">
         <a class="nav-link" href="{{route('admin.dashboard')}}" >
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>

@@ -69,7 +69,7 @@
     @if(Auth()->check())
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="">
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.html">Admin Panel v1.0</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -93,7 +93,7 @@
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Mediaverse.nl 2018</small>
+                    <small>Copyright © <a href="https://mediaverse.nl">Mediaverse.nl</a> 2018</small>
                 </div>
             </div>
         </footer>

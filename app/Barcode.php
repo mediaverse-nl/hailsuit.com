@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Milon\Barcode\DNS1D;
 
 class Barcode extends Model
 {
@@ -19,5 +20,10 @@ class Barcode extends Model
     public function product()
     {
         return $this->belongsTo('App\Product', 'product_id', 'id');
+    }
+
+    public function ean13()
+    {
+        return DNS1D::getBarcodeHTML($this->value, "EAN13");
     }
 }

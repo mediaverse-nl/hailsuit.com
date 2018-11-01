@@ -7,11 +7,12 @@
 @section('content')
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
 
             @component('components.datatable')
                 @slot('head')
                     <th>#</th>
+                    <th>products</th>
                     <th>products</th>
                     <th>total_paid</th>
                     <th>country</th>
@@ -23,6 +24,7 @@
                     @foreach($orders as $order)
                         <tr>
                             <td>{{$order->id}}</td>
+                            <td>{{$order->created_at->diffForHumans()}}</td>
                             <td>{{$order->productOrders()->sum('amount')}}</td>
                             <td>{{$order->total_paid}}</td>
                             <td>{{$order->country}}</td>
