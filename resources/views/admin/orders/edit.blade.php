@@ -51,6 +51,13 @@
                 </div>
 
                 <div class="col-md-6">
+                    @component('components.panel', ['title' => 'Order status'])
+                        dropdown en dan status veranderen (alle opties van status van bestelling)
+                        {{--@foreach($order->productOrders as $item)--}}
+                            {{--{!! $item->product !!}--}}
+                        {{--@endforeach--}}
+                    @endcomponent
+
                     @component('components.panel', ['title' => 'ordered products'])
                         @foreach($order->productOrders as $item)
                             {!! $item->product !!}
