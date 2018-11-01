@@ -15,17 +15,19 @@
             <div class="col-md-12">
                 <h1 class="text-center text-uppercase lead" style="margin: 80px 0px;">worlds leading hail protection for your vehicle</h1>
             </div>
-            <div class="col-md-4">
-                <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
-                <hr>
-            </div>
-            <div class="col-md-4">
-                <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
-                <hr>
-            </div>
-            <div class="col-md-4">
-                <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
-                <hr>
+            <div class="fade">
+                <div class="col-">
+                    <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
+                    <hr>
+                </div>
+                <div class="col- ">
+                    <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
+                    <hr>
+                </div>
+                <div class="col- -4">
+                    <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
+                    <hr>
+                </div>
             </div>
         </div>
     </div>
@@ -199,6 +201,10 @@
 @endsection
 
 @push('css')
+    {{--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>--}}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css"/>
+
+
     <style>
         body{
             background: #ffffff !important;
@@ -257,96 +263,114 @@
 @endpush
 
 @push('js')
-    <script>
+{{--<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>--}}
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
 
-        filter();
 
-        $(document).on("change", '.filter', function(e) {
-
-            var $SelectedBrand = $("#brands").val();
-            var $SelectedType = $("#types").val();
-            var $SelectedYears = $("#years").val();
-
-            filter($SelectedBrand, $SelectedType, $SelectedYears);
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.fade').slick({
+            dots: true,
+            infinite: true,
+//            speed: 700,
+//            autoplay:true,
+//            autoplaySpeed: 2000,
+//            arrows:true,
+            slidesToShow: 3,
+            slidesToScroll: 3
         });
+    });
 
-        function emptySelect($el) {
-            $el.empty(); // remove old options
-            $el.append($("<option></option>")
-                .attr("value", '').text('Please Select'));
-        }
 
-        function initSelectOption($el, $array, $selected) {
-            emptySelect($el);
-            appendSelect($array, $el);
-            setSelectedValue($el, $selected);
+        {{--filter();--}}
 
-        }
+        {{--$(document).on("change", '.filter', function(e) {--}}
 
-        function setSelectedValue($el, $value) {
-            if ($value){
-                $el.val($value).attr('selected','selected');
-            }
-        }
+            {{--var $SelectedBrand = $("#brands").val();--}}
+            {{--var $SelectedType = $("#types").val();--}}
+            {{--var $SelectedYears = $("#years").val();--}}
 
-        function appendSelect($array, $el) {
-            $.each($array, function(value, key) {
-                $el.append($("<option></option>")
-                    .attr("value", value).text(key));
-            });
-        }
+            {{--filter($SelectedBrand, $SelectedType, $SelectedYears);--}}
+        {{--});--}}
 
-        function filter($SelectedBrand, $SelectedType, $SelectedYears) {
+        {{--function emptySelect($el) {--}}
+            {{--$el.empty(); // remove old options--}}
+            {{--$el.append($("<option></option>")--}}
+                {{--.attr("value", '').text('Please Select'));--}}
+        {{--}--}}
 
-            var url = '';
-            if ($SelectedBrand){
-                url += '/'+$SelectedBrand;
-            }
-            if ($SelectedType){
-                url += '/'+$SelectedType;
-            }
-            if ($SelectedYears){
-                url += '/'+$SelectedYears;
-            }
+        {{--function initSelectOption($el, $array, $selected) {--}}
+            {{--emptySelect($el);--}}
+            {{--appendSelect($array, $el);--}}
+            {{--setSelectedValue($el, $selected);--}}
 
-            $.ajax({
-                type: "GET",
-                url: '{!! env('APP_URL') !!}/api/filter'+url,
-                dataType: 'json',
-                success: function(json) {
+        {{--}--}}
 
-                    if(!$SelectedYears){
-                        var $brands = json.brands;
-                        var $brand = $("#brands");
+        {{--function setSelectedValue($el, $value) {--}}
+            {{--if ($value){--}}
+                {{--$el.val($value).attr('selected','selected');--}}
+            {{--}--}}
+        {{--}--}}
 
-                        var $types = json.types;
-                        var $type = $("#types");
+        {{--function appendSelect($array, $el) {--}}
+            {{--$.each($array, function(value, key) {--}}
+                {{--$el.append($("<option></option>")--}}
+                    {{--.attr("value", value).text(key));--}}
+            {{--});--}}
+        {{--}--}}
 
-                        var $years = json.years;
-                        var $year = $("#years");
+        {{--function filter($SelectedBrand, $SelectedType, $SelectedYears) {--}}
 
-                        initSelectOption($brand, $brands, $SelectedBrand);
+            {{--var url = '';--}}
+            {{--if ($SelectedBrand){--}}
+                {{--url += '/'+$SelectedBrand;--}}
+            {{--}--}}
+            {{--if ($SelectedType){--}}
+                {{--url += '/'+$SelectedType;--}}
+            {{--}--}}
+            {{--if ($SelectedYears){--}}
+                {{--url += '/'+$SelectedYears;--}}
+            {{--}--}}
 
-                        $($brand).change(function(){
-                            emptySelect($type);
-                            emptySelect($year);
-                        });
+            {{--$.ajax({--}}
+                {{--type: "GET",--}}
+                {{--url: '{!! env('APP_URL') !!}/api/filter'+url,--}}
+                {{--dataType: 'json',--}}
+                {{--success: function(json) {--}}
 
-                        initSelectOption($type, $types, $SelectedType);
+                    {{--if(!$SelectedYears){--}}
+                        {{--var $brands = json.brands;--}}
+                        {{--var $brand = $("#brands");--}}
 
-                        $($type).change(function(){
-                            emptySelect($year);
-                        });
+                        {{--var $types = json.types;--}}
+                        {{--var $type = $("#types");--}}
 
-                        initSelectOption($year, $years, $SelectedYears);
-                    }
+                        {{--var $years = json.years;--}}
+                        {{--var $year = $("#years");--}}
 
-                    if(json.url){
-                        window.location.replace(json.url);
-                    }
-                }
-            });
-        }
+                        {{--initSelectOption($brand, $brands, $SelectedBrand);--}}
+
+                        {{--$($brand).change(function(){--}}
+                            {{--emptySelect($type);--}}
+                            {{--emptySelect($year);--}}
+                        {{--});--}}
+
+                        {{--initSelectOption($type, $types, $SelectedType);--}}
+
+                        {{--$($type).change(function(){--}}
+                            {{--emptySelect($year);--}}
+                        {{--});--}}
+
+                        {{--initSelectOption($year, $years, $SelectedYears);--}}
+                    {{--}--}}
+
+                    {{--if(json.url){--}}
+                        {{--window.location.replace(json.url);--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--});--}}
+        {{--}--}}
 
     </script>
 @endpush
