@@ -16,7 +16,7 @@
 
             <div class="row">
 
-                <div class="col-md-6" id="orderDetails">
+                <div class="col-sm-6 col-md-6" id="orderDetails">
                     @component('components.panel')
                         <h4>Business</h4>
                         <p><b>company_name:</b>{!! $order->company_name !!}</p>
@@ -50,12 +50,26 @@
                     @endcomponent
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-sm-6 col-md-6">
                     @component('components.panel', ['title' => 'Order status'])
-                        dropdown en dan status veranderen (alle opties van status van bestelling)
+                        {{--dropdown en dan status veranderen (alle opties van status van bestelling)--}}
                         {{--@foreach($order->productOrders as $item)--}}
                             {{--{!! $item->product !!}--}}
                         {{--@endforeach--}}
+                        {!! Form::model($order, ['route' => ['admin.order.update', $order->id], 'method' => 'PATCH']) !!}
+                            <div class="form-group">
+                                <label for="">Order status</label>
+                                <select class="custom-select form-control">
+                                    <option selected>-- selected status --</option>
+                                    <option value="1">send package</option>
+                                    {{--<option value="2">cancelled</option>--}}
+                                    <option value="3">in treatment</option>
+                                </select>
+                            </div>
+
+                            <a href="" class="btn btn-block btn-danger">Edit</a>
+                        {!! Form::close() !!}
+
                     @endcomponent
 
                     @component('components.panel', ['title' => 'ordered products'])
@@ -64,13 +78,13 @@
                         @endforeach
                     @endcomponent
 
-                    @component('components.panel', ['title' => 'factuur'])
+                    @component('components.panel', ['title' => 'invoice'])
                         <a href="" class="btn btn-block btn-warning">download</a>
                         <a href="" class="btn btn-block btn-warning">print</a>
                         <a href="" class="btn btn-block btn-warning">view</a>
                     @endcomponent
 
-                    @component('components.panel', ['title' => 'pakbon'])
+                    @component('components.panel', ['title' => 'packing slip'])
                         <a href="" class="btn btn-block btn-warning">print</a>
                         @foreach($order->productOrders as $item)
                             {!! $item->product->titleTranslated()!!}<br>

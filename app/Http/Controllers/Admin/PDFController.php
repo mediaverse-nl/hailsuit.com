@@ -36,7 +36,7 @@ class PDFController extends Controller
 
     public function streamPackingSlip()
     {
-        $pdf = $this->pdf->loadView('pdf.invoice');
+        $pdf = $this->pdf->loadView('pdf.packingSlip');
 
         return $pdf->stream();
     }

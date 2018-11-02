@@ -32,6 +32,7 @@ class CreateOrderTable extends Migration
             $table->decimal('shipping_cost', 10, 2);
             $table->string('payment_id');
             $table->string('payment_method');
+            $table->string('package_tracking_code');
             $table->string('status')->default('paid');
             $table->timestamps();
         });

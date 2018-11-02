@@ -19,7 +19,7 @@
 
         .invoice-box table {
             width: 100%;
-            /*line-height: inherit;*/
+            line-height: inherit;
             text-align: left;
         }
 
@@ -100,16 +100,15 @@
 </head>
 
 <body>
-<div class="invoice-box">
+<div class="invoice-box rtl">
     <table cellpadding="0" cellspacing="0">
         <tr class="top">
-            <td colspan="3">
+            <td colspan="2">
                 <table>
                     <tr>
                         <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:270px;">
+                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
                         </td>
-                        <td></td>
 
                         <td>
                             Invoice #: 123<br>
@@ -122,7 +121,7 @@
         </tr>
 
         <tr class="information">
-            <td colspan="3">
+            <td colspan="2">
                 <table>
                     <tr>
                         <td>
@@ -130,7 +129,6 @@
                             12345 Sunny Road<br>
                             Sunnyville, CA 12345
                         </td>
-                        <td> </td>
 
                         <td>
                             Acme Corp.<br>
@@ -146,10 +144,9 @@
             <td>
                 Payment Method
             </td>
-            <td></td>
 
             <td>
-                {{--Check #--}}
+                Check #
             </td>
         </tr>
 
@@ -157,20 +154,15 @@
             <td>
                 Check
             </td>
-            <td></td>
 
             <td>
-
+                1000
             </td>
         </tr>
 
         <tr class="heading">
             <td>
                 Item
-            </td>
-
-            <td>
-                Unit(s)
             </td>
 
             <td>
@@ -182,9 +174,19 @@
             <td>
                 Website design
             </td>
-            <td></td>
+
             <td>
                 $300.00
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Hosting (3 months)
+            </td>
+
+            <td>
+                $75.00
             </td>
         </tr>
 
@@ -192,15 +194,15 @@
             <td>
                 Domain name (1 year)
             </td>
-            <td> 1x</td>
+
             <td>
                 $10.00
             </td>
         </tr>
 
         <tr class="total">
-            <td> </td>
-            <td> </td>
+            <td></td>
+
             <td>
                 Total: $385.00
             </td>
