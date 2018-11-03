@@ -108,7 +108,7 @@
     <div id="this">
         sdasd
     </div>
-    <a class="btn btn-danger" onclick="PrintElem('#this')">asdasd</a>
+    <a class="btn btn-danger" onclick="PrintElem('#this', 'print label')">asdasd</a>
 
 
 @endsection
@@ -131,9 +131,9 @@
             /*position: relative;*/
         }
         @media print {
-            .this{
-                width: 21cm;
-                height: 29.7cm;
+            #this{
+                width: 89mm;
+                height: 127mm;
                 margin: 30mm 45mm 30mm 45mm;
                 /* change the margins as you want them to be. */
             }
@@ -145,16 +145,17 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>--}}
     <script>
         // $(document).ready(function () {
-            function PrintElem(elem)
+            function PrintElem(elem, title)
             {
-                Popup($(elem).html());
+                Popup($(elem).html(), title);
             }
 
-            function Popup(data)
+            function Popup(data, title)
             {
                 var mywindow = window.open('', 'my div', 'left=0,top=0,width=600,height=400,toolbar=1,scrollbars=1,status=0');
 
-                $(mywindow.document.head).html( '<title>PressReleases</title><link rel="stylesheet" href="css/main.css" type="text/css" />');
+                $(mywindow.document.head).html( '<title>' + title + '</title>' +
+                    '<link rel="stylesheet" href="css/main.css" type="text/css" />');
                 $(mywindow.document.body).html( '<body>' + data + '</body>');
 
                 mywindow.document.close();

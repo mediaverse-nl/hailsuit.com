@@ -33,9 +33,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $title)
     {
+//        dd($id);
+
         $product = $this->product->findOrFail($id);
+
+//        if ($product->)
+
         $appLanguage = $this->appLanguage->findOrFail($id);
 
         $types = $product->types()->get();

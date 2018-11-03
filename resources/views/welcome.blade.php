@@ -36,8 +36,10 @@
     <div class="container" style="margin-bottom: 10px;">
         <div class="row">
             <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6">
-                <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
-                <h4 class="text-center">Auto model</h4>
+                <a href="{!! route('product.show', [1, SpaceToHyphen('asdad asda')]) !!}">
+                    <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
+                    <h4 class="text-center">Auto model</h4>
+                </a>
             </div>
             <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6">
                 <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">

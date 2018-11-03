@@ -28,8 +28,8 @@ class CreateOrderTable extends Migration
             $table->string('email');
             $table->string('telephone');
             $table->string('currency')->nullabe();
-            $table->decimal('total_paid', 10, 2);
-            $table->decimal('shipping_cost', 10, 2);
+            $table->float('total_paid', 8, 2);
+            $table->float('shipping_cost', 8, 2);
             $table->string('payment_id');
             $table->string('payment_method');
             $table->string('package_tracking_code');

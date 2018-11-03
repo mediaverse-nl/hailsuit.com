@@ -48,8 +48,13 @@ class OrderController extends Controller
             ]);
         }
 
+//        dd(
+//            (float)$order->total_paid,
+//            $order->total_paid,
+//            number_format ( (float)$order->total_paid  ,2 )
+//        );
         $payment =  $this->mollie->payments()->create([
-            "amount"      => number_format($order->total_paid,2),
+            "amount"      => 1905.02, //todo alleen de punt gebruiken
             "description" => "Order Nr. ". $order->id,
             "redirectUrl" => route('order.show', $order->id),
             'metadata'    => [

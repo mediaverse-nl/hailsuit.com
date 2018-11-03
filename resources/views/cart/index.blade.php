@@ -29,13 +29,13 @@
                                 @foreach($content as $item)
                                     <tr class="cart-item">
                                         <td class="image">
-                                            <a href="{!! route('product.show', $item->id) !!}">
+                                            <a href="{!! route('product.show', [$item->id, SpaceToHyphen($item->options->product->titleTranslated())]) !!}">
                                                 <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">
                                                 <span class="col-md-7">
-                                            <b>{!! $item->name !!}</b>
-                                            <br>
-                                            SKU: {!! $item->id !!}
-                                        </span>
+                                                    <b>{!! $item->name !!}</b>
+                                                    <br>
+                                                    SKU: {!! $item->id !!}
+                                                </span>
                                             </a>
                                         </td>
                                         <td>{!! number_format($item->price, 2) !!}</td>
