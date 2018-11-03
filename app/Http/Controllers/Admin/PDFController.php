@@ -27,24 +27,30 @@ class PDFController extends Controller
         return $pdf->stream();
     }
 
-    public function downloadInvoice()
+    public function downloadInvoice($id)
     {
-        $pdf = $this->pdf->loadView('pdf.invoice');
+        $order = $this->order->findOrFail($id);
 
-        return $pdf->download('invoice.pdf');
+        $pdf = $this->pdf->loadView('pdf.invoice', ['order' => $order]);
+
+        return $pdf->download('hailsuit-invoice-'.$order->id.'.pdf');
     }
 
-    public function streamPackingSlip()
+    public function streamPackingSlip($id)
     {
-        $pdf = $this->pdf->loadView('pdf.packingSlip');
+        $order = $this->order->findOrFail($id);
+
+        $pdf = $this->pdf->loadView('pdf.packingSlip', ['order' => $order]);
 
         return $pdf->stream();
     }
 
-    public function downloadPackingSlip()
+    public function downloadPackingSlip($id)
     {
-        $pdf = $this->pdf->loadView('pdf.invoice');
+        $order = $this->order->findOrFail($id);
 
-        return $pdf->download('invoice.pdf');
+        $pdf = $this->pdf->loadView('pdf.packingSlip', ['order' => $order]);
+
+        return $pdf->download('hailsuit-invoice-'.$order->id.'.pdf');
     }
 }
