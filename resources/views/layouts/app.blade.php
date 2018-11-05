@@ -37,10 +37,14 @@
             opacity: .8;
         }
 
+        .lang-dropdown img{
+            width: 32px;
+        }
+
         body{
             font-family: 'Karla', sans-serif;
             margin-top: 100px;
-            background: #F5F7F7 !important;
+            background: #ffffff !important;
         }
 
         .btn-circle {

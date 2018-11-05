@@ -21,6 +21,7 @@ Route::group(['middleware' => ['web', 'language']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 
+    Route::get('products', 'ProductController@index')->name('product.index');
     Route::get('p-{id}/{title}', 'ProductController@show')->name('product.show');
 
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');

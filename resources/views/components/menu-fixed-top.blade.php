@@ -1,30 +1,50 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container" style="">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand" href="{!! route('home') !!}">
+                <img src="/img/Hail_Suit_logo_right.png" alt="" style="width: 170px !important; padding: 5px;">
+            </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Page 1-1</a></li>
-                        <li><a href="#">Page 1-2</a></li>
-                        <li><a href="#">Page 1-3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li class=""><a href="{!! route('home') !!}">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="fas fa-shopping-bag" style="font-size: 20px;"></i></a></li>
-                <li><a href="{!! route('cart.index') !!}"><i class="fas fa-shopping-cart" style="font-size: 20px;"></i></a></li>
+                <li>
+                    <a href="{!! route('product.index') !!}">
+                        <i class="fas fa-shopping-bag" style="font-size: 20px;"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! route('cart.index') !!}">
+                        <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle lang-dropdown" data-toggle="dropdown" href="#" style="">
+                        {!! language()->flag(app()->getLocale()) !!}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="min-width: 80px !important;">
+                        @foreach (language()->allowed() as $code => $name)
+                            @if(app()->getLocale() !== $code)
+                                <li class="{{ config('language.flags.li_class') }}">
+                                    <a href="{{ language()->back($code) }}">
+                                        <img src="{{ asset('img/flags/'.($code == 'en' ? 'gb' : $code).'.png') }}" alt="{{ $name }}" width="40px" style="padding: 2px 3px;" />
+                                        {{--{{ config('language.flags.width') }}--}}
+                                        {{--<b style="padding: 5px; text-transform: uppercase;--}}
+{{--">{!! $code !!}</b>--}}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

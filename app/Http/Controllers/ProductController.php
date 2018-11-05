@@ -24,7 +24,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = $this->product->get();
+
+        return view('product.index')
+            ->with('products', $products);
     }
 
     /**
@@ -35,11 +38,15 @@ class ProductController extends Controller
      */
     public function show($id, $title)
     {
-//        dd($id);
-
         $product = $this->product->findOrFail($id);
 
-//        if ($product->)
+        if ($product->titleTranslated() !== str_replace('-', ' ', $title)){
+            return redirect()
+                ->route('product.show', [
+                    $product->id,
+                    str_replace(' ', '-', $product->titleTranslated())
+                ]);
+        }
 
         $appLanguage = $this->appLanguage->findOrFail($id);
 
