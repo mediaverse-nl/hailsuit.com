@@ -33,6 +33,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd(Cart::total(','));
+
         $order = $this->order;
         $order->total_paid = Cart::total();
         $order->status = self::STATUS_PENDING;
