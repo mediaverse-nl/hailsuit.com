@@ -38,7 +38,6 @@
         .product-panel .nav-tabs > li > a{
             border-radius: 0px;
         }
-
         .price-badge{
             font-weight: 500;
             font-size: 24px;

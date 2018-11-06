@@ -6,40 +6,40 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading">
-                                bestelling
-                            </div>
-                            <div class="panel-body">
-                                <table class="table shopping-cart">
-                                    <thead>
-                                    <tr>
-                                        <th class="image">&nbsp;</th>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="panel">--}}
+                            {{--<div class="panel-heading">--}}
+                                {{--bestelling--}}
+                            {{--</div>--}}
+                            {{--<div class="panel-body">--}}
+                                {{--<table class="table shopping-cart">--}}
+                                    {{--<thead>--}}
+                                    {{--<tr>--}}
+                                        {{--<th class="image">&nbsp;</th>--}}
+                                        {{--<th>Product</th>--}}
+                                        {{--<th>Price</th>--}}
+                                        {{--<th>Quantity</th>--}}
+                                        {{--<th>Total</th>--}}
+                                    {{--</tr>--}}
+                                    {{--</thead>--}}
+                                    {{--<tbody>--}}
 
-                                    @foreach($content as $item)
-                                        <tr class="cart-item">
-                                            <td class="image"><a href="#"><img src="images/product-small2.jpg" alt=""></a></td>
-                                            <td><a href="single-product.html">Women's Jeans</a></td>
-                                            <td>$69</td>
-                                            <td class="qty">1</td>
-                                            <td>$138</td>
-                                        </tr>
-                                    @endforeach
+                                    {{--@foreach($content as $item)--}}
+                                        {{--<tr class="cart-item">--}}
+                                            {{--<td class="image"><a href="#"><img src="images/product-small2.jpg" alt=""></a></td>--}}
+                                            {{--<td><a href="single-product.html">Women's Jeans</a></td>--}}
+                                            {{--<td>$69</td>--}}
+                                            {{--<td class="qty">1</td>--}}
+                                            {{--<td>$138</td>--}}
+                                        {{--</tr>--}}
+                                    {{--@endforeach--}}
 
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                                    {{--</tbody>--}}
+                                {{--</table>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
