@@ -15,7 +15,6 @@ class ContactController extends Controller
 
     public function __construct(FormBuilder $formBuilder)
     {
-
         $this->formBuilder = $formBuilder;
     }
 
