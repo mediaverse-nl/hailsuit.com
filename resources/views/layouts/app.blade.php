@@ -43,7 +43,7 @@
 
         body{
             font-family: 'Karla', sans-serif;
-            margin-top: 100px;
+            margin-top: 80px;
             background: #ffffff !important;
         }
 
