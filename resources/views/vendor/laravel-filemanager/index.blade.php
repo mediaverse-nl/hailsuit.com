@@ -201,7 +201,7 @@
         name: 'download',
         icon: 'download',
         label: lang['menu-download'],
-        multiple: true
+        multiple: false
       },
       // {
       //   name: 'preview',
@@ -212,7 +212,7 @@
       {
         name: 'move',
         icon: 'paste',
-        label: 'move',
+        label: lang['menu-move'],
         multiple: true
       },
       {

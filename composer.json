@@ -26,7 +26,7 @@
         "spatie/laravel-analytics": "^1.4",
         "spatie/laravel-cookie-consent": "^1.8",
         "twbs/bootstrap": "^4.1",
-        "unisharp/laravel-filemanager": "v2.0.0-alpha4"
+        "unisharp/laravel-filemanager": "v2.0.0-alpha5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

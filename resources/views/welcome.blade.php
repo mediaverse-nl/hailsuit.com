@@ -45,112 +45,21 @@
 
     <div class="container" style="margin-bottom: 10px;">
         <div class="row">
+            <div class="product-slide">
 
+                @foreach($products as $product)
+                    <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
+                        @component('components.auto-model', ['product' => $product])
 
-
-            {{--todo make component of this ss--}}
-            <style>
-                .box {
-                    /*height: 170px;*/
-                    /*padding-bottom: 15px;*/
-                    /*width: 50%;*/
-                    z-index:1000;
-                    position: relative;
-                }
-                .content a{
-                    /*width: 80%;*/
-                }
-
-                .content {
-                    position: relative;
-                    background-color: gray;
-                    height: 170px;
-                    -webkit-transition-property: height; /* Safari */
-                    -webkit-transition-duration: .4s; /* Safari */
-                    transition-property: height;
-                    transition-duration: .4s;
-                     overflow: hidden;
-                }
-
-                .content:hover {
-                    height: 230px;
-                }
-            </style>
-
-            {{--<div class="content">--}}
-                {{--<p>--}}
-                    {{--TEST--}}
-                {{--</p>--}}
-            {{--</div>--}}
-
-            <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
-                <div class="box">
-                    <div class="content">
-                        <img src="/img/assets/Model-XS-800x480.png" alt="" style="width: 100%;">
-                        <h4 class="text-center">Auto model</h4>
-                        <a href="{!! route('product.show', [1, SpaceToHyphen('asdad asda')]) !!}" class="btn btn-default text-center">
-                            sad
-                        </a>
+                        @endcomponent
                     </div>
-                </div>
+                @endforeach
+
             </div>
-            <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
-                <div class="box">
-                    <div class="content">
-                        <img src="/img/assets/Model-XS-800x480.png" alt="" style="width: 100%;">
-                        <h4 class="text-center">Auto model</h4>
-                        <a href="{!! route('product.show', [1, SpaceToHyphen('asdad asda')]) !!}" class="btn btn-default">
-                            sad
-                        </a>
-                    </div>
-                </div>
+            <div class="text-center">
+                <h2 class="">Bekijk alle producten in de shop</h2>
+                <a class="btn btn-default ">SHOP</a>
             </div>
-            <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
-                <div class="box">
-                    <div class="content">
-                        <img src="/img/assets/Model-XS-800x480.png" alt="" style="width: 100%;">
-                        <h4 class="text-center">Auto model</h4>
-                        <a href="{!! route('product.show', [1, SpaceToHyphen('asdad asda')]) !!}" class="btn btn-default">
-                            sad
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
-                <div class="box">
-                    <div class="content">
-                        <img src="/img/assets/Model-XS-800x480.png" alt="" style="width: 100%;">
-                        <h4 class="text-center">Auto model</h4>
-                        <a href="{!! route('product.show', [1, SpaceToHyphen('asdad asda')]) !!}" class="btn btn-default">
-                            sad
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
-                <div class="box">
-                    <div class="content">
-                        <img src="/img/assets/Model-XS-800x480.png" alt="" style="width: 100%;">
-                        <h4 class="text-center">Auto model</h4>
-                        <a href="{!! route('product.show', [1, SpaceToHyphen('asdad asda')]) !!}" class="btn btn-default">
-                            lees meer
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{----}}
-            {{--<div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 content">--}}
-                {{--<img src="/img/assets/Model-L-800x480.png" alt="" style="width: 100%;">--}}
-                {{--<h4 class="text-center">Auto model</h4>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 content">--}}
-                {{--<img src="/img/assets/Model-M-800x480.png" alt="" style="width: 100%;">--}}
-                {{--<h4 class="text-center">Auto model</h4>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 content">--}}
-                {{--<img src="/img/assets/Model-XXL-800x480.png" alt="" style="width: 100%;">--}}
-                {{--<h4 class="text-center">Auto model</h4>--}}
-            {{--</div>--}}
         </div>
     </div>
 
@@ -212,14 +121,49 @@
                 autoplaySpeed: 1000,
                 infinite: true,
                 speed: 300,
-                slidesToShow: 4,
-                slidesToScroll: 4,
+                slidesToShow: 3,
+                slidesToScroll: 3,
                 responsive: [
                     {
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            $('.product-slide').slick({
+                dots: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true,
+                speed: 600,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
                             infinite: true,
                             dots: true
                         }

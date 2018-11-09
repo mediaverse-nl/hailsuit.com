@@ -42,6 +42,42 @@ class ProductTableSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
+        DB::table('product')->insert([
+            'id' => 4,
+            'price' => number_format(random_int(1, 400), 2),
+            'discount' => 0,
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('product')->insert([
+            'id' => 5,
+            'price' => number_format(random_int(1, 400), 2),
+            'discount' => 0,
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('product')->insert([
+            'id' => 6,
+            'price' => number_format(random_int(1, 400), 2),
+            'discount' => 0,
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('product')->insert([
+            'id' => 7,
+            'price' => number_format(random_int(1, 400), 2),
+            'discount' => 0,
+            'stock' => random_int(1, 20),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
         $langs = new AppLanguage;
         $products = new Product;
 
