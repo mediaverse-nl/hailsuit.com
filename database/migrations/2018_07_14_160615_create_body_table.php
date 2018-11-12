@@ -13,12 +13,9 @@ class CreateCarrosserieTable extends Migration
      */
     public function up()
     {
-        Schema::create('carrosserie', function (Blueprint $table) {
+        Schema::create('body', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 60)->unique();
             $table->string('image', 60);
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateCarrosserieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrosserie');
+        Schema::dropIfExists('body');
     }
 }

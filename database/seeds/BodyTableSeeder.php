@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CarrosserieTableSeeder extends Seeder
+class BodyTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,19 +11,19 @@ class CarrosserieTableSeeder extends Seeder
      */
     public function run()
     {
-        $id = DB::table('carrosserie')->insertGetId([
+        $id = DB::table('car_body')->insertGetId([
             'name' => 'Hatchback',
             'image' => ''
         ]);
-        $id = DB::table('carrosserie')->insertGetId([
+        $id = DB::table('car_body')->insertGetId([
             'name' => 'MPV',
             'image' => ''
         ]);
-        $id = DB::table('carrosserie')->insertGetId([
+        $id = DB::table('car_body')->insertGetId([
             'name' => 'Sedan',
             'image' => ''
         ]);
-        $id = DB::table('carrosserie')->insertGetId([
+        $id = DB::table('car_body')->insertGetId([
             'name' => 'Stationwagon',
             'image' => ''
         ]);

@@ -15,10 +15,8 @@ class CreateDetailTable extends Migration
     {
         Schema::create('detail', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('value');
             $table->timestamps();
             $table->softDeletes();
-            $table->unique(['value']);
         });
     }
 

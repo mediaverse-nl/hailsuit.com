@@ -4,15 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SiteContent extends Model
+class Body extends Model
 {
     protected $primaryKey = 'id';
 
-    protected $table = 'site_content';
+    protected $table = 'body';
 
     public $timestamps = false;
 
-    protected $fillable = ['key_name'];
+    protected $fillable = ['image'];
+
+    public function bodyTypes()
+    {
+        return $this->hasMany('App\BodyType');
+    }
 
     public function translation()
     {

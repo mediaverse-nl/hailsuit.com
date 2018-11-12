@@ -19,12 +19,9 @@ class CreateTypeTable extends Migration
             $table->foreign('product_id')->references('id')->on('product');
             $table->unsignedInteger('brand_id')->unsigned();
             $table->foreign('brand_id')->references('id')->on('brand');
-            $table->unsignedInteger('carrosserie_id')->unsigned();
-            $table->foreign('carrosserie_id')->references('id')->on('carrosserie');
             $table->string('model_year');
             $table->string('value');
             $table->timestamps();
-//            $table->unique(['brand_id', 'model_year', 'value']); TODO werkt niet
         });
     }
 

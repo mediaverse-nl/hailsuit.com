@@ -2,7 +2,7 @@
 
 namespace App\Forms;
 
-use App\Carrosserie;
+use App\Body;
 use Kris\LaravelFormBuilder\Form;
 
 class TypeStoreForm extends Form
@@ -11,7 +11,7 @@ class TypeStoreForm extends Form
     {
         $years = range(date('Y') + 1, 1900);
 
-        $carrosserie = Carrosserie::pluck('name', 'id');
+        $carrosserie = Body::pluck('name', 'id');
 
         $this
             ->add('value', 'text', [

@@ -17,7 +17,7 @@ class BrandTableSeeder extends Seeder
             'image' => ''
         ]);
 
-//        \App\Carrosserie::all();
+//        \App\Body::all();
         DB::table('type')->insert([
             ['value' => 'Model X', 'model_year' => '2017', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 1],
             ['value' => 'Model S', 'model_year' => '2017', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 1],

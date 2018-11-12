@@ -17,8 +17,7 @@ class CreatePropertyTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('detail_id')->unsigned();
             $table->foreign('detail_id')->references('id')->on('detail');
-            $table->string('value');
-            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

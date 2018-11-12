@@ -12,7 +12,7 @@ class Property extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['detail_id', 'value'];
+    protected $fillable = ['detail_id'];
 
     public function detail()
     {
