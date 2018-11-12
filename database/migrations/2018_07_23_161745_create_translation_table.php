@@ -17,10 +17,10 @@ class CreateTranslationTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('language_id')->unsigned();
             $table->foreign('language_id')->references('id')->on('app_language');
-            $table->string('key_name');
+            $table->string('commentable_id');
+            $table->string('commentable_type');
             $table->string('text');
             $table->timestamps();
-            $table->unique(['key_name', 'language_id']);
         });
     }
 

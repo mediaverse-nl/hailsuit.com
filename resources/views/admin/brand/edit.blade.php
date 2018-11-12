@@ -16,7 +16,7 @@
 
             <div class="row">
                 @if($brand->types->count() !== 0)
-                    @foreach($brand->types->sortBy('value') as $type)
+                    @foreach($brand->types->sortBy('model_year')->sortBy('value') as $type)
                         <div class="col-3">
                             <div class="card" style="width: 100%;">
                                 <div class="card-body">

@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use App\Http\Traits\LanguageTrait;
 
 class DetailController extends Controller
 {
-    use FormBuilderTrait;
+    use FormBuilderTrait, LanguageTrait;
 
     protected $detail;
     protected $formBuilder;
@@ -53,7 +54,14 @@ class DetailController extends Controller
         $form = $this->form(DetailStoreForm::class);
         $form->redirectIfNotValid();
 
-        $this->detail->create($form->getFieldValues());
+        $detail = $this->detail->create($form->getFieldValues());
+
+        foreach ($this->getLanguage()->get() as $lang){
+            $detail->translation()->create([
+                'text' => $request->value,
+                'language_id' => $lang->id
+            ]);
+        }
 
         return redirect()->back();
     }

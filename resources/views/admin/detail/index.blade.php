@@ -20,7 +20,7 @@
                     @foreach($details as $detail)
                         <tr>
                             <td>{{$detail->id}}</td>
-                            <td>{{$detail->value}}</td>
+                            <td>{{$detail->getTranslation()}}</td>
                             <td>
                                 @component('components.model', [
                                     'id' => 'detailTableBtn'.$detail->id,

@@ -21,6 +21,14 @@ class Translation extends Model
         return $this->belongsTo('App\AppLanguage', 'language_id', 'id');
     }
 
+    /**
+     * Get all of the owning commentable models.
+     */
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
     public function keyNameHasLangs()
     {
         return $this->where('key_name',  '=', $this->key_name)

@@ -19,6 +19,11 @@ class Property extends Model
         return $this->belongsTo('App\Detail', 'detail_id', 'id');
     }
 
+    public function translation()
+    {
+        return $this->morphMany('App\Translation', 'commentable');
+    }
+
     public function productProperty()
     {
         return $this->hasMany('App\ProductProperty', 'property_id', 'id');

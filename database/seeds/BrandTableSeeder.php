@@ -16,11 +16,13 @@ class BrandTableSeeder extends Seeder
             'name' => 'Tesla',
             'image' => ''
         ]);
+
+//        \App\Carrosserie::all();
         DB::table('type')->insert([
-            ['value' => 'Model X', 'model_year' => '2017', 'brand_id' => $id, 'product_id' => 1],
-            ['value' => 'Model S', 'model_year' => '2017', 'brand_id' => $id, 'product_id' => 1],
-            ['value' => 'Model X', 'model_year' => '2018', 'brand_id' => $id, 'product_id' => 1],
-            ['value' => 'Model S', 'model_year' => '2018', 'brand_id' => $id, 'product_id' => 1]
+            ['value' => 'Model X', 'model_year' => '2017', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 1],
+            ['value' => 'Model S', 'model_year' => '2017', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 1],
+            ['value' => 'Model X', 'model_year' => '2018', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 1],
+            ['value' => 'Model S', 'model_year' => '2018', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 1]
         ]);
         //break
 
@@ -35,8 +37,8 @@ class BrandTableSeeder extends Seeder
             'image' => ''
         ]);
         DB::table('type')->insert([
-            ['value' => 'A5', 'model_year' => '2007', 'brand_id' => $id, 'product_id' => 3],
-            ['value' => 'A5', 'model_year' => '2009', 'brand_id' => $id, 'product_id' => 3]
+            ['value' => 'A5', 'model_year' => '2007', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 3],
+            ['value' => 'A5', 'model_year' => '2009', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 3]
         ]);
         //break
 
@@ -51,8 +53,8 @@ class BrandTableSeeder extends Seeder
             'image' => ''
         ]);
         DB::table('type')->insert([
-            ['value' => 'F355', 'model_year' => '1998', 'brand_id' => $id, 'product_id' => 2],
-            ['value' => 'F355', 'model_year' => '1997', 'brand_id' => $id, 'product_id' => 2]
+            ['value' => 'F355', 'model_year' => '1998', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 2],
+            ['value' => 'F355', 'model_year' => '1997', 'brand_id' => $id, 'carrosserie_id' => random_int(1,4), 'product_id' => 2]
         ]);
     }
 }

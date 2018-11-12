@@ -33,8 +33,13 @@ class TypeController extends Controller
     {
         $form = $this->form(TypeStoreForm::class);
         $form->redirectIfNotValid();
+//        $form->getFieldValues()
 
-        $this->type->create($form->getFieldValues());
+        dd($request);
+
+        $this->type->create([
+
+        ]);
 
         return redirect()->back();
     }

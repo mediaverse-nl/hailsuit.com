@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Http\Traits\LanguageTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Detail extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, LanguageTrait;
 
     protected $primaryKey = 'id';
 
@@ -22,5 +23,10 @@ class Detail extends Model
     public function properties()
     {
         return $this->hasMany('App\Property', 'detail_id', 'id');
+    }
+
+    public function translation()
+    {
+        return $this->morphMany('App\Translation', 'commentable');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Forms;
 
+use App\Carrosserie;
 use Kris\LaravelFormBuilder\Form;
 
 class TypeStoreForm extends Form
@@ -10,9 +11,20 @@ class TypeStoreForm extends Form
     {
         $years = range(date('Y') + 1, 1900);
 
+        $carrosserie = Carrosserie::pluck('name', 'id');
+
         $this
             ->add('value', 'text', [
                 'rules' => 'required|min:1|unique:type,value,NULL,NULL,model_year,' . $this->request['model_year'],
+            ])
+            ->add('carrosserie', 'choice', [
+                'choices' => $carrosserie->toArray(),
+                'choice_options' => [
+                    'wrapper' => ['class' => 'choice-wrapper'],
+                    'label_attr' => ['class' => 'label-class'],
+                ],
+                'expanded' => true,
+                'multiple' => true
             ])
             ->add('model_year', 'select', [
                 'choices' => array_combine($years, $years),
