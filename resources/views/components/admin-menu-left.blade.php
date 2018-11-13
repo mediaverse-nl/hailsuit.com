@@ -12,16 +12,22 @@
             <span class="nav-link-text">Details</span>
         </a>
     </li>
+    <li class="nav-item {{Request::is('admin/body*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{route('admin.body.index')}}">
+            <i class="fa fa-fw fa-car"></i>
+            <span class="nav-link-text">Body</span>
+        </a>
+    </li>
     <li class="nav-item {{Request::is('admin/brand*') ? 'active' : ''}}">
         <a class="nav-link" href="{{route('admin.brand.index')}}">
-            <i class="fa fa-fw fa-car"></i>
+            <i class="fa fa-fw fa-th"></i>
             <span class="nav-link-text">Brands</span>
         </a>
     </li>
 
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Components">
         <a class="nav-link nav-link-collapse {{Request::is('admin/product*') ? '' : 'collapsed'}}" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion" aria-expanded="false">
-            <i class="fa fa-fw fa-wrench"></i>
+            <i class="fa fa-fw fa-archive"></i>
             <span class="nav-link-text">Products</span>
         </a>
         <ul class="sidenav-second-level collapse {{Request::is('admin/product*') ? 'show' : ''}}" id="collapseComponents" style="">

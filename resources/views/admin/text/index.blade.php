@@ -9,28 +9,18 @@
         <div class="col-9">
             @component('components.datatable')
                 @slot('head')
-                    <th>key_name</th>
-                    <th>language</th>
+                    <th>key name</th>
+                    <th>translation</th>
+                    {{--<th>language</th>--}}
                     <th class="no-sort"></th>
                 @endslot
 
                 @slot('table')
                     @foreach($texts as $text)
                         <tr>
-                            <td>{{$text->key_name}}</td>
-                            <td>
-                                @if($text->keyNameHasLangs()->count() > 0)
-                                    @foreach($text->keyNameHasLangs() as $i)
-                                        @if($loop->last)
-                                            {!! $i !!}
-                                        @else
-                                            {!! $i !!},
-                                        @endif
-                                    @endforeach
-                                @else
-                                    There are no texts
-                                @endif
-                            </td>
+                            <td>{{$text->commentable->key_name}}</td>
+                            <td>{{$text->commentable->getTranslation()}}</td>
+                            {{--<td>{{$text->commentable_type}}</td>--}}
                             <td>
                                 <a href="{{route('admin.text-editor.edit', $text->id)}}" class="rounded-circle edit">
                                     <i class="fa fa-edit"></i>

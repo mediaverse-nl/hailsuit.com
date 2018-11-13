@@ -14,7 +14,7 @@
 
             <hr>
 
-            <div class="row">
+            <div class="row row-eq-height">
                 @if($brand->types->count() !== 0)
                     @foreach($brand->types->sortBy('model_year')->sortBy('value') as $type)
                         <div class="col-3">
@@ -23,7 +23,9 @@
                                     <h5 class="card-title text-truncate">
                                         {{$type->value}} <br>
                                         {{$type->model_year}} <br>
-                                        {{$type->bodyType}}
+                                        @foreach($type->bodyType as $body)
+                                            <h6 class="badge badge-secondary">{{$body->body->getTranslation()}}</h6>
+                                        @endforeach
                                     </h5>
                                     @component('components.model', [
                                         'id' => 'typeTableBtn'.$type->id,
@@ -74,20 +76,31 @@
             </div>
         </div>
 
-
-
-
-
     </div>
-
-
 
 @endsection
 
 @push('css')
     <style>
+        .badge{
+            margin-bottom: 0px;
+        }
         .list-group-item.active a{
             color: #ffffff !important;
+        }
+        .row-eq-height {
+            display: -webkit-box !important;
+            display: -webkit-flex !important;
+            display: -ms-flexbox !important;
+            display:         flex !important;
+        }
+        [class*="col-"] {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            /*background-color: #eee;*/
+            /*background-color: rgba(86,61,124,.15);*/
+            /*border: 1px solid #ddd;*/
+            /*border: 1px solid rgba(86,61,124,.2);*/
         }
     </style>
 @endpush

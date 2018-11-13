@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AppLanguage;
+use App\Http\Traits\LanguageTrait;
 use App\Translation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TextController extends Controller
 {
+    use LanguageTrait;
+
     protected $text;
     protected $languages;
 
@@ -25,10 +28,17 @@ class TextController extends Controller
      */
     public function index()
     {
-        $text = $this->text->groupBy('key_name')->get();
+        $text = $this->text
+            ->where('commentable_type','=', 'App\SiteContent')
+            ->where('language_id',  '=', $this->getLangId())
+            ->get();
+
+        $languages = $this->languages
+            ->get();
 
         return view('admin.text.index')
-            ->with('texts', $text);
+            ->with('texts', $text)
+            ->with('languages', $languages);
     }
 
     /**

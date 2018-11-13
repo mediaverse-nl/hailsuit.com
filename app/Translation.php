@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Http\Traits\LanguageTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Translation extends Model
 {
+    use LanguageTrait;
+
     protected $primaryKey = 'id';
 
     protected $table = 'translation';
@@ -26,7 +29,7 @@ class Translation extends Model
      */
     public function commentable()
     {
-        return $this->morphTo();
+        return $this->morphTo()->orderBy('text');
     }
 
     public function keyNameHasLangs()

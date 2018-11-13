@@ -35,7 +35,7 @@ class TypeStoreForm extends Form
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'rules' => 'check_array',
+                'rules' => 'present|array',
             ])
             ->add('brand_id', 'hidden', ['value' => $this->getData('brand_id')])
             ->add('submit', 'submit', ['label' => 'add', 'class' => 'card-link btn btn-sm btn-success']);

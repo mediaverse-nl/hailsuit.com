@@ -28,18 +28,17 @@ class AppServiceProvider extends ServiceProvider
             return Socialite::buildProvider('Mollie\Laravel\MollieConnectProvider', $config);
         });
 
-        Validator::extend('check_array', function ($attribute, $value, $parameters, $validator) {
-            return count(
-                array_filter($value, function($var) use ($parameters)
-                {
-                    return ( $var && $var >= $parameters[0]);
-                })
-            );
-        }, 'one must be filled');
-
-        Validator::replacer('check_array', function($message, $attribute, $rule, $parameters){
-            return str_replace(':foo', $parameters[0], $message);
-        });
+//        Validator::extend('check_array', function ($attribute, $value, $parameters, $validator) {
+//
+//
+//
+//            dd($attribute, $value, $parameters, $validator);
+//        }, 'one must be filled');
+//
+//        Validator::replacer('check_array', function($message, $attribute, $rule, $parameters){
+////            return str_replace(':foo', $parameters[0], $message);
+//            return 'select at least one'.$attribute;
+//        });
     }
 
     /**

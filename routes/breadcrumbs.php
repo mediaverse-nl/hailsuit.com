@@ -18,6 +18,16 @@ Breadcrumbs::register('admin.detail.edit', function($breadcrumbs, $model) use ($
     $breadcrumbs->parent('admin.detail.index');
     $breadcrumbs->push($edit_name, route('admin.detail.edit', $model->id));
 });
+// dashboard > detail
+Breadcrumbs::register('admin.body.index', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Body', route('admin.body.index'));
+});
+// dashboard > detail > edit
+Breadcrumbs::register('admin.body.edit', function($breadcrumbs, $model) use ($edit_name) {
+    $breadcrumbs->parent('admin.body.index');
+    $breadcrumbs->push($edit_name, route('admin.body.edit', $model->id));
+});
 
 // dashboard > faq
 Breadcrumbs::register('admin.faq.index', function($breadcrumbs) {

@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Detail;
-use App\Forms\DetailStoreForm;
-use App\Forms\PropertyStoreForm;
+use App\Body;
+use App\Forms\BodyStoreForm;
+use App\Forms\BodyUpdateForm;
+use App\Http\Traits\LanguageTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use App\Http\Traits\LanguageTrait;
 
-class DetailController extends Controller
+class BodyController extends Controller
 {
     use FormBuilderTrait, LanguageTrait;
 
-    protected $detail;
+    protected $body;
     protected $formBuilder;
 
-    public function __construct(Detail $detail, FormBuilder $formBuilder)
+    public function __construct(Body $body, FormBuilder $formBuilder)
     {
         $this->formBuilder = $formBuilder;
-        $this->detail = $detail;
+        $this->body = $body;
     }
 
     /**
@@ -31,15 +31,15 @@ class DetailController extends Controller
      */
     public function index()
     {
-        $form = $this->formBuilder->create(DetailStoreForm::class, [
+        $form = $this->formBuilder->create(BodyStoreForm::class, [
             'method' => 'POST',
-            'url' => route('admin.detail.store')
+            'url' => route('admin.body.store')
         ]);
 
-        $details = $this->detail->get();
+        $bodies = $this->body->get();
 
-        return view('admin.detail.index')
-            ->with('details', $details)
+        return view('admin.body.index')
+            ->with('bodies', $bodies)
             ->with('form', $form);
     }
 
@@ -51,14 +51,21 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        $form = $this->form(DetailStoreForm::class);
+        $form = $this->form(BodyStoreForm::class);
         $form->redirectIfNotValid();
 
-        $detail = $this->detail->create([
-            'id' => null
+//        dd($request->value);
+        $newBody = $this->body->create([
+            'image' => null
         ]);
 
-        $this->insertTranslation($detail, $request->value);
+//        foreach ($this->getLanguage()->get() as $lang){
+//            $newBody->translation()->create([
+//                'text' => $request->value,
+//                'language_id' => $lang->id
+//            ]);
+//        }
+//        $newBody->insertTranslation($newBody, $request->value);
 
         return redirect()->back();
     }
@@ -71,17 +78,18 @@ class DetailController extends Controller
      */
     public function edit($id)
     {
-        $detail = $this->detail->findOrFail($id);
-        $details = $this->detail->get();
+        $body = $this->body->findOrFail($id);
+        $bodies = $this->body
+            ->get();
 
-        $form = $this->formBuilder->create(PropertyStoreForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.property.store')
-        ], ['detail_id' => $id]);
+        $form = $this->formBuilder->create(BodyUpdateForm::class, [
+            'method' => 'PATCH',
+            'url' => route('admin.body.update', $body->id)
+        ]);
 
-        return view('admin.detail.edit')
-            ->with('detail', $detail)
-            ->with('details', $details)
+        return view('admin.body.edit')
+            ->with('body', $body)
+            ->with('bodies', $bodies)
             ->with('form', $form);
     }
 
@@ -105,10 +113,6 @@ class DetailController extends Controller
      */
     public function destroy($id)
     {
-        $detail = $this->detail->findOrFail($id);
-
-        $detail->delete();
-
-        return redirect()->back();
+        //
     }
 }

@@ -1,31 +1,32 @@
 @extends('layouts.admin')
 
 @section('breadcrumb')
-    {!! Breadcrumbs::render('admin.detail.index') !!}
+    {!! Breadcrumbs::render('admin.body.index') !!}
 @endsection
 
 @section('content')
 
+    <!-- DataTables Example -->
+
     <div class="row">
         <div class="col-9">
-
             @component('components.datatable')
                 @slot('head')
                     <th>id</th>
-                    <th>detail</th>
+                    <th>body type</th>
                     <th class="no-sort"></th>
                 @endslot
 
                 @slot('table')
-                    @foreach($details as $detail)
+                    @foreach($bodies as $body)
                         <tr>
-                            <td>{{$detail->id}}</td>
-                            {{--<td>{{$detail->getTranslation()}}</td>--}}
+                            <td>{{$body->id}}</td>
+                            {{--<td>{{$body->getTranslation()}}</td>--}}
                             <td>
                                 @component('components.model', [
-                                    'id' => 'detailTableBtn'.$detail->id,
+                                    'id' => 'bodyTableBtn'.$body->id,
                                     'title' => 'Delete',
-                                    'actionRoute' => route('admin.detail.edit', $detail->id),
+                                    'actionRoute' => route('admin.brand.edit', $body->id),
                                     'btnClass' => 'rounded-circle delete',
                                     'btnIcon' => 'fa fa-trash'
                                 ])
@@ -33,9 +34,9 @@
                                         If u proceed u will delete all relations
                                     @endslot
                                 @endcomponent
-                                <a href="{{route('admin.detail.edit', $detail->id)}}" class="rounded-circle edit">
-                                    <i class="fa fa-edit"></i>
-                                </a>
+                                {{--<a href="{{route('admin.body.edit', $body->id)}}" class="rounded-circle edit">--}}
+                                    {{--<i class="fa fa-edit"></i>--}}
+                                {{--</a>--}}
                             </td>
                         </tr>
                     @endforeach
@@ -48,8 +49,9 @@
         <div class="col-3">
             <div class="card">
                 <div class="card-header">
-                    add new <b>detail</b>
+                    add new <b>body type</b>
                 </div>
+
                 <div class="card-body">
                     {!! form($form) !!}
                 </div>
@@ -59,14 +61,14 @@
 
 @endsection
 
-@push('scripts')
-<script>
+@push('css')
+    <style>
 
-</script>
+    </style>
 @endpush
 
-@push('css')
-<style>
+@push('js')
+    <script>
 
-</style>
+    </script>
 @endpush
