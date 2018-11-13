@@ -53,7 +53,7 @@ class BrandController extends Controller
         $form = $this->form(BrandStoreForm::class);
         $form->redirectIfNotValid();
 
-        dd($request);
+//        dd($request);
 
         $this->brand->create($form->getFieldValues());
 
@@ -69,7 +69,9 @@ class BrandController extends Controller
     public function edit($id)
     {
         $brand = $this->brand->findOrFail($id);
-        $brands = $this->brand->orderBy('name', 'asc')->get();
+        $brands = $this->brand
+            ->orderBy('name', 'asc')
+            ->get();
 
         $form = $this->formBuilder->create(TypeStoreForm::class, [
             'method' => 'POST',

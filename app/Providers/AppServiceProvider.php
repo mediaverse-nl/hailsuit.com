@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 use Hashids\Hashids;
+use Illuminate\Support\Facades\Validator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,19 @@ class AppServiceProvider extends ServiceProvider
             $config = $app['config']['services.mollie'];
 
             return Socialite::buildProvider('Mollie\Laravel\MollieConnectProvider', $config);
+        });
+
+        Validator::extend('check_array', function ($attribute, $value, $parameters, $validator) {
+            return count(
+                array_filter($value, function($var) use ($parameters)
+                {
+                    return ( $var && $var >= $parameters[0]);
+                })
+            );
+        }, 'one must be filled');
+
+        Validator::replacer('check_array', function($message, $attribute, $rule, $parameters){
+            return str_replace(':foo', $parameters[0], $message);
         });
     }
 

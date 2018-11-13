@@ -53,4 +53,14 @@ trait LanguageTrait
         return $this->language()
             ->getLangFromCode($appLanguage)->id;
     }
+
+    public function insertTranslation($model, $value)
+    {
+        foreach ($this->getLanguage()->get() as $lang){
+            $model->translation()->create([
+                'text' => $value,
+                'language_id' => $lang->id
+            ]);
+        }
+    }
 }

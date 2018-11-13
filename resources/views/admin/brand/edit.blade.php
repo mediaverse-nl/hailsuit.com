@@ -20,7 +20,11 @@
                         <div class="col-3">
                             <div class="card" style="width: 100%;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-truncate">{{$type->value}} <br> {{$type->model_year}}</h5>
+                                    <h5 class="card-title text-truncate">
+                                        {{$type->value}} <br>
+                                        {{$type->model_year}} <br>
+                                        {{$type->bodyType}}
+                                    </h5>
                                     @component('components.model', [
                                         'id' => 'typeTableBtn'.$type->id,
                                         'title' => 'Delete',

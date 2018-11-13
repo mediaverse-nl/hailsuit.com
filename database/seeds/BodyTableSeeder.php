@@ -11,21 +11,19 @@ class BodyTableSeeder extends Seeder
      */
     public function run()
     {
-        $id = DB::table('car_body')->insertGetId([
-            'name' => 'Hatchback',
-            'image' => ''
-        ]);
-        $id = DB::table('car_body')->insertGetId([
-            'name' => 'MPV',
-            'image' => ''
-        ]);
-        $id = DB::table('car_body')->insertGetId([
-            'name' => 'Sedan',
-            'image' => ''
-        ]);
-        $id = DB::table('car_body')->insertGetId([
-            'name' => 'Stationwagon',
-            'image' => ''
-        ]);
+        $body = new \App\Body();
+
+        $bodies = ['Hatchback', 'MPV', 'Sedan', 'Stationwagon'];
+
+        foreach ($bodies as $b)
+        {
+            $newBody = $body->create([
+                'image' => '',
+            ]);
+
+            $this->command->comment($newBody);
+
+            $body->insertTranslation($newBody, $b);
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Forms\TypeStoreForm;
+use App\Http\Traits\LanguageTrait;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,7 @@ use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class TypeController extends Controller
 {
-    use FormBuilderTrait;
+    use FormBuilderTrait, LanguageTrait;
 
     protected $type;
     protected $formBuilder;
@@ -33,13 +34,18 @@ class TypeController extends Controller
     {
         $form = $this->form(TypeStoreForm::class);
         $form->redirectIfNotValid();
-//        $form->getFieldValues()
 
-        dd($request);
-
-        $this->type->create([
-
+        $type = $this->type->create([
+            'model_year' => $request->model_year,
+            'brand_id' => $request->brand_id,
+            'value' => $request->value,
         ]);
+
+        foreach ($request->body as $i){
+             $type->bodyType()->create([
+                 'body_id' => $i
+             ]);
+        }
 
         return redirect()->back();
     }

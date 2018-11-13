@@ -11,25 +11,31 @@ class TypeStoreForm extends Form
     {
         $years = range(date('Y') + 1, 1900);
 
-        $carrosserie = Body::pluck('name', 'id');
+        $body = Body::all();
+        $translation = [];
+
+        foreach ($body as $b) {
+            $translation[$b->id] = $b->getTranslation();
+        }
 
         $this
             ->add('value', 'text', [
                 'rules' => 'required|min:1|unique:type,value,NULL,NULL,model_year,' . $this->request['model_year'],
             ])
-            ->add('carrosserie', 'choice', [
-                'choices' => $carrosserie->toArray(),
+            ->add('model_year', 'select', [
+                'choices' => array_combine($years, $years),
+                'rules' => 'required|min:1|unique:type,model_year,NULL,NULL,value,' . $this->request['value'],
+            ])
+            ->add('body', 'choice', [
+                'choices' => $translation,
+                'attr' => ['class' => ''],
                 'choice_options' => [
                     'wrapper' => ['class' => 'choice-wrapper'],
                     'label_attr' => ['class' => 'label-class'],
                 ],
                 'expanded' => true,
-                'multiple' => true
-            ])
-            ->add('model_year', 'select', [
-                'choices' => array_combine($years, $years),
-//                'empty_value' => '=== Select language ===',
-                'rules' => 'required|min:1|unique:type,model_year,NULL,NULL,value,' . $this->request['value'],
+                'multiple' => true,
+                'rules' => 'check_array',
             ])
             ->add('brand_id', 'hidden', ['value' => $this->getData('brand_id')])
             ->add('submit', 'submit', ['label' => 'add', 'class' => 'card-link btn btn-sm btn-success']);

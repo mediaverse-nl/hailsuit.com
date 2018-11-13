@@ -10,7 +10,7 @@
 
         <div class="col">
 
-            <h2>{{$detail->value}}</h2>
+            <h2>{{$detail->getTranslation()}}</h2>
 
             <hr>
 
@@ -21,8 +21,9 @@
                         <div class="col-3">
                             <div class="card" style="width: 100%; margin-bottom: 20px;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-truncate">{{$property->value}}</h5>
-
+                                    <h5 class="card-title text-truncate">
+                                        {{$property->getTranslation()}}
+                                    </h5>
                                     @component('components.model', [
                                         'id' => 'propertyTableBtn'.$property->id,
                                         'title' => 'Delete',
@@ -49,7 +50,7 @@
         <div class="col-3">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    add nieuw <b>{{$detail->value}}</b>
+                    add nieuw <b>{{$detail->getTranslation()}}</b>
                 </div>
                 <div class="card-body">
                     {!! form($form) !!}
@@ -64,7 +65,7 @@
                 <ul class="list-group list-group-flush">
                     @foreach($details as $d)
                         <li class="list-group-item {{$detail->id == $d->id ? 'active' : ''}}">
-                            <a href="{{route('admin.detail.edit', $d->id)}}">{{$d->value}}</a>
+                            <a href="{{route('admin.detail.edit', $d->id)}}">{{$d->getTranslation()}}</a>
                         </li>
                     @endforeach
                 </ul>

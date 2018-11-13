@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Http\Traits\LanguageTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Body extends Model
 {
+    use LanguageTrait;
+
     protected $primaryKey = 'id';
 
     protected $table = 'body';

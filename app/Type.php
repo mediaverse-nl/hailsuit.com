@@ -19,6 +19,11 @@ class Type extends Model
         return $this->belongsTo('App\Product', 'product_id', 'id');
     }
 
+    public function bodyType()
+    {
+        return $this->hasMany('App\BodyType', 'type_id', 'id');
+    }
+
     public function brand()
     {
         return $this->belongsTo('App\Brand');

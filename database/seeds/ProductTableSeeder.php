@@ -86,12 +86,14 @@ class ProductTableSeeder extends Seeder
         foreach ($products->get() as $product){
 
             foreach ($langs->get() as $lang){
+                $this->command->comment("Users table seeded :)");
+                $this->command->comment($product);
 
                 $products->productTranslation()->insert([
                    'product_id' => $product->id,
                    'language_id' => $lang->id,
-                   'name' => $faker->realText(20, 3),
-                   'description' => $faker->sentences(10, true),
+                   'name' => $lang->country_code_short.' - '. $faker->realText(20, 3),
+                   'description' =>  $lang->country_code_short.' - '.$faker->sentences(10, true),
                 ]);
             }
 
@@ -101,7 +103,7 @@ class ProductTableSeeder extends Seeder
                     'value' =>  $faker->randomNumber(8),
                 ]);
             }
-
+//
             $collection = array_rand([1, 2, 3,4,5,6,7,8,9,10], random_int(1, 3));
 
             if (!in_array(0, collect($collection)->toArray()))
