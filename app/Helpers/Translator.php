@@ -8,31 +8,29 @@ if (!function_exists('Translator')) {
      * @param
      * @return
      */
-    function Translator($key, $textEditor = false)
+    function Translator($key, $textEditor = false, $value = false)
     {
-        $lang = Lang::locale();
-        $langs = new \App\AppLanguage();
-        $translation = new \App\Translation();
+        $siteContent = new \App\SiteContent();
 
-        $currentLang = $langs->getLangFromCode($lang);
+        $trans = $siteContent
+            ->where('key_name',  '=', $key);
 
-        foreach($currentLang->get() as $lg){
-            $trans = $translation
-                ->where('key_name',  '=', $key)
-                ->where('language_id', '=', $lg->id);
+        if ($trans->count() === 0){
+            $newInstance = $siteContent->create([
+                'key_name' => $key,
+            ]);
 
-            if ($trans->count() === 0){
-                $translation->insert([
-                    'key_name' => $key,
-                    'language_id' => $lg->id,
-                    'text' => '',
-                ]);
+            if ($value){
+                $siteContent->insertTranslation($newInstance, $value);
+            }else{
+                $siteContent->insertTranslation($newInstance, ' ');
             }
         }
 
-        $text = $translation->where('language_id', '=', $currentLang->id)
+        $text = $siteContent
             ->where('key_name', '=', $key)
-            ->first()->text;
+            ->first()
+            ->getTranslation();
 
         if ($textEditor){
             return view('components.text-editor')

@@ -40,6 +40,7 @@ class ProductController extends Controller
     {
         $product = $this->product->findOrFail($id);
 
+        //        todo fix this error cant load product because stays redirecting page
         if ($product->titleTranslated() !== str_replace('-', ' ', $title)){
             return redirect()
                 ->route('product.show', [

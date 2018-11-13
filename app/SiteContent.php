@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Http\Traits\LanguageTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class SiteContent extends Model
 {
+    use LanguageTrait;
+
     protected $primaryKey = 'id';
 
     protected $table = 'site_content';
