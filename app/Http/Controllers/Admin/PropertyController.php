@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Forms\PropertyStoreForm;
+use App\Http\Traits\LanguageTrait;
 use App\Property;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +12,7 @@ use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class PropertyController extends Controller
 {
-    use FormBuilderTrait;
+    use FormBuilderTrait, LanguageTrait;
 
     protected $property;
     protected $formBuilder;
@@ -33,7 +34,11 @@ class PropertyController extends Controller
         $form = $this->form(PropertyStoreForm::class);
         $form->redirectIfNotValid();
 
-        $this->property->create($form->getFieldValues());
+        $newProperty = $this->property->create([
+            'detail_id' => $request->detail_id
+        ]);
+
+        $this->insertTranslation($newProperty, $request->value);
 
         return redirect()->back();
     }

@@ -21,22 +21,25 @@
                     @foreach($bodies as $body)
                         <tr>
                             <td>{{$body->id}}</td>
-                            {{--<td>{{$body->getTranslation()}}</td>--}}
+                            <td>{{$body->getTranslation()}}</td>
                             <td>
-                                @component('components.model', [
-                                    'id' => 'bodyTableBtn'.$body->id,
-                                    'title' => 'Delete',
-                                    'actionRoute' => route('admin.brand.edit', $body->id),
-                                    'btnClass' => 'rounded-circle delete',
-                                    'btnIcon' => 'fa fa-trash'
-                                ])
-                                    @slot('description')
-                                        If u proceed u will delete all relations
-                                    @endslot
-                                @endcomponent
-                                {{--<a href="{{route('admin.body.edit', $body->id)}}" class="rounded-circle edit">--}}
-                                    {{--<i class="fa fa-edit"></i>--}}
-                                {{--</a>--}}
+                                @if($body->bodyTypes->count() == 0)
+                                    @component('components.model', [
+                                        'id' => 'bodyTableBtn'.$body->id,
+                                        'title' => 'Delete',
+                                        'actionRoute' => route('admin.brand.edit', $body->id),
+                                        'btnClass' => 'rounded-circle delete',
+                                        'btnIcon' => 'fa fa-trash'
+                                    ])
+                                        @slot('description')
+                                            If u proceed u will delete all relations
+                                        @endslot
+                                    @endcomponent
+                                @else
+                                    <a class="rounded-circle delete disabled" style="background: #9b374b; ">
+                                        <i class="fa fa-times-circle" style="color: #FFFFFF !important;"></i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

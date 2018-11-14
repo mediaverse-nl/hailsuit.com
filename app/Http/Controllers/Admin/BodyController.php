@@ -54,18 +54,11 @@ class BodyController extends Controller
         $form = $this->form(BodyStoreForm::class);
         $form->redirectIfNotValid();
 
-//        dd($request->value);
         $newBody = $this->body->create([
-            'image' => null
+            'image' => ''
         ]);
 
-//        foreach ($this->getLanguage()->get() as $lang){
-//            $newBody->translation()->create([
-//                'text' => $request->value,
-//                'language_id' => $lang->id
-//            ]);
-//        }
-//        $newBody->insertTranslation($newBody, $request->value);
+        $this->insertTranslation($newBody, $request->value);
 
         return redirect()->back();
     }

@@ -19,7 +19,7 @@ class Body extends Model
 
     public function bodyTypes()
     {
-        return $this->hasMany('App\BodyType');
+        return $this->hasMany('App\BodyType', 'body_id', 'id');
     }
 
     public function translation()
