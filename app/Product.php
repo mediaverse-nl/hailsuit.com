@@ -88,7 +88,14 @@ class Product extends Model
 
         foreach ($details as $detail)
         {
-            $property = $detail->property()->where('detail_id', '=', $detail_id);
+            $property = $detail->property()
+                ->where('detail_id', '=', $detail_id);
+//                ->with('translation')
+//                ->whereHas('translation', function($query)  {
+//                    $query->where('language_id', '=', 5);
+//                });
+//
+//            dd($property)
 
             if($property->count() > 0){
                 return $property->first()->id;

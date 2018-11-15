@@ -77,7 +77,7 @@
                 <br>
                 <a class="btn btn-default center-block" style="width: 130px;">Lees meer</a>
                 <br>
-                <img src="https://via.placeholder.com/200x120" alt="" class="center-block" style="width: 80%;">
+                <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width: 80%;">
             </div>
         </div>
     </div>

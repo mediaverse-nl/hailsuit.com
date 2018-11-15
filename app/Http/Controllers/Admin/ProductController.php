@@ -202,6 +202,12 @@ class ProductController extends Controller
                 ->orWhere('product_id', '=', $id);
         })->get();
 
+        $this->detail
+            ->with('translation')
+            ->whereHas('translation', function($query) {
+                $query->where('translation.language_id', '=', '5')->first();
+            })->first();
+
         return view('admin.product.edit')
             ->with('product', $product)
             ->with('details', $details)

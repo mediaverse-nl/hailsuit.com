@@ -63,4 +63,11 @@ trait LanguageTrait
             ]);
         }
     }
+
+    //returns one string entry
+    public function translated($model)
+    {
+        return $model->where('language_id', '=', $this->getLangId())
+            ->first();
+    }
 }

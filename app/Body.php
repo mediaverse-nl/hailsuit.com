@@ -26,4 +26,6 @@ class Body extends Model
     {
         return $this->morphMany('App\Translation', 'commentable');
     }
+
+
 }

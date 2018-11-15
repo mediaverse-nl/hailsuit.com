@@ -53,8 +53,6 @@ class BrandController extends Controller
         $form = $this->form(BrandStoreForm::class);
         $form->redirectIfNotValid();
 
-//        dd($request);
-
         $this->brand->create($form->getFieldValues());
 
         return redirect()->back();
