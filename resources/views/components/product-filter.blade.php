@@ -58,6 +58,9 @@
 @push('js')
     <script>
         filter();
+        $('#types').prop('disabled', true);
+        $('#years').prop('disabled', true);
+        $('#bodies').prop('disabled', true);
         $(document).on("change", '.filter', function(e) {
             var $SelectedBrand = $("#brands").val();
             var $SelectedType = $("#types").val();
@@ -74,6 +77,10 @@
             emptySelect($el);
             appendSelect($array, $el);
             setSelectedValue($el, $selected);
+            // console.log($selected);
+            // if ($el.selector != '#brands') {
+            //     $el.prop('disabled', true);
+            // }
         }
         function setSelectedValue($el, $value) {
             if ($value){
@@ -85,6 +92,7 @@
                 $el.append($("<option></option>")
                     .attr("value", value).text(key));
             });
+
         }
         function filter($SelectedBrand, $SelectedType, $SelectedYears, $SelectedBody) {
             var url = '';
@@ -105,6 +113,7 @@
                 url: '{!! env('APP_URL') !!}/api/filter'+url,
                 dataType: 'json',
                 success: function(json) {
+                    console.log(json);
                     if(!$SelectedBody){
 
                         var $brands = json.brands;
@@ -121,20 +130,23 @@
                             emptySelect($type);
                             emptySelect($year);
                             emptySelect($body);
+                            $type.prop('disabled', false);
                         });
 
                         initSelectOption($type, $types, $SelectedType);
                         $($type).change(function(){
                             emptySelect($year);
                             emptySelect($body);
+                            $year.prop('disabled', false);
                         });
 
                         initSelectOption($year, $years, $SelectedYears);
                         $($year).change(function(){
                             emptySelect($body);
+                            $body.prop('disabled', false);
                         });
 
-                        initSelectOption($body, $bodies, $SelectedBody,);
+                        initSelectOption($body, $bodies, $SelectedBody);
                     }
                     if(json.url){
                         window.location.replace(json.url);

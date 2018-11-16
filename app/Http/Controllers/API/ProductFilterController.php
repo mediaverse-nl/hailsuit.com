@@ -76,10 +76,10 @@ class ProductFilterController extends Controller
                             ]);
                         }
 
-                        return response()->json([
-                            'message' => 'none',
-                            'status' => false
-                        ]);
+//                        return response()->json([
+//                            'message' => 'none',
+//                            'status' => false
+//                        ]);
                     }
 
                 }
