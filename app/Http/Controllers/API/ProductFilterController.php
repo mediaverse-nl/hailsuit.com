@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Body;
 use App\Brand;
 use App\Type;
 use Illuminate\Http\Request;
@@ -15,18 +16,19 @@ class ProductFilterController extends Controller
 
     protected $types;
 
-    public function __construct(Brand $brands, Type $types)
+    public function __construct(Brand $brands, Type $types, Body $body)
     {
         $this->brands = $brands;
         $this->types = $types;
+        $this->bodies = $body;
     }
 
-    public function filter($brand_id = null, $type = null, $year = null)
+    public function filter($brand_id = null, $type = null, $year = null, $body = null)
     {
+        $brands = $this->brands->get(['id', 'name']);
         $types = null;
         $years = null;
-
-        $brands = $this->brands->get(['id', 'name']);
+        $bodies = null;
 
         if ($brand_id){
 
@@ -49,23 +51,37 @@ class ProductFilterController extends Controller
 
                 if ($year){
 
-                    $selectedType = $this->types
+                    $types = $this->types
                         ->where('brand_id', '=', $brand_id)
                         ->where('model_year', '=', $year)
                         ->where('value', 'like', "%".$type.'%')
                         ->first();
 
-                    if ($selectedType != null){
+                    $types = $types->pluck('model_year', 'model_year');
+
+                    if ($types){
+
+                        $bodies = $this->types
+                            ->where('brand_id', '=', $brand_id)
+                            ->where('model_year', '=', $year)
+                            ->where('value', 'like', "%".$type.'%')
+                            ->first()->bodyType();
+
+                        $selectedBody = null;
+
+                        if ($selectedBody != null){
+                            return response()->json([
+                                'url' => route('product.show', $selectedBody->product()->first()->id),
+                                'status' => true
+                            ]);
+                        }
+
                         return response()->json([
-                            'url' => route('product.show', $selectedType->product()->first()->id),
-                            'status' => true
+                            'message' => 'none',
+                            'status' => false
                         ]);
                     }
 
-                    return response()->json([
-                        'message' => 'none',
-                        'status' => false
-                    ]);
                 }
             }
         }
@@ -74,6 +90,7 @@ class ProductFilterController extends Controller
             'brands' => $brands->pluck('name', 'id'),
             'types' => $types,
             'years' => $years,
+            'bodies' => $bodies,
             'status' => true
         ]);
     }

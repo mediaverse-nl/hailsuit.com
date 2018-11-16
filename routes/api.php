@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('filter/{brand?}/{type?}/{years?}', 'API\ProductFilterController@filter');
+Route::get('filter/{brand?}/{type?}/{years?}/{body?}', 'API\ProductFilterController@filter');
 //Route::get('types/', 'API/ProductFilterController@types');
 //Route::get('years', 'API/ProductFilterController@years');
 
