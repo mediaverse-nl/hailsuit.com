@@ -15,7 +15,7 @@
                                     <div class="form-group">
                                         <b>Merk</b>
                                         <select class="form-control filter" id="brands">
-                                            <option>Please Select</option>
+                                            <option>--- select ---</option>
                                         </select>
                                     </div>
                                 </div>
@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <b>Type</b>
                                         <select class="form-control filter" id="types">
-                                            <option>Please Select</option>
+                                            <option>--- select ---</option>
                                         </select>
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <b>Jaar</b>
                                         <select class="form-control filter" id="years">
-                                            <option>Please Select</option>
+                                            <option>--- select ---</option>
                                         </select>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <b>Body</b>
                                         <select class="form-control filter" id="bodies">
-                                            <option>Please Select</option>
+                                            <option>--- select ---</option>
                                         </select>
                                     </div>
                                 </div>
@@ -47,7 +47,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -61,6 +60,7 @@
         $('#types').prop('disabled', true);
         $('#years').prop('disabled', true);
         $('#bodies').prop('disabled', true);
+
         $(document).on("change", '.filter', function(e) {
             var $SelectedBrand = $("#brands").val();
             var $SelectedType = $("#types").val();
@@ -68,32 +68,46 @@
             var $SelectedBody = $("#bodies").val();
             filter($SelectedBrand, $SelectedType, $SelectedYears, $SelectedBody);
         });
+
         function emptySelect($el) {
-            $el.empty(); // remove old options
-            $el.append($("<option></option>")
-                .attr("value", '').text('Please Select'));
+            $el.html($("<option></option>")
+                .attr("value", '').text('--- select ---'));
         }
+
+        function unblockInput($el) {
+            $el.prop('disabled', false);
+        }
+
+        function blockInput($el) {
+            $el.prop('disabled', true);
+        }
+
         function initSelectOption($el, $array, $selected) {
             emptySelect($el);
             appendSelect($array, $el);
             setSelectedValue($el, $selected);
-            // console.log($selected);
-            // if ($el.selector != '#brands') {
-            //     $el.prop('disabled', true);
-            // }
         }
+
         function setSelectedValue($el, $value) {
             if ($value){
                 $el.val($value).attr('selected','selected');
+            }else {
+                if ($el.selector == '#brands'){
+                    unblockInput($el);
+                    if ($("#brands").val() == ''){
+                        blockInput($("#types"));
+                    }
+                }
             }
         }
+
         function appendSelect($array, $el) {
             $.each($array, function(value, key) {
                 $el.append($("<option></option>")
                     .attr("value", value).text(key));
             });
-
         }
+
         function filter($SelectedBrand, $SelectedType, $SelectedYears, $SelectedBody) {
             var url = '';
             if ($SelectedBrand){
@@ -113,7 +127,6 @@
                 url: '{!! env('APP_URL') !!}/api/filter'+url,
                 dataType: 'json',
                 success: function(json) {
-                    console.log(json);
                     if(!$SelectedBody){
 
                         var $brands = json.brands;
@@ -130,20 +143,23 @@
                             emptySelect($type);
                             emptySelect($year);
                             emptySelect($body);
-                            $type.prop('disabled', false);
+                            unblockInput($type);
+                            blockInput($year);
+                            blockInput($body);
                         });
 
                         initSelectOption($type, $types, $SelectedType);
                         $($type).change(function(){
                             emptySelect($year);
                             emptySelect($body);
-                            $year.prop('disabled', false);
+                            unblockInput($year);
+                            blockInput($body);
                         });
 
                         initSelectOption($year, $years, $SelectedYears);
                         $($year).change(function(){
                             emptySelect($body);
-                            $body.prop('disabled', false);
+                            unblockInput($body);
                         });
 
                         initSelectOption($body, $bodies, $SelectedBody);

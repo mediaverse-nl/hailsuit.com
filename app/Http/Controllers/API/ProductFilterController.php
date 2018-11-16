@@ -52,6 +52,9 @@ class ProductFilterController extends Controller
                 if ($year){
 
                     $types = $this->types
+                        ->whereHas('partecipants', function ($query) {
+                            $query->where('IDUser', '=', 1);
+                        })
                         ->where('brand_id', '=', $brand_id)
                         ->where('model_year', '=', $year)
                         ->where('value', 'like', "%".$type.'%')
