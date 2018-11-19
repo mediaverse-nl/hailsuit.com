@@ -23,78 +23,119 @@ class ProductFilterController extends Controller
         $this->bodies = $body;
     }
 
-    public function filter($brand_id = null, $type = null, $year = null, $body = null)
+    public function filter($brand_id = null, $type = null, $year = null, $body_id = null)
     {
         $brands = $this->brands->get(['id', 'name']);
         $types = null;
         $years = null;
         $bodies = null;
 
-        if ($brand_id){
-
+        if ($brand_id)
+        {
             $types = $this->types
                 ->where('brand_id', '=', $brand_id)
                 ->groupBy('value')
-                ->get();
+                ->get(['value']);
 
-            $types = $types->pluck('value', 'value');
-
-            if ($type){
-
+            if ($type)
+            {
                 $years = $this->types
                     ->where('brand_id', '=', $brand_id)
                     ->where('value', 'like', "%".$type.'%')
                     ->groupBy('model_year')
-                    ->get();
+                    ->get(['model_year']);
 
-                $years = $years->pluck('model_year', 'model_year');
+                if ($year)
+                {
 
-                if ($year){
-
-                    $types = $this->types
-                        ->whereHas('partecipants', function ($query) {
-                            $query->where('IDUser', '=', 1);
-                        })
-                        ->where('brand_id', '=', $brand_id)
-                        ->where('model_year', '=', $year)
-                        ->where('value', 'like', "%".$type.'%')
-                        ->first();
-
-                    $types = $types->pluck('model_year', 'model_year');
-
-                    if ($types){
-
-                        $bodies = $this->types
-                            ->where('brand_id', '=', $brand_id)
-                            ->where('model_year', '=', $year)
-                            ->where('value', 'like', "%".$type.'%')
-                            ->first()->bodyType();
-
-                        $selectedBody = null;
-
-                        if ($selectedBody != null){
-                            return response()->json([
-                                'url' => route('product.show', $selectedBody->product()->first()->id),
-                                'status' => true
-                            ]);
-                        }
-
-//                        return response()->json([
-//                            'message' => 'none',
-//                            'status' => false
-//                        ]);
-                    }
+//                    ->where('model_year', '=', $year)
 
                 }
             }
         }
 
         return response()->json([
-            'brands' => $brands->pluck('name', 'id'),
+            'brands' => $brands,
             'types' => $types,
             'years' => $years,
             'bodies' => $bodies,
             'status' => true
         ]);
+
+
+
+
+
+//        $brands = $this->brands->get(['id', 'name']);
+//        $types = null;
+//        $years = null;
+//        $bodies = null;
+//
+//        if ($brand_id){
+//
+//            $types = $this->types
+//                ->where('brand_id', '=', $brand_id)
+//                ->groupBy('value')
+//                ->get();
+//
+//            $types = $types->pluck('value', 'value');
+//
+//            if ($type){
+//
+//                $years = $this->types
+//                    ->where('brand_id', '=', $brand_id)
+//                    ->where('value', 'like', "%".$type.'%')
+//                    ->groupBy('model_year')
+//                    ->get();
+//
+//                $years = $years->pluck('model_year', 'model_year');
+//
+//                if ($year){
+//
+//                    $types = $this->types
+//                        ->whereHas('partecipants', function ($query) {
+//                            $query->where('IDUser', '=', 1);
+//                        })
+//                        ->where('brand_id', '=', $brand_id)
+//                        ->where('model_year', '=', $year)
+//                        ->where('value', 'like', "%".$type.'%')
+//                        ->first();
+//
+//                    $types = $types->pluck('model_year', 'model_year');
+//
+//                    if ($types){
+//
+//                        $bodies = $this->types
+//                            ->where('brand_id', '=', $brand_id)
+//                            ->where('model_year', '=', $year)
+//                            ->where('value', 'like', "%".$type.'%')
+//                            ->first()->bodyType();
+//
+//                        $selectedBody = null;
+//
+//                        if ($selectedBody != null){
+//                            return response()->json([
+//                                'url' => route('product.show', $selectedBody->product()->first()->id),
+//                                'status' => true
+//                            ]);
+//                        }
+//
+////                        return response()->json([
+////                            'message' => 'none',
+////                            'status' => false
+////                        ]);
+//                    }
+//
+//                }
+//            }
+//        }
+
+//        return response()->json([
+//            'brands' => $brands->pluck('name', 'id'),
+//            'types' => $types,
+//            'years' => $years,
+//            'bodies' => $bodies,
+//            'status' => true
+//        ]);
     }
 }
