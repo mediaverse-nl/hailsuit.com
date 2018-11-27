@@ -64,19 +64,19 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{!! route('home') !!}" class="btn btn-danger">continue shopping</a>
+                                <a href="{!! route('home') !!}" class="btn btn-default">continue shopping</a>
                             </div>
                             <div class="col-md-6">
                                 @if(Cart::total() != 0)
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy']]) !!}
-                                    <button type="submit" class="btn btn-danger pull-right">
+                                    <button type="submit" class="btn btn-default pull-right">
                                         clear cart
                                     </button>
                                     {!! Form::close() !!}
-                                    <a href="" class="btn btn-danger pull-right" id="updateCart">update cart</a>
+                                    <a href="" class="btn btn-default pull-right" id="updateCart">update cart</a>
                                 @else
-                                    <a href="" class="btn btn-danger pull-right" disabled="">clear cart</a>
-                                    <a href="" class="btn btn-danger pull-right" disabled="">update cart</a>
+                                    <a href="" class="btn btn-default pull-right" disabled="">clear cart</a>
+                                    <a href="" class="btn btn-default pull-right" disabled="">update cart</a>
                                 @endIf
                             </div>
                         </div>
@@ -86,9 +86,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 @if(Cart::total() != 0)
-                                    <a href="{!! route('cart.create') !!}" class="btn btn-warning" style="width: 100%;">proceed to checkout</a>
+                                    <a href="{!! route('cart.create') !!}" class="btn btn-default" style="width: 100%; background-color: #4D4D4C; color: white;">proceed to checkout</a>
                                 @else
-                                    <a href="" class="btn btn-warning" style="width: 100%;" disabled="">proceed to checkout</a>
+                                    <a href="" class="btn btn-default" style="background-color: #4D4D4C !important; width: 100%;" disabled="">proceed to checkout</a>
                                 @endIf
 
                                 <br>
@@ -240,13 +240,18 @@
             /*background: #DDDDDD;*/
         }
         .btn-warning{
-            background-color: #FE6F41;
+            color: #FFFFFF;
         }
         .btn{
             border-radius: 0px;
             border: none !important;
         }
-
+        .btn-default{
+            /*background-color: #FFFFFF;*/
+            text-shadow: none;
+            background: transparent;
+            text-transform: uppercase;
+        }
         .shopping-cart th{
             color: #000000 !important;
         }

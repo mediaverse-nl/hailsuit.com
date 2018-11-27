@@ -91,18 +91,11 @@
                             @foreach($details as $detail)
                                 <div class="col-3">
                                     <div class="form-group">
-                                            {!! dd($detail->properties()
-                                                    ->with('translation')
-                                                    ->whereHas('translation', function ($query){
-                                                        $query->where('language_id', '=', 5);
-                                                    })->get()) !!}
-                                        {{--<label class="font-weight-bold">{{$detail->comments}}</label>--}}
-                                        {{--{!! Form::select('property[]',--}}
-                                            {{--$detail->properties()->pluck('translation.text', 'id'),--}}
-                                            {{--$product->getSelectedDetail($detail->id),--}}
-                                            {{--['class' => 'form-control', 'placeholder' => 'Pick a '.$detail.'...']--}}
-                                            {{--)--}}
-                                             {{--!!}--}}
+                                        <label class="font-weight-bold">{{$detail->getTranslation()}}</label>
+                                        {!! Form::select('property[]',
+                                            collect($detail->translatedProperties())->pluck('value', 'id'),
+                                            $product->getSelectedDetail($detail->id),
+                                            ['class' => 'form-control', 'placeholder' => 'Pick a '.$detail->getTranslation().'...']) !!}
                                     </div>
                                 </div>
                             @endforeach

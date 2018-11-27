@@ -29,7 +29,7 @@ class Translation extends Model
      */
     public function commentable()
     {
-        return $this->morphTo()->orderBy('text');
+        return $this->morphTo();
     }
 
     public function keyNameHasLangs()

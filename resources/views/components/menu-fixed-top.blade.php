@@ -14,23 +14,23 @@
             <ul class="nav navbar-nav">
                 <li class="">
                     <a href="{!! route('home') !!}">
-                        <i class="fas fa-home" style="font-size: 20px;"></i>
+                        <i class="fas fa-home" style="font-size: 20px; color: #4D4D4C;"></i>
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="{!! route('product.index') !!}">
-                        <i class="fas fa-shopping-bag" style="font-size: 20px;"></i>
+                        <i class="fas fa-shopping-bag" style="font-size: 20px; color: #4D4D4C;"></i>
                     </a>
                 </li>
                 <li>
                     <a href="{!! route('cart.index') !!}">
-                        <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+                        <i class="fas fa-shopping-cart" style="font-size: 20px; color: #4D4D4C;"></i>
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle lang-dropdown" data-toggle="dropdown" href="#" style="">
+                    <a class="dropdown-toggle lang-dropdown" data-toggle="dropdown" href="#" style="color: #4D4D4C;">
                         {!! language()->flag(app()->getLocale()) !!}
                         <span class="caret"></span>
                     </a>

@@ -84,13 +84,11 @@
                         @foreach($details as $detail)
                             <div class="col-3">
                                 <div class="form-group">
-{{--                                    {!! dd($detail->properties->sortBy('value')->pluck('value', 'id')) !!}--}}
-
-                                    <label class="font-weight-bold">{{$detail->value}}</label>
+                                    <label class="font-weight-bold">{{$detail->getTranslation()}}</label>
                                     {!! Form::select('property[]',
-                                        $detail->properties->sortBy('value')->pluck('value', 'id'),
+                                        collect($detail->translatedProperties())->pluck('value', 'id'),
                                         null,
-                                        ['class' => 'form-control', 'placeholder' => 'Pick a '.$detail->getTransaltion().'...']) !!}
+                                        ['class' => 'form-control', 'placeholder' => 'Pick a '.$detail->getTranslation().'...']) !!}
                                 </div>
                             </div>
                         @endforeach

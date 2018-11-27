@@ -29,4 +29,16 @@ class Detail extends Model
     {
         return $this->morphMany('App\Translation', 'commentable');
     }
+
+    public function translatedProperties()
+    {
+        $array = [];
+        foreach ($this->properties()->get() as  $property){
+            $array[] = [
+                'value' => $property->getTranslation(),
+                'id' => $property->id,
+            ];
+        }
+        return $array;
+    }
 }

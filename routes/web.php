@@ -22,7 +22,7 @@ Route::group(['middleware' => ['web', 'language']], function () {
     });
 
     Route::get('products', 'ProductController@index')->name('product.index');
-    Route::get('p-{id}/{title}', 'ProductController@show')->name('product.show');
+    Route::get('p-{id}/{title?}', 'ProductController@show')->name('product.show');
 
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');
     Route::get('shopping-cart/create', 'CartController@create')->name('cart.create');
