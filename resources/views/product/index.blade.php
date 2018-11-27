@@ -2,21 +2,28 @@
 
 @section('content')
 
-    @include('components.product-filter')
+{{--    @include('components.product-filter')--}}
 
     <div class="container">
         <div class="row">
             <br>
-            @foreach($products as $product)
-                <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6">
-                    <a href="{!! route('product.show', [
+            <div class="col-md-3">
+                @include('components.product-filter')
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    @foreach($products as $product)
+                        <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6">
+                            <a href="{!! route('product.show', [
                         $product->id, str_replace(' ',  '-', $product->titleTranslated())
                     ]) !!}">
-                        <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
-                        <h4 class="text-center">Auto model</h4>
-                    </a>
+                                <img src="https://via.placeholder.com/200x120" alt="" style="width: 100%;">
+                                <h4 class="text-center">Auto model</h4>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
 

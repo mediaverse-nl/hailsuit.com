@@ -1,17 +1,17 @@
 {{--<div class="row" style="">--}}
-    <div class="container">
-        <div class="row">
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
 
-        <div class="container-fluid">
-            <div class="row">
+        {{--<div class="container-fluid">--}}
+            {{--<div class="row">--}}
 
-                <div class="col-md-6">
-                    <div class="panel panel-default" style="border: none; background: #dddddd;">
-                        <div class="panel-body">
+                {{--<div class="col-md-6">--}}
+                    {{--<div class="panel panel-default" style="border: none; background: #dddddd;">--}}
+                        {{--<div class="panel-body">--}}
                             <h1>Filter</h1>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <b>Merk</b>
                                         <select class="form-control filter" id="brands">
@@ -19,7 +19,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <b>Type</b>
                                         <select class="form-control filter" id="types">
@@ -27,7 +27,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <b>Jaar</b>
                                         <select class="form-control filter" id="years">
@@ -35,7 +35,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <b>Body</b>
                                         <select class="form-control filter" id="bodies">
@@ -44,14 +44,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-            </div>
-        </div>
-    </div>
-    </div>
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
 {{--</div>--}}
 
 @push('js')

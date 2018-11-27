@@ -50,18 +50,7 @@ class TextController extends Controller
     public function edit($id)
     {
         $text = $this->text->findOrFail($id);
-//        dd($text);
-        $texts = $this->text
-            ->where('commentable_type','=', 'App\SiteContent')
-
-            ->whereHas('commentable', function ($query) use ($text) {
-                $query->where('key_name', '=', $text->key_name);
-            }, '=', 1, ['App\SiteContent'])
-//            ->where('language_id',  '=', $this->getLangId())
-            ->get();
-
-        dd($texts);
-
+        $texts = $text->commentable->translation;
         $languages = $this->languages->get();
 
         return view('admin.text.edit')
