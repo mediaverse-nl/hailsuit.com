@@ -70,13 +70,18 @@
                 </div>
                 <div class="contact-widget">
                     <div class="info">
-                        <p><i class="lnr lnr-map-marker"></i><span>Miami, S Miami Ave, SW 20th.</span></p>
+                        <p><i class="lnr lnr-map-marker"></i><span>{!! Translator('footer_address') !!}</span></p>
                     </div>
                     <div class="info">
-                        <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span>+0123 456 789</span></a>
+                        <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span>{!! Translator('footer_phone_nr') !!}</span></a>
                     </div>
                     <div class="info">
-                        <a href="mailto:hello@yoursite.com"><i class="lnr lnr-envelope"></i><span>office@yoursite.com</span></a>
+                        <a href="mailto:{!! Translator('footer_email_address') !!}">
+                            <i class="lnr lnr-envelope"></i>
+                            <span>
+                                {!! Translator('footer_email_address') !!}
+                            </span>
+                        </a>
                     </div>
                     <div class="info">
                         <p class="social pull-left footer-social-icons">

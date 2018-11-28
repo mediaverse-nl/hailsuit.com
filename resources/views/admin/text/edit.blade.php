@@ -8,10 +8,10 @@
 
     <div class="card">
         <div class="card-header">
-            editing text <b>{!! $text->key_name !!}</b>
+            editing text <b>{!! $text->commentable->key_name !!}</b>
         </div>
         <div class="card-body">
-            {{Form::open(['route' => ['admin.text-editor.update', $text->key_name], 'method' => 'PATCH'])}}
+            {!! Form::open(['route' => ['admin.text-editor.update', $text->commentable->key_name], 'method' => 'PATCH']) !!}
 
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     @foreach($languages as $language)

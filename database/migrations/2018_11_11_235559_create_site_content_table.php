@@ -16,6 +16,7 @@ class CreateSiteContentTable extends Migration
         Schema::create('site_content', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key_name')->unique();
+            $table->enum('text_type', ['textarea', 'richtext', 'text']);
         });
     }
 

@@ -19,7 +19,7 @@ class CreateTranslationTable extends Migration
             $table->foreign('language_id')->references('id')->on('app_language');
             $table->string('commentable_id');
             $table->string('commentable_type');
-            $table->string('text');
+            $table->string('text',  6000);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\AppLanguage;
 use App\Http\Traits\LanguageTrait;
+use App\SiteContent;
 use App\Translation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,12 +14,14 @@ class TextController extends Controller
     use LanguageTrait;
 
     protected $text;
+    protected $siteContent;
     protected $languages;
 
-    public function __construct(Translation $translation, AppLanguage $languages)
+    public function __construct(Translation $translation, AppLanguage $languages, SiteContent $siteContent)
     {
         $this->text = $translation;
         $this->languages = $languages;
+        $this->siteContent = $siteContent;
     }
 
     /**
@@ -68,15 +71,15 @@ class TextController extends Controller
      */
     public function update(Request $request, $id)
     {
-        foreach ($request->translation as $key => $value){
-            $translation = $this->text
-                ->where('key_name', '=', $id)
-                ->where('language_id', '=', $key)
-                ->firstOrFail();
+        $translations = $this->siteContent
+            ->where('key_name', '=', $id)
+            ->first();
 
-            $translation->update(['text' => $value]);
+        foreach ($translations->translation as $value) {
+            $value->update(['text' => $request->translation[$value->language_id]]);
         }
 
-        return redirect()->back();
+        return redirect()
+            ->back();
     }
 }

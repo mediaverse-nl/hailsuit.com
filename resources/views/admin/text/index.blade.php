@@ -18,9 +18,10 @@
                 @slot('table')
                     @foreach($texts as $text)
                         <tr>
-{{--                            <td>{{$text->commentable->key_name}}</td>--}}
                             <td>{{$text->commentable->key_name}}</td>
-                            <td>{{$text->commentable->getTranslation() == '' ? $text->commentable->getTranslation() : "--- EMPTY ---"}}</td>
+                            <td>{!! $text->commentable->getTranslation(true) == ' '
+                                    || $text->commentable->getTranslation(true) == ''
+                                    ? "--- EMPTY ---" : $text->commentable->getTranslation(true) !!}</td>
                             <td>
                                 <a href="{{route('admin.text-editor.edit', $text->id)}}" class="rounded-circle edit">
                                     <i class="fa fa-edit"></i>
