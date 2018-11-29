@@ -29,11 +29,21 @@
                         <div class="tab-pane fade {{$loop->first ? 'show active' : ''}}"
                              id="nav-{{$language->country_code_large}}"
                              role="tabpanel">
+
                             <div class="form-group">
                                 <br>
-                                <textarea class="summernote" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
-                                {!! Form::submit('Update', ['class' => 'btn btn-sm btn-success']) !!}
+                                @if($text->commentable->text_type == 'richtext')
+                                    <textarea class="summernote" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                @elseif($text->commentable->text_type == 'textarea')
+                                    <textarea class="form-control" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                @elseif($text->commentable->text_type == 'text')
+                                    <input class="form-control" name="translation[{!! $language->id !!}]" value="{!! $texts->where('language_id', '=', $language->id)->first()->text !!}">
+                                @endif
                             </div>
+
+
+                            {!! Form::submit('Update', ['class' => 'btn btn-sm btn-success']) !!}
+
                         </div>
                     @endforeach
                 </div>

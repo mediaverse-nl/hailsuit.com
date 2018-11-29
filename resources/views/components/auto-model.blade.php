@@ -1,6 +1,12 @@
 <div class="box">
     <div class="content text-center">
-        <img src="/img/assets/Model-XS-800x480.png" alt="" style="width: 100%;">
+
+        @foreach($product->images as $image)
+            @if($loop->first)
+                <img src="{{$image->path}}" alt="" class="img-responsive" style="width: 100%;">
+            @endif
+        @endforeach
+
         <h4 class="text-center">
             {!! $product->titleTranslated() !!}
         </h4>

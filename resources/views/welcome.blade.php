@@ -58,7 +58,7 @@
             </div>
             <div class="text-center">
                 <h2 class="">Bekijk alle producten in de shop</h2>
-                <a class="btn btn-default ">SHOP</a>
+                <a class="btn btn-default " href="{!! route('product.index') !!}">SHOP</a>
             </div>
         </div>
     </div>
@@ -75,8 +75,8 @@
                     Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
                 </p>
                 <br>
-                <a class="btn btn-default center-block" style="width: 130px;">Lees meer</a>
-                <br>
+                {{--<a class="btn btn-default center-block" style="width: 130px;">Lees meer</a>--}}
+                {{--<br>--}}
                 <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width: 80%;">
             </div>
         </div>

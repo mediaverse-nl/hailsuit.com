@@ -10,8 +10,8 @@
             @component('components.datatable')
                 @slot('head')
                     <th>key name</th>
-                    <th>translation</th>
-                    {{--<th>language</th>--}}
+                    <th>text field type</th>
+                    <th>text</th>
                     <th class="no-sort"></th>
                 @endslot
 
@@ -19,6 +19,7 @@
                     @foreach($texts as $text)
                         <tr>
                             <td>{{$text->commentable->key_name}}</td>
+                            <td>{{$text->commentable->text_type}}</td>
                             <td>{!! $text->commentable->getTranslation(true) == ' '
                                     || $text->commentable->getTranslation(true) == ''
                                     ? "--- EMPTY ---" : $text->commentable->getTranslation(true) !!}</td>

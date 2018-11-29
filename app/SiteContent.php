@@ -15,7 +15,7 @@ class SiteContent extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['key_name'];
+    protected $fillable = ['key_name', 'text_type'];
 
     public function translation()
     {

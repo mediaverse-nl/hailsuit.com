@@ -14,7 +14,7 @@
 
                 <!-- Content -->
 {{--                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">{!! Translator('footer_small_') !!}</h4>--}}
-{{--                <p>{!! Translator('footer_small_text') !!}</p>--}}
+                <p>{!! Translator('footer_small_text', 'richtext', false, 'terms and conditions') !!}</p>
 
             </div>
             <!-- Grid column -->
@@ -26,14 +26,46 @@
                 <h4 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h4>
 
                 <ul class="list-unstyled">
-                    <li><a href="{{route('page.terms')}}">{!! Translator('footer_terms') !!}</a></li>
-                    <li><a href="{{route('page.privacy')}}">{!! Translator('footer_privacy') !!}</a></li>
-                    <li><a href="{{route('page.cookie')}}">{!! Translator('footer_cookie') !!}</a></li>
-                    <li><a href="{{route('page.warranty')}}">{!! Translator('footer_warranty') !!}</a></li>
-                    <li><a href="{{route('page.returns')}}">{!! Translator('footer_returns') !!}</a></li>
-                    <li><a href="{{route('page.delivery')}}">{!! Translator('footer_delivery') !!}</a></li>
-                    <li><a href="{{route('page.app')}}">{!! Translator('footer_app') !!}</a></li>
-                    <li><a href="{{route('page.faq')}}">{!! Translator('footer_faq') !!}</a></li>
+                    <li>
+                        <a href="{{route('page.terms')}}">
+                            {!! Translator('footer_terms', 'text', false, 'terms and conditions') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.privacy')}}">
+                            {!! Translator('footer_privacy', 'text', false, 'privacy') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.cookie')}}">
+                            {!! Translator('footer_cookie', 'text', false, 'cookies') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.warranty')}}">
+                            {!! Translator('footer_warranty', 'text', false, 'warranty') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.returns')}}">
+                            {!! Translator('footer_returns', 'text', false, 'returns') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.delivery')}}">
+                            {!! Translator('footer_delivery', 'text', false, 'delivery') !!}
+                        </a>
+                    </li>
+                    {{--<li>--}}
+                        {{--<a href="{{route('page.app')}}">--}}
+                            {{--{!! Translator('footer_app', 'text', false, 'app') !!}--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    <li>
+                        <a href="{{route('page.faq')}}">
+                            {!! Translator('footer_faq', 'text', false, 'faq') !!}
+                        </a>
+                    </li>
                 </ul>
 
             </div>
@@ -79,7 +111,7 @@
                         <a href="mailto:{!! Translator('footer_email_address') !!}">
                             <i class="lnr lnr-envelope"></i>
                             <span>
-                                {!! Translator('footer_email_address') !!}
+                                {!! Translator('footer_email_address', '') !!}
                             </span>
                         </a>
                     </div>
