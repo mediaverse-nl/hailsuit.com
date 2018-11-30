@@ -10,7 +10,7 @@
         <div class="row">
 
             <!-- Grid column -->
-            <div class="col-md-4 text-center mx-auto">
+            <div class="col-md-4 mx-auto">
 
                 <!-- Content -->
 {{--                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">{!! Translator('footer_small_') !!}</h4>--}}
@@ -33,22 +33,22 @@
                     </li>
                     <li>
                         <a href="{{route('page.privacy')}}">
-                            {!! Translator('footer_privacy', 'text', false, 'privacy') !!}
+                            {!! Translator('footer_privacy', 'text', false, 'privacy policy') !!}
                         </a>
                     </li>
                     <li>
                         <a href="{{route('page.cookie')}}">
-                            {!! Translator('footer_cookie', 'text', false, 'cookies') !!}
+                            {!! Translator('footer_cookie', 'text', false, 'cookie policy') !!}
                         </a>
                     </li>
                     <li>
                         <a href="{{route('page.warranty')}}">
-                            {!! Translator('footer_warranty', 'text', false, 'warranty') !!}
+                            {!! Translator('footer_warranty', 'text', false, 'warranty policy') !!}
                         </a>
                     </li>
                     <li>
                         <a href="{{route('page.returns')}}">
-                            {!! Translator('footer_returns', 'text', false, 'returns') !!}
+                            {!! Translator('footer_returns', 'text', false, 'returns policy') !!}
                         </a>
                     </li>
                     <li>
