@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AppLanguage;
 use App\FAQ;
 use App\Forms\FaqStoreForm;
 use App\Forms\FaqUpdateForm;
@@ -10,18 +11,18 @@ use App\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
-
 class FAQController extends Controller
 {
     use FormBuilderTrait;
 
     protected $formBuilder;
     protected $faq;
+    protected $language;
 
-    public function __construct(FAQ $faq, FormBuilder $formBuilder)
+    public function __construct(FAQ $faq, AppLanguage $language)
     {
-        $this->formBuilder = $formBuilder;
         $this->faq = $faq;
+        $this->language = $language;
     }
 
     /**
@@ -44,14 +45,10 @@ class FAQController extends Controller
      */
     public function create()
     {
-        $form = $this->formBuilder->create(FaqStoreForm::class, [
-            'method' => 'POST',
-            'url' => route('admin.faq.store'),
-        ]);
+        $languages = $this->language->get();
 
         return view('admin.faq.create')
-            ->with('form', $form);
-
+            ->with('languages', $languages);
     }
 
     /**
@@ -62,12 +59,20 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
-        $form = $this->form(FaqStoreForm::class);
-        $form->redirectIfNotValid();
+        $faq = $this->faq->create(['created_at' => null]);
 
-        $this->faq->create($form->getFieldValues());
+        foreach ($request->translation as $translation => $value)
+        {
+            $faq->faqTranslation()->insert([
+                'faq_id' => $faq->id,
+                'language_id' => $translation,
+                'title' => $value['title'] == '' ? '' : $value['title'],
+                'description' => $value['description'] == '' ? '' : $value['description']
+            ]);
+        }
 
-        return redirect()->back();
+        return redirect()
+            ->route('admin.faq.edit', $faq->id);
     }
 
     /**
@@ -79,19 +84,11 @@ class FAQController extends Controller
     public function edit($id)
     {
         $faq = $this->faq->findOrFail($id);
-
-        $form = $this->formBuilder->create(FaqUpdateForm::class, [
-                'method' => 'PATCH',
-                'url' => route('admin.faq.update', $faq->id),
-                'model' => $faq,
-            ], [
-                'faq_id' => $id
-            ]
-        );
+        $languages = $this->language->get();
 
         return view('admin.faq.edit')
             ->with('faq', $faq)
-            ->with('form', $form);
+            ->with('languages', $languages);
     }
 
     /**
@@ -103,12 +100,20 @@ class FAQController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $form = $this->form(FaqUpdateForm::class);
-        $form->redirectIfNotValid();
+        $faq = $this->faq->findOrFail($id);
 
-        $this->faq->update($form->getFieldValues());
+        foreach ($request->translation as $translation => $value){
+            $faq->faqTranslation()
+                ->where('language_id', '=', $translation)
+                ->update([
+                    'faq_id' => $faq->id,
+                    'title' => $value['title'] == '' ? '' : $value['title'],
+                    'description' => $value['description'] == '' ? '' : $value['description']
+                ]);
+        }
 
-        return redirect()->back();
+        return redirect()
+            ->back();
     }
 
     /**

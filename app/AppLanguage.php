@@ -21,6 +21,11 @@ class AppLanguage extends Model
         return $this->belongsTo('App\ProductTranslation', 'language_id', 'id');
     }
 
+    public function faqTranslation()
+    {
+        return $this->belongsTo('App\FaqTranslation', 'language_id', 'id');
+    }
+
     public function translation()
     {
         return $this->belongsTo('App\Translation', 'language_id', 'id');

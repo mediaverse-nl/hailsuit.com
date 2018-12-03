@@ -13,12 +13,15 @@ class CreateFaqTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('body_type', function (Blueprint $table) {
+        Schema::create('faq_translation', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('language_id')->unsigned();
+            $table->foreign('language_id')->references('id')->on('app_language');
             $table->unsignedInteger('faq_id')->unsigned();
-            $table->foreign('faq_id')->references('id')->on('body');
-            $table->unsignedInteger('faq_id')->unsigned();
-            $table->foreign('faq_id')->references('id')->on('body');
+            $table->foreign('faq_id')->references('id')->on('faq');
+            $table->string('title', 120);
+            $table->string('description', 2000);
+            $table->unique(['language_id', 'faq_id']);
         });
     }
 

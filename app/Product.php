@@ -129,16 +129,14 @@ class Product extends Model
         $translation = $this->productTranslation();
 
         if($id){
-//            dd(2);
             $translation = $translation->where('language_id', '=', $id);
         }else{
-//            $translation = $this->defaultTranslationLanguage($translation);
+            $translation = $this->defaultTranslationLanguage($translation);
         }
 
         return $translation
-                ->first()
-                ->description;
-
+            ->first()
+            ->description;
     }
 
     public function addedStock($stock)

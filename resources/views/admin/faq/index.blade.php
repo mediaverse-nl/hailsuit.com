@@ -20,7 +20,7 @@
                     @foreach($faqs as $faq)
                         <tr>
                             <td>{{$faq->id}}</td>
-                            <td>{{$faq->title}}</td>
+                            <td>{{$faq->titleTranslated()}}</td>
                             <td>
                                 @component('components.model', [
                                     'id' => 'faqTableBtn'.$faq->id,

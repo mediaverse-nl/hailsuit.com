@@ -23,7 +23,9 @@
             <div class="col-md-2 mx-auto">
 
                 <!-- Links -->
-                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h4>
+                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">
+                    {!! Translator('footer_links_title', 'text', false, 'General') !!}
+                </h4>
 
                 <ul class="list-unstyled">
                     <li>
@@ -56,11 +58,30 @@
                             {!! Translator('footer_delivery', 'text', false, 'delivery') !!}
                         </a>
                     </li>
-                    {{--<li>--}}
-                        {{--<a href="{{route('page.app')}}">--}}
-                            {{--{!! Translator('footer_app', 'text', false, 'app') !!}--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+
+                <!-- Links -->
+                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">
+                    {!! Translator('footer_info_title', 'text', false, 'info') !!}
+                </h4>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{route('contact.index')}}">
+                            {!! Translator('footer_contact', 'text', false, 'contact') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.app')}}">
+                            {!! Translator('footer_app', 'text', false, 'app') !!}
+                        </a>
+                    </li>
                     <li>
                         <a href="{{route('page.faq')}}">
                             {!! Translator('footer_faq', 'text', false, 'faq') !!}
@@ -72,46 +93,28 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-
-                <!-- Links -->
-                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h4>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-sm-6 col-md-4 widget">
                 <div class="widget-title">
-                    <h4>Get in Touch</h4>
+                    <h4>{!! Translator('footer_social_title', 'text', false, 'Get in Touch') !!}</h4>
                 </div>
                 <div class="contact-widget">
                     <div class="info">
-                        <p><i class="lnr lnr-map-marker"></i><span>{!! Translator('footer_address') !!}</span></p>
+                        <p>
+                            <i class="lnr lnr-map-marker"></i>
+                            <span>{!! Translator('footer_address', 'text', false, 'daalakkersweg 2.182, 5643VK Eindhoven') !!}</span>
+                        </p>
                     </div>
                     <div class="info">
-                        <a href="tel:+0123456789"><i class="lnr lnr-phone-handset"></i><span>{!! Translator('footer_phone_nr') !!}</span></a>
+                        <a href="tel:+0123456789">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <span>{!! Translator('footer_phone_nr', 'text', false, '06-xxxxxxx') !!}</span>
+                        </a>
                     </div>
                     <div class="info">
-                        <a href="mailto:{!! Translator('footer_email_address') !!}">
+                        <a href="mailto:{!! Translator('footer_email_address', 'text', false, 'email') !!}">
                             <i class="lnr lnr-envelope"></i>
                             <span>
-                                {!! Translator('footer_email_address', '') !!}
+                                {!! Translator('footer_email_address', 'text', false, 'email') !!}
                             </span>
                         </a>
                     </div>
@@ -170,3 +173,11 @@
 
 </footer>
 <!-- Footer -->
+
+@push('css')
+<style>
+    .footer-copyright{
+        background-color:   blue ;
+    }
+</style>
+@endpush
