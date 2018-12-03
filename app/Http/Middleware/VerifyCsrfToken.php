@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         'mollie-webhook',
-        'api/filter'
+        'api/filter',
+        'laravel-filemanager/*'
     ];
 }

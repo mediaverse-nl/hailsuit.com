@@ -17,15 +17,11 @@ Route::group(['middleware' => ['web', 'language']], function () {
     Route::get('/', 'HomeController')->name('home');
     Route::get('/home', 'HomeController');
 
-    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
-        \UniSharp\LaravelFilemanager\Lfm::routes();
-    });
-
-    Route::get(''.RouteTranslator('route_products', 'products').'', 'ProductController@index')->name('product.index');
+    Route::get('products', 'ProductController@index')->name('product.index');
     Route::get('p-{id}/{title?}', 'ProductController@show')->name('product.show');
 
     Route::get('shopping-cart', 'CartController@index')->name('cart.index');
-    Route::get('shopping-cart/create', 'CartController@create')->name('cart.create');
+    Route::get('shopping-cart/order', 'CartController@create')->name('cart.create');
     Route::post('shopping-cart/{id}/{units?}', 'CartController@store')->name('cart.store');
     Route::patch('shopping-cart/update', 'CartController@update')->name('cart.update');
     Route::delete('shopping-cart/{id?}', 'CartController@destroy')->name('cart.destroy');
@@ -36,7 +32,7 @@ Route::group(['middleware' => ['web', 'language']], function () {
     Route::get('contact', 'ContactController@index')->name('contact.index');
     Route::post('contact', 'ContactController@store')->name('contact.store');
 
-    Route::get('algemene-voorwaarden', 'PageController@terms')->name('page.terms');
+    Route::get('terms-and-conditions', 'PageController@terms')->name('page.terms');
     Route::get('privacy-policy', 'PageController@privacy')->name('page.privacy');
     Route::get('cookies', 'PageController@cookie')->name('page.cookie');
     Route::get('warranty', 'PageController@warranty')->name('page.warranty');
@@ -86,7 +82,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::get('pdf/downloadInvoice{id}', 'PDFController@downloadInvoice')->name('pdf.downloadInvoice');
     });
 
-    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 
