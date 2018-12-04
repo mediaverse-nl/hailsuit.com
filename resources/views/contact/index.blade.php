@@ -22,19 +22,19 @@
         </div>
         <!-- Container End -->
     </section>
-
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                test
-            </div>
-
             <div class="col-md-6" style="padding: 15px 0px;">
                 {{--<div class="panel">--}}
                     {{--<div class="panel-body">--}}
                         {!! form($form) !!}
                     {{--</div>--}}
                 {{--</div>--}}
+            </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+
             </div>
 
         </div>

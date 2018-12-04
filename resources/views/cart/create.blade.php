@@ -43,41 +43,86 @@
                     <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                gegevens
+                               <h3>gegevens</h3>
                             </div>
                             <div class="panel-body">
-                                {!! form($form) !!}
+
+                                {!! Form::open(['url' => 'foo/bar', 'method' => 'post']) !!}
+                                <?php
+                                echo Form::label('email', 'E-Mail Address' );
+                                    echo Form::password('e-mail', ['class' => 'form-control']);
+                                     echo '<br/>';
+                                echo Form::label('client_name', 'Name' );
+                                    echo Form::password('password', ['class' => 'form-control']);
+                                ?>
+
+                                {!! Form::close() !!}
+
+
+
+
+
+                                {{--{!! form($form) !!}--}} <!--made by faris -->
+
+                                        {{--<div class="form-group">--}}
+                                            {{--<label for="fname">firstname</label>--}}
+                                            {{--<input type="text" class="form-control" id="checkoutfname">--}}
+                                        {{--</div>--}}
+                                    {{--<div class="form-group">--}}
+                                            {{--<label for="lname">firstname</label>--}}
+                                            {{--<input type="text" class="form-control" id="checkoutlname">--}}
+                                        {{--</div>--}}
+
+                                    {{--<div class="form-group">--}}
+                                            {{--<label for="streetname">street</label>--}}
+                                            {{--<input type="text" class="form-control" id="checkoutsname">--}}
+                                        {{--</div>--}}
+
+                                    {{--<div class="form-group">--}}
+                                            {{--<label for="lname">zipcode</label>--}}
+                                            {{--<input type="text" class="form-control" id="checkoutzcodename">--}}
+                                        {{--</div>--}}
+
+                                    {{--<div class="form-group">--}}
+                                            {{--<label for="lname">firstname</label>--}}
+                                            {{--<input type="text" class="form-control" id="checkoutlname">--}}
+                                        {{--</div>--}}
                             </div>
                         </div>
                     </div>
                  <div class="col-md-12">
                         <div class="panel">
                             <div class="panel-heading">
-                                adres
+
                             </div>
                             <div class="panel-body">
-                                asdad
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{--TODO finish the design of hailsuits--}}
             <div class="col-md-4">
                 <div class="panel">
                     <div class="panel-body">
+                        <p>Full price:</p>{!! Cart::total() !!}
 
-                        {!! Cart::total() !!}
-                        {!! Cart::tax() !!}
+                        <br/>
 
-                        asdasd <br>
-                        asdasd <br>
+                        <p>Vat price</p>{!! Cart::tax() !!}
+
+                        <br/>
+                        <br/>
+                        <br/>
+
                         <a href="shop-right.html" class="btn btn-default-filled btn-rounded btn-success pull-right" style="margin-left: 10px;">
                             <i class="lnr lnr-cart"></i> <span>Continue Shopping</span>
                         </a>
-                        <a href="{!! route('cart.create') !!}" class="btn btn-primary-filled btn-rounded btn-primary pull-right">
-                            <i class="lnr lnr-exit"></i> <span>Proceed to Checkout</span>
+                        <a href="{!! route('cart.create') !!}" class="btn btn-primary-filled btn-rounded btn-primary pull-right"> <!--edited by faris -->
+                            <i class="lnr lnr-exit"></i> <span>{!! Translator('shopping_cart_checkout_btn', 'text', false, 'Proceed to Checkout') !!}</span>
                         </a>
-                        <input type="button" value="Click Me!" onclick="submitForms()" />
+                        {{--<input type="button" value="Click Me!" onclick="submitForms()" />--}}
 
                     </div>
                 </div>

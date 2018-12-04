@@ -15,7 +15,7 @@
             <hr>
 
             <div class="row">
-
+{{--TODO use these values to make a form--}}
                 <div class="col-sm-6 col-md-6 col-lg-4" id="orderDetails">
                     @component('components.panel')
                         <h4>Business</h4>
