@@ -54,7 +54,7 @@
                              <br/>
                              <br/>
                              <br/>
-
+    s
                 {!! Form::close() !!}
             </div>
         <div class="col-md-3"></div>
