@@ -8,6 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Mollie\Laravel\Facades\Mollie;
 
 class CartController extends Controller
 {
@@ -15,12 +16,13 @@ class CartController extends Controller
 
     protected $product;
     protected $formBuilder;
-
+    protected $mollie;
 
     public function __construct(Product $product, FormBuilder $formBuilder)
     {
         $this->product = $product;
         $this->formBuilder = $formBuilder;
+        $this->mollie = Mollie::api();
     }
 
     /**
@@ -30,7 +32,10 @@ class CartController extends Controller
      */
     public function index()
     {
+        $mollie = $this->mollie->methods()->all();
+
         return view('cart.index')
+            ->with('methods', $mollie)
             ->with('content', Cart::content());
     }
 

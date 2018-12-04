@@ -121,9 +121,14 @@
         </div>
     </div>
 
-    <div class="row" style="background-color: #eeeeee; padding: 80px 0px; margin: 0px;">
+    <div class="row" style="background-color: #eeeeee; padding: 60px 0px; margin: 0px;">
         <div class="container">
-            <div class="row">
+            <div class="row text-center">
+                <h3 class="">{!! Translator('pay_with', 'text', false, 'Our payment methods') !!}</h3>
+
+                @foreach($methods as $method)
+                    <img class="list-inline" src="{!! $method->image->normal !!}" alt="{!! $method->description !!}" style="padding: 15px;">
+                @endforeach
 
             </div>
         </div>
