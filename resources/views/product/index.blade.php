@@ -8,7 +8,7 @@
         <div class="row">
             <br>
             <div class="col-md-3">
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="border-radius: 0px; background-color: #fafafa;  border: none;">
                     <div class="panel-body">
                         @include('components.product-filter')
                     </div>
@@ -17,23 +17,20 @@
             <div class="col-md-9">
                 <div class="row">
                     @foreach($products as $product)
-                        <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6" style="border: 1px solid #eeeeee">
-                            <a href="{!! route('product.show', [
-                        $product->id, str_replace(' ',  '-', $product->titleTranslated())
-                    ]) !!}">
-                                @foreach($product->images as $image)
-                                    @if($loop->first)
-                                        <img src="{{$image->path}}" alt="" class="img-responsive" style="width: 100%;">
-                                    @endif
-                                @endforeach
-                                <h4 class="text-center">{!! $product->titleTranslated() !!}</h4>
-                            </a>
+                        <div class="col-md-4 col-sm-4 col-sm-4 col-xs-6 ">
+                            @component('components.auto-model', ['product' => $product])
+
+                            @endcomponent
                         </div>
                     @endforeach
                 </div>
             </div>
+
         </div>
     </div>
+<br>
+<br>
+<br>
 
 @endsection
 

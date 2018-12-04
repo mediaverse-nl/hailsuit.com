@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
-                <div class="panel">
-
+                <div class="panel" style="box-shadow: none;">
+                    {{--<hr>--}}
                     <div class="panel-heading">
                         <h1 class="page-title fadeInDown animated first">
                             {!! Translator('cart_title', 'text', false, 'Shopping Cart') !!}
@@ -15,7 +15,7 @@
                     </div>
                     <div class="panel-body">
                         @if(Cart::total() != 0)
-                            <table class="table shopping-cart" id="shoppingCart">
+                            <table class="table shopping-cart" id="shoppingCart" style="border-bottom: 1px solid #eee; ">
                                 <thead>
                                     <tr>
                                         <th>{!! Translator('product_info', 'text', false, 'Product info') !!}</th>
@@ -33,19 +33,23 @@
                                             <a href="{!! route('product.show', [$item->id, SpaceToHyphen($item->options->product->titleTranslated())]) !!}">
                                                 <img src="{!! $item->options->has('image') ? $item->options->image->path : '' !!}" alt="" class="col-md-5" style="height: 120px; object-fit: cover;">
                                                 <span class="col-md-7">
+                                                    <br><br>
                                                     <b>{!! $item->name !!}</b>
                                                     <br>
                                                     SKU: {!! $item->id !!}
                                                 </span>
                                             </a>
                                         </td>
-                                        <td>{!! number_format($item->price, 2) !!}</td>
+                                        <td><br><br>{!! number_format($item->price, 2) !!}</td>
                                         <td class="qty" id="qty">
+                                            <br>
+                                            <br>
                                             <input type="hidden" value="{!! $item->rowId !!}" name="id">
                                             <input type="number" step="1" min="1" name="cart" value="{!! $item->qty !!}" title="Qty" class="input-text qty text" size="4">
                                         </td>
-                                        <td>{!! number_format($item->total, 2) !!}</td>
+                                        <td><br><br>{!! number_format($item->total, 2) !!}</td>
                                         <td class="remove">
+                                            <br><br>
                                             {!! Form::open(['method' => 'DELETE', 'route' => ['cart.destroy', $item->rowId]]) !!}
                                                 <button type="submit" class="" style="border-radius: 50%; height: 25px; width: 25px; border: none;">
                                                     <i class="fa fa-times text-center" style="font-size: 15px; padding-top: 3px;"></i>
@@ -53,6 +57,7 @@
                                             {!! Form::close() !!}
                                         </td>
                                     </tr>
+
                                 @endforeach
 
                                 </tbody>
@@ -121,10 +126,10 @@
         </div>
     </div>
 
-    <div class="row" style="background-color: #eeeeee; padding: 60px 0px; margin: 0px;">
+    <div class="row" style="background-color: #fafafa; padding: 40px 0px; margin: 0px;">
         <div class="container">
             <div class="row text-center">
-                <h3 class="">{!! Translator('pay_with', 'text', false, 'Our payment methods') !!}</h3>
+                <h2 class="">{!! Translator('pay_with', 'text', false, 'Our payment methods') !!}</h2>
 
                 @foreach($methods as $method)
                     <img class="list-inline" src="{!! $method->image->normal !!}" alt="{!! $method->description !!}" style="padding: 15px;">

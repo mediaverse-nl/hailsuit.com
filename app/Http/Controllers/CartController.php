@@ -58,7 +58,7 @@ class CartController extends Controller
 
         Cart::add($product->id, $product->titleTranslated(), $units, $product->excludeTax(), $cartArray);
 
-        return redirect()->back();
+        return redirect()->route('cart.index');
     }
 
     /**

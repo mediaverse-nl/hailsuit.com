@@ -4,129 +4,101 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    {{--<div class="col-md-12">--}}
-                        {{--<div class="panel">--}}
-                            {{--<div class="panel-heading">--}}
-                                {{--bestelling--}}
-                            {{--</div>--}}
-                            {{--<div class="panel-body">--}}
-                                {{--<table class="table shopping-cart">--}}
-                                    {{--<thead>--}}
-                                    {{--<tr>--}}
-                                        {{--<th class="image">&nbsp;</th>--}}
-                                        {{--<th>Product</th>--}}
-                                        {{--<th>Price</th>--}}
-                                        {{--<th>Quantity</th>--}}
-                                        {{--<th>Total</th>--}}
-                                    {{--</tr>--}}
-                                    {{--</thead>--}}
-                                    {{--<tbody>--}}
+            <div class="panel panel-default col-md-8 col-md-offset-1" style="border-radius: 0px; border: none; box-shadow: none;">
 
-                                    {{--@foreach($content as $item)--}}
-                                        {{--<tr class="cart-item">--}}
-                                            {{--<td class="image"><a href="#"><img src="images/product-small2.jpg" alt=""></a></td>--}}
-                                            {{--<td><a href="single-product.html">Women's Jeans</a></td>--}}
-                                            {{--<td>$69</td>--}}
-                                            {{--<td class="qty">1</td>--}}
-                                            {{--<td>$138</td>--}}
-                                        {{--</tr>--}}
-                                    {{--@endforeach--}}
+                <div class="panel-body">
+                    {!! Form::open(['route' => 'order.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
 
-
-                                    {{--</tbody>--}}
-                                {{--</table>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading">
-                               <h3>gegevens</h3>
+                        <div class="row">
+                            <div class="form-group">
+                                {!! Form::label('email', '* '.Translator('email_label', 'text', false, 'e-mail address'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                </div>
                             </div>
-                            <div class="panel-body">
-
-                                {!! Form::open(['url' => 'foo/bar', 'method' => 'post']) !!}
-                                <?php
-                                echo Form::label('email', 'E-Mail Address' );
-                                    echo Form::password('e-mail', ['class' => 'form-control']);
-                                     echo '<br/>';
-                                echo Form::label('client_name', 'Name' );
-                                    echo Form::password('password', ['class' => 'form-control']);
-                                ?>
-
-                                {!! Form::close() !!}
-
-
-
-
-
-                                {{--{!! form($form) !!}--}} <!--made by faris -->
-
-                                        {{--<div class="form-group">--}}
-                                            {{--<label for="fname">firstname</label>--}}
-                                            {{--<input type="text" class="form-control" id="checkoutfname">--}}
-                                        {{--</div>--}}
-                                    {{--<div class="form-group">--}}
-                                            {{--<label for="lname">firstname</label>--}}
-                                            {{--<input type="text" class="form-control" id="checkoutlname">--}}
-                                        {{--</div>--}}
-
-                                    {{--<div class="form-group">--}}
-                                            {{--<label for="streetname">street</label>--}}
-                                            {{--<input type="text" class="form-control" id="checkoutsname">--}}
-                                        {{--</div>--}}
-
-                                    {{--<div class="form-group">--}}
-                                            {{--<label for="lname">zipcode</label>--}}
-                                            {{--<input type="text" class="form-control" id="checkoutzcodename">--}}
-                                        {{--</div>--}}
-
-                                    {{--<div class="form-group">--}}
-                                            {{--<label for="lname">firstname</label>--}}
-                                            {{--<input type="text" class="form-control" id="checkoutlname">--}}
-                                        {{--</div>--}}
+                            <div class="form-group">
+                                {!! Form::label('repeatEmail', '* '.Translator('repeat_email_label', 'text', false, 'repeat e-mail address'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('repeatEmail', null, ['class' => 'form-control']) !!}
+                                </div>
                             </div>
+                            <div class="form-group">
+                                {!! Form::label('name', '* '.Translator('name_label', 'text', false, 'name'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('phone', Translator('phone_label', 'text', false, 'phone'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('postalCode', '* '.Translator('postal_code_label', 'text', false, 'postal code'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('postalCode', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('houseNumber', '* '.Translator('house_number_label', 'text', false, 'house number'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('houseNumber', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('street', '* '.Translator('street_label', 'text', false, 'street'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('street', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('residence', '* '.Translator('residence_label', 'text', false, 'residence'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('residence', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('country', '* '.Translator('country_label', 'text', false, 'country'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::text('country', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-5">
+                                </div>
+                                <div class="col-sm-8 col-md-7">
+                                    <div class="checkbox">
+                                        <label>
+                                            {!! Form::checkbox('termsAndConditions', 'value', false) !!}
+                                            {!! Translator('terms-and-conditions_label', 'text', false, 'terms &  conditions') !!}
+                                        </label>
+                                        <br>
+                                        <label>
+                                            {!! Form::checkbox('privacyPolicy', 'value', false) !!}
+                                            {!! Translator('privacy_policy_label', 'text', false, 'privacy policy') !!}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-5">
+                                </div>
+                                <div class="col-sm-8 col-md-7">
+                                    {!! Form::submit(Translator('cart_btn_complete_order', 'text', false, 'complete order
+'), ['class' => 'btn btn-default']) !!}
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                 <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading">
 
-                            </div>
-                            <div class="panel-body">
-
-                            </div>
-                        </div>
-                    </div>
+                    {!! Form::close() !!}
                 </div>
+
             </div>
-            {{--TODO finish the design of hailsuits--}}
-            <div class="col-md-4">
-                <div class="panel">
-                    <div class="panel-body">
-                        <p>Full price:</p>{!! Cart::total() !!}
 
-                        <br/>
-
-                        <p>Vat price</p>{!! Cart::tax() !!}
-
-                        <br/>
-                        <br/>
-                        <br/>
-
-                        <a href="shop-right.html" class="btn btn-default-filled btn-rounded btn-success pull-right" style="margin-left: 10px;">
-                            <i class="lnr lnr-cart"></i> <span>Continue Shopping</span>
-                        </a>
-                        <a href="{!! route('cart.create') !!}" class="btn btn-primary-filled btn-rounded btn-primary pull-right"> <!--edited by faris -->
-                            <i class="lnr lnr-exit"></i> <span>{!! Translator('shopping_cart_checkout_btn', 'text', false, 'Proceed to Checkout') !!}</span>
-                        </a>
-                        {{--<input type="button" value="Click Me!" onclick="submitForms()" />--}}
-
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -134,15 +106,21 @@
 
 @push('css')
     <style>
-
+        .form-group{
+            margin-bottom: 25px;
+        }
+        .form-group input,
+        .form-group checkbox{
+            border-radius: 0px;
+        }
     </style>
 @endpush
 
 @push('js')
     <script>
-        submitForms = function(){
-            document.getElementById("form1").submit();
-            document.getElementById("form2").submit();
-        }
+//        submitForms = function(){
+//            document.getElementById("form1").submit();
+//            document.getElementById("form2").submit();
+//        }
     </script>
 @endpush

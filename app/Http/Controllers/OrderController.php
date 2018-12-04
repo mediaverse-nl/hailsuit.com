@@ -33,22 +33,22 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd(Cart::total(','));
+//        dd(Cart::total(','));
 
-        $order = $this->order;
-        $order->total_paid = Cart::total();
-        $order->status = self::STATUS_PENDING;
-        $order->email = $request->email;
-        $order->save();
-
-        foreach (Cart::content() as $item){
-            $order->productOrders()->insert([
-                'order_id' => $order->id,
-                'product_id' => $item->id,
-                'price' => $item->price,
-                'amount' => $item->qty,
-            ]);
-        }
+//        $order = $this->order;
+//        $order->total_paid = Cart::total();
+//        $order->status = self::STATUS_PENDING;
+//        $order->email = $request->email;
+//        $order->save();
+//
+//        foreach (Cart::content() as $item){
+//            $order->productOrders()->insert([
+//                'order_id' => $order->id,
+//                'product_id' => $item->id,
+//                'price' => $item->price,
+//                'amount' => $item->qty,
+//            ]);
+//        }
 
 //        dd(
 //            (float)$order->total_paid,
@@ -57,16 +57,17 @@ class OrderController extends Controller
 //        );
         $payment =  $this->mollie->payments()->create([
             "amount"      => 1905.02, //todo alleen de punt gebruiken
-            "description" => "Order Nr. ". $order->id,
-            "redirectUrl" => route('order.show', $order->id),
+            "description" => "Order Nr. 1",
+//            "description" => "Order Nr. ". $order->id,
+            "redirectUrl" => route('order.show', 1),
             'metadata'    => [
-                'order_id' => $order->id,
+                'order_id' => 1,
             ],
         ]);
 
-        $order->update(['payment_id' => $payment->id]);
-
-        Cart::destroy();
+//        $order->update(['payment_id' => $payment->id]);
+//
+//        Cart::destroy();
 
         // redirect customer to Mollie checkout page
         return redirect($payment->getPaymentUrl(), 303);
@@ -80,36 +81,36 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = $this->order->findOrFail($id);
+//        $order = $this->order->findOrFail($id);
+//
+//        $payment =  $this->mollie->payments()->get($order->payment_id);
+//
+//        if ($payment->isPaid())
+//        {
+//            if ($order->status != 'paid'){
+//                foreach($order->productOrders as $product){
+//                    $product->product()->update([
+//                        'stock' => ((int)$product->stock - $product->amount)
+//                    ]);
+//                }
+//
+//                Mail::to($order->email)->send(new OrderConfirmation($order));
+//            }
+//
+//            $order->status = self::STATUS_COMPLETED;
+//
+//        }
+//        elseif (! $payment->isOpen())
+//        {
+//            $order->status = self::STATUS_CANCELLED;
+//        }
+//        $order->payment_method = $payment->method;
+//
+//        $order->save();
 
-        $payment =  $this->mollie->payments()->get($order->payment_id);
-
-        if ($payment->isPaid())
-        {
-            if ($order->status != 'paid'){
-                foreach($order->productOrders as $product){
-                    $product->product()->update([
-                        'stock' => ((int)$product->stock - $product->amount)
-                    ]);
-                }
-
-                Mail::to($order->email)->send(new OrderConfirmation($order));
-            }
-
-            $order->status = self::STATUS_COMPLETED;
-
-        }
-        elseif (! $payment->isOpen())
-        {
-            $order->status = self::STATUS_CANCELLED;
-        }
-        $order->payment_method = $payment->method;
-
-        $order->save();
-
-        return view('order.show')
-            ->with('order', $order)
-            ->with('payment', $payment);
+        return view('order.show');
+//            ->with('order', $order)
+//            ->with('payment', $payment);
     }
 
     /**

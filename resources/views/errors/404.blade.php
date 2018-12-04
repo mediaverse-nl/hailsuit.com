@@ -1,6 +1,6 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
 
-@section('content')
+{{--@section('content')--}}
 
     <div class="container">
         <div class="row" style="padding: 20px;">
@@ -13,7 +13,7 @@
         </div>
     </div>
 
-@endsection
+{{--@endsection--}}
 
 @push('css')
     <style>

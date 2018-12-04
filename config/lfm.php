@@ -20,7 +20,7 @@ return [
     'middlewares' => ['web'],
 
     // The url to this package. Change it if necessary.
-    'url_prefix' => 'laravel-filemanager',
+    'url_prefix' => 'admin/laravel-filemanager',
 
     // Use relative paths (without domain)
     'relative_paths' => false,

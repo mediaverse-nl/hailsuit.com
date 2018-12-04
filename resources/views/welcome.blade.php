@@ -45,6 +45,8 @@
 
     <div class="container" style="margin-bottom: 10px;">
         <div class="row">
+            <h2 class="text-center">Bekijk alle producten in de shop</h2>
+            <br>
             <div class="product-slide">
 
                 @foreach($products as $product)
@@ -57,8 +59,8 @@
 
             </div>
             <div class="text-center">
-                <h2 class="">Bekijk alle producten in de shop</h2>
-                <a class="btn btn-default " href="{!! route('product.index') !!}">SHOP</a>
+                <br>
+                <a class="btn btn-default " href="{!! route('product.index') !!}"  style="border-radius: 0px;  ">SHOP</a>
             </div>
         </div>
     </div>
@@ -70,14 +72,25 @@
                     <p class="lead text-uppercase text-center design-panel" ><span>Design</span></p>
                 </div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="padding: 15px;">
-                <p class="text-center">
-                    Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
-                </p>
-                <br>
-                {{--<a class="btn btn-default center-block" style="width: 130px;">Lees meer</a>--}}
-                {{--<br>--}}
-                <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width: 80%;">
+            <div class="col-md-6">
+                <div class="" style="padding: 15px;">
+                    <p class="text-center">
+                        Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
+                    </p>
+                    <br>
+                    <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width:100%;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="" style="padding: 15px;">
+                    <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width:100%;">
+
+                    <p class="text-center">
+                        Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
+                    </p>
+                    <br>
+
+                </div>
             </div>
         </div>
     </div>
