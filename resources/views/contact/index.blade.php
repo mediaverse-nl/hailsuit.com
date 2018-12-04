@@ -24,12 +24,52 @@
     </section>
     <div class="container">
             <div class="col-md-6" style="padding: 15px 0px;">
-                {{--<div class="panel">--}}
-                    {{--<div class="panel-body">--}}
-                        {!! form($form) !!}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <h1>get in touch</h1>
+                <br/>
+                <p>please fill out the form and we will respond lightning quick</p>
+                <br/>
+
+                {!! Form::model('$form', ['route' => 'contact.store', 'method' => 'POST']) !!}
+
+                             <br/>
+
+                    {!! Form::label('name', '*Name:') !!}
+                    {!! Form::text('email', '', ['class' => 'form-control']) !!}
+                             <br/>
+
+                    {!! Form::label('email', '*Your e-mail:') !!}
+                        {!! Form::email('email', '', ['class' => 'form-control']) !!}
+                           <br/>
+
+                    {!! Form::label('name', '*Message:') !!}
+                        {!! Form::textarea('contact message', '', ['class' => 'form-control']) !!}
+
+                <br/>
+                <br/>
+
+                    {!! Form::submit('submit', ['class' => 'form-control']) !!}
+
+                             <br/>
+                             <br/>
+                             <br/>
+                             <br/>
+                             <br/>
+
+                {!! Form::close() !!}
             </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+        <br/>
+            <h3>Connect with us</h3>
+            <p>For support any questions:
+            Email us at  <a>faris.ben.aaziz@gmail.com</a>
+            </p>
+
+            <i class="fab fa-facebook" style="font-size: 30px"></i>
+            <i class="fab fa-twitter-square" style="font-size: 30px;"></i>
+            <i class="fab fa-linkedin" style="font-size:30px "></i>
+            <i class="fab fa-instagram" style="font-size: 30px "></i>
+        </div>
 
 
         <div class="row">

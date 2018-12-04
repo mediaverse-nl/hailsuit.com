@@ -39,6 +39,8 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //make a request to the database.
     public function store(Request $request)
     {
 
