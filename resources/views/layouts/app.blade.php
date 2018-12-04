@@ -24,6 +24,11 @@
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/css/animsition.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/css/animsition.min.css">
+
+    @stack('css')
+
     <style>
         .loader {
             position: fixed;
@@ -154,17 +159,16 @@
 
     </style>
 
-    @stack('css')
-
 </head>
 <body>
-    {{--<div class="loader"></div>--}}
+    @component('components.page-loader')
+        @include('components.menu-fixed-top')
 
-    @include('components.menu-fixed-top')
+        @yield('content')
 
-    @yield('content')
+        @include('components.footer')
+    @endcomponent
 
-    @include('components.footer')
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -174,10 +178,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script type="text/javascript">
-        $(window).load(function() {
-            $(".loader").fadeOut("slow");
-        });
-
         $(document).ready(function(){
             $('body').append('<div id="back-to-top" style="display:none"><i class="fas fa-angle-up"></i></div>');
             if ($(this).scrollTop() != 0) {
