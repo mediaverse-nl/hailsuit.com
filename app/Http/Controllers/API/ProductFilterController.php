@@ -37,6 +37,13 @@ class ProductFilterController extends Controller
                 ->groupBy('value')
                 ->get(['value']);
 
+            foreach ($types as $v){
+                $types = [
+                    'id' => $v->id,
+                    'value' => $v->getTranslation()
+                ];
+            }
+
             if ($type)
             {
                 $years = $this->types

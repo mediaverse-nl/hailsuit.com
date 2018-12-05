@@ -1,58 +1,40 @@
-{{--<div class="row" style="">--}}
-    {{--<div class="container">--}}
-        {{--<div class="row">--}}
 
-        {{--<div class="container-fluid">--}}
-            {{--<div class="row">--}}
+<h1>Filter</h1>
 
-                {{--<div class="col-md-6">--}}
-                    {{--<div class="panel panel-default" style="border: none; background: #dddddd;">--}}
-                        {{--<div class="panel-body">--}}
-                            <h1>Filter</h1>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <b>Merk</b>
-                                        <select class="form-control filter" id="brands">
-                                            <option>--- select ---</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <b>Type</b>
-                                        <select class="form-control filter" id="types">
-                                            <option>--- select ---</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <b>Jaar</b>
-                                        <select class="form-control filter" id="years">
-                                            <option>--- select ---</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <b>Body</b>
-                                        <select class="form-control filter" id="bodies">
-                                            <option>--- select ---</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <b>Merk</b>
+            <select class="form-control filter" id="brands">
+                <option>--- select ---</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <b>Type</b>
+            <select class="form-control filter" id="types">
+                <option>--- select ---</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <b>Jaar</b>
+            <select class="form-control filter" id="years">
+                <option>--- select ---</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <b>Body</b>
+            <select class="form-control filter" id="bodies">
+                <option>--- select ---</option>
+            </select>
+        </div>
+    </div>
+</div>
 
 @push('js')
     <script>
