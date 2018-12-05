@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderStoreRequest;
 use App\Mail\OrderConfirmation;
 use App\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -31,41 +32,47 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderStoreRequest $request)
     {
-//        dd(Cart::total(','));
+        $price = Cart::total();
+        $moneyFormat = str_replace( ',', '', $price );
 
-//        $order = $this->order;
-//        $order->total_paid = Cart::total();
-//        $order->status = self::STATUS_PENDING;
-//        $order->email = $request->email;
-//        $order->save();
+        if( is_numeric( $moneyFormat ) ) {
+            $price = $moneyFormat;
+        }
+
+        $order = $this->order;
+        $order->total_paid = $price;
+        $order->status = self::STATUS_PENDING;
+        $order->email = $request->email;
+        $order->name = $request->full_name;
+        $order->telephone = $request->phone;
+        $order->postal_code = $request->postal_code;
+        $order->address_number = $request->house_number;
+        $order->address = $request->street;
+        $order->city = $request->residence;
+        $order->country = $request->country;
+        $order->save();
 //
-//        foreach (Cart::content() as $item){
-//            $order->productOrders()->insert([
-//                'order_id' => $order->id,
-//                'product_id' => $item->id,
-//                'price' => $item->price,
-//                'amount' => $item->qty,
-//            ]);
-//        }
+        foreach (Cart::content() as $item){
+            $order->productOrders()->insert([
+                'order_id' => $order->id,
+                'product_id' => $item->id,
+                'price' => $item->price,
+                'amount' => $item->qty,
+            ]);
+        }
 
-//        dd(
-//            (float)$order->total_paid,
-//            $order->total_paid,
-//            number_format ( (float)$order->total_paid  ,2 )
-//        );
         $payment =  $this->mollie->payments()->create([
-            "amount"      => 1905.02, //todo alleen de punt gebruiken
-            "description" => "Order Nr. 1",
-//            "description" => "Order Nr. ". $order->id,
-            "redirectUrl" => route('order.show', 1),
+            "amount"      => $price, //todo alleen de punt gebruiken
+            "description" => "Order Nr. ". $order->id,
+            "redirectUrl" => route('order.show', $order->id),
             'metadata'    => [
-                'order_id' => 1,
+                'order_id' => $order->id,
             ],
         ]);
 
-//        $order->update(['payment_id' => $payment->id]);
+        $order->update(['payment_id' => $payment->id]);
 //
 //        Cart::destroy();
 
@@ -81,36 +88,35 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-//        $order = $this->order->findOrFail($id);
+        $order = $this->order->findOrFail($id);
 //
-//        $payment =  $this->mollie->payments()->get($order->payment_id);
+        $payment =  $this->mollie->payments()->get($order->payment_id);
 //
-//        if ($payment->isPaid())
-//        {
-//            if ($order->status != 'paid'){
-//                foreach($order->productOrders as $product){
-//                    $product->product()->update([
-//                        'stock' => ((int)$product->stock - $product->amount)
-//                    ]);
-//                }
-//
-//                Mail::to($order->email)->send(new OrderConfirmation($order));
-//            }
-//
-//            $order->status = self::STATUS_COMPLETED;
-//
-//        }
-//        elseif (! $payment->isOpen())
-//        {
-//            $order->status = self::STATUS_CANCELLED;
-//        }
-//        $order->payment_method = $payment->method;
-//
-//        $order->save();
+        if ($payment->isPaid())
+        {
+            if ($order->status != 'paid'){
+                foreach($order->productOrders as $product){
+                    $product->product()->update([
+                        'stock' => ((int)$product->stock - $product->amount)
+                    ]);
+                }
 
-        return view('order.show');
-//            ->with('order', $order)
-//            ->with('payment', $payment);
+                Mail::to($order->email)->send(new OrderConfirmation($order));
+            }
+
+            $order->status = self::STATUS_COMPLETED;
+        }
+        elseif (! $payment->isOpen())
+        {
+            $order->status = self::STATUS_CANCELLED;
+        }
+        $order->payment_method = $payment->method;
+
+        $order->save();
+
+        return view('order.show')
+            ->with('order', $order)
+            ->with('payment', $payment);
     }
 
     /**

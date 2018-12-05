@@ -5,7 +5,12 @@
 {{--    @include('components.product-filter')--}}
 
     <div class="container">
+
         <div class="row" style="padding: 50px 0px;">
+
+            <div class="col-md-12" style="margin-top: -30px;">
+                {!! Breadcrumbs::render('product.show', $product) !!}
+            </div>
             <div class="col-md-6">
                 <br>
 
@@ -18,12 +23,11 @@
                         <div class="col-md-3" style="height: 80px; margin-top: 20px;">
                             <img src="{{$image->path}}" alt="" class="img-responsive" style="height: 100%; width: 100%; object-fit: cover">
                         </div>
-
                     @endif
                 @endforeach
                         </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 pull-right">
 
                 <h1>{!! $product->titleTranslated() !!}</h1>
 
@@ -59,15 +63,15 @@
                 <div class="row">
                     {{Form::open(['route' => ['cart.store', $product->id]])}}
                         <div class="col-md-6 cart-amount">
-                            <div class="btn-group" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-default disabled">12</button>
-                                <button type="button" class="btn btn-default">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
+                            {{--<div class="btn-group" role="group" aria-label="...">--}}
+                                {{--<button type="button" class="btn btn-default">--}}
+                                    {{--<i class="fas fa-minus"></i>--}}
+                                {{--</button>--}}
+                                {{--<input type="text" class="btn btn-default disabled">12</input>--}}
+                                {{--<button type="button" class="btn btn-default">--}}
+                                    {{--<i class="fas fa-plus"></i>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
                         </div>
                         <div class="col-md-6">
                             <button type="submit" title="Click Here" class="btn btn-lg btn-default pull-right" style="color: #FFFFFF; background-color: #4D4D4C;">

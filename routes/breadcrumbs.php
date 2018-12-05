@@ -1,5 +1,34 @@
 <?php
 
+// home
+Breadcrumbs::register('home', function($breadcrumbs) {
+    $breadcrumbs->push('Home', route('home'));
+});
+
+// dashboard > product
+Breadcrumbs::register('product.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Products', route('product.index'));
+});
+// dashboard > product > show
+Breadcrumbs::register('product.show', function($breadcrumbs, $model) {
+    $breadcrumbs->parent('product.index');
+    $breadcrumbs->push('show', route('product.show', $model->id));
+});
+
+// dashboard > cart
+Breadcrumbs::register('cart.index', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Shopping Cart', route('product.index'));
+});
+// dashboard > cart > create
+Breadcrumbs::register('cart.create', function($breadcrumbs) {
+    $breadcrumbs->parent('cart.index');
+    $breadcrumbs->push('Create Order', route('cart.create'));
+});
+
+
+//admin routes
 $edit_name = 'Edit';
 $create_name = 'Create';
 

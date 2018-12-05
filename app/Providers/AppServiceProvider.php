@@ -28,17 +28,13 @@ class AppServiceProvider extends ServiceProvider
             return Socialite::buildProvider('Mollie\Laravel\MollieConnectProvider', $config);
         });
 
-//        Validator::extend('check_array', function ($attribute, $value, $parameters, $validator) {
-//
-//
-//
-//            dd($attribute, $value, $parameters, $validator);
-//        }, 'one must be filled');
-//
-//        Validator::replacer('check_array', function($message, $attribute, $rule, $parameters){
-////            return str_replace(':foo', $parameters[0], $message);
-//            return 'select at least one'.$attribute;
-//        });
+        Validator::extend('alpha_spaces', function ($attribute, $value) {
+
+            // This will only accept alpha and spaces.
+            // If you want to accept hyphens use: /^[\pL\s-]+$/u.
+            return preg_match('/^[\pL\s]+$/u', $value);
+
+        });
     }
 
     /**

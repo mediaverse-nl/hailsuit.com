@@ -156,7 +156,14 @@
         .footer-social-icons{
             font-size: 35px;
         }
-
+        .breadcrumb{
+            background-color: transparent;
+        }
+        .btn-default{
+            text-shadow: none;
+            box-shadow: none;
+            border-radius: 0px;
+        }
     </style>
 
 </head>

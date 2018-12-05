@@ -2,7 +2,6 @@
 
 @section('content')
 
-{{--    @include('components.product-filter')--}}
 
     <div class="container">
         <div class="row">
@@ -16,6 +15,8 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
+                    {!! Breadcrumbs::render('product.index') !!}
+
                     @foreach($products as $product)
                         <div class="col-md-4 col-sm-4 col-sm-4 col-xs-6 ">
                             @component('components.auto-model', ['product' => $product])

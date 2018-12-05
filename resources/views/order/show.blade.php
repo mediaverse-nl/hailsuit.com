@@ -2,9 +2,9 @@
 
 @section('content')
 
-    {{--{!! $order !!}--}}
+    {!! $order !!}
     <br>
-    {{--{!! $payment !!}--}}
+    {{--{!! dd($payment) !!}--}}
 
 
     <div class="container">
