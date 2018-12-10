@@ -62,6 +62,7 @@
 @push('css')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
 
     <style>
         textarea{
@@ -72,18 +73,51 @@
 
 @push('scripts')
     <!-- include summernote css/js -->
-    {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>--}}
-    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 
     <script>
+        // Define function to open filemanager window
+        var lfm = function(options, cb) {
+            var route_prefix = (options && options.prefix) ? options.prefix : '/admin/laravel-filemanager';
+            window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=900,height=600');
+            window.SetUrl = cb;
+        };
+
+        // Define LFM summernote button
+        var LFMButton = function(context) {
+            var ui = $.summernote.ui;
+            var button = ui.button({
+                contents: '<i class="note-icon-picture"></i> ',
+                tooltip: 'Insert image with filemanager',
+                click: function() {
+
+                    lfm({type: 'image', prefix: '/admin/laravel-filemanager'}, function(lfmItems, path) {
+                        lfmItems.forEach(function (lfmItem) {
+                            context.invoke('insertImage', lfmItem.url);
+                        });
+                    });
+
+                }
+            });
+            return button.render();
+        };
+
         $('.summernote').summernote({
             placeholder: "Type anything here...",
             tabsize: 2,
-            height: 350
+            height: 350,
+            toolbar: [
+                    ['popovers', ['lfm']
+                ],
+            ],
+            buttons: {
+                lfm: LFMButton
+            }
         });
-        $('.dropdown-toggle').dropdown()
+//        $('.dropdown-toggle').dropdown()
 
     </script>
 @endpush

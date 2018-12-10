@@ -17,7 +17,7 @@ return [
 
     'use_package_routes' => true,
 
-    'middlewares' => ['web'],
+    'middlewares' => [],
 
     // The url to this package. Change it if necessary.
     'url_prefix' => 'admin/laravel-filemanager',
