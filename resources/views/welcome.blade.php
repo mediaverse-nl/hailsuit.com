@@ -19,6 +19,8 @@
         </div>
     </div>
 
+    <br><br><br><br><br><br><br><br>
+
     <div class="container" style="margin-bottom: 80px;">
         <div class="row">
             <div class="col-md-12">
@@ -42,28 +44,7 @@
         </div>
     </div>
 
-
-    <div class="container" style="margin-bottom: 10px;">
-        <div class="row">
-            <h2 class="text-center">Bekijk alle producten in de shop</h2>
-            <br>
-            <div class="product-slide">
-
-                @foreach($products as $product)
-                    <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
-                        @component('components.auto-model', ['product' => $product])
-
-                        @endcomponent
-                    </div>
-                @endforeach
-
-            </div>
-            <div class="text-center">
-                <br>
-                <a class="btn btn-default " href="{!! route('product.index') !!}"  style="border-radius: 0px;  ">SHOP</a>
-            </div>
-        </div>
-    </div>
+    <br><br><br><br><br><br><br><br>
 
     <div class="container" style="margin-bottom: 80px;">
         <div class="row">
@@ -94,6 +75,31 @@
             </div>
         </div>
     </div>
+
+    <br><br><br><br><br><br><br><br>
+
+    <div class="container" style="margin-bottom: 10px;">
+        <div class="row">
+            <h2 class="text-center">Bekijk alle producten in de shop</h2>
+            <br>
+            <div class="product-slide">
+
+                @foreach($products as $product)
+                    <div class="col-md-3 col-sm-4 col-sm-4 col-xs-6 ">
+                        @component('components.auto-model', ['product' => $product])
+
+                        @endcomponent
+                    </div>
+                @endforeach
+
+            </div>
+            <div class="text-center">
+                <br>
+                <a class="btn btn-default " href="{!! route('product.index') !!}"  style="border-radius: 0px;  ">SHOP</a>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
 
 @endsection
 

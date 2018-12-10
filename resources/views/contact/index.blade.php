@@ -29,46 +29,46 @@
                 <p>please fill out the form and we will respond lightning quick</p>
                 <br/>
 
-                {!! Form::model('$form', ['route' => 'contact.store', 'method' => 'POST']) !!}
 
-                             <br/>
+                {!! Form::open(['route' => 'contact.store', 'method' => 'POST']) !!}
 
-                    {!! Form::label('name', '*Name:') !!}
-                    {!! Form::text('email', '', ['class' => 'form-control']) !!}
-                             <br/>
+                <div class="form-group {!! !$errors->has('name') ? : 'has-error'!!}">
+                    {!! Form::label('name', 'Your Name') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter Name']) !!}
+                    @include('components.error', ['field' => 'name'])
+                </div>
 
-                    {!! Form::label('email', '*Your e-mail:') !!}
-                        {!! Form::email('email', '', ['class' => 'form-control']) !!}
-                           <br/>
+                <div class="form-group {!! !$errors->has('email') ? : 'has-error'!!}">
+                    {!! Form::label('email', 'E-mail Address') !!}
+                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Enter e-mail']) !!}
+                    @include('components.error', ['field' => 'email'])
+                </div>
 
-                    {!! Form::label('name', '*Message:') !!}
-                        {!! Form::textarea('contact message', '', ['class' => 'form-control']) !!}
+                {{--Translator('cart_btn_complete_order', 'text', false, 'complete order')--}}
+                <div class="form-group {!! !$errors->has('message') ? : 'has-error'!!}">
+                    {!! Form::textarea('message', null, ['class' => 'form-control', 'placeholder' => 'Enter Message']) !!}
+                    @include('components.error', ['field' => 'message'])
+                </div>
 
-                <br/>
-                <br/>
+                {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
 
-                    {!! Form::submit('submit', ['class' => 'form-control']) !!}
-
-                             <br/>
-                             <br/>
-                             <br/>
-                             <br/>
-                             <br/>
-    s
                 {!! Form::close() !!}
+
             </div>
+
         <div class="col-md-3"></div>
+
+
         <div class="col-md-3">
         <br/>
             <h3>Connect with us</h3>
             <p>For support any questions:
             Email us at  <a>faris.ben.aaziz@gmail.com</a>
             </p>
-
-            <i class="fab fa-facebook" style="font-size: 30px"></i>
-            <i class="fab fa-twitter-square" style="font-size: 30px;"></i>
-            <i class="fab fa-linkedin" style="font-size:30px "></i>
-            <i class="fab fa-instagram" style="font-size: 30px "></i>
+            <a href="https://www.facebook.com"><i class="fab fa-facebook" style="font-size: 30px"></i></a>
+            <a href="https://www.twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px"></i></a>
+            <a href="https://www.linkedin.com"><i class="fab fa-linkedin" style="font-size:30px"></i></a>
+            <a href="https://www.instagram.com"><i class="fab fa-instagram" style="font-size: 30px "></i></a>
         </div>
 
 

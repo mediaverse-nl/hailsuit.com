@@ -40,7 +40,7 @@ class OrderController extends Controller
         if( is_numeric( $moneyFormat ) ) {
             $price = $moneyFormat;
         }
-
+        //  the instances of the model order
         $order = $this->order;
         $order->total_paid = $price;
         $order->status = self::STATUS_PENDING;
@@ -74,7 +74,7 @@ class OrderController extends Controller
 
         $order->update(['payment_id' => $payment->id]);
 //
-//        Cart::destroy();
+        Cart::destroy();
 
         // redirect customer to Mollie checkout page
         return redirect($payment->getPaymentUrl(), 303);

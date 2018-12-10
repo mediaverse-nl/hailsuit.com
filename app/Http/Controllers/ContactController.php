@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Forms\ContactStoreForm;
+use App\Http\Requests\ContactStoreRequest;
+use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
@@ -25,25 +27,23 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $form = $this->formBuilder->create(ContactStoreForm::class, [
-            'method' => 'POST',
-            'url' => route('contact.store')
-        ]);
-
-        return view('contact.index')->with('form', $form);
+//        $form = $this->formBuilder->create(ContactStoreForm::class, [
+//            'method' => 'POST',
+//            'url' => route('contact.store')
+//        ]);
+        return view('contact.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
     //make a request to the database.
-    public function store(Request $request)
+    /**
+     * @param ContactStoreRequest|Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ContactStoreRequest $request)
     {
+//        dd($request->message);
 
+        Mail::to($request->email)->send(new ContactFormMail($request));
 
         return redirect()->back();
     }
