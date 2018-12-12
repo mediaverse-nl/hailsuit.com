@@ -15,9 +15,40 @@
         <div class="card-body">
             {!! Form::open(['route' => ['admin.text-editor.update', $text->commentable->key_name], 'method' => 'PATCH']) !!}
 
-                @component('components.rich-textarea-editor', ['languages' => $languages, 'text' => $text, 'texts' => $texts])
 
-                @endcomponent
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                @foreach($languages as $language)
+                    <a class="nav-item nav-link {{$loop->first ? 'active' : ''}}"
+                       data-toggle="tab"
+                       href="#nav-{{$language->country_code_large}}"
+                       role="tab">
+                        {{$language->country_code_flag}}
+                    </a>
+                @endforeach
+            </div>
+
+                <div class="tab-content" id="nav-tabContent">
+                    @foreach($languages as $language)
+                        <div class="tab-pane {{$loop->first ? 'show active' : ''}}"
+                             id="nav-{{$language->country_code_large}}"
+                             role="tabpanel">
+
+                            <div class="form-group">
+                                @if($text->commentable->text_type == 'richtext')
+                                    <textarea class="summernote" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                @elseif($text->commentable->text_type == 'textarea')
+                                    <textarea class="form-control" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                @elseif($text->commentable->text_type == 'text')
+                                    <br>
+                                    <input class="form-control" name="translation[{!! $language->id !!}]" value="{!! $texts->where('language_id', '=', $language->id)->first()->text !!}">
+                                @endif
+                            </div>
+
+                            {!! Form::submit('Update', ['class' => 'btn btn-sm btn-success']) !!}
+
+                        </div>
+                    @endforeach
+                </div>
 
             {{ Form::close() }}
 
@@ -26,6 +57,9 @@
         </div>
     </div>
 
+    @component('components.rich-textarea-editor')
+
+    @endcomponent
 
 @endsection
 

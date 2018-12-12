@@ -62,6 +62,7 @@
                             @foreach($languages as $language)
 
                                 <div class="tab-pane fade {{$loop->first ? 'show active' : ''}}" id="nav-{{$language->country_code_large}}" role="tabpanel">
+                                    <br>
                                     <div class="form-group">
                                         <label for="">Name</label>
 
@@ -70,7 +71,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Description</label>
-                                        <textarea class="form-control" name="translation[{{$language->id}}][description]" rows="3">{{$product->descriptionTranslated($language->id)}}</textarea>
+                                        <textarea class="summernote" name="translation[{{$language->id}}][description]" rows="1">{{$product->descriptionTranslated($language->id)}}</textarea>
                                     </div>
                                 </div>
                             @endforeach
@@ -196,6 +197,11 @@
             </div>
         </div>
     </div>
+
+    @component('components.rich-textarea-editor')
+
+    @endcomponent
+
 @endsection
 
 @push('css')

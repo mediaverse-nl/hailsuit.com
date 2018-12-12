@@ -15,31 +15,28 @@ class PageController extends Controller
     }
 
     public function terms(){
-        return view('default');
+        return view('pages.terms');
     }
 
     public function privacy(){
-        return view('default');
+        return view('pages.privacy');
 
     }
 
     public function cookie(){
-        return view('default');
-
+        return view('pages.cookie');
     }
 
     public function warranty(){
-        return view('default');
-
+        return view('pages.warranty');
     }
 
     public function returns(){
-        return view('default');
-
+        return view('pages.returns');
     }
 
     public function delivery(){
-        return view('default');
+        return view('pages.delivery');
     }
 
     public function app(){

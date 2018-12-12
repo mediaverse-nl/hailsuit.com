@@ -57,13 +57,14 @@
                     <div class="tab-content" id="nav-tabContent">
                         @foreach($languages as $language)
                             <div class="tab-pane fade {{$loop->first ? 'show active' : ''}}" id="nav-{{$language->country_code_large}}" role="tabpanel">
+                                <br>
                                 <div class="form-group">
                                     <label for="">Name</label>
                                     <input type="text" class="form-control" name="translation[{{$language->id}}][name]" placeholder="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Description</label>
-                                    <textarea class="form-control" name="translation[{{$language->id}}][description]" rows="3"></textarea>
+                                    <textarea class="summernote" name="translation[{{$language->id}}][description]" rows="1"></textarea>
                                 </div>
                             </div>
                         @endforeach
@@ -159,25 +160,14 @@
             </div>
         </div>
         <div class="col-3">
-            {{--<div class="card">--}}
-                {{--<div class="card-header">--}}
-                    {{--product labels--}}
-                {{--</div>--}}
-                {{--<div class="card-body">--}}
-                    {{--@foreach($product->barcodes as $barcode)--}}
-                        {{--@if(is_numeric($barcode->value))--}}
-                            {{--<div id='{{$barcode->id}}DivToPrint'>--}}
-                                {{--{!! DNS1D::getBarcodeHTML($barcode->value, "EAN13") !!}--}}
-                                {{--{{$barcode->value}}--}}
-                            {{--</div>--}}
-                            {{--<input type='button' id='btn' value='Print' onclick='printDiv({{$barcode->id}});'>--}}
-                            {{--<hr>--}}
-                        {{--@endif--}}
-                    {{--@endforeach--}}
-                {{--</div>--}}
-            {{--</div>--}}
+
         </div>
     </div>
+
+    @component('components.rich-textarea-editor')
+
+    @endcomponent
+
 @endsection
 
 @push('css')
