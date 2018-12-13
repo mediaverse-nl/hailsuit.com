@@ -18,4 +18,11 @@ class Order extends Model
     {
         return $this->hasMany('App\ProductOrder', 'order_id', 'id');
     }
+
+    public function countNew()
+    {
+        return $this
+            ->where('status', '=', 'paid')
+            ->count();
+    }
 }

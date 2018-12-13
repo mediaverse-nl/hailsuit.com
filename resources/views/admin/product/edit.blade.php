@@ -110,7 +110,7 @@
                                 <i class="fa fa-plus" style="color: #fff;"></i>
                             </a>
                         </h5>
-
+                        {!! $brands !!}
                         @if($brands->count() == 0)
                             <p>no records found</p>
                         @endIf

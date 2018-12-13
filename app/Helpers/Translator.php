@@ -17,7 +17,6 @@ if (!function_exists('Translator')) {
 
         if ($textType == false){
             $textType = 'text';
-//            dd($textType);
         }
 
         if ($trans->count() === 0){
@@ -25,8 +24,6 @@ if (!function_exists('Translator')) {
                 'key_name' => $key,
                 'text_type' => $textType,
             ]);
-
-//            dd($newInstance);
 
             if ($value){
                 $siteContent->insertTranslation($newInstance, $value);

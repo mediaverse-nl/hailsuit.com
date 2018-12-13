@@ -197,6 +197,7 @@ class ProductController extends Controller
 
         $languages = $this->language->get();
         $details = $this->detail->get();
+//        todo this is not working
         $brands = $this->brand->whereHas('types', function ($q) use ($id){
             $q->where('product_id', '=', null)
                 ->orWhere('product_id', '=', $id);

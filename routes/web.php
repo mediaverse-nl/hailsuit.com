@@ -74,6 +74,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::resource('body', 'BodyController');
         Route::resource('product', 'ProductController');
         Route::resource('faq', 'FAQController');
+        Route::get('translator/{id}-{type}/edit', 'TranslatorController@edit')->name('translator.edit');
+        Route::patch('translator/{id}/edit', 'TranslatorController@update')->name('translator.update');
         Route::post('product/add-stock', 'ProductController@addStock')->name('product.addStock');
         Route::post('product/added-stock', 'ProductController@addedStock')->name('product.addedStock');
         Route::resource('order', 'OrderController');
@@ -94,94 +96,32 @@ Route::group(['prefix' => 'admin/laravel-filemanager', 'middleware' => ['auth']]
         $namespace = '\\UniSharp\\LaravelFilemanager\\Controllers\\';
 
         // display main layout
-        Route::get('/', [
-            'uses' => $namespace . 'LfmController@show',
-            'as' => 'show',
-        ]);
-
+        Route::get('/', ['uses' => $namespace . 'LfmController@show', 'as' => 'show']);
         // display integration error messages
-        Route::get('/errors', [
-            'uses' => $namespace . 'LfmController@getErrors',
-            'as' => 'getErrors',
-        ]);
-
+        Route::get('/errors', ['uses' => $namespace . 'LfmController@getErrors', 'as' => 'getErrors']);
         // upload
-        Route::any('/upload', [
-            'uses' => $namespace . 'UploadController@upload',
-            'as' => 'upload',
-        ]);
-
+        Route::any('/upload', ['uses' => $namespace . 'UploadController@upload', 'as' => 'upload']);
         // list images & files
-        Route::get('/jsonitems', [
-            'uses' => $namespace . 'ItemsController@getItems',
-            'as' => 'getItems',
-        ]);
-
-        Route::get('/move', [
-            'uses' => $namespace . 'ItemsController@move',
-            'as' => 'move',
-        ]);
-
-        Route::get('/domove',[
-            'uses' => $namespace . 'ItemsController@domove',
-            'as' => 'domove'
-        ]);
-
+        Route::get('/jsonitems', ['uses' => $namespace . 'ItemsController@getItems', 'as' => 'getItems']);
+        Route::get('/move', ['uses' => $namespace . 'ItemsController@move', 'as' => 'move']);
+        Route::get('/domove',['uses' => $namespace . 'ItemsController@domove', 'as' => 'domove']);
         // folders
-        Route::get('/newfolder', [
-            'uses' => $namespace . 'FolderController@getAddfolder',
-            'as' => 'getAddfolder',
-        ]);
-
+        Route::get('/newfolder', ['uses' => $namespace . 'FolderController@getAddfolder', 'as' => 'getAddfolder',]);
         // list folders
-        Route::get('/folders', [
-            'uses' => $namespace . 'FolderController@getFolders',
-            'as' => 'getFolders',
-        ]);
-
+        Route::get('/folders', ['uses' => $namespace . 'FolderController@getFolders', 'as' => 'getFolders']);
         // crop
-        Route::get('/crop', [
-            'uses' => $namespace . 'CropController@getCrop',
-            'as' => 'getCrop',
-        ]);
-        Route::get('/cropimage', [
-            'uses' => $namespace . 'CropController@getCropimage',
-            'as' => 'getCropimage',
-        ]);
-        Route::get('/cropnewimage', [
-            'uses' => $namespace . 'CropController@getNewCropimage',
-            'as' => 'getCropimage',
-        ]);
-
+        Route::get('/crop', ['uses' => $namespace . 'CropController@getCrop', 'as' => 'getCrop',]);
+        Route::get('/cropimage', ['uses' => $namespace . 'CropController@getCropimage', 'as' => 'getCropimage',]);
+        Route::get('/cropnewimage', ['uses' => $namespace . 'CropController@getNewCropimage', 'as' => 'getCropimage',]);
         // rename
-        Route::get('/rename', [
-            'uses' => $namespace . 'RenameController@getRename',
-            'as' => 'getRename',
-        ]);
-
+        Route::get('/rename', ['uses' => $namespace . 'RenameController@getRename', 'as' => 'getRename']);
         // scale/resize
-        Route::get('/resize', [
-            'uses' => $namespace . 'ResizeController@getResize',
-            'as' => 'getResize',
-        ]);
-        Route::get('/doresize', [
-            'uses' => $namespace . 'ResizeController@performResize',
-            'as' => 'performResize',
-        ]);
-
+        Route::get('/resize', ['uses' => $namespace . 'ResizeController@getResize', 'as' => 'getResize']);
+        Route::get('/doresize', ['uses' => $namespace . 'ResizeController@performResize', 'as' => 'performResize']);
         // download
-        Route::get('/download', [
-            'uses' => $namespace . 'DownloadController@getDownload',
-            'as' => 'getDownload',
-        ]);
-
+        Route::get('/download', ['uses' => $namespace . 'DownloadController@getDownload', 'as' => 'getDownload']);
         // delete
-        Route::get('/delete', [
-            'uses' => $namespace . 'DeleteController@getDelete',
-            'as' => 'getDelete',
-        ]);
-
-        Route::get('/demo', $namespace . 'DemoController@index');
+        Route::get('/delete', ['uses' => $namespace . 'DeleteController@getDelete', 'as' => 'getDelete']);
     });
 });
 

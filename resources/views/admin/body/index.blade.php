@@ -7,7 +7,6 @@
 @section('content')
 
     <!-- DataTables Example -->
-
     <div class="row">
         <div class="col-9">
             @component('components.datatable')
@@ -40,6 +39,9 @@
                                         <i class="fa fa-times-circle" style="color: #FFFFFF !important;"></i>
                                     </a>
                                 @endif
+                                <a href="{{route('admin.translator.edit', [$body->id, 'body'])}}" class="rounded-circle btn-primary pull-right" data-toggle="tooltip" data-placement="top" title="Translate" style="margin-right: 5px;">
+                                    <i class="fa fa-language"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

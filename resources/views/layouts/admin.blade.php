@@ -78,7 +78,7 @@
         @if(Auth()->check())
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="">
-                <a class="navbar-brand" href="{!! route('admin.dashboard') !!}">Admin Panel v1.0</a>
+                <a class="navbar-brand" href="{!! route('admin.dashboard') !!}">Admin Panel v2.1.1</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -102,7 +102,7 @@
             <footer class="sticky-footer">
                 <div class="container">
                     <div class="text-center">
-                        <small>Copyright © <a href="https://mediaverse.nl">Mediaverse.nl</a> 2018</small>
+                        <small>Copyright © <a href="https://mediaverse.nl">Mediaverse.nl</a> 2018</small> - <small>Call +31 85 009 1206 for support</small>
                     </div>
                 </div>
             </footer>

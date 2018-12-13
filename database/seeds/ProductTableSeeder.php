@@ -104,7 +104,7 @@ class ProductTableSeeder extends Seeder
                 ]);
             }
 //
-            $collection = array_rand([1, 2, 3,4,5,6,7,8,9,10], random_int(1, 3));
+            $collection = array_rand([1, 2, 3,4,5,6,7], random_int(1, 3));
 
             if (!in_array(0, collect($collection)->toArray()))
             {

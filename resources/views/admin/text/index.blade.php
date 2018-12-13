@@ -10,7 +10,7 @@
             @component('components.datatable')
                 @slot('head')
                     <th>key name</th>
-                    <th>text field type</th>
+                    <th style="width: 100px;">field type</th>
                     <th>text</th>
                     <th class="no-sort"></th>
                 @endslot
@@ -24,8 +24,8 @@
                                     || $text->commentable->getTranslation(true) == ''
                                     ? "--- EMPTY ---" : $text->commentable->getTranslation(true) !!}</td>
                             <td>
-                                <a href="{{route('admin.text-editor.edit', $text->id)}}" class="rounded-circle edit">
-                                    <i class="fa fa-edit"></i>
+                                <a href="{{route('admin.text-editor.edit', $text->id)}}" class="rounded-circle btn-primary pull-right">
+                                    <i class="fa fa-language"></i>
                                 </a>
                             </td>
                         </tr>

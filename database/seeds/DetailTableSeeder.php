@@ -9,17 +9,21 @@ class DetailTableSeeder extends Seeder
      *
      * @return void
      */
+    public function randomNumber(){
+        return random_int(100, 300).' x '.random_int(300, 600).' x '.random_int(100, 400);
+    }
+
     public function run()
     {
         $faker = Faker\Factory::create();
 
         $detail = new \App\Detail();
 
-        $dimensions = random_int(100, 300).' x '.random_int(300, 600).' x '.random_int(100, 400);
+        $dimensions =
 
         $details = [
             'color' => ['geel', 'rood', 'zwart'],
-            'dimension' => [$dimensions,$dimensions,$dimensions],
+            'dimension' => [$this->randomNumber(),$this->randomNumber(),$this->randomNumber()],
             'material' => ['polypropeen','polyvinylchloride','polyethylene terephthalate']
         ];
 
@@ -37,20 +41,31 @@ class DetailTableSeeder extends Seeder
                     'language_id' => $lang->id
                 ]);
             }
+            $this->command->comment('-----start------');
+            $this->command->comment($new);
 
             foreach ($v as $item){
+
+                $this->command->comment('item: '.$item);
+
                 $newProperty = $new->properties()->create([
                     'id' => null
                 ]);
+
+                $this->command->comment('property: '.$newProperty);
+                $this->command->comment(' ');
+
                 foreach ($detail->getLanguage()->get() as $lang){
-                    $newProperty->translation()->create([
+                    $newProperty->translation()->insert([
                         'text' => $lang->country_code_short .' - '. $item,
-                        'language_id' => $lang->id
+                        'language_id' => $lang->id,
+                        'commentable_type' => 'App\\Property',
+                        'commentable_id' => $newProperty->id,
                     ]);
+                    $this->command->comment('---'.$newProperty);
                 }
             }
-
-
+            $this->command->comment('-----end------');
         }
 
 //        //color

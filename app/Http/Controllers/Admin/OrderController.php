@@ -69,7 +69,8 @@ class OrderController extends Controller
     {
         $order = $this->order->findOrFail($id);
 
-        return view('admin.orders.edit')->with('order', $order);
+        return view('admin.orders.edit')
+            ->with('order', $order);
     }
 
     /**

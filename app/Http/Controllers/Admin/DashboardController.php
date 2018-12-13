@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-
     protected $order;
     protected $product;
 
-    public function __construct()
+    public function __construct(Order $order)
     {
 //        $this->analytics = $analytics;
-
-
+        $this->order = $order;
     }
 
     public function __invoke()
@@ -26,6 +25,9 @@ class DashboardController extends Controller
 
 //        $analyticsData = LaravelAnalytics::getVisitorsAndPageViews(7);
 
-        return view('admin.dashboard');
+        $order = $this->order->get();
+
+        return view('admin.dashboard')
+            ->with('order', $order->where('status', '=', 'paid')->count());
     }
 }

@@ -10,7 +10,13 @@
 
         <div class="col">
 
-            <h2>{{$detail->getTranslation()}}</h2>
+            <h2>{{$detail->getTranslation()}}
+                <span>
+                    <a href="{{route('admin.translator.edit', [$detail->id, 'detail'])}}" class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" data-placement="top" title="Translate" style="margin-right: 5px;">
+                        <i class="fa fa-language"></i>
+                    </a>
+                </span>
+            </h2>
 
             <hr>
 
@@ -35,6 +41,9 @@
                                             If u proceed u will delete all relations
                                         @endslot
                                     @endcomponent
+                                    <a href="{{route('admin.translator.edit', [$property->id, 'property'])}}" class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" data-placement="top" title="Translate" style="margin-right: 5px;">
+                                        <i class="fa fa-language"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

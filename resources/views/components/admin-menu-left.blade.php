@@ -49,7 +49,13 @@
     <li class="nav-item {{Request::is('admin/order*') ? 'active' : ''}}">
         <a class="nav-link" href="{{route('admin.order.index')}}">
             <i class="fa fa-fw fa-inbox"></i>
-            <span class="nav-link-text">Orders</span>
+            <span class="nav-link-text">
+                Orders
+                <span class="badge badge-pill badge-warning" style="margin-top: 4px;">
+                    {!! (new \App\Order())->countNew() !!}
+                    New
+                </span>
+            </span>
         </a>
     </li>
     <li class="nav-item {{Request::is('admin/text-editor*') ? 'active' : ''}}">

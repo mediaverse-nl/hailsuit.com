@@ -1,11 +1,7 @@
 <!-- Button trigger modal -->
-<a class="{!! $btnClass !!}" data-toggle="modal" data-target="#{!! $id !!}">
+<a class="{!! $btnClass !!}" data-toggle="tooltip" data-placement="top" title="Delete this entry">
     @if(!empty($btnIcon))
-        <i class="{!! $btnIcon !!}"
-           style="color: #FFFFFF !important;"
-           data-toggle="tooltip"
-           data-placement="top"
-           title="Delete this entry"></i>
+        <i class="{!! $btnIcon !!}" style="color: #FFFFFF !important;" data-toggle="modal" data-target="#{!! $id !!}" data-placement="top"></i>
     @endif
 </a>
 

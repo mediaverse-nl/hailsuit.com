@@ -33,7 +33,10 @@
                                         If u proceed u will delete all relations
                                     @endslot
                                 @endcomponent
-                                <a href="{{route('admin.detail.edit', $detail->id)}}" class="rounded-circle edit">
+                                <a href="{{route('admin.translator.edit', [$detail->id, 'detail'])}}" class="rounded-circle btn-primary" data-toggle="tooltip" data-placement="top" title="Translate">
+                                    <i class="fa fa-language"></i>
+                                </a>
+                                <a href="{{route('admin.detail.edit', $detail->id)}}" class="rounded-circle edit" data-toggle="tooltip" data-placement="top" title="Edit this entry">
                                     <i class="fa fa-edit"></i>
                                 </a>
                             </td>

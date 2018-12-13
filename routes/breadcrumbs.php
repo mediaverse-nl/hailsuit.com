@@ -27,7 +27,6 @@ Breadcrumbs::register('cart.create', function($breadcrumbs) {
     $breadcrumbs->push('Create Order', route('cart.create'));
 });
 
-
 //admin routes
 $edit_name = 'Edit';
 $create_name = 'Create';
@@ -47,12 +46,12 @@ Breadcrumbs::register('admin.detail.edit', function($breadcrumbs, $model) use ($
     $breadcrumbs->parent('admin.detail.index');
     $breadcrumbs->push($edit_name, route('admin.detail.edit', $model->id));
 });
-// dashboard > detail
+// dashboard > body
 Breadcrumbs::register('admin.body.index', function($breadcrumbs) {
     $breadcrumbs->parent('dashboard');
     $breadcrumbs->push('Body', route('admin.body.index'));
 });
-// dashboard > detail > edit
+// dashboard > body > edit
 Breadcrumbs::register('admin.body.edit', function($breadcrumbs, $model) use ($edit_name) {
     $breadcrumbs->parent('admin.body.index');
     $breadcrumbs->push($edit_name, route('admin.body.edit', $model->id));
@@ -116,4 +115,18 @@ Breadcrumbs::register('admin.text.index', function($breadcrumbs) {
 Breadcrumbs::register('admin.text.edit', function($breadcrumbs, $model) use ($edit_name) {
     $breadcrumbs->parent('admin.text.index');
     $breadcrumbs->push($edit_name, route('admin.text-editor.edit', $model->id));
+});
+
+// dashboard > translator > edit
+Breadcrumbs::register('admin.translator.edit', function($breadcrumbs, $model) use ($edit_name) {
+    if ($model->commentable_type == 'App\Detail'){
+        $breadcrumbs->parent('admin.detail.index');
+    }
+    elseif ($model->commentable_type == 'App\Body'){
+        $breadcrumbs->parent('admin.body.index');
+    }
+    elseif ($model->commentable_type == 'App\Property'){
+        $breadcrumbs->parent('admin.detail.edit', $model->commentable->detail);
+    }
+    $breadcrumbs->push('Translations');
 });
