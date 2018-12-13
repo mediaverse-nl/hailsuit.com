@@ -143,6 +143,4 @@ class Product extends Model
     {
         $this->update(['stock' => $stock]);
     }
-
-
 }

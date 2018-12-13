@@ -17,6 +17,7 @@ class CreateSiteContentTable extends Migration
             $table->increments('id');
             $table->string('key_name')->unique();
             $table->enum('text_type', ['textarea', 'richtext', 'text']);
+            $table->string('option', 1000)->nullabel();
         });
     }
 

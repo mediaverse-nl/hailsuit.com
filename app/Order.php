@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Milon\Barcode\DNS1D;
 
 class Order extends Model
 {
@@ -24,5 +25,10 @@ class Order extends Model
         return $this
             ->where('status', '=', 'paid')
             ->count();
+    }
+
+    public function ean13()
+    {
+        return DNS1D::getBarcodeHTML($this->id, "EAN13");
     }
 }

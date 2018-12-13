@@ -16,7 +16,7 @@
                         <h5 for="exampleFormControlInput1">Translations</h5>
 
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            @foreach($languages as $language)
+                            @foreach($lphanguages as $language)
                                 <a class="nav-item nav-link {{$loop->first ? 'active' : ''}}" data-toggle="tab" href="#nav-{{$language->country_code_large}}" role="tab">
                                     {{$language->country_code_flag}}
                                 </a>

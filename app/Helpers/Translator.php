@@ -8,7 +8,7 @@ if (!function_exists('Translator')) {
      * @param richtext  / richtext  / text
      * @return
      */
-    function Translator($key, $textType = false, $textEditor = false, $value = false)
+    function Translator($key, $textType = false, $textEditor = false, $value = false, $option = [])
     {
         $siteContent = new \App\SiteContent();
 
@@ -23,6 +23,7 @@ if (!function_exists('Translator')) {
             $newInstance = $siteContent->create([
                 'key_name' => $key,
                 'text_type' => $textType,
+                'option' => $option,
             ]);
 
             if ($value){
