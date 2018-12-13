@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactStoreRequest;
 use App\Mail\ContactFormMail;
+use App\Mail\contactFormMailCopy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -41,10 +42,8 @@ class ContactController extends Controller
      */
     public function store(ContactStoreRequest $request)
     {
-//        dd($request->message);
-
-        Mail::to($request->email)->send(new ContactFormMail($request));
-
+        Mail::to($request->email)->send(new ContactFormMail($request)); //the confirmation mail
+        Mail::to('faris.ben.aaziz@gmail.com')->send(new ContactMessaeMail($request)); //the mail to the
         return redirect()->back();
     }
 

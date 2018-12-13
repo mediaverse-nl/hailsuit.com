@@ -218,28 +218,5 @@
             });
         });
 
-            // console.log(keys);
-
-            // var table = document.getElementById('shoppingCart');
-            //
-            // var rowLength = table.rows.length;
-            //
-            // for(var i=0; i<rowLength; i+=1){
-            //     var row = table.rows[i];
-            //
-            //     //your code goes here, looping over every row.
-            //     //cells are accessed as easy
-            //
-            //     var cellLength = row.cells.length;
-            //     for(var y=0; y<cellLength; y+=1){
-            //         var cell = row.cells[y];
-            //
-            //         console.log(cell.getElementsByClassName('qty').);
-            //         //do something with every cell here
-            //     }
-            // }
-
-        // })
-
     </script>
 @endpush

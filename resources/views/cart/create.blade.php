@@ -15,13 +15,10 @@
                             <div class="form-group {!! !$errors->has('email') ? : 'has-error'!!}">
                                 {!! Form::label('email', '* '.Translator('email_label', 'text', false, 'e-mail address'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
                                 <div class="col-sm-8 col-md-7">
-                                    {!! Form::text('email', 'asa', ['class' => 'form-control']) !!}
+                                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
                                     @include('components.error', ['field' => 'email'])
                                 </div>
                             </div>
-
-
-                            {{-----------------------------------------------------------------------------}}-
                             <div class="form-group {!! !$errors->has('email_confirmation') ? : 'has-error'!!}">
                                 {!! Form::label('email_confirmation', '* '.Translator('repeat_email_label', 'text', false, 'repeat e-mail address'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
                                 <div class="col-sm-8 col-md-7">
@@ -29,9 +26,6 @@
                                     @include('components.error', ['field' => 'email_confirmation'])
                                 </div>
                             </div>
-                            {{----------------------------------------------------------------------------}}
-
-
                             <div class="form-group {!! !$errors->has('full_name') ? : 'has-error'!!}">
                                 {!! Form::label('full_name', '* '.Translator('name_label', 'text', false, 'name'), ['class'  => 'control-label col-sm-4 col-md-5']) !!}
                                 <div class="col-sm-8 col-md-7">
@@ -89,7 +83,7 @@
                                     <div class="checkbox {!! !$errors->has('terms_end_conditions') || !$errors->has('privacy_policy') ? : 'has-error'!!}">
                                         <label>
                                             {!! Form::checkbox('terms_end_conditions', 'value', false) !!}
-                                            {!! Translator('terms-and-conditions_label', 'text', false, 'terms &  conditions') !!}
+                                            {!! Translator('terms-and-conditions_label', 'text', false, 'terms & conditions') !!}
                                             @include('components.error', ['field' => 'terms_end_conditions'])
                                         </label>
                                         <br>

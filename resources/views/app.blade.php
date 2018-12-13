@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+{{--TODO translate everything in app.blade--}}
     <div class="container">
         <div class="row" style="padding: 20px;">
             <h1 class="text-center">Download onze gratis app</h1>

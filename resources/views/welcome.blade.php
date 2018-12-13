@@ -19,13 +19,13 @@
         </div>
     </div>
 
-    <br><br><br><br><br><br><br><br>
+    <br>
 
     <div class="container" style="margin-bottom: 80px;">
         <div class="row">
             <div class="col-md-12">
                 <br>
-                <h1 class="text-center text-uppercase lead" style="margin: -10% 0px 50px 0px; font-size: 30px;">worlds leading hail protection for your vehicle</h1>
+                <h1 class="text-center text-uppercase lead" style="margin: -10% 0px 50px 0px; font-size: 30px;">{!! Translator('welcome_title', 'text', false, 'worlds leading hail protection for your vehicle') !!}</h1>
                 <br>
             </div>
             <div class="col-md-12" style="overflow: hidden !important;">
@@ -44,19 +44,19 @@
         </div>
     </div>
 
-    <br><br><br><br><br><br><br><br>
+    <br>
 
     <div class="container" style="margin-bottom: 80px;">
         <div class="row">
             <div class="col-md-12">
                 <div style="padding: 80px 0px;">
-                    <p class="lead text-uppercase text-center design-panel" ><span>Design</span></p>
+                    <p class="lead text-uppercase text-center design-panel" ><span>{!! Translator('welcome_design_label', 'text', false, 'design') !!}</span></p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="" style="padding: 15px;">
                     <p class="text-center">
-                        Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
+                        {!! Translator('welcome_design_paragraph', 'text', false, 'Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.') !!}
                     </p>
                     <br>
                     <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width:100%;">
@@ -67,8 +67,9 @@
                     <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width:100%;">
 
                     <p class="text-center">
-                        Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.
+                        {!! Translator('welcome_design_paragraph2', 'text', false, 'Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.') !!}
                     </p>
+
                     <br>
 
                 </div>
@@ -76,11 +77,11 @@
         </div>
     </div>
 
-    <br><br><br><br><br><br><br><br>
+    <br>
 
     <div class="container" style="margin-bottom: 10px;">
         <div class="row">
-            <h2 class="text-center">Bekijk alle producten in de shop</h2>
+            <h2 class="text-center">{!! Translator('welcome_shop_title', 'text', false, 'Bekijk alle producten in de shop') !!}</h2>
             <br>
             <div class="product-slide">
 
@@ -99,7 +100,8 @@
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br><br><br>
+
+    <br>
 
 @endsection
 
