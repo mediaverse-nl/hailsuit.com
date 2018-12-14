@@ -8,7 +8,7 @@ if (!function_exists('Translator')) {
      * @param richtext  / richtext  / text
      * @return
      */
-    function Translator($key, $textType = false, $textEditor = false, $value = false, $option = [])
+    function Translator($key, $textType = false, $textEditor = false, $value = false, $options = null)
     {
         $siteContent = new \App\SiteContent();
 
@@ -23,7 +23,7 @@ if (!function_exists('Translator')) {
             $newInstance = $siteContent->create([
                 'key_name' => $key,
                 'text_type' => $textType,
-                'option' => $option,
+                'option' => $options,
             ]);
 
             if ($value){
@@ -31,6 +31,10 @@ if (!function_exists('Translator')) {
             }else{
                 $siteContent->insertTranslation($newInstance, ' ');
             }
+        }else{
+            $trans->update([
+                'option' => $options,
+            ]);
         }
 
         $text = $siteContent
@@ -41,6 +45,14 @@ if (!function_exists('Translator')) {
         if ($textEditor){
             return view('components.text-editor')
                 ->with('text', $text);
+        }
+
+        if (isset($options)){
+            $mentions = json_decode($options, true);
+
+            foreach ($mentions['mentions'] as $key => $v){
+                $text = str_replace('@'.$key, $v, $text);
+            }
         }
 
         return $text;

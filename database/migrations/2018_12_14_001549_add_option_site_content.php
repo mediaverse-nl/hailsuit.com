@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSiteContentTable extends Migration
+class AddOptionSiteContent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateSiteContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('site_content', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('key_name')->unique();
-            $table->enum('text_type', ['textarea', 'richtext', 'text']);
+        Schema::table('site_content', function ($table) {
+            $table->string('option', 1000)->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateSiteContentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('site_content');
+        Schema::table('site_content', function ($table) {
+            $table->dropColumn('option');
+        });
     }
 }

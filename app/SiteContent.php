@@ -15,10 +15,25 @@ class SiteContent extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['key_name', 'text_type'];
+    protected $fillable = ['key_name', 'text_type', 'option'];
 
     public function translation()
     {
         return $this->morphMany('App\Translation', 'commentable');
+    }
+
+    public function options()
+    {
+        $keys = '';
+
+        $mentions = json_decode($this->option, true);
+
+        $keys .= '[';
+        foreach ($mentions['mentions'] as $key => $v){
+            $keys .= '"'.$key.'",';
+        }
+        $keys .= ']';
+
+        return $keys;
     }
 }

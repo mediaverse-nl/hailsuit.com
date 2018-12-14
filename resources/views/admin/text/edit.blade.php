@@ -15,6 +15,15 @@
         <div class="card-body">
             {!! Form::open(['route' => ['admin.text-editor.update', $text->commentable->key_name], 'method' => 'PATCH']) !!}
 
+            @if($text->commentable->option != null)
+                <label for="">Use "@" to use these tags in the text. <small>Example; Dear @name, do u like chips.</small></label>
+                <br>
+                @foreach(json_decode($text->commentable->option, true)['mentions'] as $key => $v)
+                    <small class="badge badge-warning"><b>{!! '@'.$key !!}</b></small>
+                @endforeach
+                <br>
+                <br>
+            @endif
 
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 @foreach($languages as $language)
@@ -57,7 +66,8 @@
         </div>
     </div>
 
-    @component('components.rich-textarea-editor')
+
+    @component('components.rich-textarea-editor', ['option' => $text->commentable->options()])
 
     @endcomponent
 

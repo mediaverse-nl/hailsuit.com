@@ -1,4 +1,3 @@
-
 @push('css')
     <!-- include summernote css -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
@@ -54,7 +53,6 @@
                 return button.render();
             }
 
-            {{--{!! dd($option) !!}--}}
             $('.summernote').summernote({
                 placeholder: "Type anything here...",
                 tabsize: 2,
@@ -73,7 +71,7 @@
                     ["popovers", ["lfm"]]
                 ],
                 hint: {
-                    {{--mentions: [{!! $option != null ?   null : $option !!}],--}}
+                    mentions: {!! empty($option) ? : $option !!},
                     match: /\B@(\w*)$/,
                     search: function (keyword, callback) {
                         callback($.grep(this.mentions, function (item) {
