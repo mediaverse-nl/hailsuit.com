@@ -13,9 +13,16 @@
             <div class="col-md-4 mx-auto">
 
                 <!-- Content -->
-{{--                <h4 class="font-weight-bold text-uppercase mt-3 mb-4">{!! Translator('footer_small_') !!}</h4>--}}
-                <p>{!! Translator('footer_small_text', 'richtext', false, 'terms and conditions', '{"mentions":{"groenten":"broccoli","drinken":"cola","naam":"Jan jaap"}}') !!}</p>
-
+                <h4 class="font-weight-bold text-uppercase mt-3 mb-4"> </h4>
+                <p>
+                    {!! Translator('footer_small_text', 'richtext', false, 'terms and conditions', [
+                        'mentions'=>[
+                            'groenten'=>'broccoli',
+                            'drinken'=>'cola',
+                            'naam'=>'Jan jaap'
+                        ]
+                    ]) !!}
+                </p>
             </div>
             <!-- Grid column -->
 

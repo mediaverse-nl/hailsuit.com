@@ -19,7 +19,7 @@ Breadcrumbs::register('product.show', function($breadcrumbs, $model) {
 // dashboard > cart
 Breadcrumbs::register('cart.index', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Shopping Cart', route('product.index'));
+    $breadcrumbs->push('Shopping Cart', route('cart.index'));
 });
 // dashboard > cart > create
 Breadcrumbs::register('cart.create', function($breadcrumbs) {
