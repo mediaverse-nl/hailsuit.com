@@ -38,6 +38,7 @@
                                             If u proceed u will delete all relations
                                         @endslot
                                     @endcomponent
+                                    {{--todo edit body type--}}
                                 </div>
                             </div>
                         </div>
