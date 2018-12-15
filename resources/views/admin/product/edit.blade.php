@@ -116,24 +116,62 @@
                         @endIf
                         <div class="row">
 
+                            {{--@foreach($brands as $brand)--}}
+                                {{--<div class="col-3">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label class="font-weight-bold">{{$brand->name}}</label>--}}
+                                        {{--<select class="selectpicker form-control" multiple name="brands[]">--}}
+                                            {{--@foreach($brand->types()->currentTypes($product->id)->availableTypes(true)->get() as $type)--}}
+                                                {{--@if($type->brand_id == $brand->id)--}}
+                                                    {{--{!! dd($type) !!}--}}
+
+                                                    {{--<option value="{!! $type->id !!}"--}}
+                                                            {{--{!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>--}}
+{{--                                                        {!! $type->value !!} - {!! $type->model_year!!}--}}
+                                                    {{--</option>--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+
+                            {{--@endforeach--}}
+
                             @foreach($brands as $brand)
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label class="font-weight-bold">{{$brand->name}}</label>
-                                        <select class="selectpicker form-control" multiple name="brands[]">
-                                            @foreach($brand->types()->currentTypes($product->id)->availableTypes(true)->get() as $type)
-                                                @if($type->brand_id == $brand->id)
-                                                    <option value="{!! $type->id !!}"
-                                                            {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>
-                                                        {!! $type->value !!} - {!! $type->model_year!!}
-                                                    </option>
-                                                @endif
+                                        <select class="selectpicker form-control" multiple data-live-search="true" data-virtual-scroll="true" name="brands[]">
+                                            @foreach($brand->types()->get() as $type)
+                                                <optgroup label="{!! $type->value !!} - {!! $type->model_year!!}">
+                                                    @foreach($type->bodyType()->currentTypes($product->id)->availableTypes(true)->get() as $body)
+                                                        @if($body->type_id == $type->id)
+                                                            <option value="{!! $body->id !!}" {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>
+                                                                {!! $body->body->getTranslation() !!}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </optgroup>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-
                             @endforeach
+
+                                {{--<select class="selectpicker" multiple>--}}
+                                    {{--<optgroup label="Condiments">--}}
+                                        {{--<option>Mustard</option>--}}
+                                        {{--<option>Ketchup</option>--}}
+                                        {{--<option>Relish</option>--}}
+                                    {{--</optgroup>--}}
+                                    {{--<optgroup label="Breads">--}}
+                                        {{--<option>Plain</option>--}}
+                                        {{--<option disabled>Steamed</option>--}}
+                                        {{--<option>Toasted</option>--}}
+                                    {{--</optgroup>--}}
+                                {{--</select>--}}
+
+                                {{--here--}}
 
                         </div>
 
@@ -205,7 +243,7 @@
 @endsection
 
 @push('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
     <style>
         .rounded-circle {
             margin-right: 5px;
@@ -232,10 +270,12 @@
 @endpush
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
     <script>
 
-        $('.selectpicker').selectpicker();
+        $('.selectpicker').selectpicker({
+            // virtualScroll: 300
+        });
 
         $('#thumbnail2').change(function() {
             $('#thumbnailCopy').val($(this).val());
