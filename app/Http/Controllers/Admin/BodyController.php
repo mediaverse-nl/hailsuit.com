@@ -87,18 +87,6 @@ class BodyController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -106,6 +94,10 @@ class BodyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $body = $this->body->findOrFail($id);
+
+        $body->delete();
+
+        return redirect()->back();
     }
 }

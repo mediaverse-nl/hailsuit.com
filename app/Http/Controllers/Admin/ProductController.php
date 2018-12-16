@@ -296,7 +296,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->product->findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->back();
     }
 
     public function addedStock(Request $request)

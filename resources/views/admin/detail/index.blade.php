@@ -22,17 +22,17 @@
                             <td>{{$detail->id}}</td>
                             <td>{{$detail->getTranslation()}}</td>
                             <td>
-                                @component('components.model', [
-                                    'id' => 'detailTableBtn'.$detail->id,
-                                    'title' => 'Delete',
-                                    'actionRoute' => route('admin.detail.edit', $detail->id),
-                                    'btnClass' => 'rounded-circle delete',
-                                    'btnIcon' => 'fa fa-trash'
-                                ])
-                                    @slot('description')
-                                        If u proceed u will delete all relations
-                                    @endslot
-                                @endcomponent
+                                {{--@component('components.model', [--}}
+                                    {{--'id' => 'detailTableBtn'.$detail->id,--}}
+                                    {{--'title' => 'Delete',--}}
+                                    {{--'actionRoute' => route('admin.detail.edit', $detail->id),--}}
+                                    {{--'btnClass' => 'rounded-circle delete',--}}
+                                    {{--'btnIcon' => 'fa fa-trash'--}}
+                                {{--])--}}
+                                    {{--@slot('description')--}}
+                                        {{--If u proceed u will delete all relations--}}
+                                    {{--@endslot--}}
+                                {{--@endcomponent--}}
                                 <a href="{{route('admin.translator.edit', [$detail->id, 'detail'])}}" class="rounded-circle btn-primary" data-toggle="tooltip" data-placement="top" title="Translate">
                                     <i class="fa fa-language"></i>
                                 </a>

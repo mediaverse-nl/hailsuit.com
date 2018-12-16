@@ -21,3 +21,7 @@ Route::get('filter/{brand?}/{type?}/{years?}/{body?}', 'API\ProductFilterControl
 //Route::get('types/', 'API/ProductFilterController@types');
 //Route::get('years', 'API/ProductFilterController@years');
 
+Route::get('test', function (){
+
+    return 1;
+});

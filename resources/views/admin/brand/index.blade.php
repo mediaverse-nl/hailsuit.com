@@ -23,17 +23,23 @@
                             <td>{{$brand->id}}</td>
                             <td>{{$brand->name}}</td>
                             <td>
-                                @component('components.model', [
-                                    'id' => 'brandTableBtn'.$brand->id,
-                                    'title' => 'Delete',
-                                    'actionRoute' => route('admin.brand.edit', $brand->id),
-                                    'btnClass' => 'rounded-circle delete',
-                                    'btnIcon' => 'fa fa-trash'
-                                ])
-                                    @slot('description')
-                                        If u proceed u will delete all relations
-                                    @endslot
-                                @endcomponent
+                                @if($brand->types->count() == 0)
+                                    @component('components.model', [
+                                        'id' => 'brandTableBtn'.$brand->id,
+                                        'title' => 'Delete',
+                                        'actionRoute' => route('admin.brand.destroy', $brand->id),
+                                        'btnClass' => 'rounded-circle delete',
+                                        'btnIcon' => 'fa fa-trash'
+                                    ])
+                                        @slot('description')
+                                            If u proceed u will delete all relations
+                                        @endslot
+                                    @endcomponent
+                                @else
+                                    <a class="rounded-circle delete disabled" style="background: #9b374b; ">
+                                        <i class="fa fa-times-circle" style="color: #FFFFFF !important;"></i>
+                                    </a>
+                                @endif
                                 <a href="{{route('admin.brand.edit', $brand->id)}}" class="rounded-circle edit">
                                     <i class="fa fa-edit"></i>
                                 </a>

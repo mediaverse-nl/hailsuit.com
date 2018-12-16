@@ -110,7 +110,7 @@
                                 <i class="fa fa-plus" style="color: #fff;"></i>
                             </a>
                         </h5>
-                        {!! $brands !!}
+                        {{--{!! $brands !!}--}}
                         @if($brands->count() == 0)
                             <p>no records found</p>
                         @endIf
@@ -146,7 +146,7 @@
                                                 <optgroup label="{!! $type->value !!} - {!! $type->model_year!!}">
                                                     @foreach($type->bodyType()->currentTypes($product->id)->availableTypes(true)->get() as $body)
                                                         @if($body->type_id == $type->id)
-                                                            <option value="{!! $body->id !!}" {!! in_array($type->id, $product->types->pluck('id')->toArray()) ? 'selected':'' !!}>
+                                                            <option value="{!! $body->id !!}" {!! in_array($body->id, $product->bodyTypes->pluck('id')->toArray()) ? 'selected':'' !!}>
                                                                 {!! $body->body->getTranslation() !!}
                                                             </option>
                                                         @endif
@@ -157,21 +157,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
-                                {{--<select class="selectpicker" multiple>--}}
-                                    {{--<optgroup label="Condiments">--}}
-                                        {{--<option>Mustard</option>--}}
-                                        {{--<option>Ketchup</option>--}}
-                                        {{--<option>Relish</option>--}}
-                                    {{--</optgroup>--}}
-                                    {{--<optgroup label="Breads">--}}
-                                        {{--<option>Plain</option>--}}
-                                        {{--<option disabled>Steamed</option>--}}
-                                        {{--<option>Toasted</option>--}}
-                                    {{--</optgroup>--}}
-                                {{--</select>--}}
-
-                                {{--here--}}
 
                         </div>
 

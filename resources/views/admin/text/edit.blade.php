@@ -64,10 +64,11 @@
         </div>
     </div>
 
-
-    @component('components.rich-textarea-editor', ['option' => $text->commentable->options()])
-
-    @endcomponent
+{{--{!! $text->commentable->text_type !!}--}}
+    @if($text->commentable->text_type == 'richtext')
+        @component('components.rich-textarea-editor', ['option' => $text->commentable->options()])
+        @endcomponent
+    @endif
 
 @endsection
 

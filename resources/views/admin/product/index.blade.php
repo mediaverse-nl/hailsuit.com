@@ -12,7 +12,7 @@
                 @slot('head')
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Discount</th>
+                    {{--<th>Discount</th>--}}
                     <th>Stock</th>
                     <th>Updated</th>
                     <th class="no-sort"></th>
@@ -30,14 +30,14 @@
                                 </div>
                             </td>
                             <td>{{$product->price}}</td>
-                            <td>{{$product->discount}}</td>
+{{--                            <td>{{$product->discount}}</td>--}}
                             <td>{{$product->stock}}</td>
                             <td>{{$product->updated_at->format('d-m-Y')}}</td>
                             <td>
                                 @component('components.model', [
                                     'id' => 'productTableBtn'.$product->id,
                                     'title' => 'Delete',
-                                    'actionRoute' => route('admin.brand.edit', $product->id),
+                                    'actionRoute' => route('admin.product.destroy', $product->id),
                                     'btnClass' => 'rounded-circle delete',
                                     'btnIcon' => 'fa fa-trash'
                                 ])

@@ -113,18 +113,21 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label class="font-weight-bold">{{$brand->name}}</label>
-                                    <select class="selectpicker form-control" multiple name="brands[]">
-                                        @foreach($brand->types()->availableTypes(false)->get() as $type)
-                                            @if($type->brand_id == $brand->id)
-                                                <option value="{!! $type->id !!}">
-                                                    {!! $type->value !!} - {!! $type->model_year!!}
-                                                </option>
-                                            @endif
+                                    <select class="selectpicker form-control" multiple data-live-search="true" data-virtual-scroll="true" name="brands[]">
+                                        @foreach($brand->types()->get() as $type)
+                                            <optgroup label="{!! $type->value !!} - {!! $type->model_year!!}">
+                                                @foreach($type->bodyType()->availableTypes()->get() as $body)
+                                                    @if($body->type_id == $type->id)
+                                                        <option value="{!! $body->id !!}">
+                                                            {!! $body->body->getTranslation() !!}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </optgroup>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-
                         @endforeach
 
                     </div>

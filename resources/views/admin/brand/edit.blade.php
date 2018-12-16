@@ -27,6 +27,8 @@
                                             <h6 class="badge badge-secondary">{{$body->body->getTranslation()}}</h6>
                                         @endforeach
                                     </h5>
+                                    <br>
+                                    <br>
                                     @component('components.model', [
                                         'id' => 'typeTableBtn'.$type->id,
                                         'title' => 'Delete',
@@ -38,6 +40,10 @@
                                             If u proceed u will delete all relations
                                         @endslot
                                     @endcomponent
+
+                                    <a class="btn btn-sm btn-warning pull-right" href="{!! route('admin.type.edit', $type->id) !!}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit this entry" style="margin-right: 5px;">
+                                        <i class="fa fa-edit" style="color: #FFFFFF !important;"></i>
+                                    </a>
                                     {{--todo edit body type--}}
                                 </div>
                             </div>

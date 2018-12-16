@@ -83,6 +83,11 @@ Breadcrumbs::register('admin.brand.edit', function($breadcrumbs, $model) use ($e
     $breadcrumbs->parent('admin.brand.index');
     $breadcrumbs->push($edit_name, route('admin.brand.edit', $model->id));
 });
+// dashboard > brand > edit > type
+Breadcrumbs::register('admin.type.edit', function($breadcrumbs, $model) use ($edit_name) {
+    $breadcrumbs->parent('admin.brand.edit', $model);
+    $breadcrumbs->push('Type');
+});
 
 // dashboard > product
 Breadcrumbs::register('admin.product.index', function($breadcrumbs) {

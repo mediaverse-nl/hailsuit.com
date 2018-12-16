@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         $appLanguage = $this->appLanguage;
 
-        $types = $product->types()->get();
+        $types = $product->bodyTypes()->get();
 
         return view('product.show')
             ->with('product', $product)
