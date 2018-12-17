@@ -43,7 +43,7 @@ class ContactController extends Controller
     public function store(ContactStoreRequest $request)
     {
         Mail::to($request->email)->send(new ContactFormMail($request)); //the confirmation mail
-        Mail::to('faris.ben.aaziz@gmail.com')->send(new ContactMessaeMail($request)); //the mail to the
+        Mail::to('faris.ben.aaziz@gmail.com')->send(new ContactMessageMail($request)); //the mail to the
         return redirect()->back();
     }
 
