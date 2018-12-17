@@ -28,6 +28,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/css/animsition.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 
+    <link rel="stylesheet" href="/css/footer-base.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+
     @stack('css')
 
     <style>
@@ -165,6 +173,46 @@
             box-shadow: none;
             border-radius: 0px;
         }
+        .page-footer {
+            /*height: 30px;*/
+        }
+
+        .page-footer {
+            /*background-color: #f5f5f5;*/
+            padding-top: 30px;
+        }
+
+        .page-footer > .container > .row{
+            /*background-color: #f5f5f5;*/
+            padding: 25px 0px 45px 0px;
+        }
+        .page-footer > .container > .row a{
+            color: #ffffff;
+        }
+
+        /* Lastly, apply responsive CSS fixes as necessary */
+        /*@media (max-width: 767px) {*/
+            /*.page-footer {*/
+                /*margin-left: -20px;*/
+                /*margin-right: -20px;*/
+                /*padding-left: 20px;*/
+                /*padding-right: 20px;*/
+            /*}*/
+        /*}*/
+
+        /*.footer-center i {*/
+            /*background-color: #33383b;*/
+            /*color: #ffffff;*/
+            /*font-size: 25px !important;*/
+            /*width: 38px !important;*/
+            /*height: 38px !important;*/
+            /*!* border-radius: 50%; *!*/
+            /*text-align: center;*/
+            /*line-height: 42px;*/
+            /*margin: 10px 15px;*/
+            /*vertical-align: middle;*/
+        /*}*/
+
     </style>
 
 </head>
@@ -208,6 +256,18 @@
             })});
     </script>
 
+    <script>
+        $(document).ready(function() {
+
+            var docHeight = $(window).height();
+            var footerHeight = $('.footer-distributed').height();
+            var footerTop = $('.footer-distributed').position().top + footerHeight;
+
+            if (footerTop < docHeight)
+                $('.footer-distributed').css('margin-top', 10+ (docHeight - footerTop) + 'px');
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('body').append('<div id="back-to-top" style="display:none"><i class="fas fa-angle-up"></i></div>');
@@ -227,6 +287,7 @@
             });
         });
     </script>
+
 
     @stack('js')
 

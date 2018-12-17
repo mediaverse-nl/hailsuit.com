@@ -17,6 +17,10 @@ class SiteContent extends Model
 
     protected $fillable = ['key_name', 'text_type', 'option'];
 
+    protected $casts = [
+        'options' => 'array', // Will convarted to (Array)
+    ];
+
     public function translation()
     {
         return $this->morphMany('App\Translation', 'commentable');

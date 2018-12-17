@@ -29,9 +29,9 @@ class Product extends Model
 
     protected $dateFormat = 'Y-m-d H:i:s';
 
-    public function types()
+    public function bodyTypes()
     {
-        return $this->hasMany('App\Type');
+        return $this->hasMany('App\BodyType');
     }
 
     public function productTranslation()

@@ -14,11 +14,6 @@ class Type extends Model
 
     protected $fillable = ['product_id', 'brand_id', 'model_year', 'value'];
 
-    public function product()
-    {
-        return $this->belongsTo('App\Product', 'product_id', 'id');
-    }
-
     public function bodyType()
     {
         return $this->hasMany('App\BodyType', 'type_id', 'id');
@@ -27,21 +22,5 @@ class Type extends Model
     public function brand()
     {
         return $this->belongsTo('App\Brand');
-    }
-
-    public function scopeCurrentTypes($query, $product_id)
-    {
-        return $query->where('product_id', '=', $product_id);
-    }
-
-    public function scopeAvailableTypes($query, $all = false)
-    {
-        if ($all){
-            $q = $query->orWhere('product_id', '=', null);
-        }else{
-            $q = $query->where('product_id', '=', null);
-        }
-
-        return $q;
     }
 }

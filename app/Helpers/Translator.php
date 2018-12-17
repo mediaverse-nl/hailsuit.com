@@ -23,7 +23,7 @@ if (!function_exists('Translator')) {
             $newInstance = $siteContent->create([
                 'key_name' => $key,
                 'text_type' => $textType,
-                'option' => $options,
+                'option' => json_encode($options),
             ]);
 
             if ($value){
@@ -33,7 +33,7 @@ if (!function_exists('Translator')) {
             }
         }else{
             $trans->update([
-                'option' => $options,
+                'option' => json_encode($options),
             ]);
         }
 
@@ -47,10 +47,10 @@ if (!function_exists('Translator')) {
                 ->with('text', $text);
         }
 
-        if (isset($options)){
-            $mentions = json_decode($options, true);
-
-            foreach ($mentions['mentions'] as $key => $v){
+        if (isset($options))
+        {
+            foreach ($options['mentions'] as $key => $v)
+            {
                 $text = str_replace('@'.$key, $v, $text);
             }
         }

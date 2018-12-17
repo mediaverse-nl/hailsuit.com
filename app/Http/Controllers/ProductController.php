@@ -40,22 +40,37 @@ class ProductController extends Controller
     {
         $product = $this->product->findOrFail($id);
 
-        //        todo fix this error cant load product because stays redirecting page
-//        if ($product->titleTranslated() !== str_replace('-', ' ', $title)){
-//            return redirect()
-//                ->route('product.show', [
-//                    $product->id,
-//                    str_replace(' ', '-', $product->titleTranslated())
-//                ]);
-//        }
+        $productTitle = $this->hyphenize($product->titleTranslated(), true);
 
-        $appLanguage = $this->appLanguage->findOrFail($id);
+        if ($productTitle !== $title)
+        {
+            return redirect()
+                ->route('product.show', [
+                    $product->id,
+                    $productTitle
+                ]);
+        }
 
-        $types = $product->types()->get();
+        $appLanguage = $this->appLanguage;
+
+        $types = $product->bodyTypes()->get();
 
         return view('product.show')
             ->with('product', $product)
             ->with('appLanguage', $appLanguage)
             ->with('types', $types);
+    }
+
+    public function hyphenize($title, $stripDash = false)
+    {
+        if ($stripDash){
+            $title = str_replace('-', '', $title);
+        }
+
+        return preg_replace(
+            array('#[\\s-]+#', '#[^A-Za-z0-9\. -]+#'),
+            array('-', ''),
+            urldecode($title)
+        );
     }
 }

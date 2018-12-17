@@ -19,14 +19,14 @@
                 @slot('table')
                     @foreach($bodies as $body)
                         <tr>
-                            <td>{{$body->id}}</td>
+                            <td>{{$body->id}} saasd</td>
                             <td>{{$body->getTranslation()}}</td>
                             <td>
                                 @if($body->bodyTypes->count() == 0)
                                     @component('components.model', [
                                         'id' => 'bodyTableBtn'.$body->id,
                                         'title' => 'Delete',
-                                        'actionRoute' => route('admin.brand.edit', $body->id),
+                                        'actionRoute' => route('admin.body.destroy', $body->id),
                                         'btnClass' => 'rounded-circle delete',
                                         'btnIcon' => 'fa fa-trash'
                                     ])

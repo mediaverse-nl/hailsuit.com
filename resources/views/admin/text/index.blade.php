@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-9">
+        <div class="col-12">
             @component('components.datatable')
                 @slot('head')
                     <th>key name</th>

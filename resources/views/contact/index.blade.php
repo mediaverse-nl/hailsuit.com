@@ -24,86 +24,120 @@
     </section>
 
     <div class="container">
-            <div class="col-md-6" style="padding: 15px 0px;">
-                <h1>{!! Translator('contact_us_title2', 'text', false, 'get in touch') !!}</h1>
-                <br/>
-                <p>{!! Translator('contact_us_paragraph2', 'text', false, 'please fill out the form and we will respond lightning quick') !!}</p>
-                <br/>
-
-
-                {!! Form::open(['route' => 'contact.store', 'method' => 'POST']) !!}
-
-                <div class="form-group {!! !$errors->has('name') ? : 'has-error'!!}">
-                    {!! Form::label('name',  Translator('contact_us_form_name', 'text', false, 'Your Name')) !!}
-                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter Name']) !!}
-                    @include('components.error', ['field' => 'name'])
-                </div>
-
-                <div class="form-group {!! !$errors->has('email') ? : 'has-error'!!}">
-                    {!! Form::label('email', Translator('contact_us_form_email', 'text', false, 'E-mail Adress')) !!}
-                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Enter e-mail']) !!}
-                    @include('components.error', ['field' => 'email'])
-                </div>
-
-                {{--Translator('cart_btn_complete_order', 'text', false, 'complete order')--}}
-                <div class="form-group {!! !$errors->has('message') ? : 'has-error'!!}">
-                    {!! Form::label('email', Translator('contact_us_form_message', 'text', false, 'Your Message')) !!}
-                    {!! Form::textarea('message', null, ['class' => 'form-control', 'placeholder' => 'Enter Message']) !!}
-                    @include('components.error', ['field' => 'message'])
-                </div>
-
-                {!! Form::submit(Translator('contact_us_button_submit', 'text', false, 'submit', ['class' => 'btn btn-info']))!!}
-
-                {!! Form::close() !!}
-            </div>
-
-        <div class="col-md-3">
-            {{--this part is for the design--}}
-        </div>
-
-        <div class="col-md-3">
-            {{--this part is for the design--}}
-
-            {{--the header of the --}}
-            <h3> {!! Translator('contact_us_connect_with_us_title', 'text', false, 'Connect with us') !!}</h3>
-
-            {{-- this be the email adress of the of ythe company --}}
-            <p>
-            {!! Translator('contact_us_connect_with_us_message', 'text', false, 'For support or any other questions Email us at:') !!}
-                <a>
-                   {{--opens the mail app when clicked TODO open mail app --}} <a> hailsuits@gmail.com</a>
-                </a>
-            </p>
-
-            <a href="https://www.facebook.com"><i class="fab fa-facebook" style="font-size: 30px"></i></a>
-            <a href="https://www.twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px"></i></a>
-            <a href="https://www.linkedin.com"><i class="fab fa-linkedin" style="font-size:30px"></i></a>
-            <a href="https://www.instagram.com"><i class="fab fa-instagram" style="font-size: 30px "></i></a>
-        </div>
-
-
         <div class="row">
             <div class="col-md-6">
-                {{--this is for the design--}}
+                <br/><br/>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {{--todo translates--}}
+                        <h1>{!! Translator('contact_us_title2', 'text', false, 'get in touch') !!}</h1>
+                        <p>{!! Translator('contact_us_paragraph2', 'text', false, 'please fill out the form and we will respond lightning quick') !!}</p>
+
+                        {!! Form::open(['route' => 'contact.store', 'method' => 'POST']) !!}
+
+                        <div class="form-group {!! !$errors->has('name') ? : 'has-error'!!}">
+                            {!! Form::label('name',  Translator('contact_us_form_name', 'text', false, 'Your Name')) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter Name']) !!}
+                            @include('components.error', ['field' => 'name'])
+                        </div>
+
+                        <div class="form-group {!! !$errors->has('email') ? : 'has-error'!!}">
+                            {!! Form::label('email', Translator('contact_us_form_email', 'text', false, 'E-mail Adress')) !!}
+                            {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Enter e-mail']) !!}
+                            @include('components.error', ['field' => 'email'])
+                        </div>
+
+                        <div class="form-group {!! !$errors->has('message') ? : 'has-error'!!}">
+                            {!! Form::label('email', Translator('contact_us_form_message', 'text', false, 'Your Message')) !!}
+                            {!! Form::textarea('message', null, ['class' => 'form-control', 'placeholder' => 'Enter Message', 'rows' => 5]) !!}
+                            @include('components.error', ['field' => 'message'])
+                        </div>
+
+                        {!! Form::submit(Translator('contact_us_button_submit', 'text', false, 'submit'), ['class' => 'btn btn-default'])!!}
+
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+
+
             </div>
-        </div>
-    </div>
+
+            <div class="col-md-6">
+                <br>
+                <br>
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="100%" height="250px" id="gmap_canvas" src="https://maps.google.com/maps?q=eindhoven&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                {{--this part is for the design--}}
+
+                {{--the header of the --}}
+                {{--<h3> {!! Translator('contact_us_connect_with_us_title', 'text', false, 'Connect with us') !!}</h3>--}}
+
+                {{-- this be the email adress of the of ythe company --}}
+                {{--<p>--}}
+                {{--{!! Translator('contact_us_connect_with_us_message', 'text', false, 'For support or any other questions Email us at:') !!}--}}
+                    {{--<a>--}}
+                       {{--opens the mail app when clicked TODO open mail app --}}{{-- <a> hailsuits@gmail.com</a>--}}
+                    {{--</a>--}}
+                {{--</p>--}}
+
+                {{--<a href="https://www.facebook.com"><i class="fab fa-facebook" style="font-size: 30px"></i></a>--}}
+                {{--<a href="https://www.twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px"></i></a>--}}
+                {{--<a href="https://www.linkedin.com"><i class="fab fa-linkedin" style="font-size:30px"></i></a>--}}
+                {{--<a href="https://www.instagram.com"><i class="fab fa-instagram" style="font-size: 30px "></i></a>--}}
+            </div>
 
 
-    <div class="col-md-12">
-        <div class="row">
-            <div class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="100%" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=eindhoven&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <div class="row">
+                <div class="col-md-6">
+                    {{--this is for the design--}}
                 </div>
             </div>
         </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    {{--<div class="col-md-12">--}}
+        {{--<div class="row">--}}
+            {{--<div class="mapouter">--}}
+                {{--<div class="gmap_canvas">--}}
+                    {{--<iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=eindhoven&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
 @endsection
 
 @push('css')
 <style>
+    .form-control{
+        border-radius: 0px !important;
+
+    }
+    .panel-default{
+        border-radius: 0px !important;
+        border: none !important;
+    }
+    .panel{
+        background-color: #fafafa;
+    }
+    .btn-default {
+        background: #FFFFFF;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        border-radius: 0px !important;
+    }
     .mapouter{text-align:right;height:400px;width:100%;}
     .gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}
     .hero-area{

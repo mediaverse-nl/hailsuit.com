@@ -23,4 +23,20 @@ class BodyType extends Model
     {
         return $this->belongsTo('App\Type', 'type_id', 'id');
     }
+
+    public function scopeCurrentTypes($query, $product_id)
+    {
+        return $query->where('product_id', '=', $product_id);
+    }
+
+    public function scopeAvailableTypes($query, $all = false)
+    {
+        if ($all){
+            $q = $query->orWhere('product_id', '=', null);
+        }else{
+            $q = $query->where('product_id', '=', null);
+        }
+
+        return $q;
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\AppLanguage;
 use App\Barcode;
+use App\BodyType;
 use App\Brand;
 use App\Detail;
 use App\Forms\AddedStock;
@@ -22,18 +23,13 @@ class ProductController extends Controller
 {
     use FormBuilderTrait;
 
-    protected $formBuilder;
-    protected $language;
-    protected $product;
-    protected $detail;
-    protected $brand;
-    protected $barcode;
-    protected $type;
+    protected $formBuilder, $language, $product, $detail, $brand, $barcode, $type, $bodyType;
 
     public function __construct(
         Product $product,
         Detail $detail,
         Type $type,
+        BodyType $bodyType,
         Brand $brand,
         AppLanguage $language,
         Barcode $barcode,
@@ -43,6 +39,7 @@ class ProductController extends Controller
         $this->product = $product;
         $this->detail = $detail;
         $this->type = $type;
+        $this->bodyType = $bodyType;
         $this->brand = $brand;
         $this->barcode = $barcode;
         $this->formBuilder = $formBuilder;
@@ -242,10 +239,10 @@ class ProductController extends Controller
 
         //brands
         if(!empty($request->brands)){
-            $this->type->where('product_id', '=', $id)->update(['product_id' => null]);
+            $this->bodyType->where('product_id', '=', $id)->update(['product_id' => null]);
 
             foreach ($request->brands as $brand){
-                $this->type->where('id', '=', $brand)->update([
+                $this->bodyType->where('id', '=', $brand)->update([
                     'product_id' => $id,
                 ]);
             }
@@ -299,7 +296,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->product->findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->back();
     }
 
     public function addedStock(Request $request)

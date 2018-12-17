@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::get('/', 'DashboardController')->name('dashboard');
         Route::get('dashboard', 'DashboardController');
         Route::resource('property', 'PropertyController', ['only' => ['store', 'destroy']]);
-        Route::resource('type', 'TypeController', ['only' => ['store', 'destroy']]);
+        Route::resource('type', 'TypeController', ['only' => ['store', 'destroy', 'edit', 'update']]);
         Route::resource('detail', 'DetailController');
         Route::resource('brand', 'BrandController');
         Route::resource('body', 'BodyController');

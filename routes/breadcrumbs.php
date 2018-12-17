@@ -19,7 +19,7 @@ Breadcrumbs::register('product.show', function($breadcrumbs, $model) {
 // dashboard > cart
 Breadcrumbs::register('cart.index', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Shopping Cart', route('product.index'));
+    $breadcrumbs->push('Shopping Cart', route('cart.index'));
 });
 // dashboard > cart > create
 Breadcrumbs::register('cart.create', function($breadcrumbs) {
@@ -82,6 +82,11 @@ Breadcrumbs::register('admin.brand.index', function($breadcrumbs) {
 Breadcrumbs::register('admin.brand.edit', function($breadcrumbs, $model) use ($edit_name) {
     $breadcrumbs->parent('admin.brand.index');
     $breadcrumbs->push($edit_name, route('admin.brand.edit', $model->id));
+});
+// dashboard > brand > edit > type
+Breadcrumbs::register('admin.type.edit', function($breadcrumbs, $model) use ($edit_name) {
+    $breadcrumbs->parent('admin.brand.edit', $model);
+    $breadcrumbs->push('Type');
 });
 
 // dashboard > product

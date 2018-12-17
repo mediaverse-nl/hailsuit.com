@@ -85,8 +85,9 @@
 
         function appendSelect($array, $el) {
             $.each($array, function(value, key) {
+                console.log(key);
                 $el.append($("<option></option>")
-                    .attr("value", value).text(key));
+                    .attr("value", key['id']).text(key['value']));
             });
         }
 
@@ -104,6 +105,7 @@
             if ($SelectedBody){
                 url += '/'+$SelectedBody;
             }
+            console.log(url);
             $.ajax({
                 type: "GET",
                 url: '{!! env('APP_URL') !!}/api/filter'+url,
@@ -116,6 +118,7 @@
                         var $types = json.types;
                         var $type = $("#types");
                         var $years = json.years;
+                        console.log(json);
                         var $year = $("#years");
                         var $bodies = json.bodies;
                         var $body = $("#bodies");

@@ -56,8 +56,6 @@ class TextController extends Controller
         $texts = $text->commentable->translation;
         $languages = $this->languages->get();
 
-//        dd($texts);
-
         return view('admin.text.edit')
             ->with('languages', $languages)
             ->with('text', $text)

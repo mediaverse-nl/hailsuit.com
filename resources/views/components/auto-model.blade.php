@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box" style="background-color: #FAFAFA; margin-bottom: 25px;">
     <div class="content text-center content-image content">
 
         <a href="{!! route('product.show', [$product->id, SpaceToHyphen($product->titleTranslated())]) !!}">
@@ -15,7 +15,7 @@
                 {{--<h3 class="content-title">This is a title</h3>--}}
                 {{--<p class="content-text">This is a short description</p>--}}
             </div>
-            <h4 class="text-center" style="height: 35px;">
+            <h4 class="text-center" style="height: 35px;  color: #636b6f">
                 {!! $product->titleTranslated() !!}
             </h4>
             <div style="padding: 10px">
