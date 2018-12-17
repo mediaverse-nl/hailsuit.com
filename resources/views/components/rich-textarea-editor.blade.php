@@ -71,7 +71,7 @@
                     ["popovers", ["lfm"]]
                 ],
                 hint: {
-                    mentions: {!! empty($option) ? : $option !!},
+                    mentions: '{!! empty($option) ? : $option !!}',
                     match: /\B@(\w*)$/,
                     search: function (keyword, callback) {
                         callback($.grep(this.mentions, function (item) {

@@ -14,18 +14,18 @@
             <div class="col-md-6">
                 <br>
 
-                @foreach($product->images as $image)
-                    @if($loop->first)
-                        <img src="{{$image->path}}" alt="" class="img-responsive" style="width: 100%;">
-                        <div class="row">
-                    @endif
-                    @if(!$loop->first)
-                        <div class="col-md-3" style="height: 80px; margin-top: 20px;">
-                            <img src="{{$image->path}}" alt="" class="img-responsive" style="height: 100%; width: 100%; object-fit: cover">
-                        </div>
-                    @endif
-                @endforeach
-                        </div>
+                    @foreach($product->images as $image)
+                        @if($loop->first)
+                            <img src="{{$image->path}}" alt="" class="img-responsive" style="width: 100%;">
+                            <div class="row">
+                        @endif
+                        @if(!$loop->first)
+                            <div class="col-md-3" style="height: 80px; margin-top: 20px;">
+                                <img src="{{$image->path}}" alt="" class="img-responsive" style="height: 100%; width: 100%; object-fit: cover">
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
             </div>
             <div class="col-md-6 pull-right">
 
@@ -83,7 +83,8 @@
                 </div>
                 {{--<hr>--}}
                 <hr>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=mediaverse">Share on Facebook</a>
+                <!-- Load Facebook SDK for JavaScript -->
+                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&appId=119122968652323&width=59&height=20" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                 <hr>
                 <br>
                 {{--<!-- Nav tabs -->--}}

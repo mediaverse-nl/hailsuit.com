@@ -34,6 +34,7 @@ if (!function_exists('Translator')) {
         }else{
             $trans->update([
                 'option' => json_encode($options),
+                'text_type' => $textType,
             ]);
         }
 

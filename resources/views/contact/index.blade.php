@@ -23,10 +23,12 @@
         <!-- Container End -->
     </section>
 
+    <br>
+    <br>
+
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <br/><br/>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         {{--todo translates--}}
@@ -59,20 +61,34 @@
                     </div>
                 </div>
 
-
             </div>
 
             <div class="col-md-6">
-                <br>
-                <br>
-                <div class="mapouter">
+
+                <div class="mapouter" style="height: 275px  !important;">
                     <div class="gmap_canvas">
                         <iframe width="100%" height="250px" id="gmap_canvas" src="https://maps.google.com/maps?q=eindhoven&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        {!! Translator('contact_company_information', 'richtext', false, '
+                            Customer service:
+                            Phone: +1 129 209 291
+                            E-mail: support@mysite.com
+
+                            Headquarter:
+                            Company Inc,
+                            Las vegas street 201
+                            55001 Nevada, USA
+                            Phone: +1 145 000 101
+                            usa@mysite.com ') !!}
+
+                    </div>
+                </div>
+
                 {{--this part is for the design--}}
 
                 {{--the header of the --}}

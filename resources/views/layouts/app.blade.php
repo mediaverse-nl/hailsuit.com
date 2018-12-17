@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Hailsuit') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/css/animsition.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 
-    <link rel="stylesheet" href="/css/footer-base.css">
     <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="stylesheet" href="/css/base.css">
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
@@ -39,179 +39,6 @@
     @stack('css')
 
     <style>
-        .loader {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url('/img/ajax-loading.gif') 50% 50% no-repeat rgb(249,249,249);
-            opacity: .8;
-        }
-
-        .lang-dropdown img{
-            width: 32px;
-        }
-
-        body{
-            font-family: 'Karla', sans-serif;
-            margin-top: 80px;
-            background: #ffffff !important;
-        }
-
-        .btn-circle {
-            width: 30px;
-            height: 30px;
-            padding: 6px 0px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 12px;
-            line-height: 1.42857;
-        }
-
-        .navbar {
-            min-height: 80px;
-
-        }
-
-        .navbar-brand {
-            padding: 0 15px;
-            height: 80px;
-            line-height: 80px;
-        }
-
-        .navbar-toggle {
-            /* (80px - button height 34px) / 2 = 23px */
-            margin-top: 23px;
-            padding: 9px 10px !important;
-        }
-        .navbar-fixed-top{
-            background: #ffffff;
-        }
-
-        @media (min-width: 768px) {
-            .navbar-nav > li > a {
-                /* (80px - line-height of 27px) / 2 = 26.5px */
-                padding-top: 26.5px;
-                padding-bottom: 26.5px;
-                line-height: 27px;
-            }
-        }
-
-        #lblCartCount {
-            font-size: 12px;
-            background: #FE6F41;
-            color: #fff;
-            height: 20px;
-            width: 20px;
-            padding: 4px 5px;
-            vertical-align: center;
-            margin: -35px 0px 0px -10px;
-        }
-
-        .main-menu a, .main-menu span{
-            color: #000000 !important;
-        }
-
-        footer {
-            /*height: auto;*/
-            /*padding: 30px ;*/
-            bottom: 0;
-            width: 100%;
-            /* Set the fixed height of the footer here */
-            height: auto;
-            background-color: #232323;
-        }
-        footer hr{ border: 1px solid #383E49;}
-
-        .footer-copyright{
-            background: #121212;
-            padding: 20px 0px 0px 0px;
-            line-height: 40px;
-        }
-        .payment-icons ul li {
-            font-size: 35px;
-        }
-        .social-container-footer{
-            padding-bottom: 15px;
-        }
-
-        .btn-rounded{
-            border-radius: 25px;
-        }
-
-        .back-to-top i{
-            margin-top: -10px !important;
-            /*vertical-align: center !important;*/
-        }
-        #back-to-top {
-            text-align: center;
-            margin: 20px;
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 50px;
-            height: 50px;
-            z-index: 100;
-            display: none;
-            text-decoration: none;
-            color: #ffffff;
-            background-color: #FE6F41;
-            font-size: 35px !important;
-            box-shadow: 0px 7px 25px 1px rgba(0,0,0,0.08);
-        }
-
-        .footer-social-icons{
-            font-size: 35px;
-        }
-        .breadcrumb{
-            background-color: transparent;
-        }
-        .btn-default{
-            text-shadow: none;
-            box-shadow: none;
-            border-radius: 0px;
-        }
-        .page-footer {
-            /*height: 30px;*/
-        }
-
-        .page-footer {
-            /*background-color: #f5f5f5;*/
-            padding-top: 30px;
-        }
-
-        .page-footer > .container > .row{
-            /*background-color: #f5f5f5;*/
-            padding: 25px 0px 45px 0px;
-        }
-        .page-footer > .container > .row a{
-            color: #ffffff;
-        }
-
-        /* Lastly, apply responsive CSS fixes as necessary */
-        /*@media (max-width: 767px) {*/
-            /*.page-footer {*/
-                /*margin-left: -20px;*/
-                /*margin-right: -20px;*/
-                /*padding-left: 20px;*/
-                /*padding-right: 20px;*/
-            /*}*/
-        /*}*/
-
-        /*.footer-center i {*/
-            /*background-color: #33383b;*/
-            /*color: #ffffff;*/
-            /*font-size: 25px !important;*/
-            /*width: 38px !important;*/
-            /*height: 38px !important;*/
-            /*!* border-radius: 50%; *!*/
-            /*text-align: center;*/
-            /*line-height: 42px;*/
-            /*margin: 10px 15px;*/
-            /*vertical-align: middle;*/
-        /*}*/
 
     </style>
 
@@ -256,17 +83,17 @@
             })});
     </script>
 
-    <script>
-        $(document).ready(function() {
+    {{--<script>--}}
+        {{--$(document).ready(function() {--}}
 
-            var docHeight = $(window).height();
-            var footerHeight = $('.footer-distributed').height();
-            var footerTop = $('.footer-distributed').position().top + footerHeight;
+            {{--var docHeight = $(window).height();--}}
+            {{--var footerHeight = $('.footer-distributed').height();--}}
+            {{--var footerTop = $('.footer-distributed').position().top + footerHeight;--}}
 
-            if (footerTop < docHeight)
-                $('.footer-distributed').css('margin-top', 10+ (docHeight - footerTop) + 'px');
-        });
-    </script>
+            {{--if (footerTop < docHeight)--}}
+                {{--$('.footer-distributed').css('margin-top', 10+ (docHeight - footerTop) + 'px');--}}
+        {{--});--}}
+    {{--</script>--}}
 
     <script type="text/javascript">
         $(document).ready(function(){
