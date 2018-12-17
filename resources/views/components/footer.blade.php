@@ -14,16 +14,16 @@
             </a> -
             <a href="{{route('page.privacy')}}">
                 {!! Translator('footer_privacy', 'text', false, 'privacy') !!}
-            </a>  -
+            </a> -
             <a href="{{route('page.cookie')}}">
                 {!! Translator('footer_cookie', 'text', false, 'cookie') !!}
-            </a>  -
+            </a> -
             <a href="{{route('page.warranty')}}">
                 {!! Translator('footer_warranty', 'text', false, 'warranty') !!}
             </a> -
             <a href="{{route('page.returns')}}">
                 {!! Translator('footer_returns', 'text', false, 'returns') !!}
-            </a> ·
+            </a> -
             <a href="{{route('page.delivery')}}">
                 {!! Translator('footer_delivery', 'text', false, 'delivery') !!}
             </a> -
@@ -65,18 +65,18 @@
         </p>
 
         <div class="footer-icons">
-
-            <a href="#"><i class="fab fa-twitter" style="color: #1C9CEA;"></i></a>
-            <a href="#"><i class="fab fa-instagram" style="color: #fff;"></i></a>
-            <a href="#"><i class="fab fa-google-plus" style="color: #D74C34;"></i></a>
-            {{--<a href="#"><i class="fab fa-pinterest" style="color: #C51F26;"></i></a>--}}
-            <a href="#"><i class="fab fa-linkedin" style="color: #0270AD;"></i></a>
-            {{--<a href="#"><i class="fab fa-dribbble" style="color: #E34A85;"></i></a>--}}
-            {{--<a href="#"><i class="fa fa-facebook"></i></a>--}}
-            {{--<a href="#"><i class="fa fa-twitter"></i></a>--}}
-            {{--<a href="#"><i class="fa fa-linkedin"></i></a>--}}
-            {{--<a href="#"><i class="fa fa-github"></i></a>--}}
-
+            <a href="{!! Translator('twitter_url', 'text', false, 'https://www.facebook.com/') !!}">
+                <i class="fab fa-twitter" style="color: #1C9CEA;"></i>
+            </a>
+            <a href="{!! Translator('instagram_url', 'text', false, 'https://www.instagram.com/') !!}">
+                <i class="fab fa-instagram" style="color: #fff;"></i>
+            </a>
+            <a href="{!! Translator('google_plus_url', 'text', false, 'https://plus.google.com/discover') !!}">
+                <i class="fab fa-google-plus" style="color: #D74C34;"></i>
+            </a>
+            <a href="{!! Translator('linkedin_url', 'text', false, 'https://www.linkedin.com/') !!}">
+                <i class="fab fa-linkedin" style="color: #0270AD;"></i>
+            </a>
         </div>
     </div>
 

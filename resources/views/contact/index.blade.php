@@ -88,26 +88,7 @@
 
                     </div>
                 </div>
-
-                {{--this part is for the design--}}
-
-                {{--the header of the --}}
-                {{--<h3> {!! Translator('contact_us_connect_with_us_title', 'text', false, 'Connect with us') !!}</h3>--}}
-
-                {{-- this be the email adress of the of ythe company --}}
-                {{--<p>--}}
-                {{--{!! Translator('contact_us_connect_with_us_message', 'text', false, 'For support or any other questions Email us at:') !!}--}}
-                    {{--<a>--}}
-                       {{--opens the mail app when clicked TODO open mail app --}}{{-- <a> hailsuits@gmail.com</a>--}}
-                    {{--</a>--}}
-                {{--</p>--}}
-
-                {{--<a href="https://www.facebook.com"><i class="fab fa-facebook" style="font-size: 30px"></i></a>--}}
-                {{--<a href="https://www.twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px"></i></a>--}}
-                {{--<a href="https://www.linkedin.com"><i class="fab fa-linkedin" style="font-size:30px"></i></a>--}}
-                {{--<a href="https://www.instagram.com"><i class="fab fa-instagram" style="font-size: 30px "></i></a>--}}
             </div>
-
 
             <div class="row">
                 <div class="col-md-6">
@@ -120,18 +101,6 @@
     <br>
     <br>
     <br>
-    <br>
-
-
-    {{--<div class="col-md-12">--}}
-        {{--<div class="row">--}}
-            {{--<div class="mapouter">--}}
-                {{--<div class="gmap_canvas">--}}
-                    {{--<iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=eindhoven&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
 @endsection
 

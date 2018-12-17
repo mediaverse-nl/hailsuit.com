@@ -16,7 +16,7 @@
                         </h1>
                     </div>
                     <div class="panel-body">
-                        @if(Cart::total() != 0)
+                        @if(Cart::count() != 0)
                             <table class="table shopping-cart" id="shoppingCart" style="border-bottom: 1px solid #eee; ">
                                 <thead>
                                     <tr>
@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="row" style="background-color: #fafafa; padding: 40px 0px; margin: 0px;">
+    <div class="row" style="background-color: #fafafa; padding: 40px 0px; margin-bottom: -80px;">
         <div class="container">
             <div class="row text-center">
                 <h2 class="">{!! Translator('pay_with', 'text', false, 'Our payment methods') !!}</h2>

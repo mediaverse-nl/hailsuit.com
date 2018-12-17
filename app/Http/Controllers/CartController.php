@@ -56,6 +56,7 @@ class CartController extends Controller
         }
         $cartArray = $cartArray + ['product' => $product];
 
+//        dd($product->id, $product->titleTranslated(), $units, $product->excludeTax(), $cartArray);
         Cart::add($product->id, $product->titleTranslated(), $units, $product->excludeTax(), $cartArray);
 
         return redirect()->route('cart.index');
