@@ -7,13 +7,6 @@
 <body>
 <style>
 
-    #wrapper{
-        background-color: #FFFFFF !important;
-    }
-    .rcmBody{
-        overflow: hidden;
-    }
-
     @media only screen and (max-width: 600px) {
         .inner-body {
             width: 100% !important;

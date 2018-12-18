@@ -82,7 +82,7 @@
                 },
                 fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '24', '36', '48' , '64', '82', '150'],
                 hint: {
-                    mentions: '{!! empty($option) ? : $option !!}',
+                    mentions: {!! $option or '' !!},
                     match: /\B@(\w*)$/,
                     search: function (keyword, callback) {
                         callback($.grep(this.mentions, function (item) {

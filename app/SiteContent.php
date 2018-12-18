@@ -30,8 +30,10 @@ class SiteContent extends Model
     {
         $keys = '';
 
-        if(isset($this->option['mentions'])){
-            $mentions = json_decode($this->option, true);
+        $mentions = json_decode($this->option, true);
+
+//        dd($mentions);
+        if(isset($mentions)){
 
             $keys .= '[';
             foreach ($mentions['mentions'] as $key => $v){
