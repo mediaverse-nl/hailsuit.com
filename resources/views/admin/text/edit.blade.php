@@ -66,6 +66,7 @@
 
 {{--{!! $text->commentable->text_type !!}--}}
     @if($text->commentable->text_type == 'richtext')
+{{--        {!! dd($text->commentable->options()) !!}--}}
         @component('components.rich-textarea-editor', ['option' => $text->commentable->options()])
         @endcomponent
     @endif
