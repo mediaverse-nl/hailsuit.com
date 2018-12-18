@@ -1,37 +1,88 @@
 @extends('layouts.app')
 
 @section('content')
+<html>
+    <body>
 
-    <div class="" style="background-color: #F4F4F4;">
-        <div class="container" >
-            <div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <br>
-                    <br>
-                    <div class="panel panel-default" style="border: none;  border-radius: 0px;">
+        {{--<div class="" style="background-color: #F4F4F4;">--}}
+
+            {{--<div class="container" >--}}
+
+                {{--<div class="row">--}}
+
+                    {{--<div class="col-md-12">--}}
+                        {{--<br>--}}
+                        {{--<br>--}}
+                        {{--<br>--}}
+
+                        {{--<div class="panel panel-default" style="border: none;  border-radius: 0px;">--}}
+
+                            {{--<div class="panel-body">--}}
+
+                                {{--<h1 class="text-center"><b>frequently asked questions (FAQ)</b></h1>--}}
+                                {{--<br>--}}
+                                {{--<br>--}}
+                                {{--<br>--}}
+
+                                {{--<div class="row">--}}
+                                    {{--@foreach($faqs as $faq)--}}
+                                        {{--<div class="faq-panel col-md-12 col-sm-8" style="margin-bottom: 20px;">--}}
+                                            {{--<h2 type="button" data-toggle="collapse" data-target="#faq{!! $faq->id !!}" class="collapsed accordion-toggle title-faq">--}}
+                                                {{--<b>{!! $faq->titleTranslated() !!}</b>--}}
+                                            {{--</h2>--}}
+                                            {{--<hr>--}}
+                                            {{--<div id="faq{!! $faq->id !!}" class="collapse">--}}
+                                                {{--{!! $faq->descriptionTranslated() !!}--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--@endforeach--}}
+                                {{--</div>--}}
+
+                            {{--</div>--}}
+
+                        {{--</div>--}}
+
+                    {{--</div>--}}
+
+                {{--</div>--}}
+
+            {{--</div>--}}
+
+        {{--</div>--}}
+
+        <div class="container ">
+            <br><br><br>
+            <div class="panel-group" id="faqAccordion">
+
+                <div class="panel panel-default ">
+
+                    @foreach($faqs as $faq)
+
+                    <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+                        <h4 class="panel-title">
+                            <b>{!! $faq->titleTranslated() !!}</b>
+                        </h4>
+                    </div>
+
+                    <div id="question0" class="panel-collapse collapse" style="height: 0px;">
                         <div class="panel-body">
-                            <h1 class="text-center"><b>frequently asked questions (FAQ)</b></h1>
-                            <br>
-                            <br>
-                            <br>
-                            @foreach($faqs as $faq)
-                                <div class="faq-panel" style="margin-bottom: 20px;">
-                                    <h2 type="button" data-toggle="collapse" data-target="#faq{!! $faq->id !!}" class="collapsed accordion-toggle title-faq">
-                                        <b>{!! $faq->titleTranslated() !!}</b>
-                                    </h2>
-                                    <hr>
-                                    <div id="faq{!! $faq->id !!}" class="collapse">
-                                        {!! $faq->descriptionTranslated() !!}
-                                    </div>
-                                </div>
-                            @endforeach
+                            <h5><span class="label label-primary">Answer</span></h5>
+                            <p>{!! $faq->descriptionTranslated() !!}</p>
                         </div>
                     </div>
+
+                    @endforeach
                 </div>
+
             </div>
+            <!--/panel-group-->
         </div>
-    </div>
+
+
+    </body>
+
+</html>
+
 
 @endsection
 
@@ -71,6 +122,7 @@
             /*background-color: #1C9CEA !important;*/
 
         }
+
     </style>
 @endpush
 
