@@ -50,7 +50,7 @@
 
         {{--</div>--}}
 
-        <!------ Include the above in your HEAD tag ---------->
+        <!------ Include the above in your HEAD tag --------->
 
 
 
