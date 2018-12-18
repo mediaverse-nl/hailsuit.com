@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{!! route('home') !!}">
-                <img src="/img/assets/hailsuit-logo.png" alt="" style="height: 90% !important; padding: 5px;">
+                <img src="/img/assets/hailsuit-logo.png" alt="" style="height: 90% !important; padding: 12px;">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">

@@ -102,6 +102,7 @@ class OrderController extends Controller
                 }
 
                 Mail::to($order->email)->send(new OrderConfirmation($order));
+                dd('stop');
             }
 
             $order->status = self::STATUS_COMPLETED;

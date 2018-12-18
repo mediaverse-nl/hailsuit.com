@@ -68,8 +68,19 @@
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
-                    ["popovers", ["lfm"]]
+                    ['insert', ['link', 'lfm', 'hr']],
+                    ['table', ['table']]
                 ],
+                callbacks: {
+                    // callback for pasting text only (no formatting)
+                    onPaste: function (e) {
+                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                        e.preventDefault();
+                        bufferText = bufferText.replace(/\r?\n/g, '<br>');
+                        document.execCommand('insertHtml', false, bufferText);
+                    }
+                },
+                fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '24', '36', '48' , '64', '82', '150'],
                 hint: {
                     mentions: '{!! empty($option) ? : $option !!}',
                     match: /\B@(\w*)$/,

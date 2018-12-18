@@ -33,7 +33,11 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        $pdf = PDF::loadView('pdf.invoice');
+        $order = $this->order;
+
+        $pdf = PDF::loadView('pdf.invoice', [
+            'order' => $order
+        ]);
 
         return $this->markdown('emails.order.confirmation')
             ->attachData($pdf->stream(),'invoice-hailsuit-'.$this->order->id.'.pdf', [
