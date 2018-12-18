@@ -13,7 +13,26 @@ class Order extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['payment_id'];
+    protected $fillable = [
+        'payment_id',
+        'company_name',
+        'company_vat',
+        'company_coc',
+        'country',
+        'state',
+        'city',
+        'postal_code',
+        'address',
+        'address_number',
+        'name',
+        'email',
+        'telephone',
+        'currency',
+        'total_paid',
+        'shipping_cost',
+        'payment_method',
+        'package_tracking_code'
+    ];
 
     public function productOrders()
     {

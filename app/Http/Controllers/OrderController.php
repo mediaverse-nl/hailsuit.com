@@ -97,7 +97,7 @@ class OrderController extends Controller
             if ($order->status != 'paid'){
                 foreach($order->productOrders as $product){
                     $product->product()->update([
-                        'stock' => ((int)$product->stock - $product->amount)
+                        'stock' => ((int)$product->product->stock - $product->amount)
                     ]);
                 }
 

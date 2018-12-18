@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>hailsuit invoice #{{$order->id}}</title>
 
     <style>
         .invoice-box {
@@ -83,6 +83,14 @@
             }
         }
 
+        #footer {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
         /** RTL **/
         .rtl {
             direction: rtl;
@@ -104,17 +112,19 @@
     <table cellpadding="0" cellspacing="0">
         <tr class="top">
             <td colspan="3">
-                <table>
+                <table >
                     <tr>
                         <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:270px;">
+                            <img src="https://www.hailsuit.com/img/assets/hailsuit-logo.png" style="width:270px;">
                         </td>
                         <td></td>
 
-                        <td>
-                            Invoice #: 123<br>
-                            Created: January 1, 2015<br>
-                            Due: February 1, 2015
+                        <td style="background: #eee;border-bottom: 1px solid #ddd; text-align: right">
+                            <b>Invoice #{{$order->id}}</b> <br><br>
+                            Created: {{$order->created_at->format('M d, Y')}} <br>
+                            Due: {{Carbon\Carbon::parse($order->created_at->format('M d Y'))
+                                ->addDays(14)
+                                ->format('M d, Y')}} <br>
                         </td>
                     </tr>
                 </table>
@@ -126,16 +136,21 @@
                 <table>
                     <tr>
                         <td>
-                            Sparksuite, Inc.<br>
-                            12345 Sunny Road<br>
-                            Sunnyville, CA 12345
+                            <b>Hailsuit</b> <br>
+                            Weegschaalstraat 3,<br>
+                            5632 CW Eindhoven,<br>
+                            Netherlands
                         </td>
                         <td> </td>
 
-                        <td>
-                            Acme Corp.<br>
-                            John Doe<br>
-                            john@example.com
+                        <td  style="text-align: right">
+                            {{$order->address}}
+                            {{$order->address_number}},<br>
+                            {{$order->postal_code}} {{$order->city}} <br>
+
+                            <br>
+                            {{$order->name}}<br>
+                            {{$order->email}}
                         </td>
                     </tr>
                 </table>
@@ -155,57 +170,79 @@
 
         <tr class="details">
             <td>
-                Check
+                {{$order->payment_method}}
             </td>
             <td></td>
-
             <td>
 
             </td>
         </tr>
 
+    </table>
+
+    <table cellpadding="0" cellspacing="0">
+
         <tr class="heading">
-            <td>
+            <td style="width: 250px;">
                 Item
             </td>
 
             <td>
                 Unit(s)
             </td>
+            <td style="text-align: right">
+                Unit price
+            </td>
 
-            <td>
-                Price
+            <td style="text-align: right">
+                Total
+            </td>
+
+            <td style="text-align: right">
+                TAX
             </td>
         </tr>
 
-        <tr class="item">
-            <td>
-                Website design
-            </td>
-            <td></td>
-            <td>
-                $300.00
-            </td>
-        </tr>
+        @foreach($order->productOrders as $item)
+            <tr class="item">
+                <td  style="padding: 10px 0px;">
+                    {!! $item->product->titleTranslated() !!} <br>
+                    <span style="font-size: 10px;"><b>SKU: </b>{!! $item->product->id !!}</span> <br>
 
-        <tr class="item last">
-            <td>
-                Domain name (1 year)
-            </td>
-            <td> 1x</td>
-            <td>
-                $10.00
-            </td>
-        </tr>
+                </td>
+                <td style="padding: 10px 0px;">{!! $item->amount !!} x</td>
+                <td style="text-align: right; padding: 10px 0px;">{!! number_format($item->price * 1.21, 2) !!}</td>
+                <td style="text-align: right; padding: 10px 0px;">{!!  number_format($item->amount * ($item->price * 1.21), 2) !!}</td>
+                <td style="text-align: right; padding: 10px 0px; width: 60px;">{!!  number_format(($item->amount * ($item->price * 1.21)) - $item->amount * $item->price, 2) !!}</td>
+            </tr>
 
-        <tr class="total">
+        @endforeach
+
+
+
+        <tr class="">
             <td> </td>
             <td> </td>
-            <td>
-                Total: $385.00
+            <td> </td>
+            <td colspan="2" style="text-align: right">
+                <br>
+                <br>
+                <b>TAX: <span >€{{number_format($order->total_paid - ($order->total_paid - ($order->total_paid / 121) * 21), 2)}}</span></b>
+            </td>
+        </tr>
+
+        <tr class=" ">
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td colspan="2" style="text-align: right">
+                <b>Total: <span >€{{$order->total_paid}}</span></b>
             </td>
         </tr>
     </table>
+
+    <div id='footer'>company information</div>
+
 </div>
 </body>
 </html>

@@ -12,6 +12,7 @@
 */
 
 
+use App\Order;
 use UniSharp\LaravelFilemanager\Middlewares\CreateDefaultFolder;
 use UniSharp\LaravelFilemanager\Middlewares\MultiUser;
 
@@ -47,6 +48,21 @@ Route::group(['middleware' => ['web', 'language']], function () {
 
     Route::post('mollie-webhook', 'WebhookController@mollie')->name('webhook.mollie');
 });
+
+Route::get('invoice/pdf/{id}', function ($id = 1){
+    $orders = new Order;
+
+    $order = $orders->findOrFail($id);
+    $data = [
+        'order' => $order
+    ];
+    $pdf = PDF::loadView('pdf.invoice', $data);
+    return $pdf->stream();
+
+//    return $pdf->loadView('pdf.invoice');
+});
+
+
 
 // Authentication Routes...
 Route::get('login', 'Admin\LoginController@login')->name('login');

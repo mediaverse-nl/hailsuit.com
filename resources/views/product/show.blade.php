@@ -2,8 +2,6 @@
 
 @section('content')
 
-{{--    @include('components.product-filter')--}}
-
     <div class="container">
 
         <div class="row" style="padding: 50px 0px;">
@@ -39,13 +37,20 @@
                 @endif
 
 
-                <span class="text-muted small">Inclusief tax: {{$appLanguage->currency}} {!! $product->tax() !!}</span>
+                <span class="text-muted small">{!! Translator('product_including_vat', 'text', false, 'including VAT') !!}: {{$appLanguage->currency}} {!! $product->tax() !!}</span>
                 <br>
                 <br>
 
                 <b>SKU: </b><span>{!! $product->barcodes()->first() ? $product->barcodes()->first()->value: '' !!}</span>
                 <br>
-                <b>STOCK: </b><span> In stock</span>
+                <b>{!! Translator('product_stock', 'text', false, 'STOCK') !!}: </b>
+
+                @if($product->stock >= 1)
+                    <span>{!! Translator('product_in_stock', 'text', false, 'in stock') !!} </span>
+                @else
+                    <span>{!! Translator('product_sold_out', 'text', false, 'sold out') !!} </span>
+                @endif
+
                 <br>
                 <br>
 
@@ -74,10 +79,17 @@
                             {{--</div>--}}
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" title="Click Here" class="btn btn-lg btn-default pull-right" style="color: #FFFFFF; background-color: #4D4D4C;">
-                                <i class="fas fa-cart-plus"></i>
-                                Add to Cart
-                            </button>
+                            @if($product->stock >= 1)
+                                <button type="submit" title="Click Here" class="btn btn-lg btn-default pull-right" style="color: #FFFFFF; background-color: #4D4D4C;">
+                                    <i class="fas fa-cart-plus"></i>
+                                    Add to Cart
+                                </button>
+                            @else
+                                <a title="Click Here" class="btn btn-lg btn-default pull-right" disabled="" style="color: #FFFFFF; background-color: #4D4D4C;">
+                                    <i class="fas fa-cart-plus"></i>
+                                    Add to Cart
+                                </a>
+                            @endif
                         </div>
                     {{Form::close()}}
                 </div>

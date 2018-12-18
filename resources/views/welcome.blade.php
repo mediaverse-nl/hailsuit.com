@@ -55,7 +55,7 @@
             <div class="col-sm-12 col-md-5 text-center ">
                 <img src="/img/assets/lock-system.png" alt="" class="center-block" style="width:100%; ">
             </div>
-            <div class="col-sm-12 col-md-7 text-center text-md-left mb-3 mb-md-0">
+            <div class="col-sm-12 col-md-7 text-md-left mb-3 mb-md-0">
                 <br>
                 <br>
                 <p style="padding-top: 100px;">
@@ -68,7 +68,7 @@
             <div class="col-sm-12 col-md-5 text-center hidden-md hidden-lg">
                 <img src="/img/assets/pomp-system.png" alt="" class="center-block" style="width:100%;">
             </div>
-            <div class="col-sm-12 col-md-7 text-center text-xs-right mb-3 mb-md-0">
+            <div class="col-sm-12 col-md-7 text-xs-right mb-3 mb-md-0">
                 <br>
                 <br>
                 <p style="padding-top: 100px;">
@@ -85,7 +85,7 @@
             <div class="col-sm-12 col-md-5 text-center mb-3 mb-md-0">
                 <img src="/img/assets/hailsuit-gif.gif" alt="" class="center-block" style="width:100%;">
             </div>
-            <div class="col-sm-12 col-md-7 text-center text-md-left mb-3 mb-md-0">
+            <div class="col-sm-12 col-md-7 text-md-left mb-3 mb-md-0">
                 <br>
                 <p style="padding-top: 100px;"  id="last">
                 {!! Translator('welcome_design_paragraph3', 'richtext', false, 'Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.') !!}
