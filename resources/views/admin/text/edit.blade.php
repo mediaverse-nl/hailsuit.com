@@ -42,12 +42,11 @@
 
                             <div class="form-group">
                                 @if($text->commentable->text_type == 'richtext')
-                                    <textarea class="summernote" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                    <textarea class="summernote" name="translation[{!! $language->id !!}]" style="border-top: none; border-radius: 0px">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
                                 @elseif($text->commentable->text_type == 'textarea')
-                                    <textarea class="form-control" name="translation[{!! $language->id !!}]">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
+                                    <textarea class="form-control" name="translation[{!! $language->id !!}]" style="border-top: none; border-radius: 0px">{!! $texts->where('language_id', '=', $language->id)->first()->text !!}</textarea>
                                 @elseif($text->commentable->text_type == 'text')
-                                    <br>
-                                    <input class="form-control" name="translation[{!! $language->id !!}]" value="{!! $texts->where('language_id', '=', $language->id)->first()->text !!}">
+                                    <input class="form-control" name="translation[{!! $language->id !!}]" style="border-top: none; border-radius: 0px" value="{!! $texts->where('language_id', '=', $language->id)->first()->text !!}">
                                 @endif
                             </div>
 

@@ -65,16 +65,16 @@
         </p>
 
         <div class="footer-icons">
-            <a href="{!! Translator('twitter_url', 'text', false, 'https://www.facebook.com/') !!}">
+            <a href="{!! Translator('twitter_url', 'text', true, 'https://www.facebook.com/') !!}">
                 <i class="fab fa-twitter" style="color: #1C9CEA;"></i>
             </a>
-            <a href="{!! Translator('instagram_url', 'text', false, 'https://www.instagram.com/') !!}">
+            <a href="{!! Translator('instagram_url', 'text', true, 'https://www.instagram.com/') !!}">
                 <i class="fab fa-instagram" style="color: #fff;"></i>
             </a>
-            <a href="{!! Translator('google_plus_url', 'text', false, 'https://plus.google.com/discover') !!}">
+            <a href="{!! Translator('google_plus_url', 'text', true, 'https://plus.google.com/discover') !!}">
                 <i class="fab fa-google-plus" style="color: #D74C34;"></i>
             </a>
-            <a href="{!! Translator('linkedin_url', 'text', false, 'https://www.linkedin.com/') !!}">
+            <a href="{!! Translator('linkedin_url', 'text', true, 'https://www.linkedin.com/') !!}">
                 <i class="fab fa-linkedin" style="color: #0270AD;"></i>
             </a>
         </div>

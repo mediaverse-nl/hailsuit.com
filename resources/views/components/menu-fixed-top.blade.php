@@ -37,14 +37,17 @@
                     <ul class="dropdown-menu" style="min-width: 80px !important;">
                         @foreach (language()->allowed() as $code => $name)
                             @if(app()->getLocale() !== $code)
-                                <li class="{{ config('language.flags.li_class') }}">
-                                    <a href="{{ language()->back($code) }}">
-                                        <img src="{{ asset('img/flags/'.($code == 'en' ? 'gb' : $code).'.png') }}" alt="{{ $name }}" width="40px" style="padding: 2px 3px;" />
-                                        {{--{{ config('language.flags.width') }}--}}
-                                        {{--<b style="padding: 5px; text-transform: uppercase;--}}
-{{--">{!! $code !!}</b>--}}
-                                    </a>
-                                </li>
+
+                                @if($code == 'en' || $code == 'nl')
+                                    <li class="{{ config('language.flags.li_class') }}">
+                                        <a href="{{ language()->back($code) }}">
+                                            <img src="{{ asset('img/flags/'.($code == 'en' ? 'gb' : $code).'.png') }}" alt="{{ $name }}" width="40px" style="padding: 2px 3px;" />
+                                            {{--{{ config('language.flags.width') }}--}}
+                                            {{--<b style="padding: 5px; text-transform: uppercase;--}}
+    {{--">{!! $code !!}</b>--}}
+                                        </a>
+                                    </li>
+                                @endif
                             @endif
                         @endforeach
                     </ul>

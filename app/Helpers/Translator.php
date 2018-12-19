@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 if (!function_exists('Translator')) {
 
     /**
@@ -8,7 +10,7 @@ if (!function_exists('Translator')) {
      * @param richtext  / richtext  / text
      * @return
      */
-    function Translator($key, $textType = false, $textEditor = false, $value = false, $options = null)
+    function Translator($key, $textType = false, $hideEditorBtn = false, $value = false, $options = null)
     {
         $siteContent = new \App\SiteContent();
 
@@ -43,8 +45,10 @@ if (!function_exists('Translator')) {
             ->first()
             ->getTranslation();
 
-        if ($textEditor){
-            return view('components.text-editor')
+
+        if(Auth::check() && $hideEditorBtn == false){
+            return view('components.admin-text-tool')
+                ->with('trans', $trans)
                 ->with('text', $text);
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\OrderUpdateRequest;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,7 +46,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -80,9 +81,22 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrderUpdateRequest $request, $id)
     {
-        //
+        $order = $this->order->findOrFail($id);
+
+        if ($request->status == 'send_package'){
+            $status = 'send';
+            $order->package_tracking_code = $request->package_tracking_code;
+        }elseif ($request->status == 'in_treatment'){
+            $status = 'treatment';
+        }
+
+        $order->status = $status;
+        $order->save();
+
+        return redirect()
+            ->back();
     }
 
     /**

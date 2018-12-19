@@ -136,9 +136,9 @@
                         </div>
                         <div class="col-md-12 col-lg-6">
                             @component('components.panel', ['title' => 'invoice'])
-                                <a href="" class="btn btn-block btn-warning">download</a>
-                                <a href="" class="btn btn-block btn-warning">print</a>
-                                <a href="" class="btn btn-block btn-warning">view</a>
+                                <a href="{!! route('admin.pdf.downloadInvoice', $order->id) !!}" class="btn btn-block btn-warning">download</a>
+                                {{--<a href="" class="btn btn-block btn-warning">print</a>--}}
+                                <a href="{!! route('admin.pdf.streamInvoice', $order->id) !!}" target="_black" class="btn btn-block btn-warning">view</a>
                             @endcomponent
 
                             @component('components.panel', ['title' => 'Order status'])
@@ -147,17 +147,48 @@
                                 {{--{!! $item->product !!}--}}
                                 {{--@endforeach--}}
                                 {!! Form::model($order, ['route' => ['admin.order.update', $order->id], 'method' => 'PATCH']) !!}
-                                <div class="form-group">
-                                    <label for="">Order status</label>
-                                    <select class="custom-select form-control">
-                                        <option selected>-- selected status --</option>
-                                        <option value="1">send package</option>
-                                        {{--<option value="2">cancelled</option>--}}
-                                        <option value="3">in treatment</option>
-                                    </select>
-                                </div>
+                                    <div class="form-group {!! !$errors->has('status') ? : 'has-error'!!}">
+                                        <label for="">* Order status</label>
+                                        @if($order->status == 'send')
+                                            {!! Form::text('status', null, ['class' => 'form-control', 'disabled']) !!}
+                                        @else
+                                            <select class="custom-select form-control" name="status">
+                                                <option selected>-- selected status --</option>
+                                                <option value="in_treatment" {!! $order->status == 'paid'? : 'disabled' !!}>in treatment</option>
+                                                <option value="send_package" {!! $order->status == 'treatment'? : 'disabled' !!}>send package</option>
+                                                {{--<option value="2">cancelled</option>--}}
+                                            </select>
+                                        @endif
+                                        @include('components.error', ['field' => 'status'])
+                                    </div>
 
-                                <a href="" class="btn btn-block btn-danger">Edit</a>
+                                    <div class="form-group {!! !$errors->has('package_tracking_code') ? : 'has-error'!!}">
+                                        @if($order->status == 'treatment')
+                                            <label for="">* Package tracking code</label>
+                                            {!! Form::text('package_tracking_code', null, ['class' => 'form-control']) !!}
+                                        @else
+                                            @if($order->status == 'send')
+                                                <label for="">* Package tracking code</label>
+                                                {!! Form::text('package_tracking_code', null, ['class' => 'form-control', 'disabled']) !!}
+                                            @endif
+                                        @endif
+                                            @include('components.error', ['field' => 'package_tracking_code'])
+
+                                    </div>
+
+                                    @component('components.model', [
+                                            'id' => 'orderTableBtn'.$order->id,
+                                            'title' => 'Edit',
+                                            'tooltip' => 'update order status',
+                                            'actionRoute' => route('admin.order.update', $order->id),
+                                            'btnClass' => 'btn btn-block btn-danger',
+                                            'btnIcon' => null,
+                                            'btnTitle' => 'Edit',
+                                        ])
+                                        @slot('description')
+                                            Are you sure to proceed?
+                                        @endslot
+                                    @endcomponent
                                 {!! Form::close() !!}
 
                             @endcomponent

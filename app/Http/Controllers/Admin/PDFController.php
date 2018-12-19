@@ -51,6 +51,6 @@ class PDFController extends Controller
 
         $pdf = $this->pdf->loadView('pdf.packingSlip', ['order' => $order]);
 
-        return $pdf->download('hailsuit-invoice-'.$order->id.'.pdf');
+        return $pdf->download('hailsuit-packing-slip-'.$order->id.'.pdf');
     }
 }

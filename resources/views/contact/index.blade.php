@@ -75,15 +75,15 @@
                     <div class="panel-body">
 
                         {!! Translator('contact_company_information', 'richtext', false, '
-                            Customer service:
-                            Phone: +1 129 209 291
-                            E-mail: support@mysite.com
-
-                            Headquarter:
-                            Company Inc,
-                            Las vegas street 201
-                            55001 Nevada, USA
-                            Phone: +1 145 000 101
+                            Customer service: <br>
+                            Phone: +1 129 209 291 <br>
+                            E-mail: support@mysite.com <br>
+                            <br>
+                            Headquarter:<br>
+                            Company Inc,<br>
+                            Las vegas street 201<br>
+                            55001 Nevada, USA<br>
+                            Phone: +1 145 000 101<br>
                             usa@mysite.com ') !!}
 
                     </div>
