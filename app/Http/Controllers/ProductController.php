@@ -24,7 +24,22 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->get();
+//        todo fix order or titles of products
+//        $products = $this->product
+//            ->with(['productTranslation' => function ($q){
+//                $q->orderBy('product_translation', 'desc');
+//            }])
+//            ->with('product_translation')
+//            ->orderBy('product_translation.name', 'desc')
+//            ->get();
+
+        $products = $this->product
+            ->join('product_translation', 'product_translation.product_id', '=', 'product.id')
+            ->orderBy('product_translation.name', 'desc')
+            ->groupBy('product.id')
+            ->select('product.*')->get();
+
+//        dd($products);
 
         return view('product.index')
             ->with('products', $products);

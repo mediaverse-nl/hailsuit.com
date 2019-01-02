@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="row" style="background-color: #fafafa; padding: 40px 0px; margin-bottom: -80px;">
+    <div class="" style="background-color: #fafafa; padding: 40px 0px; margin-bottom: -80px;">
         <div class="container">
             <div class="row text-center">
                 <h2 class="">{!! Translator('pay_with', 'text', false, 'Our payment methods') !!}</h2>

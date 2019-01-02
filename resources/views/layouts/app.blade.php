@@ -35,12 +35,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 
-
     @stack('css')
-
-    <style>
-
-    </style>
 
 </head>
 <body>

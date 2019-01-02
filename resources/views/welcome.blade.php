@@ -2,23 +2,37 @@
 
 @section('content')
 
-    <div class="row" style="margin: 0px; ">
-        <div class="col-md-12" style="overflow: hidden;  padding: 0px;">
-            <img src="/img/assets/Header-WEB (1).png" alt=""
+    <div class="row" style="margin: 0px;">
+        <div class="col-md-12" id="mainBanner" style="overflow: hidden;  padding: 0px;">
+            <img src="/img/assets/HEADER-foto-hagel.webp" alt=""
                  style="
                      width: 100%;
                      margin-left:auto;
                     margin-right:auto;
                     height: 80% !important;
                 ">
-            <img src="/img/assets/Header-auto-los.png" alt=""
-                 style="
-                    margin-top: -27%;
-                    width:100%;
+            <div class="container" id="headerSlogan">
+                <img src="/img/assets/Header-slogan.webp" alt=""
+                     style="
+                    margin-top: -87%;
                     z-index: 1;
                 ">
+                {{--<a class="btn btn-default" href="" style="display: block; margin-top: -67%;border-radius: 0px;  ">SHOP</a>--}}
+            </div>
+
+            <img src="/img/assets/Header-auto-los.webp" class="img-center" alt=""
+                 style="
+                    display: block;
+                    margin-top: -27%;
+                    width:80%;
+                    z-index: 1;
+                    margin-left: auto;
+                    margin-right: auto;
+                ">
+
         </div>
     </div>
+    <br>
 
     <div class="container" style="margin-bottom: 80px;">
         <div class="row">
@@ -29,13 +43,13 @@
             <div class="col-md-12" style="overflow: hidden !important;">
                 <div class="row" id="fade">
                     <div style="padding: 10px;">
-                        <img src="/img/assets/Sfeerbeeld-02.png" alt="" class="img-responsive">
+                        <img src="/img/assets/Sfeerbeeld-02.webp" alt="" class="img-responsive">
                     </div>
                     <div style="padding: 10px;">
-                        <img src="/img/assets/Sfeerbeeld-03.png" alt="" class="img-responsive">
+                        <img src="/img/assets/Sfeerbeeld-03.webp" alt="" class="img-responsive">
                     </div>
                     <div style="padding: 10px;">
-                        <img src="/img/assets/Sfeerbeeld-05.png" alt="" class="img-responsive">
+                        <img src="/img/assets/Sfeerbeeld-05.webp" alt="" class="img-responsive">
                     </div>
                 </div>
             </div>
@@ -57,7 +71,7 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-5 valign">
-                <img src="/img/assets/lock-system.png" alt="" class="center-block" style="width:100%; ">
+                <img src="/img/assets/lock-system.webp" alt="" class="center-block" style="width:100%; ">
                 <br>
             </div>
             <div class="col-sm-12 col-md-7 text-md-left mb-3 mb-md-0 valign special-text" style="padding: 10% 10px;">
@@ -71,7 +85,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-5 hidden-md hidden-lg valign">
                 <br>
-                <img src="/img/assets/pomp-system.png" alt="" class="center-block" style="width:100%;">
+                <img src="/img/assets/pomp-system.webp" alt="" class="center-block" style="width:100%;">
             </div>
             <div class="col-sm-12 col-md-7 text-xs-right mb-3 mb-md-0 valign special-text"  style="padding: 10% 10px;">
                 <p  class="">
@@ -79,7 +93,7 @@
                 </p>
             </div>
             <div class="col-sm-12 col-md-5 valign mb-3 mb-md-0 hidden-xs hidden-sm">
-                <img src="/img/assets/pomp-system.png" alt="" class="center-block" style="width:100%;">
+                <img src="/img/assets/pomp-system.webp" alt="" class="center-block" style="width:100%;">
                 <br>
             </div>
         </div>
@@ -121,39 +135,9 @@
         </div>
     </div>
 
-
-    {{--<div class="container" style="overflow: hidden !important;">--}}
-
-        {{--<div class="col-sm-6 col-md-6 col-xs-6">--}}
-
-            {{--<div class="thumbnail" style="border:none; background:white;">--}}
-
-                {{--<div class="col-sm-6 col-md-6 col-xs-12 image-container">--}}
-                    {{--<img src="/img/assets/pomp-system.png" style="height:200px; margin-left:-15px;" />--}}
-                {{--</div>--}}
-
-                {{--<div class="col-sm-6 col-md-6 col-xs-12">--}}
-
-                    {{--<h3>Hello World</h3>--}}
-                    {{--<p style="font-size:10px; color:#03225C;">--}}
-                        {{--Niemand zit te wachten op een auto met hagelschade--}}
-
-                        {{--Hagelschade. De nachtmerrie van elke autobezitter. Een fikse hagelbui betekent schade, een fors -én bewezen- waardeverlies van uw auto van tenminste 20%(!) en een stijgende verzekeringspremie.--}}
-                        {{--Met de huidige klimaatverandering neemt de kans op extreem weer gestaag toe. Hagelbuien met hagelstenen zo groot als golfballen of zware storm met kans op afbrekende en rondvliegende takken gaan steeds meer voorkomen.--}}
-                        {{--Dat betekent meer kans op schade aan uw auto en meer kans op waardeverlies. Die kans wordt nog eens vergroot als u met de auto op vakantie gaat naar landen als Italië, Duitsland, Frankrijk, Zweden, Oostenrijk of Zwitserland.--}}
-                    {{--</p>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-        {{--</div>--}}
-    {{--</div>--}}
-
     <br>
     <br>
     <br>
-
-
-
 
 @endsection
 
@@ -162,6 +146,24 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/>
 
     <style>
+        /*@media (orientation:landscape) {*/
+            /*#headerSlogan img{*/
+
+            /*}*/
+            /*#mainBanner {*/
+                /*height: 50vh !important;*/
+            /*}*/
+        /*}*/
+
+        @media (orientation:portrait) {
+            #headerSlogan img{
+                width: 90vw !important;
+            }
+            #mainBanner {
+                height: 80vw !important;
+            }
+        }
+
 
         .valign > [class*="col"] {
             display: inline-block;

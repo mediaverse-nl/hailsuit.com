@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{!! route('home') !!}">
-                <img src="/img/assets/hailsuit-logo.png" alt="" style="height: 90% !important; padding: 12px;">
+                <img src="/img/assets/hailsuit-logo.webp" alt="" style="">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle lang-dropdown" data-toggle="dropdown" href="#" style="color: #4D4D4C; margin-top:-4px  !important;"">
+                    <a class="dropdown-toggle lang-dropdown" data-toggle="dropdown" href="#" style="color: #4D4D4C; ">
                         {!! language()->flag(app()->getLocale()) !!}
                         <span class="caret"></span>
                     </a>
