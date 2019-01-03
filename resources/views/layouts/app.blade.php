@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {!! SEO::generate() !!}
+    {!! SEO::generate(true) !!}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Hailsuit') }}</title>
+    {{--<title>{{ config('app.name', 'Hailsuit') }}</title>--}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,6 +37,29 @@
 
     @stack('css')
 
+    <style>
+        /* the page should not change width as content is loaded */
+        html {
+            max-width:100vw !important;
+
+            overflow-y: scroll !important;
+        }
+        /* block scrolling without losing the scroll bar and shifting the page */
+        /* add this class when a modal is open */
+        /*body.block-scroll {*/
+            /*overflow: hidden;*/
+            /*position: fixed;*/
+            /*width: 100%;*/
+        /*}*/
+        body{
+            max-width:100vw !important;
+            /*position: fixed;*/
+            /*height: 100% !important;*/
+        }
+        .navbar-default{
+            max-width:100vw !important;
+        }
+    </style>
 </head>
 <body>
     @component('components.page-loader')

@@ -2,34 +2,18 @@
 
 @section('content')
 
-    <div class="row" style="margin: 0px;">
-        <div class="col-md-12" id="mainBanner" style="overflow: hidden;  padding: 0px;">
-            <img src="/img/assets/HEADER-foto-hagel.webp" alt=""
-                 style="
-                     width: 100%;
-                     margin-left:auto;
-                    margin-right:auto;
-                    height: 80% !important;
-                ">
-            <div class="container" id="headerSlogan">
-                <img src="/img/assets/Header-slogan.webp" alt=""
-                     style="
-                    margin-top: -87%;
-                    z-index: 1;
-                ">
+    <div class="row" style="margin: 0px 0px 30px 0px;">
+        <div class="col-md-12" id="mainBanner" style="padding: 0px;">
+            <div class="container" >
+                <img id="headerSlogan" src="/img/assets/Header-slogan.webp" alt="">
                 {{--<a class="btn btn-default" href="" style="display: block; margin-top: -67%;border-radius: 0px;  ">SHOP</a>--}}
             </div>
-
-            <img src="/img/assets/Header-auto-los.webp" class="img-center" alt=""
-                 style="
-                    display: block;
-                    margin-top: -27%;
-                    width:80%;
-                    z-index: 1;
-                    margin-left: auto;
-                    margin-right: auto;
-                ">
-
+        </div>
+        <img src="/img/assets/Header-auto-los.webp" id="hailsuitImage" class="hidden-lg hidden-md" alt="">
+    </div>
+    <div class="row hidden-xs hidden-sm" style="margin: 0px 0px 30px 0px; overflow: hidden; ">
+        <div class="text-center" id="hailsuitImageContainer" style="position: absolute; left: 50%; width: 50% !important; ">
+            <img src="/img/assets/Header-auto-los.webp" id="hailsuitImage" alt="">
         </div>
     </div>
     <br>
@@ -37,7 +21,7 @@
     <div class="container" style="margin-bottom: 80px;">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center text-uppercase lead" style="margin: -10% 0px 50px 0px; font-size: 30px;">{!! Translator('welcome_title', 'text', false, 'worlds leading hail protection for your vehicle') !!}</h1>
+                <h1 class="text-center text-uppercase lead" style="margin: 0px 0px 50px 0px; font-size: 30px;">{!! Translator('welcome_title', 'text', false, 'worlds leading hail protection for your vehicle') !!}</h1>
                 <p>{!! Translator('welcome_title_paragraph', 'richtext', false, 'Bacon ipsum dolor amet meatloaf capicola buffalo turducken cupim pork belly sirloin strip steak bacon picanha kevin bresaola swine kielbasa. Pork belly spare ribs biltong, flank turducken filet mignon hamburger shoulder tenderloin pork loin picanha. Jerky beef ribs brisket biltong, frankfurter alcatra fatback pig meatball sausage turkey doner tongue corned beef pork loin. Tail t-bone bacon spare ribs, flank porchetta venison. Jerky beef jowl tri-tip. Brisket spare ribs pork chop filet mignon strip steak doner. Ham corned beef ground round chicken pork chop.') !!}</p>
             </div>
             <div class="col-md-12" style="overflow: hidden !important;">
@@ -154,6 +138,33 @@
                 /*height: 50vh !important;*/
             /*}*/
         /*}*/
+        #hailsuitImageContainer{
+
+        }
+
+        /*#hailsuitImage{*/
+            /*margin-top: -30px;*/
+            /*width: 100% !important;*/
+            /*position: relative !important;*/
+            /*left: -50%;*/
+            /*bottom: 0 !important;*/
+        /*}*/
+        #headerSlogan{
+            width: 80% !important;
+        }
+
+        #mainBanner {
+            position: relative !important;
+            /*height: 400px;*/
+            background-image: url("/img/assets/HEADER-foto-hagel.webp");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        #mainBanner img {
+            position: absolute !important;
+        }
 
         @media (orientation:portrait) {
             #headerSlogan img{
@@ -175,6 +186,14 @@
 
         /* Custom, iPhone Retina */
         @media only screen and (min-width : 320px) {
+            #hailsuitImage{
+                padding: 10px;
+                margin-top: -28%;
+                width: 90% !important;
+                position: relative !important;
+                left: 0px !important;
+                bottom: 0 !important;
+            }
             .special-text {
                 padding: 10% 10px !important;
             }
@@ -185,6 +204,13 @@
 
         /* Extra Small Devices, Phones */
         @media only screen and (min-width : 480px) {
+            #hailsuitImage{
+                margin-top: -28%;
+                width: 100% !important;
+                position: relative !important;
+                /*left: -50%;*/
+                bottom: 0 !important;
+            }
             .special-text {
                 padding: 10% 10px !important;
             }
@@ -195,18 +221,48 @@
 
         /* Small Devices, Tablets */
         @media only screen and (min-width : 768px) {
+            #mainBanner {
+                height: 300px;
+            }
+            #hailsuitImage{
+                margin-top: -28%;
+                width: 100% !important;
+                position: relative !important;
+                left: -50%;
+                bottom: 0 !important;
+            }
             .special-text {
                 padding: 10% 10px !important;
             }
         }
         /* Medium Devices, Desktops */
         @media only screen and (min-width : 992px) {
+            #mainBanner {
+                height: 300px;
+            }
+            #hailsuitImage{
+                margin-top: -28%;
+                width: 100% !important;
+                position: relative !important;
+                left: -50%;
+                bottom: 0 !important;
+            }
             .special-text {
                 padding: 10% 5% !important;
             }
         }
         /* Large Devices, Wide Screens */
         @media only screen and (min-width : 1200px) {
+            #mainBanner {
+                height: 300px;
+            }
+            #hailsuitImage{
+                margin-top: -28%;
+                width: 100% !important;
+                position: relative !important;
+                left: -50%;
+                bottom: 0 !important;
+            }
             .special-text {
                 padding: 10% 5% !important;
             }

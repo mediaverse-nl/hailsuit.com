@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\FAQ;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Traits\SEOTools;
 
 class PageController extends Controller
 {
+    use SEOTools;
+
     protected $faq;
 
     public function __construct(FAQ $faq)
@@ -20,7 +23,6 @@ class PageController extends Controller
 
     public function privacy(){
         return view('pages.privacy');
-
     }
 
     public function cookie(){
@@ -44,6 +46,12 @@ class PageController extends Controller
     }
 
     public function faq(){
+        $this->seo()->setTitle(Translator('seo_faq_title', 'text', true, 'home').' | hailsuit.com');
+        $this->seo()->setDescription(Translator('seo_faq_description', 'text', true, ''));
+        $this->seo()->opengraph()->setUrl(url()->current());
+        $this->seo()->opengraph()->addProperty('type', 'website');
+        $this->seo()->twitter()->setSite(Translator('seo_twitter_username', 'text', true, '@username'));
+
         $faq = $this->faq->get();
 
         return view('faq')

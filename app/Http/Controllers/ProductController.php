@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\AppLanguage;
 use App\Product;
+use Artesaos\SEOTools\Traits\SEOTools;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    protected $product;
-    protected $appLanguage;
+    use SEOTools;
+
+    protected $product,
+        $appLanguage;
 
     public function __construct(Product $product, AppLanguage $appLanguage)
     {
@@ -24,22 +27,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-//        todo fix order or titles of products
-//        $products = $this->product
-//            ->with(['productTranslation' => function ($q){
-//                $q->orderBy('product_translation', 'desc');
-//            }])
-//            ->with('product_translation')
-//            ->orderBy('product_translation.name', 'desc')
-//            ->get();
+        $this->seo()->setTitle(Translator('seo_products_title', 'text', true, 'products').' | hailsuit.com');
+        $this->seo()->setDescription(Translator('seo_products_description', 'text', true, ''));
+        $this->seo()->opengraph()->setUrl(url()->current());
+        $this->seo()->opengraph()->addProperty('type', 'product');
+        $this->seo()->twitter()->setSite(Translator('seo_twitter_username', 'text', true, '@username'));
 
         $products = $this->product
             ->join('product_translation', 'product_translation.product_id', '=', 'product.id')
             ->orderBy('product_translation.name', 'desc')
             ->groupBy('product.id')
-            ->select('product.*')->get();
-
-//        dd($products);
+            ->select('product.*')
+            ->get();
 
         return view('product.index')
             ->with('products', $products);
@@ -65,6 +64,18 @@ class ProductController extends Controller
                     $productTitle
                 ]);
         }
+
+        $this->seo()->setTitle($product->titleTranslated().' | hailsuit.com');
+        $this->seo()->setDescription($product->descriptionTranslated());
+        $this->seo()->opengraph()->setUrl(url()->current());
+        $this->seo()->opengraph()->addProperty('type', 'product');
+        $this->seo()->twitter()->setSite(Translator('seo_twitter_username', 'text', true, '@username'));
+
+        $images = [];
+        foreach($product->images as $image){
+            $images[] = $image->path;
+        }
+        $this->seo()->addImages($images);
 
         $appLanguage = $this->appLanguage;
 

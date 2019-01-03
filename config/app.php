@@ -186,7 +186,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         browner12\helpers\HelperServiceProvider::class,
         Spatie\CookieConsent\CookieConsentServiceProvider::class,
-
+        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -31,13 +31,13 @@
                         <h5>Product images</h5>
                         <div class="input-group" >
                           <span class="input-group-btn" >
-                            <a id="lfm2" data-input="thumbnail2" data-preview="holder2" class="btn btn-primary text-white" style="border-radius: 0px !important;">
+                            <a id="lfm2" data-input="thumbnail2" data-multiple="" data-preview="holder2" class="btn btn-primary text-white" style="border-radius: 0px !important;">
                               <i class="fa fa-picture-o"></i> Choose
                             </a>
                           </span>
-                            <input id="thumbnail2" class="form-control" type="text" disabled
+                            <input id="thumbnail2" class="form-control"  type="text" disabled
                                     value="{!! implode(',',$product->images->pluck('path')->toArray()) !!}">
-                            <input type="hidden" id="thumbnailCopy" class="form-control" name="images"
+                            <input type="hidden" id="thumbnailCopy" class="form-control" name="images[]"
                                     value="{!! implode(',',$product->images->pluck('path')->toArray()) !!}">
                         </div>
                         <div id="holder2" style="margin-top:15px;max-height:100px;">

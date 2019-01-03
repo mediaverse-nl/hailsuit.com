@@ -23,6 +23,7 @@
         "milon/barcode": "^5.3",
         "mollie/laravel-mollie": "^1.5",
         "orlandotm/payment-webfont": "*",
+        "renatomarinho/laravel-page-speed": "^1.8",
         "spatie/laravel-analytics": "^1.4",
         "spatie/laravel-cookie-consent": "^1.8",
         "twbs/bootstrap": "^4.1",

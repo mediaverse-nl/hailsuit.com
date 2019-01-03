@@ -19,13 +19,18 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        $this->seo()->setTitle('hailsuit.com');
-        $this->seo()->setDescription('This is my page description');
-        $this->seo()->opengraph()->setUrl('http://current.url.com');
-        $this->seo()->opengraph()->addProperty('type', 'articles');
-        $this->seo()->twitter()->setSite('@username');
+        $this->seo()->setTitle(Translator('seo_title', 'text', true, 'home').' | hailsuit.com');
+        $this->seo()->setDescription(Translator('seo_description', 'text', true, ''));
+        $this->seo()->opengraph()->setUrl(url()->current());
+        $this->seo()->opengraph()->addProperty('type', 'website');
+        $this->seo()->twitter()->setSite(Translator('seo_twitter_username', 'text', true, '@username'));
 
-        $products = $this->product->get();
+        $products = $this->product
+            ->join('product_translation', 'product_translation.product_id', '=', 'product.id')
+            ->orderBy('product_translation.name', 'desc')
+            ->groupBy('product.id')
+            ->select('product.*')
+            ->get();
 
         return view('welcome')
             ->with('products', $products);
